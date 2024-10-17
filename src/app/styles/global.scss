@@ -1,0 +1,68 @@
+@import 'values';
+@import 'fonts';
+
+body {
+  background-color: $black;
+}
+
+h1 {
+  color: $light;
+  font-size: $h1-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+h2 {
+  color: $light;
+  font-size: $h2-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+h3 {
+  color: $light;
+  font-size: $h3-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h4 {
+  color: $light;
+  font-size: $h4-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+p {
+  color: $light;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-size: $p-size;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.313rem;
+}
+
+button {
+  font-family: "Fixel Text", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: $button-font-size;
+
+  background-color: $light;
+  border-radius: 90px;
+}
+
+a {
+  color: $light;
+  font-size: $a-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+}

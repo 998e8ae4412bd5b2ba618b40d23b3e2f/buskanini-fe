@@ -1,0 +1,85 @@
+@import "/src/app/styles/values.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 38px 46px 0 46px;
+
+  .headerLogo__block {
+    flex: 1;
+
+    .header__logo {
+      display: flex;
+      height: 69px;
+      width: fit-content;
+      padding: 0 40px;
+      align-items: center;
+
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.17);
+      backdrop-filter: blur(10.199999809265137px);
+
+
+      color: $white;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 135%;
+    }
+  }
+
+  nav {
+    display: flex;
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 0 40px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10.199999809265137px);
+
+      li {
+        a {
+          color: $white;
+          font-family: "Fixel Text", sans-serif;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 135%;
+        }
+      }
+    }
+  }
+
+  .lanContacts {
+    display: flex;
+    justify-content: flex-end;
+    gap: 46px;
+    flex: 1;
+
+    a {
+      display: flex;
+      height: 100%;
+      padding: 0 40px;
+      align-items: center;
+
+      border-radius: 50px;
+      background: $white;
+      backdrop-filter: blur(10.199999809265137px);
+
+
+      color: $black;
+      font-family: "Fixel Text", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 135%;
+    }
+
+    button {
+      color: $white;
+      font-size: 1.5rem;
+      background: none;
+    }
+  }
+}
