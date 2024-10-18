@@ -126,11 +126,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    padding: 167px 0 137.5px;
+    padding: 167px $side-padding 137.5px;
 
     .sliderContainer {
       position: relative;
+      overflow: hidden;
+      padding-bottom: 100px;
 
       .swiper {
         position: relative;
@@ -160,10 +161,6 @@
 
           background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 17.71%, #070707 94.2%);;
         }
-
-        .swiper-pagination {
-          display: none !important;
-        }
       }
     }
 
@@ -190,13 +187,10 @@
 }
 
 
-// ------------- page components ------------------
+// ------------- page pageComponents styles ------------------
 
 
-/*
-  @name TitleWithSubtitle
-*/
-
+// TitleWithSubtitle
 .TitleWithSubtitle {
   display: flex;
   flex-direction: column;
@@ -213,22 +207,21 @@
     text-align: center;
     font-family: "FixelText", sans-serif;
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
+    line-height: 150%;
   }
 }
 
-/*
-   @name serviceCard
-*/
 
+// serviceCard
 .serviceCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
+  gap: 7.8rem;
 
-  padding: 35px;
-  min-height: 771px;
+  padding: 2.188rem;
   border-radius: 50px;
 
   border: 1px solid $white;
@@ -236,9 +229,12 @@
   border-radius: 50px;
 
   .titleSubtitle {
+    min-height: 9.375rem;
+
     h3 {
       color: $white;
-      margin-bottom: 10px;
+      margin-bottom: 0.625rem;
+      text-align: center;
     }
 
     p {
@@ -256,16 +252,18 @@
     font-size: 1.75rem;
     font-weight: 500;
     line-height: 1.9;
-    margin: 110px 0 auto;
+
   }
 
   button {
+    margin-top: auto;
     height: 63px;
     color: $white;
     font-family: "FixelText", sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 2.063;
+    align-self: flex-end;
 
     background-color: $black;
     border-radius: 90px;
@@ -300,10 +298,7 @@
 }
 
 
- /*
-    @name sliderElement
- */
-
+// sliderElement
  .sliderElement {
    position: relative;
 
@@ -316,22 +311,81 @@
      border: 2.043px solid $white;
    }
 
-   .preview {
+   button {
      position: absolute;
      bottom: 30px;
      right: 30px;
+   }
+ }
 
+
+ // infinitySlider
+ @keyframes infiniteScroll {
+   from {transform: translate(0%, 0%);}
+   to {transform: translate(100%, 0%);}
+ }
+
+ @keyframes infiniteScroll-2 {
+   from {transform: translate(-100%, 0%);}
+   to {transform: translate(0%, 0%);}
+ }
+
+ @keyframes infiniteScroll-left {
+   from {transform: translate(0%, 0%);}
+   to {transform: translate(-100%, 0%);}
+ }
+
+ @keyframes infiniteScroll-2-left {
+   from {transform: translate(100%, 0%);}
+   to {transform: translate(0, 0%);}
+ }
+
+ .infinitySliderContainer {
+   display: flex;
+   position: relative;
+   height: 142.036px;
+   width: 100%;
+   overflow: hidden;
+
+   background-color: $black;
+ }
+
+ .horizontalScrollingItems {
+   position: absolute;
+   top: 0;
+   left: 0;
+
+   display: flex;
+   justify-content: space-between;
+   animation-name: infiniteScroll;
+   animation-duration: 20s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+
+   width: 100%;
+
+   &.left {
+     animation-name: infiniteScroll-left;
+   }
+
+   &.second {
+     animation-name: infiniteScroll-2;
+
+     .item {
+       margin-left: auto;
+     }
+   }
+
+   &.leftSecond {
+     animation-name: infiniteScroll-2-left;
+   }
+
+   .item {
      display: flex;
-     padding: 21px 15px;
      align-items: center;
-     gap: 20px;
+     justify-content: center;
+     flex: 1;
 
-     color: $white;
-     font-family: "FixelText", sans-serif;
-     font-size: 1.5rem;
-     font-weight: 500;
-
-     border-radius: 18px;
-     background: var(--Black, #070707);
+     margin-left: auto;
    }
  }

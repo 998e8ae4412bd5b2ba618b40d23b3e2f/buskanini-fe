@@ -1,0 +1,136 @@
+@import "/src/app/styles/values.scss";
+
+.main {
+  .navLabel {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 86px 50px 64.5px;
+
+    nav {
+      ul {
+        display: flex;
+        gap: 70px;
+        li {
+
+          button {
+            color: $white;
+            font-family: "Craftwork Grotesk", sans-serif;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 105%;
+
+            background: none;
+
+            &.active {
+              color: $light;
+            }
+          }
+        }
+      }
+    }
+
+    p {
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+
+  .projects {
+    display: flex;
+    gap: 101px;
+    padding: 65px 50px 102px 105px;
+
+    .projectsList {
+      min-width: 200px;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+
+        li {
+          a {
+            color: $white;
+
+            font-family: "FixelText", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 150%;
+            transition: .3s;
+
+            &:hover {
+              color: $light;
+            }
+          }
+        }
+      }
+    }
+
+    .projectsGridPagination {
+      display: flex;
+      flex-direction: column;
+      gap: 6.875rem;
+      width: 100%;
+
+      .defaultGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+      }
+
+      .interiorGrid {
+
+      }
+
+      .pagination {
+        display: flex;
+
+        justify-content: space-between;
+
+        button {
+          display: flex;
+          align-items: center;
+          gap: 1.51rem;
+
+          color: $white;
+          font-family: "FixelText", sans-serif;
+          font-size: 1.5rem;
+          font-weight: 400;
+          line-height: 135%;
+
+          background: none;
+
+          &:last-child {
+            svg {
+              scale: -1;
+            }
+          }
+        }
+
+        .circles {
+          display: flex;
+          gap: .7rem;
+
+          .circle {
+            width: 22px;
+            height: 22px;
+
+            border-radius: 90%;
+            opacity: 0.3;
+            background: $light;
+
+            &.active {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

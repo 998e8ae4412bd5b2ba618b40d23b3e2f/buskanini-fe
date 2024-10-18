@@ -1,16 +1,12 @@
-import '../styles/fonts.scss'
-import '../styles/default.scss'
-import '../styles/global.scss'
 import styles from './page/page.module.scss'
 import ScrollDown from '../../../public/svg/arrow-down-circle.svg'
 
 import Header from "@/app/components/header";
-import {ServiceCard, SwiperComponent, TitleWithSubtitle} from "@/app/[locale]/page/pageComponents";
+import {InfinitySlider, ServiceCard, SwiperComponent, TitleWithSubtitle} from "@/app/[locale]/page/pageComponents";
 import React from "react";
 import Link from "next/link";
 import HaveQuestion from "@/app/components/haveQuestion";
-import Footer from "@/app/components/footer";
-import InfinitySlider from "@/app/components/InfinitySlider";
+
 
 export default function Home() {
     const elements = [
@@ -51,7 +47,7 @@ export default function Home() {
                 <Header/>
 
                 <div className={styles.centerText}>
-                    <h1>3D візуалізація <span>для комерції.</span></h1>
+                    <h1><span>3D візуалізація</span> для комерції.</h1>
 
                     <p>Створюємо реалістичні <span>3D візуалізації</span> для бізнесу, архітектури та реклами.</p>
                 </div>
@@ -107,8 +103,8 @@ export default function Home() {
 
                 <section className={`${styles.sectionFurnitureDesign} ${styles.container}`}>
                     <TitleWithSubtitle
-                        title='Tyler'
-                        subtitle={`Derden`}
+                        title='Дизайн меблів'
+                        subtitle={`Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.`}
                     />
 
                     <div className={styles.sliderContainer}>
@@ -122,8 +118,6 @@ export default function Home() {
                     <HaveQuestion/>
                 </section>
             </main>
-
-            <Footer/>
         </>
     );
 }

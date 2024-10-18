@@ -1,5 +1,7 @@
 'use client'
-import Preview3D from '../../../../public/svg/preview3D.svg'
+import LogoCompanyOne from '../../../../public/svg/sliderCompanyLogos/LogoCompanyOne.svg'
+import LogoCompanyTwo from '../../../../public/svg/sliderCompanyLogos/LogoCompanyTwo.svg'
+import LogoCompanyThree from '../../../../public/svg/sliderCompanyLogos/LogoCompanyThree.svg'
 import React, {CSSProperties} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,7 +10,7 @@ import "swiper/css/pagination";
 import styles from './page.module.scss'
 import './page.scss'
 import {Pagination} from "swiper/modules";
-import Link from "next/link";
+import PreviewButton from "@/app/components/previewButton";
 
 
 
@@ -43,11 +45,11 @@ type ServiceCardProps = {
 export const ServiceCard = ({title, subtitle, description}: ServiceCardProps) => {
     return (
         <article className={styles.serviceCard}>
+
             <div className={styles.titleSubtitle}>
                 <h3>{title}</h3>
                 <p>{subtitle}</p>
             </div>
-
             <div
                 className={styles.description}
                 dangerouslySetInnerHTML={{
@@ -64,11 +66,10 @@ export const ServiceCard = ({title, subtitle, description}: ServiceCardProps) =>
 };
 
 
-
 // SLIDER COMPONENT
 
 interface Slide {
-    image: string; 
+    image: string;
 }
 
 interface SwiperComponentProps {
@@ -79,11 +80,7 @@ export const Slide = ({image}: Slide) => {
     return (
         <article className={styles.sliderElement}>
             <img src={image} alt=""/>
-
-            <Link href='/' className={styles.preview}>
-                3D Перегляд
-                <Preview3D/>
-            </Link>
+            <PreviewButton/>
         </article>
     )
 
@@ -122,5 +119,47 @@ export const SwiperComponent = ({elements}: SwiperComponentProps) => {
                 ))
             }
         </Swiper>
+    );
+};
+
+
+
+
+
+// INFINITY SLIDER COMPONENT
+
+interface ItemsProps {
+    items: React.FC[];
+}
+
+export const SliderItems = ({items}: ItemsProps) => {
+    return (<>
+        {
+            items.map((ItemComponent, index) => (
+                <div className={styles.item} key={index}>
+                    <ItemComponent />
+                </div>
+            ))
+        }
+    </>)
+}
+
+interface SliderState {
+    left?: boolean
+}
+
+export const InfinitySlider = ({left=false}: SliderState) => {
+    const logos = [LogoCompanyOne, LogoCompanyTwo, LogoCompanyThree, LogoCompanyOne, LogoCompanyTwo, LogoCompanyThree]
+
+    return (
+        <div className={styles.infinitySliderContainer}>
+            <div className={`${styles.horizontalScrollingItems} ${left ? styles.left : ''}`}>
+                <SliderItems items={logos}/>
+            </div>
+
+            <div className={`${styles.horizontalScrollingItems} ${left ? styles.leftSecond : styles.second}`}>
+                <SliderItems items={logos}/>
+            </div>
+        </div>
     );
 };

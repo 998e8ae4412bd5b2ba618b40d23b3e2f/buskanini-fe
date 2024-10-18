@@ -1,0 +1,17 @@
+@import "/src/app/styles/values.scss";
+
+.preview {
+  display: flex;
+  padding: 21px 15px;
+  align-items: center;
+  gap: 20px;
+  width: fit-content;
+
+  color: $white;
+  font-family: "FixelText", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  border-radius: 18px;
+  background: var(--Black, #070707);
+}

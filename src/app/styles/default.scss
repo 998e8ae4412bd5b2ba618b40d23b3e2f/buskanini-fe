@@ -95,6 +95,18 @@ body {
   line-height: 1;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+
+
+  font-size: 14px;
+}
+
 ol,
 ul {
   list-style: none;

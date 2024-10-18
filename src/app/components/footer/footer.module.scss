@@ -38,7 +38,7 @@
 
       .footerNav {
         display: flex;
-        gap: 107px;
+        gap: 6.688rem;
 
         .footerNavList {
           .title {
@@ -47,13 +47,12 @@
             font-size: 1.5rem;
             line-height: 137.5%;
 
-            padding-bottom: 20px;
+            padding-bottom: 1.25rem;
           }
 
           ul {
             display: flex;
-            gap: 20px;
-
+            gap: 1.25rem;
 
             li {
               a {
@@ -69,7 +68,7 @@
 
           .vertical {
             flex-direction: column;
-            gap: 30px;
+            gap: 1.875rem;
           }
         }
       }

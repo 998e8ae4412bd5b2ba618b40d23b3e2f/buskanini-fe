@@ -3,16 +3,16 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 38px 46px 0 46px;
+  padding: 2.375rem 2.875rem 0 2.875rem;
 
   .headerLogo__block {
     flex: 1;
 
     .header__logo {
       display: flex;
-      height: 69px;
+      height: 4.313rem;
       width: fit-content;
-      padding: 0 40px;
+      padding: 0 2.5rem;
       align-items: center;
 
       border-radius: 50px;
@@ -34,8 +34,8 @@
     ul {
       display: flex;
       align-items: center;
-      gap: 48px;
-      padding: 0 40px;
+      gap: 3rem;
+      padding: 0 2.5rem;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10.199999809265137px);
@@ -44,7 +44,7 @@
         a {
           color: $white;
           font-family: "Fixel Text", sans-serif;
-          font-size: 24px;
+          font-size: 1.5rem;
           font-weight: 500;
           line-height: 135%;
         }
@@ -55,13 +55,13 @@
   .lanContacts {
     display: flex;
     justify-content: flex-end;
-    gap: 46px;
+    gap: 2.875rem;
     flex: 1;
 
     a {
       display: flex;
       height: 100%;
-      padding: 0 40px;
+      padding: 0 2.5rem;
       align-items: center;
 
       border-radius: 50px;
