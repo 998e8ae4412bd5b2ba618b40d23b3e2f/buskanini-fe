@@ -10,6 +10,7 @@ const Page = () => {
                 <div></div>
             </section>
             <h1>About</h1>
+            <h2>About 2</h2>
         </>
     );
 };
