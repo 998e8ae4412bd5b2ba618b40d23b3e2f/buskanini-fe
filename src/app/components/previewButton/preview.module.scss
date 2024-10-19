@@ -2,9 +2,9 @@
 
 .preview {
   display: flex;
-  padding: 21px 15px;
+  padding: 1.3125rem 0.9375rem;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   width: fit-content;
 
   color: $white;
@@ -12,6 +12,6 @@
   font-size: 1.5rem;
   font-weight: 500;
 
-  border-radius: 18px;
-  background: var(--Black, #070707);
+  border-radius: 1.125rem;
+  background: $black;
 }

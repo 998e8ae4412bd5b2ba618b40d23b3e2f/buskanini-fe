@@ -1,0 +1,71 @@
+@import "/src/app/styles/values.scss";
+
+@keyframes infiniteScroll {
+  from {transform: translate(0%, 0%);}
+  to {transform: translate(100%, 0%);}
+}
+
+@keyframes infiniteScroll-2 {
+  from {transform: translate(-100%, 0%);}
+  to {transform: translate(0%, 0%);}
+}
+
+@keyframes infiniteScroll-left {
+  from {transform: translate(0%, 0%);}
+  to {transform: translate(-100%, 0%);}
+}
+
+@keyframes infiniteScroll-2-left {
+  from {transform: translate(100%, 0%);}
+  to {transform: translate(0, 0%);}
+}
+
+.infinitySliderContainer {
+  display: flex;
+  position: relative;
+  height: 142.036px;
+  width: 100%;
+  overflow: hidden;
+
+  background-color: $black;
+}
+
+.horizontalScrollingItems {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  animation-name: infiniteScroll;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  width: 100%;
+
+  &.left {
+    animation-name: infiniteScroll-left;
+  }
+
+  &.second {
+    animation-name: infiniteScroll-2;
+
+    .item {
+      margin-left: auto;
+    }
+  }
+
+  &.leftSecond {
+    animation-name: infiniteScroll-2-left;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,99 @@
+@import "/src/app/styles/values.scss";
+
+.interiorProjectCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 40px;
+  border-radius: 25px;
+  border: 2.043px solid $white;
+
+  height: 36vw;
+  overflow: hidden;
+
+
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    z-index: -1;
+  }
+
+
+  &:hover {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+
+      border-radius: 25px;
+      border: 2px solid var(--White, #F6F6F6);
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 73.53%, rgba(0, 0, 0, 0.85) 99.14%);
+    }
+
+    .hoverInfo {
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+
+  .hoverInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    transition: .3s;
+    opacity: 0;
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      color: $light;
+
+      font-family: "Craftwork Grotesk", sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 105%;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+
+
+      .tag {
+        display: flex;
+        padding: 35px 60px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        color: $white;
+        text-shadow: 0px 0px 1.4rem #000;
+
+        font-family: "FixelText", sans-serif;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+
+        border-radius: 90px;
+        border: 1px solid $white;
+        box-shadow: 0px 4px 7.1px 0px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}

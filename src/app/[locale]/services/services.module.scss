@@ -1,0 +1,30 @@
+@import "/src/app/styles/values.scss";
+
+$side-padding: 82px;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .aboutUs {
+    padding-top: 142px $side-padding 28px;
+  }
+
+  .buskaniniBgTitle {
+    color: $white;
+    text-align: center;
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-size: 20rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 135%; /* 432px */
+
+    opacity: 0.02;
+  }
+
+  .container {
+    max-width: 1756px;
+  }
+}

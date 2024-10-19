@@ -2,14 +2,14 @@ import React from 'react';
 import Header from "@/app/components/header";
 import styles from './projects.module.scss'
 import Link from "next/link";
-import DefaultProject from "@/app/[locale]/[projects]/pageComponents/defaultProject";
 import PaginationArrow from '../../../../public/svg/PaginationArrow.svg'
+import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
 
 const Page = () => {
     const project = [
         {
             name: "Zenith Lounge Chair",
-            image: "https://st.depositphotos.com/1005979/3247/i/950/depositphotos_32470915-stock-photo-super-3d-word-best-choice.jpg",
+            image: "https://i.ibb.co/mz3MZqL/Project-Interior.png",
             is3D: false
         },
         {
@@ -76,10 +76,10 @@ const Page = () => {
                 </nav>
 
                 <div className={styles.projectsGridPagination}>
-                    <div className={styles.defaultGrid}>
+                    <div className={styles.interiorGrid}>
                         {
                             project.map(el => (
-                                <DefaultProject key={el.name} image={el.image} />
+                                <InteriorProject key={el.name} image={el.image} />
                             ))
                         }
                     </div>

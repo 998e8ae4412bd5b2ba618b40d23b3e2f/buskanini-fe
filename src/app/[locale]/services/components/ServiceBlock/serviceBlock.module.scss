@@ -1,0 +1,50 @@
+@import "/src/app/styles/values.scss";
+
+.section {
+  display: flex;
+  padding: 3.125rem;
+  flex-direction: column;
+  gap: 4.75rem;
+
+  h2 {
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.65625;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4.75rem;
+
+    p {
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.75rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.57143;
+    }
+  }
+
+  button {
+    display: flex;
+    padding: 0.875rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+
+    color: $black;
+    text-align: center;
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.75;
+
+    margin-top: auto;
+  }
+
+  border-radius: 4.375rem;
+  border: 2px solid $white;
+}

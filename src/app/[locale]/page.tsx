@@ -1,8 +1,9 @@
-import styles from './page/page.module.scss'
+import styles from '@/app/[locale]/home/page.module.scss'
+import './home/page.scss'
 import ScrollDown from '../../../public/svg/arrow-down-circle.svg'
 
 import Header from "@/app/components/header";
-import {InfinitySlider, ServiceCard, SwiperComponent, TitleWithSubtitle} from "@/app/[locale]/page/pageComponents";
+import {InfinitySlider, ServiceCard, SwiperComponent, TitleWithSubtitle} from "@/app/[locale]/home/components/HomeCoponents";
 import React from "react";
 import Link from "next/link";
 import HaveQuestion from "@/app/components/haveQuestion";
@@ -41,6 +42,7 @@ export default function Home() {
             image: 'https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg'
         },
     ]
+
     return (
         <>
             <section className={styles.banner}>
