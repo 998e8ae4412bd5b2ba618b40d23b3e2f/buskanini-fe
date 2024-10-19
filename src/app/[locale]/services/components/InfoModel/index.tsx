@@ -1,6 +1,6 @@
 'use client'
 import React, {CSSProperties} from 'react';
-import ServiceBlock from "@/app/[locale]/about/components/ServiceBlock";
+import ServiceBlock from "@/app/[locale]/services/components/ServiceBlock";
 import styles from "./infoModel.module.scss"
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Slide} from "@/app/[locale]/home/components/HomeCoponents/SwiperComponent";

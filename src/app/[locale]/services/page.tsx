@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "@/app/components/header";
-import styles from './about.module.scss'
+import styles from './services.module.scss'
 import InfoModel from './components/InfoModel/index'
 
 
