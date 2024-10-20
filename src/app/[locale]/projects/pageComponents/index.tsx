@@ -1,7 +1,4 @@
-import DefaultProject from './DefaultProject';
-import InteriorDesign from './InteriorProject'
+import DefaultProject from "./DefaultProject";
+import InteriorDesign from "./InteriorProject";
 
-export {
-    DefaultProject,
-    InteriorDesign
-}
+export { DefaultProject, InteriorDesign };
