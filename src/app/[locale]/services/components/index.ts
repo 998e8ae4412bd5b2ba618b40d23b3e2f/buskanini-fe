@@ -1,5 +1,3 @@
 import InfoModel from "./InfoModel/";
 
-export {
-    InfoModel
-}
+export { InfoModel };

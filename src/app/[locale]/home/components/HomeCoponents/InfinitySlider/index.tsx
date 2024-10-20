@@ -5,39 +5,50 @@ import LogoCompanyTwo from "../../../../../../../public/svg/sliderCompanyLogos/L
 import LogoCompanyThree from "../../../../../../../public/svg/sliderCompanyLogos/LogoCompanyThree.svg";
 
 interface ItemsProps {
-    items: React.FC[];
+	items: React.FC[];
 }
 
-export const SliderItems = ({items}: ItemsProps) => {
-    return (<>
-        {
-            items.map((ItemComponent, index) => (
-                <div className={styles.item} key={index}>
-                    <ItemComponent />
-                </div>
-            ))
-        }
-    </>)
-}
+export const SliderItems = ({ items }: ItemsProps) => {
+	return (
+		<>
+			{items.map((ItemComponent, index) => (
+				<div className={styles.item} key={index}>
+					<ItemComponent />
+				</div>
+			))}
+		</>
+	);
+};
 
 interface SliderState {
-    left?: boolean
+	left?: boolean;
 }
 
-const InfinitySlider = ({left=false}: SliderState) => {
-    const logos = [LogoCompanyOne, LogoCompanyTwo, LogoCompanyThree, LogoCompanyOne, LogoCompanyTwo, LogoCompanyThree]
+const InfinitySlider = ({ left = false }: SliderState) => {
+	const logos = [
+		LogoCompanyOne,
+		LogoCompanyTwo,
+		LogoCompanyThree,
+		LogoCompanyOne,
+		LogoCompanyTwo,
+		LogoCompanyThree,
+	];
 
-    return (
-        <div className={styles.infinitySliderContainer}>
-            <div className={`${styles.horizontalScrollingItems} ${left ? styles.left : ''}`}>
-                <SliderItems items={logos}/>
-            </div>
+	return (
+		<div className={styles.infinitySliderContainer}>
+			<div
+				className={`${styles.horizontalScrollingItems} ${left ? styles.left : ""}`}
+			>
+				<SliderItems items={logos} />
+			</div>
 
-            <div className={`${styles.horizontalScrollingItems} ${left ? styles.leftSecond : styles.second}`}>
-                <SliderItems items={logos}/>
-            </div>
-        </div>
-    );
+			<div
+				className={`${styles.horizontalScrollingItems} ${left ? styles.leftSecond : styles.second}`}
+			>
+				<SliderItems items={logos} />
+			</div>
+		</div>
+	);
 };
 
 export default InfinitySlider;
