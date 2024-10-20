@@ -5,6 +5,9 @@
   justify-content: space-between;
   padding: 2.375rem 2.875rem 0 2.875rem;
 
+  position: relative;
+  z-index: 10;
+
   .headerLogo__block {
     flex: 1;
 

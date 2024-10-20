@@ -1,0 +1,260 @@
+@import "/src/app/styles/values.scss";
+
+.banner {
+  position: relative;
+  height: 100vh;
+
+  .swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+    width: 100vw;
+
+    img {
+      object-fit: cover;
+      height: 100vh;
+      width: 100%;
+
+      border-radius: 0 0 5.625rem 5.625rem;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+  .galleryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+
+    max-width: 1504px;
+    padding: 135px 180px 124px;
+
+    .projectTitle {
+      margin: 0 auto;
+      width: fit-content;
+    }
+
+    .projectGallery {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+
+      .previous {
+        position: absolute;
+        cursor: pointer;
+        left: -100px;
+      }
+
+      .galleryBlock {
+        width: 100%;
+
+        .swiperMainBlock {
+          position: relative;
+
+          button {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+            z-index: 100;
+          }
+
+          .swiperMain {
+            height: 775px;
+
+            .slide {
+              height: 100%;
+              width: 100%;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 30px;
+              }
+            }
+          }
+        }
+
+        .swiperSecondaryBlock {
+          .swiperSecondary {
+            height: 209px;
+            padding-top: 28px;
+
+            .slide {
+              height: 100%;
+              width: 100%;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+
+      .next {
+        position: absolute;
+        cursor: pointer;
+        right: -100px;
+        scale: -1;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  .projectSection {
+    padding: 0 0 175px 0;
+
+    .title {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 100px;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .detailsContainer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 80px;
+      gap: 300px;
+
+      .detailItem {
+        text-align: center;
+
+        .detailTitle {
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 115%;
+          margin-bottom: 10px;
+        }
+
+        .detailValue {
+          color: $white;
+          text-align: center;
+          font-family: "FixelText", sans-serif;
+          font-size: 40px;
+          font-weight: 400;
+          line-height: 135%;
+        }
+      }
+    }
+
+    .categoryContainer {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+
+      .categoryTitle {
+        font-size: 40px;
+        margin-bottom: 27px;
+      }
+
+      .categoryButtons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+
+        width: 60%;
+
+        .categoryButton {
+          display: flex;
+          padding: 25px 60px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 90px;
+          background-color: $black;
+          border: 1px solid $white;
+
+          color: $white;
+
+          font-family: "FixelText", sans-serif;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 160%;
+
+          transition: .3s;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    width: 100%;
+    max-width: 1718px;
+    padding: 175px 80px 111px;
+    justify-content: space-between;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 1.51rem;
+
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 135%;
+
+      background: none;
+
+      &:last-child {
+        svg {
+          scale: -1;
+        }
+      }
+    }
+
+    .circles {
+      display: flex;
+      gap: .7rem;
+
+      .circle {
+        width: 1.375rem;
+        height: 1.375rem;
+
+        border-radius: 90%;
+        opacity: 0.3;
+        background: $light;
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .question {
+    padding: 111px 80px 325px;
+  }
+}
+
