@@ -130,6 +130,10 @@
 
     .sliderContainer {
       position: relative;
+
+      .swiper-slide {
+        width: 32.43% !important;
+      }
     }
 
     .seeMore {

@@ -19,7 +19,7 @@ interface SwiperComponentProps {
 export const Slide = ({image}: Slide) => {
     return (
         <article className={styles.sliderElement}>
-            <img src={image} alt=""/>
+            <img src='https://picsum.photos/200' alt=""/>
             <PreviewButton/>
         </article>
     )
@@ -53,7 +53,7 @@ export const SwiperComponent = ({elements}: SwiperComponentProps) => {
         >
             {
                 elements.map((el, index) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide className='homeSlide' key={index}>
                         <Slide image={el.image} key={index}/>
                     </SwiperSlide>
                 ))

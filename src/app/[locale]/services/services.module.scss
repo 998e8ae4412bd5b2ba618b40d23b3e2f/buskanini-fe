@@ -1,6 +1,6 @@
 @import "/src/app/styles/values.scss";
 
-$side-padding: 82px;
+$side-padding: 5.125rem;
 
 .main {
   display: flex;
@@ -9,22 +9,57 @@ $side-padding: 82px;
   align-items: center;
 
   .aboutUs {
-    padding-top: 142px $side-padding 28px;
+    padding-top: 8.875rem $side-padding 1.75rem;
   }
 
   .buskaniniBgTitle {
-    color: $white;
-    text-align: center;
-    font-family: "Craftwork Grotesk", sans-serif;
-    font-size: 20rem;
-    font-style: normal;
-    font-weight: 900;
-    line-height: 135%; /* 432px */
+    overflow: hidden;
+    width: 100%;
+
+    &.Modelling {
+      padding: 6.0625rem 0 4.5625rem;
+      font-size: 12vw;
+    }
+
+    &.Rendering {
+      padding: 6.625rem 0 5.5rem;
+      font-size: 6.875vw;
+    }
+
+    &.Interior {
+      padding: 8.0625rem 0 7.5625rem;
+      font-size: 6.667vw;
+    }
+
+    &.Product {
+      padding: 9.375rem 0 9.375rem;
+      font-size: 9.5vw;
+    }
+
+    span {
+      display: block;
+      margin: 0 auto;
+      color: $white;
+      text-align: center;
+      font-family: "Craftwork Grotesk", sans-serif;
+      white-space: nowrap;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 135%;
+    }
 
     opacity: 0.02;
   }
 
+  .question {
+    padding: 14.9375rem 0 20.125rem;
+  }
+
+  section {
+    padding: 0 3.75rem;
+  }
+
   .container {
-    max-width: 1756px;
+    max-width: 109.75rem;
   }
 }

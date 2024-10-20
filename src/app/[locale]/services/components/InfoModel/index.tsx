@@ -3,27 +3,28 @@ import React, {CSSProperties} from 'react';
 import ServiceBlock from "@/app/[locale]/services/components/ServiceBlock";
 import styles from "./infoModel.module.scss"
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Slide} from "@/app/[locale]/home/components/HomeCoponents/SwiperComponent";
 import {Pagination} from "swiper/modules";
-import '../../../../styles/sliderDots.scss'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 
 
-interface Slide {
-    image: string;
+interface Obj {
+    title: string;
+    ctaText: string;
+    images: string[];
+    content: string[];
 }
 
 interface SwiperComponentProps {
-    elements: Slide[];
+    obj: Obj;
     reverse: boolean
 }
 
 
-const Index = ({elements, reverse}: SwiperComponentProps) => {
-    const text = ['Основа для створення рендерів на білому тлі, візуалізації меблів в інтер\'єрах, створення малюнків для каталогів і веб-сайтів. Допомагає залучити більше клієнтів, особливо серед дизайнерів інтер\'єру.', 'Моделювання меблів для меблевої фабрики - важливий етап у створенні якісних та естетично привабливих меблів, що допомагає виробникам уникнути зайвих витрат і вдосконалити виробничий процес.']
+const Index = ({obj, reverse}: SwiperComponentProps) => {
+    const {title, ctaText, images, content} = obj;
 
     const swiperStyles: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#070707",
@@ -35,29 +36,35 @@ const Index = ({elements, reverse}: SwiperComponentProps) => {
 
     return (
         <div className={`${styles.infoModel} ${reverse ? styles.reverse : ''}`}>
-            <ServiceBlock title='3D Modelling' content={text} ctaText='Замовити'/>
-            <div className={styles.swiperContainer}>
-                <Swiper
-                    style={swiperStyles}
-                    className={styles.swiper}
-                    slidesPerView={1}
-                    spaceBetween={25}
-                    modules={[Pagination]}
-                    speed={500}
-                    loop={true}
-                    pagination={{
-                        clickable: true
-                    }}
-                >
-                    {
-                        elements.map((el, index) => (
-                            <SwiperSlide key={index}>
-                                <div style={{ backgroundImage: `url("${el.image}")` }} className={styles.imageContainer} />
-                            </SwiperSlide>
-                        ))
-                    }
-                </Swiper>
-            </div>
+            <ServiceBlock title={title} content={content} ctaText={ctaText}/>
+            {
+                images.length !== 1 ? <div className={styles.swiperContainer}>
+                    <Swiper
+                        style={swiperStyles}
+                        className={styles.swiper}
+                        slidesPerView={1}
+                        spaceBetween={25}
+                        modules={[Pagination]}
+                        speed={500}
+                        loop={true}
+                        pagination={{
+                            clickable: true
+                        }}
+                    >
+                        {
+                            images.map((el, index) => (
+                                <SwiperSlide key={index}>
+                                    <div style={{backgroundImage: `url("${el}")`}}
+                                         className={styles.imageContainer}/>
+                                </SwiperSlide>
+                            ))
+                        }
+                    </Swiper>
+                </div>
+                    : <div style={{backgroundImage: `url("${images[0]}")`}}
+                           className={styles.imageContainer}/>
+            }
+
         </div>
     );
 };
