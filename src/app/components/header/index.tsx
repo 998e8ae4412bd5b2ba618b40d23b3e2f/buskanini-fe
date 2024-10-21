@@ -26,13 +26,13 @@ const Index = () => {
 						<Link href="/en/services">Досвід</Link>
 					</li>
 					<li>
-						<Link href="/">Послуги</Link>
+						<Link href="/en/services">Послуги</Link>
 					</li>
 				</ul>
 			</nav>
 
 			<div className={styles.lanContacts}>
-				<Link href="/">Контакти</Link>
+				<Link href="/en/contacts">Контакти</Link>
 
 				<button>UA</button>
 			</div>
