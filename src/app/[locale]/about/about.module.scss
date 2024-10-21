@@ -1,5 +1,24 @@
 @import "/src/app/styles/values.scss";
 
 .aboutUs {
-  height: 100px;
+  height: 60.0625rem;
+  width: 109.75rem;
+  background-color: transparent;
+  border-radius: 6.25rem;
+  border: 0.09375rem solid #F6F6F6;
+  
+  &Text{
+    p{
+      width: 59.9375rem;
+      font-family: 'FixelText';
+      font-weight: 400;
+      font-size: $p-size;
+      line-height: 2.75rem;
+      color: #F6F6F6;
+      &:last-child{
+        margin-top: 8.0625rem;
+      }
+    }
+
+  }
 }
