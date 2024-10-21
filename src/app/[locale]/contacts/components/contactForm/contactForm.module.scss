@@ -1,0 +1,170 @@
+@import "/src/app/styles/values.scss";
+
+
+// ContactForm.module.scss
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input {
+  border-radius: 1.25rem;
+  border: 0.09375rem solid $white;
+  padding: 1.5625rem 2.1875rem;
+
+  color: $white;
+
+  font-family: "FixelText", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75;
+  background-color: $black;
+
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+.textarea {
+  color: #fff;
+  min-height: 20.375rem;
+  font-family: "FixelText", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75;
+  background-color: $black;
+  border-radius: 1.25rem;
+  border: 0.09375rem solid $white;
+  padding: 1.5625rem 2.1875rem;
+
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+.fileUploadGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.changeFile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+
+  span {
+    color: $white;
+    text-align: center;
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.75;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.fileInput {
+  display: flex;
+  gap: 1.25rem;
+  cursor: pointer;
+
+  button {
+    background: none;
+    color: $white;
+  }
+}
+
+.changeButton {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.checkboxGroup {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.1875rem 0;
+
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    width: 46%;
+    color: $white;
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    gap: 0.25rem;
+    text-transform: capitalize;
+
+    input {
+      display: none;
+    }
+
+    .square {
+      min-width: 2.4375rem;
+      height: 2.4375rem;
+      margin-right: 1rem;
+      border-radius: 0.8125rem;
+      border: 0.1875rem solid $white;
+    }
+
+    &:nth-of-type(even) {
+      margin-left: 7%;
+    }
+  }
+
+  .checkboxLabelActive {
+    .square {
+      width: 2.4375rem;
+      height: 2.4375rem;
+      margin-right: 1rem;
+      border-radius: 0.8125rem;
+      background-color: $white;
+      border: 0.1875rem solid $white;
+    }
+  }
+}
+
+.submitButton {
+  display: flex;
+  padding: 1.875rem 2.1875rem;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "FixelText", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75;
+  color: $white;
+  transition: 0.3s;
+  border-radius: 1.25rem;
+  border: 0.09375rem solid $white;
+  background-color: $black;
+}
+
+.submitButton:hover {
+  color: $black;
+  background-color: $white;
+}

@@ -1,0 +1,41 @@
+@import "/src/app/styles/values.scss";
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .questionForm {
+    max-width: 1820px;
+    padding: 86px 78px 142px;
+    display: flex;
+
+    .haveQuestionSide {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      h1 {
+        font-weight: 700;
+        line-height: 135%;
+        margin-bottom: 105px;
+
+        span {
+          color: $white;
+        }
+      }
+
+      .socMedias {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 168px 129px;
+      }
+    }
+
+    form {
+      flex: 1;
+    }
+  }
+}
