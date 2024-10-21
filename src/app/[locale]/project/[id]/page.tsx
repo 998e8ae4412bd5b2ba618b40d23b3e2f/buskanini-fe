@@ -24,9 +24,9 @@ const Page = () => {
         "--swiper-pagination-color": "#F3E2C6",
         "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
         "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "16px",
-        "--swiper-pagination-bullet-horizontal-gap": "6px",
-        "--swiper-pagination-bottom": "20px"
+        "--swiper-pagination-bullet-size": "22px",
+        "--swiper-pagination-bullet-horizontal-gap": "7px",
+        "--swiper-pagination-bottom": "28px"
     };
 
     const images: string[] = [
@@ -79,11 +79,11 @@ const Page = () => {
                     <h2 className={styles.projectTitle}>Frankof - Mexico Bed</h2>
 
                     <div className={styles.projectGallery}>
-                        <div className={styles.previous} onClick={handlePrev}>
-                            <ArrowButtonGallery/>
-                        </div>
                         <div className={styles.galleryBlock}>
                             <div className={styles.swiperMainBlock}>
+                                <div className={styles.previous} onClick={handlePrev}>
+                                    <ArrowButtonGallery/>
+                                </div>
                                 <Swiper
                                     loop={true}
                                     onSwiper={setMainSwiper} // Set swiper instance here
@@ -98,7 +98,10 @@ const Page = () => {
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
+                                <div className={styles.next} onClick={handleNext}>
 
+                                    <ArrowButtonGallery/>
+                                </div>
                                 <PreviewButton/>
                             </div>
 
@@ -120,9 +123,6 @@ const Page = () => {
                                     ))}
                                 </Swiper>
                             </div>
-                        </div>
-                        <div className={styles.next} onClick={handleNext}>
-                            <ArrowButtonGallery/>
                         </div>
                     </div>
                 </section>
