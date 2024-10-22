@@ -85,4 +85,52 @@
       background: none;
     }
   }
+
+
+
+  .burgerIcon {
+    display: none;
+  }
+}
+
+
+@media(max-width: 768px) {
+  .header {
+    padding: 1rem;
+
+    .headerLogo__block {
+      .header__logo {
+        height: 3.063rem;
+        font-size: 1.065rem;
+        padding: 0 1.75rem;
+      }
+    }
+
+    .burgerIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    nav {
+      display: none;
+
+      ul {
+        li {
+          a {
+          }
+        }
+      }
+    }
+
+    .lanContacts {
+      display: none;
+      a {
+      }
+
+      button {
+      }
+    }
+  }
 }

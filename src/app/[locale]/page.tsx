@@ -1,5 +1,4 @@
 import styles from "@/app/[locale]/home/page.module.scss";
-import "./home/page.scss";
 import ScrollDown from "../../../public/svg/arrow-down-circle.svg";
 
 import Header from "@/app/components/header";
@@ -116,9 +115,7 @@ export default function Home() {
 					</div>
 				</section>
 
-				<section
-					className={`${styles.sectionFurnitureDesign} ${styles.container}`}
-				>
+				<section className={`${styles.sectionFurnitureDesign} ${styles.container}`}>
 					<TitleWithSubtitle
 						title="Дизайн меблів"
 						subtitle={`Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.`}

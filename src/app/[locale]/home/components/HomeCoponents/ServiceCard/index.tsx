@@ -1,5 +1,4 @@
 import styles from "./serviceCard.module.scss";
-import InfinitySlider from "@/app/[locale]/home/components/HomeCoponents/InfinitySlider";
 
 type ServiceCardProps = {
 	title: string;

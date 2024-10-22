@@ -15,10 +15,15 @@ import 'swiper/css/thumbs';
 import PreviewButton from "@/app/components/previewButton";
 import PaginationArrow from "../../../../../public/svg/PaginationArrow.svg";
 import HaveQuestion from "@/app/components/haveQuestion";
+import GalleryModal from "@/app/[locale]/project/[id]/components/GalleryModal";
+import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 
 const Page = () => {
     const [thumbsSwiper, setThumbsSwiper] = React.useState<SwiperCore | null>(null);
     const [mainSwiper, setMainSwiper] = React.useState<SwiperCore | null>(null); // State for main swiper instance
+    const [activeIndex, setActiveIndex] = React.useState<number>(0);
+    const [galleryModalActive, setGalleryModalActive] = React.useState<string>('idle')
+    const [modelModalActive, setModelModalActive] = React.useState<boolean>(false)
 
     const swiperStyles: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#F3E2C6",
@@ -28,7 +33,6 @@ const Page = () => {
         "--swiper-pagination-bullet-horizontal-gap": "7px",
         "--swiper-pagination-bottom": "28px"
     };
-
     const images: string[] = [
         "https://i.pinimg.com/1200x/e6/6b/5c/e66b5c71de52d5bd02c3d9760b1f0e7f.jpg",
         "https://i.pinimg.com/564x/e8/c0/d9/e8c0d9d31d749f055a1a6a89a35c6fb1.jpg",
@@ -38,20 +42,18 @@ const Page = () => {
     ];
 
     const handleNext = () => {
-        if (mainSwiper) {
-            mainSwiper.slideNext(); // Go to the next slide
-        }
+        if (mainSwiper) mainSwiper.slideNext();
     };
-
     const handlePrev = () => {
-        if (mainSwiper) {
-            mainSwiper.slidePrev(); // Go to the previous slide
-        }
+        if (mainSwiper) mainSwiper.slidePrev();
     };
 
     return (
         <>
             <section className={styles.banner}>
+                <ModelModal active={modelModalActive} setActive={setModelModalActive}/>
+                <GalleryModal active={galleryModalActive} setModalActive={setGalleryModalActive}
+                              image={images[activeIndex]} handleNext={handleNext} handlePrev={handlePrev}/>
                 <Header/>
 
                 <Swiper
@@ -65,6 +67,7 @@ const Page = () => {
                     pagination={{
                         clickable: true,
                     }}
+
                 >
                     {images.map((el, index) => (
                         <SwiperSlide key={index}>
@@ -73,7 +76,6 @@ const Page = () => {
                     ))}
                 </Swiper>
             </section>
-
             <main className={styles.main}>
                 <section className={styles.galleryContainer}>
                     <h2 className={styles.projectTitle}>Frankof - Mexico Bed</h2>
@@ -86,11 +88,16 @@ const Page = () => {
                                 </div>
                                 <Swiper
                                     loop={true}
-                                    onSwiper={setMainSwiper} // Set swiper instance here
+                                    onSwiper={setMainSwiper}
                                     spaceBetween={100}
                                     thumbs={{swiper: thumbsSwiper}}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className={styles.swiperMain}
+                                    onClick={() => setGalleryModalActive('show')}
+                                    onSlideChange={(swiper) => {
+                                        setActiveIndex(swiper.realIndex);
+                                        console.log(swiper.realIndex)
+                                    }}
                                 >
                                     {images.map((image, i) => (
                                         <SwiperSlide key={i} className={styles.slide}>
@@ -99,7 +106,6 @@ const Page = () => {
                                     ))}
                                 </Swiper>
                                 <div className={styles.next} onClick={handleNext}>
-
                                     <ArrowButtonGallery/>
                                 </div>
                                 <PreviewButton/>
@@ -107,8 +113,8 @@ const Page = () => {
 
                             <div className={styles.swiperSecondaryBlock}>
                                 <Swiper
-                                    onSwiper={setThumbsSwiper}
                                     loop={true}
+                                    onSwiper={setThumbsSwiper}
                                     speed={1000}
                                     spaceBetween={28}
                                     slidesPerView={4}

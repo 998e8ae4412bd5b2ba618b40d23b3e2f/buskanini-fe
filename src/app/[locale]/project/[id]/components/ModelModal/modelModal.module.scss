@@ -1,0 +1,106 @@
+@import "/src/app/styles/values.scss";
+
+.modelModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background: rgba(0, 0, 0, 0.80);
+  z-index: 1001;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modelContainer {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    gap: 42px;
+
+    .model {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 863px;
+      height: 863px;
+
+      border-radius: 50px;
+      background: var(--White, #F6F6F6);
+
+      .loading {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          color: $black;
+          text-align: center;
+
+          font-family: "Craftwork Grotesk", sans-serif;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 105%;
+
+          margin-bottom: 16px;
+        }
+
+        p {
+          color: $black;
+          text-align: center;
+
+          font-family: "FixelText", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%;
+          margin-bottom: 21px;
+        }
+
+        .loadingLine {
+          height: 10px;
+          background: $light;
+        }
+      }
+    }
+
+    .close {
+      height: fit-content;
+      padding: 39px;
+      border-radius: 35px;
+      background: $light;
+    }
+  }
+
+  display: none;
+
+
+  &.show {
+    animation: fadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+
+  &.out {
+    animation: fadeOut .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

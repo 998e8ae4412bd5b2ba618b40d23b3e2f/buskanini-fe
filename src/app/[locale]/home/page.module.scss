@@ -1,6 +1,6 @@
- @import "/src/app/styles/values.scss";
+@import "/src/app/styles/values.scss";
 
- $side-padding: 50px;
+$side-padding: 3.125rem;
 
 .banner {
   height: 100vh;
@@ -13,7 +13,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 1.5rem;
     align-items: center;
 
     h1 {
@@ -38,12 +38,17 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    bottom: 8%;
+    bottom: 0.5rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
+
+    svg {
+      width: 1.295rem;
+      height: 1.295rem;
+    }
 
     span {
       color: var(--Light, #F3E2C6);
@@ -52,7 +57,7 @@
       font-size: 1.5rem;
       font-style: normal;
       font-weight: 300;
-      line-height: 135%; /* 32.4px */
+      line-height: 2.025rem;
     }
   }
 
@@ -73,7 +78,7 @@
       height: 100%;
       width: 100%;
       background: linear-gradient(0deg, rgba(12, 6, 3, 0.70) 0%, rgba(12, 6, 3, 0.70) 100%);
-      border-radius: 0 0 90px 90px;
+      border-radius: 0 0 5.625rem 5.625rem;
       z-index: -1;
     }
 
@@ -85,7 +90,7 @@
       width: 100%;
       object-fit: cover;
       z-index: -2;
-      border-radius: 0 0 90px 90px;
+      border-radius: 0 0 5.625rem 5.625rem;
     }
   }
 }
@@ -101,24 +106,53 @@
     width: 100%;
     flex-direction: column;
 
-    padding: 106px 0 55px;
+    padding: 6.625rem 0 3.4375rem;
+
+    > div:first-child {
+      padding-bottom: 1.25rem;
+    }
 
     .slidersContainer {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 50px;
+      gap: 3.125rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 10%;
+        z-index: 2;
+
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.10) 0%, #070707 94.2%);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 10%;
+        z-index: 2;
+
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.10) 0%, #070707 94.2%);
+      }
     }
   }
 
   .sectionServices {
     display: flex;
     flex-direction: column;
-    padding: 55px $side-padding 167px;
+    padding: 3.4375rem $side-padding 10.4375rem;
 
     .cardServices {
       display: flex;
       align-self: center;
-      gap: 60px;
+      gap: 3.75rem;
     }
   }
 
@@ -126,19 +160,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 167px $side-padding 137.5px;
+    width: 100%;
+    padding: 10.4375rem $side-padding 8.59375rem;
+    box-sizing: border-box;
 
     .sliderContainer {
       position: relative;
-
-      .swiper-slide {
-        width: 32.43% !important;
-      }
     }
 
     .seeMore {
       position: absolute;
-      bottom: 7%;
+      bottom: 60px;
       left: 50%;
       transform: translate(-50%, 0);
 
@@ -150,10 +182,109 @@
   }
 
   .sectionQuestion {
-    padding: 137.5px 0 216px;
+    padding: 8.59375rem 0 13.5rem;
   }
 }
 
 .container {
   max-width: $container-pc;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    .centerText {
+      width: calc(100% - 1rem);
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      gap: 0.625rem;
+      padding: 0 1rem;
+
+      h1 {
+        text-align: center;
+        white-space: wrap;
+        font-weight: 700;
+
+        span {
+        }
+      }
+
+      p {
+        line-height: 1.5;
+        text-align: center;
+
+        span {
+        }
+      }
+    }
+
+    .scrollDown {
+      svg {
+        width: 1.29575rem;
+        height: 1.29575rem;
+      }
+      gap: 0.3125rem;
+      span {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .main {
+    .sectionCollaborate {
+      padding: 2.3125rem 0 1.5625rem;
+
+      .slidersContainer {
+        padding: 0 2rem;
+        flex-direction: row;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 390px;
+          width: 100%;
+          z-index: 2;
+
+          background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, #070707 94.2%);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: initial;
+          bottom: 0;
+          right: 0;
+          height: 390px;
+          width: 100%;
+          z-index: 2;
+
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.10) 0%, #070707 94.2%);
+        }
+      }
+    }
+
+    .sectionServices {
+      padding: 1.5625rem 0 5rem;
+
+      .cardServices {
+        padding: 0 1.75rem;
+        flex-direction: column;
+      }
+    }
+
+    .sectionFurnitureDesign {
+      padding: 5rem 0 6.25rem;
+      .sliderContainer {
+      }
+    }
+
+    .sectionQuestion {
+      padding: 6.25rem 1.125rem 16.3125rem;
+    }
+  }
+
+  .container {
+  }
 }
