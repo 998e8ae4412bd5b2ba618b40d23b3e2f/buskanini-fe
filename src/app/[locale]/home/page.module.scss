@@ -193,7 +193,7 @@ $side-padding: 3.125rem;
 @media (max-width: 768px) {
   .banner {
     .centerText {
-      width: calc(100% - 1rem);
+      width: calc(100% - 2.625rem);
       display: flex;
       justify-content: center;
       align-content: center;
@@ -227,6 +227,13 @@ $side-padding: 3.125rem;
       span {
         font-size: 0.875rem;
       }
+    }
+
+    .bannerContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 99%;
     }
   }
 
