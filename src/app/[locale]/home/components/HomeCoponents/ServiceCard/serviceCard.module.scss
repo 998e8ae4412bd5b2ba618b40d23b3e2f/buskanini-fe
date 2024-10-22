@@ -82,3 +82,40 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .serviceCard {
+    gap: 63px;
+
+    padding: 1.875rem;
+
+    border: 1px solid $white;
+    border-radius: 35px;
+
+    .titleSubtitle {
+      min-height: 5.375rem;
+      gap: 12px;
+
+      h3 {
+      }
+
+      p {
+        line-height: 1;
+        font-size: 14px;
+      }
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.5;
+
+    }
+
+    button {
+      height: 47px;
+      font-size: 1rem;
+      line-height: 2.063;
+      border-radius: 90px;
+    }
+  }
+}

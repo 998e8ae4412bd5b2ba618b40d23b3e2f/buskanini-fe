@@ -31,22 +31,44 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 		"--swiper-pagination-bullet-inactive-opacity": "1",
 		"--swiper-pagination-bullet-size": "16px",
 		"--swiper-pagination-bullet-horizontal-gap": "6px",
-		"--swiper-pagination-bottom": "10px",
+		"--swiper-pagination-bottom": "35px",
 	};
+	const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
+		"--swiper-pagination-color": "#F3E2C6",
+		"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
+		"--swiper-pagination-bullet-inactive-opacity": "1",
+		"--swiper-pagination-bullet-size": "12.704px",
+		"--swiper-pagination-bullet-horizontal-gap": "6px",
+		"--swiper-pagination-bottom": "25px",
+	};
+
+	const [isClient, setIsClient] = React.useState(false);
+
+	React.useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	return (
 		<Swiper
-			style={swiperStyles}
-			slidesPerView={3}
+			style={isClient && window.innerWidth > 768 ? swiperStyles : swiperStylesMobile}
+			slidesPerView={1.5}
 			spaceBetween={25}
 			className={`${styles.swiper}`}
 			id="homeSlider"
 			modules={[Pagination]}
 			speed={500}
+			centeredSlides={true}
 			initialSlide={Math.floor(elements.length / 2)}
 			loop={true}
 			pagination={{
 				clickable: true,
 				dynamicBullets: true,
+			}}
+			breakpoints={{
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 40
+				}
 			}}
 		>
 			{elements.map((el, index) => (

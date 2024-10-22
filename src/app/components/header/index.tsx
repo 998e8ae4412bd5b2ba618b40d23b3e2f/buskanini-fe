@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
+import BurgerIcon from "../../../../public/svg/phone/burger-icon.svg";
 
 const Index = () => {
 	return (
@@ -35,6 +36,11 @@ const Index = () => {
 				<Link href="/en/contacts">Контакти</Link>
 
 				<button>UA</button>
+			</div>
+
+
+			<div className={styles.burgerIcon}>
+				<BurgerIcon/>
 			</div>
 		</header>
 	);

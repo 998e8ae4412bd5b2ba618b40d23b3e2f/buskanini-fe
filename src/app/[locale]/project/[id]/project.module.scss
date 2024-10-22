@@ -32,6 +32,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.8125rem;
+    width: calc(100% - 22.5rem);
     max-width: 94rem;
     padding: 8.4375rem 11.25rem 7.125rem;
 
@@ -202,7 +203,7 @@
 
   .pagination {
     display: flex;
-    width: 100%;
+    width: calc(100% - 10rem);;
     max-width: 1718px;
     padding: 10.9375rem 5rem 6.9375rem;
     justify-content: space-between;

@@ -24,32 +24,32 @@ const Index = () => {
 					</div>
 
 					<div className={styles.footerNav}>
-						<div className={styles.footerNavList}>
+						<div className={`${styles.footerNavList} ${styles.footerNavListContacts}`}>
 							<div className={styles.title}>Контакти</div>
 
 							<ul>
 								<li>
-									<Link href="/">
-										<Instagram />
+									<Link className={styles.icon} href="/">
+										<Instagram/>
 									</Link>
 								</li>
 								<li>
-									<Link href="/">
+									<Link className={styles.icon} href="/">
 										<Telegram />
 									</Link>
 								</li>
 								<li>
-									<Link href="/">
+									<Link className={styles.icon} href="/">
 										<Patreon />
 									</Link>
 								</li>
 								<li>
-									<Link href="/">
+									<Link className={styles.icon} href="/">
 										<Facebook />
 									</Link>
 								</li>
 								<li>
-									<Link href="/">
+									<Link className={styles.icon} href="/">
 										<Behance />
 									</Link>
 								</li>

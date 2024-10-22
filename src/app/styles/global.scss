@@ -66,3 +66,44 @@ a {
   font-size: $a-size;
   font-family: "Craftwork Grotesk", sans-serif;
 }
+
+.swiper-pagination-bullet {
+  transform: scale(1) !important;
+}
+
+
+
+@media(max-width: 1440px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+
+
+
+@media(max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: $h1-size-phone;
+  }
+
+  h2 {
+    font-size: $h2-size-phone;
+  }
+
+  h3 {
+    font-size: $h3-size-phone;
+  }
+
+  h4 {
+    font-size: $h4-size-phone;
+  }
+
+  p {
+    font-size: $p-size-phone;
+  }
+}
