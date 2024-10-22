@@ -226,22 +226,6 @@
       }
     }
 
-    .circles {
-      display: flex;
-      gap: .7rem;
-
-      .circle {
-        width: 1.375rem;
-        height: 1.375rem;
-        border-radius: 90%;
-        opacity: 0.3;
-        background: $light;
-
-        &.active {
-          opacity: 1;
-        }
-      }
-    }
   }
 
   .question {

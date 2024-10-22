@@ -15,34 +15,34 @@ import HaveQuestion from "@/app/components/haveQuestion";
 export default function Home() {
 	const elements = [
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 		{
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 		},
 	];
 

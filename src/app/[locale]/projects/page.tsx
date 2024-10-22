@@ -4,48 +4,49 @@ import styles from "./projects.module.scss";
 import Link from "next/link";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
 import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
+import DefaultLayout from "next/dist/client/components/default-layout";
+import {DefaultProject} from "@/app/[locale]/projects/pageComponents";
 
 const Page = () => {
 	const project = [
 		{
 			name: "Zenith Lounge Chair",
-			image: "https://i.ibb.co/mz3MZqL/Project-Interior.png",
+			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
 		{
 			name: "Nimbus Ottoman",
-			image:
-				"https://st.depositphotos.com/1005979/3247/i/950/depositphotos_32470915-stock-photo-super-3d-word-best-choice.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 		{
 			name: "Sienna Vista Bench",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
 		{
 			name: "Slate Pavilion Stool",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 		{
 			name: "Vertex Studio Chair",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
 		{
 			name: "Aura Gardens Swing",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 		{
 			name: "Echo Loft Rocker",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
 		{
 			name: "Lumina Residence Sofa",
-			image: "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 	];
@@ -88,7 +89,7 @@ const Page = () => {
 					<div className={styles.projectsGridPagination}>
 						<div className={styles.interiorGrid}>
 							{project.map((el) => (
-								<InteriorProject key={el.name} image={el.image} />
+								<DefaultProject name={el.name} image={el.image} />
 							))}
 						</div>
 

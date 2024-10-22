@@ -34,11 +34,11 @@ const Page = () => {
         "--swiper-pagination-bottom": "28px"
     };
     const images: string[] = [
-        "https://i.pinimg.com/1200x/e6/6b/5c/e66b5c71de52d5bd02c3d9760b1f0e7f.jpg",
-        "https://i.pinimg.com/564x/e8/c0/d9/e8c0d9d31d749f055a1a6a89a35c6fb1.jpg",
-        "https://picsum.photos/1920",
-        "https://picsum.photos/1919",
-        "https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+        "https://picsum.photos/2550/1440",
+        "https://picsum.photos/2550/1440",
+        "https://picsum.photos/2550/1440",
+        "https://picsum.photos/2550/1440",
+        "https://picsum.photos/2550/1440"
     ];
 
     const handleNext = () => {
