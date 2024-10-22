@@ -1,11 +1,21 @@
-import React from "react";
-import styles from "./header.module.scss";
-import Link from "next/link";
-import BurgerIcon from "../../../../public/svg/phone/burger-icon.svg";
+'use client';
+import React from 'react';
+import styles from './header.module.scss';
+import Link from 'next/link';
+import BurgerIcon from '../../../../public/svg/phone/burger-icon.svg';
+import BurgerHideIcon from '../../../../public/svg/phone/burger-hide-icon.svg';
 
-const Index = () => {
+const Header = () => {
+	const [showBurgerMenu, setShowBurgerMenu] = React.useState('idle');
+
+	const toggleBurgerMenu = () => {
+		setShowBurgerMenu(prevState => (prevState === 'show' ? 'hide' : 'show'));
+	};
+
+	console.log(showBurgerMenu)
+
 	return (
-		<header className={styles.header}>
+		<header className={`${styles.header} ${showBurgerMenu === 'show' ? styles.headerShow : ''}`}>
 			<div className={styles.headerLogo__block}>
 				<Link href="/" className={styles.header__logo}>
 					buskanini
@@ -34,16 +44,14 @@ const Index = () => {
 
 			<div className={styles.lanContacts}>
 				<Link href="/en/contacts">Контакти</Link>
-
 				<button>UA</button>
 			</div>
 
-
-			<div className={styles.burgerIcon}>
-				<BurgerIcon/>
+			<div className={styles.burgerIcon} onClick={toggleBurgerMenu}>
+				{showBurgerMenu === 'show' ? <BurgerHideIcon /> : <BurgerIcon />}
 			</div>
 		</header>
 	);
 };
 
-export default Index;
+export default Header;
