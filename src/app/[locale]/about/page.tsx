@@ -26,6 +26,9 @@ const Page = () => {
         </div>
         <img src="" alt="" />
       </section>
+      <div className={styles.aboutBuskaniniN}>
+        <h1>bushkanini</h1>
+      </div>
       <section className={styles.aboutMe}>
         <div className={styles.aboutMeText}>
           <h3>Про мене</h3>
@@ -52,6 +55,43 @@ const Page = () => {
             <p>Co-fouder</p>
           </div>
         </div>
+      </section>
+
+      <section className={styles.aboutProjects}>
+        <div className={styles.aboutProjectsWrap}>
+          <div className={styles.aboutProjectsProject}>
+            <h3 id="projects-heading">
+              50+ <br />
+              Проєктів
+            </h3>
+          </div>
+          <div className={styles.aboutProjectsButtons}>
+            <a href="#projects" className={styles.projectsLink}>
+              Переглянути проєкти
+            </a>
+            <button className={styles.arrowBtn}>
+              <img src="" alt="Дізнатися більше" />
+            </button>
+          </div>
+        </div>
+        <div className={styles.aboutProjectsText}>
+          <p>
+            За три роки трансформовано понад 50 проєктів, досягнувши виняткових
+            результатів для більш ніж 700 клієнтів. Прихильність до творчості та
+            інновацій лежить в основі кожного проєкту, незалежно від його
+            масштабу.
+          </p>
+          <p>Готові дізнатися більше?</p>
+        </div>
+      </section>
+
+      <section className={styles.aboutContact}>
+        <h2 className={styles.aboutContactHeading}>Маєте запитання?</h2>
+        <p className={styles.aboutContactText}>
+          Пишіть нам у будь-який час — ми завжди на зв'язку, щоб допомогти
+          створити ваш ідеальний простір.
+        </p>
+        <button className={styles.aboutContactButton}>Написати</button>
       </section>
     </>
   );
