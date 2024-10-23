@@ -25,7 +25,7 @@ const Page = () => {
 			],
 			ctaText: "Замовити",
 			images: [
-				"https://files.oaiusercontent.com/file-QbFiSL3hRlDBkuPeYcdSazZN?se=2024-10-20T11%3A27%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dfc47fc77-86cb-48c4-a9c4-7aeaeb194494.webp&sig=5xj1wQ5goD%2ByDp5wVQZqHdWNKHa8avsHTe/oUf8w5a8%3D",
+				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
 				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
 				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
 			],
