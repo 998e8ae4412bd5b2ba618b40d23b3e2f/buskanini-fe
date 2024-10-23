@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
 
-  height: 100%;
+  height: 100lvh;
   width: 100%;
 
   background: rgba(0, 0, 0, 0.80);
@@ -14,6 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  display: none;
 
   .modelContainer {
     display: flex;
@@ -30,7 +32,7 @@
       height: 863px;
 
       border-radius: 50px;
-      background: var(--White, #F6F6F6);
+      background: $white;
 
       .loading {
         display: flex;
@@ -75,9 +77,6 @@
     }
   }
 
-  display: none;
-
-
   &.show {
     animation: fadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
   }
@@ -102,5 +101,65 @@
   }
   100% {
     opacity: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .modelModal {
+    .modelContainer {
+      flex-direction: column-reverse;
+      gap: 42px;
+
+      .model {
+        width: 90vw;
+        height:90vw;
+        border-radius: 50px;
+
+        .loading {
+          display: flex;
+          flex-direction: column;
+
+          h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+          }
+
+          p {
+            margin-bottom: 32px;
+            font-size: 1rem;
+          }
+
+          .loadingLine {
+            margin: 0 auto;
+            width: 90%;
+            height: 10px;
+            background: $light;
+          }
+        }
+      }
+
+      .close {
+        height: fit-content;
+        width: fit-content;
+        align-self: flex-end;
+        padding: 12px;
+        border-radius: 35px;
+        background: $light;
+
+        svg {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    &.show {
+      animation: fadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    }
+
+    &.out {
+      animation: fadeOut .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    }
   }
 }

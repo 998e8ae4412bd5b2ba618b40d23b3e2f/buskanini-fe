@@ -107,3 +107,18 @@ a {
     font-size: $p-size-phone;
   }
 }
+
+* {
+  //border: 1px dashed red;
+}
+
+
+  /* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}

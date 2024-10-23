@@ -12,6 +12,19 @@
     z-index: 0;
     width: 100vw;
 
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      pointer-events: none;
+      z-index: 9;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 87.54%, rgba(0, 0, 0, 0.31) 90.33%, rgba(0, 0, 0, 0.77) 100%)
+    }
+
     img {
       object-fit: cover;
       height: 100vh;
@@ -230,5 +243,159 @@
 
   .question {
     padding: 6.9375rem 5rem 20.3125rem;
+  }
+}
+
+
+
+@media(max-width: 768px) {
+  .banner {
+    height: 100svh;
+
+    .swiper {
+      img {
+        object-fit: cover;
+        height: 100svh;
+        width: 100%;
+
+        border-radius: 0 0 2.5rem 2.5rem;
+      }
+    }
+  }
+
+  .main {
+    .galleryContainer {
+      gap: 32px;
+      width: 100%;
+      padding: 119px 0 130px;
+
+      .projectTitle {
+        padding: 0 10px;
+        text-align: center;
+        font-size: 36px;
+      }
+
+      .projectGallery {
+        gap: 3.75rem;
+        .galleryBlock {
+          .swiperMainBlock {
+            .swiperMain {
+              height: 721px;
+
+              .slide {
+                height: 100%;
+                width: 100%;
+
+                img {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
+                  border-radius: 1.875rem;
+                }
+              }
+            }
+
+            .previous {
+              display: none;
+            }
+            .next {
+              display: none;
+            }
+          }
+
+          .swiperSecondaryBlock {
+            .swiperSecondary {
+              height: 121px;
+              padding-top: 27px;
+
+              .slide {
+                min-width: 205px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .projectSection {
+      padding: 0 10px 0;
+
+      .title {
+        font-size: 36px;
+        margin-bottom: 5px;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 5rem;
+      }
+
+      .detailsContainer {
+        flex-direction: column;
+        margin-bottom: 82px;
+        gap: 82px;
+
+        .detailItem {
+          .detailTitle {
+            font-size: 24px;
+            margin-bottom: 0.1875rem;
+          }
+
+          .detailValue {
+            font-size: 28px;
+          }
+        }
+      }
+
+      .categoryContainer {
+        .categoryTitle {
+          font-size: 24px;
+          margin-bottom: 1.6875rem;
+        }
+
+        .categoryButtons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.25rem;
+          width: 95%;
+
+          .categoryButton {
+            padding: 10.514px 30.709px;
+            border-radius: 46.064px;
+            border: 0.512px solid $white;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .pagination {
+      max-width: unset;
+      align-items: center;
+      padding: 91px 5rem 132px;
+      flex-direction: column;
+      gap: 80px;
+
+      button {
+        gap: 21px;
+        font-size: 20px;
+
+        svg {
+          width: 78.789px;
+        }
+        &:last-child {
+          svg {
+            scale: -1;
+          }
+        }
+      }
+
+    }
+
+    .question {
+      padding: 132px 18px 209px;
+    }
   }
 }

@@ -5,15 +5,20 @@
   padding: 1.3125rem 0.9375rem;
   align-items: center;
   gap: 1.25rem;
-  width: fit-content;
 
   color: $white;
   font-family: "FixelText", sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
+  white-space: nowrap;
 
   border-radius: 1.125rem;
   background: $black;
+
+  svg {
+    width: 2.177rem;
+    height: 2.177rem;
+  }
 }
 
 @media (max-width: 768px) {
