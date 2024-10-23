@@ -48,3 +48,34 @@
   border-radius: 4.375rem;
   border: 2px solid $white;
 }
+
+@media(max-width: 768px) {
+  .section {
+    padding: 35px;
+    gap: 50px;
+
+    h2 {
+      font-size: 40px;
+      line-height: 1.1;
+    }
+
+    .contentWrapper {
+      gap: 50px;
+
+      p {
+        font-size: 1rem;
+        line-height: 1.57143;
+      }
+    }
+
+    button {
+      margin-top: 0;
+      padding: 0.47rem 1.5rem;
+      font-size: 20px;
+      line-height: 1.75;
+    }
+
+    border-radius: 40px;
+    border: 2px solid $white;
+  }
+}
