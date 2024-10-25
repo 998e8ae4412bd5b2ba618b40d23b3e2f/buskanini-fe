@@ -4,36 +4,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50.25rem;
-  width: 109.75rem;
+  height: 50vh;
+  width: 80vw;
   background-color: transparent;
-  border-radius: 6.25rem;
-  border: 0.09375rem solid #F6F6F6;
+  border-radius: 3vw;
+  border: 0.1vw solid #F6F6F6;
   margin: 0 auto;
-  margin-top: 8.875rem;
+  margin-top: 5vh;
 
   &Text {
-    margin: 3.75rem;
+    margin: 3vw;
     p {
-      width: 59.9375rem;
+      width: 75%;
       font-family: 'FixelText';
       font-weight: 400;
-      font-size: $p-size;
-      line-height: 2.75rem;
+      font-size: 1.5rem; // Шрифт трохи змінюється з екраном
+      line-height: 2vw;
       color: #F6F6F6;
-      margin-top: 4.75rem;
+      margin-top: 2vh;
+
       &:last-child {
-        margin-top: 8.0625rem;
+        margin-top: 4vh;
       }
     }
   }
-  
+
   img {
-    height: 42.75rem;
-    width: 38.375rem;
-    border-radius: 4.375rem;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 3vw;
     background-color: aqua;
-    margin: 3.75rem 0;
+    margin: 3vw 3vw 3vw 0;
   }
 }
 
@@ -41,12 +42,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3.75rem;
+  margin-top: 5vh;
 
   h1 {
     font-family: 'Craftwork Grotesk';
     font-weight: 800;
-    font-size: 20rem;
+    font-size: 10vw;
     color: #f6f6f60c;
   }
 }
@@ -55,48 +56,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60.0625rem;
-  width: 109.75rem;
+  height: 55vh;
+  width: 80vw;
   background-color: transparent;
-  border-radius: 6.25rem;
-  border: 0.09375rem solid #F6F6F6;
+  border-radius: 3vw;
+  border: 0.1vw solid #F6F6F6;
   margin: 0 auto;
-  margin-top: 2.1875rem;
+  margin-top: 2vh;
 
   &Text {
-    margin: 3.75rem 3.3125rem;
+    margin: 3vw;
     p {
-      width: 60.125rem;
+      width: 75%;
       font-family: 'FixelText';
       font-weight: 400;
-      font-size: $p-size;
-      line-height: 2.75rem;
+      font-size: 1.5rem;
+      line-height: 2vw;
       color: #F6F6F6;
-      margin-top: 4.75rem;
+      margin-top: 2vh;
+
       &:last-child {
-        margin-top: 18.5rem;
+        margin-top: 4vh;
       }
     }
   }
 
   &Info {
-    margin: 3.75rem 0;
+    margin: 3vw 3vw 3vw 0;
     img {
-      height: 45rem;
-      width: 38.8125rem;
-      border-radius: 4.375rem;
+      height: 40vh;
+      width: 30vw;
+      border-radius: 3vw;
       background-color: aqua;
-      margin-bottom: 2.1875rem;
+      margin-bottom: 2vh;
     }
     &Text {
       h3 {
-        margin-bottom: 1.5625rem;
+        margin-bottom: 1.5vh;
       }
       p {
         font-family: 'FixelText';
         font-weight: 400;
-        font-size: $p-size;
-        line-height: 2.75rem;
+        font-size: 1.5rem;
+        line-height: 2vw;
         color: #F6F6F6;
       }
     }
@@ -119,17 +121,17 @@
   &Project {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Текст переміщено вниз */
     background: linear-gradient(90deg, #5c4033, #d3c2b2);
     padding: 2.5rem;
     border-radius: 0.9375rem;
     color: white;
     text-align: left;
-    width: 64.6875rem;
-    height: 29.29375rem;
+    width: 53.91vw; /* 1035px */
+    height: 29.29375rem; /* 468.7px */
 
     h3 {
-      font-size: 3rem;
+      font-size: 3rem; /* 48px */
     }
   }
 
@@ -137,7 +139,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 1.25rem;
+    margin-top: 1.25rem; /* 20px */
 
     .projectsLink {
       display: flex;
@@ -145,10 +147,10 @@
       justify-content: center;
       background-color: #e8d1a8;
       border: none;
-      width: 64.6875rem;
-      height: 4.0625rem;
-      border-radius: 1.875rem;
-      font-size: 1.125rem;
+      width: 53.17vw; /* 944px */
+      height: 4.0625rem; /* 65px */
+      border-radius: 1.875rem; /* 30px */
+      font-size: 1.125rem; /* 18px */
       cursor: pointer;
       text-decoration: none;
       color: black;
@@ -160,16 +162,16 @@
     }
 
     .arrowBtn {
-      margin-left: 0.9375rem;
-      width: 4.75rem;
-      height: 4.0625rem;
+      margin-left: 0.78vw; /* 15px */
+      width: 76px; /* 76px */
+      height: 4.0625rem; /* 65px */
       background-color: white;
       border: none;
       cursor: pointer;
 
       img {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.5rem; /* 24px */
+        height: 1.5rem; /* 24px */
       }
     }
   }
@@ -177,15 +179,15 @@
   &Text {
     display: flex;
     flex-direction: column;
-    width: 44.5rem;
-    height: 34.5rem;
-    padding-left: 1.25rem;
+    width: 712px; /* 400px */
+    height: 552px;
+    padding-left: 1.25rem; /* 20px */
 
     p {
       line-height: 1.6;
-      font-size: 1.125rem;
+      font-size: 1.125rem; /* 18px */
       &:nth-child(1) {
-        margin-bottom: 20px;
+        margin-bottom: 319px; /* 20px */
       }
     }
   }
@@ -196,33 +198,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 3vh 2vw;
   background-color: #000;
 
   &Heading {
-    font-size: 4rem;
+    font-size: 6vw;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 3rem;
+    margin-bottom: 3vh;
   }
 
   &Text {
-    font-size: 1.75rem;
+    font-size: 2vw;
     color: #ddd;
     text-align: center;
-    max-width: 59.5rem;
+    max-width: 80vw;
     line-height: 1.5;
-    margin-bottom: 7rem;
+    margin-bottom: 5vh;
   }
 
   &Button {
     background-color: #e8d1a8;
     color: #000;
     border: none;
-    width: 38.375rem;
-    height: 4.0625rem;
-    border-radius: 30px;
-    font-size: 1.5rem;
+    width: 60vw;
+    height: 7vh;
+    border-radius: 2vw;
+    font-size: 2vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
