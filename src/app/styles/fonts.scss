@@ -1,0 +1,172 @@
+/* --------------------- Craftwork Grotesk --------------------- */
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: local('Craftwork Grotesk Regular'), url('../fonts/craftwork-grotesk/CraftworkGrotesk-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 400; /* Regular (GX) */
+  src: local('Craftwork Grotesk Regular'), url('../fonts/craftwork-grotesk/CraftworkGroteskGX.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  src: local('Craftwork Grotesk Medium'), url('../fonts/craftwork-grotesk/CraftworkGrotesk-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 600; /* Semi Bold */
+  src: local('Craftwork Grotesk Semi Bold'), url('../fonts/craftwork-grotesk/CraftworkGrotesk-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: local('Craftwork Grotesk Bold'), url('../fonts/craftwork-grotesk/CraftworkGrotesk-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Craftwork Grotesk';
+  font-style: normal;
+  font-weight: 800; /* Heavy */
+  src: local('Craftwork Grotesk Heavy'), url('../fonts/craftwork-grotesk/CraftworkGrotesk-Heavy.woff') format('woff');
+}
+
+
+/* --------------------- FixelText --------------------- */
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 100; /* Thin */
+  src: local('FixelText Thin'), url('../fonts/fixelText/FixelText-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 100; /* Thin Italic */
+  src: local('FixelText Thin Italic'), url('../fonts/fixelText/FixelText-ThinItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 200; /* Extra Light */
+  src: local('FixelText Extra Light'), url('../fonts/fixelText/FixelText-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 200; /* Extra Light Italic */
+  src: local('FixelText Extra Light Italic'), url('../fonts/fixelText/FixelText-ExtraLightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 300; /* Light */
+  src: local('FixelText Light'), url('../fonts/fixelText/FixelText-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 300; /* Light Italic */
+  src: local('FixelText Light Italic'), url('../fonts/fixelText/FixelText-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: local('FixelText Regular'), url('../fonts/fixelText/FixelText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 400; /* Regular Italic */
+  src: local('FixelText Regular Italic'), url('../fonts/fixelText/FixelText-RegularItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  src: local('FixelText Medium'), url('../fonts/fixelText/FixelText-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 500; /* Medium Italic */
+  src: local('FixelText Medium Italic'), url('../fonts/fixelText/FixelText-MediumItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 600; /* Semi Bold */
+  src: local('FixelText Semi Bold'), url('../fonts/fixelText/FixelText-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 600; /* Semi Bold Italic */
+  src: local('FixelText Semi Bold Italic'), url('../fonts/fixelText/FixelText-SemiBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: local('FixelText Bold'), url('../fonts/fixelText/FixelText-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 700; /* Bold Italic */
+  src: local('FixelText Bold Italic'), url('../fonts/fixelText/FixelText-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 800; /* Extra Bold */
+  src: local('FixelText Extra Bold'), url('../fonts/fixelText/FixelText-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 800; /* Extra Bold Italic */
+  src: local('FixelText Extra Bold Italic'), url('../fonts/fixelText/FixelText-ExtraBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: normal;
+  font-weight: 900; /* Black */
+  src: local('FixelText Black'), url('../fonts/fixelText/FixelText-Black.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FixelText';
+  font-style: italic;
+  font-weight: 900; /* Black Italic */
+  src: local('FixelText Black Italic'), url('../fonts/fixelText/FixelText-BlackItalic.woff2') format('woff2');
+}

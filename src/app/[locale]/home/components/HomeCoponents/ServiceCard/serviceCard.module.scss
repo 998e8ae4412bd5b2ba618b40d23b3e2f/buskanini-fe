@@ -1,0 +1,121 @@
+@import "/src/app/styles/values.scss";
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 7.8rem;
+
+  padding: 2.188rem;
+  border-radius: 50px;
+
+  border: 1px solid $white;
+  box-shadow: 0 0 6.1px 0 #FFF;
+  border-radius: 50px;
+
+  .titleSubtitle {
+    min-height: 9.375rem;
+
+    h3 {
+      color: $white;
+      margin-bottom: 0.625rem;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      color: $white;
+      font-family: "Craftwork Grotesk", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+  }
+
+  .description {
+    color: $white;
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.9;
+
+  }
+
+  button {
+    margin-top: auto;
+    height: 63px;
+    color: $white;
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.063;
+    align-self: flex-end;
+
+    background-color: $black;
+    border-radius: 90px;
+    width: 100%;
+    border: 1px solid #FFF;
+  }
+
+  transition: .3s;
+
+  &:hover {
+    background-color: $light;
+
+    .titleSubtitle {
+      h3 {
+        color: $black;
+      }
+
+      p {
+        color: $black;
+      }
+    }
+
+    .description {
+      color: $black;
+    }
+
+    button {
+      color: $light;
+      border: 1px solid $black;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .serviceCard {
+    gap: 63px;
+
+    padding: 1.875rem;
+
+    border: 1px solid $white;
+    border-radius: 35px;
+
+    .titleSubtitle {
+      min-height: 5.375rem;
+      gap: 12px;
+
+      h3 {
+      }
+
+      p {
+        line-height: 1;
+        font-size: 14px;
+      }
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.5;
+
+    }
+
+    button {
+      height: 47px;
+      font-size: 1rem;
+      line-height: 2.063;
+      border-radius: 90px;
+    }
+  }
+}

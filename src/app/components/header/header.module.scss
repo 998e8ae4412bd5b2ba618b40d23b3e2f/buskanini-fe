@@ -1,0 +1,136 @@
+@import "/src/app/styles/values.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.375rem 3.975rem 0;
+
+  position: relative;
+  z-index: 10;
+
+  .headerLogo__block {
+    flex: 1;
+
+    .header__logo {
+      display: flex;
+      height: 4.313rem;
+      width: fit-content;
+      padding: 0 2.5rem;
+      align-items: center;
+
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.17);
+      backdrop-filter: blur(10.199999809265137px);
+
+
+      color: $white;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 135%;
+    }
+  }
+
+  nav {
+    display: flex;
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 0 2.5rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10.199999809265137px);
+
+      li {
+        a {
+          color: $white;
+          font-family: "FixelText", sans-serif;
+          font-size: 1.5rem;
+          font-weight: 500;
+          line-height: 135%;
+        }
+      }
+    }
+  }
+
+  .lanContacts {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2.875rem;
+    flex: 1;
+
+    a {
+      display: flex;
+      height: 100%;
+      padding: 0 2.5rem;
+      align-items: center;
+
+      border-radius: 50px;
+      background: $white;
+      backdrop-filter: blur(10.199999809265137px);
+
+
+      color: $black;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 135%;
+    }
+
+    button {
+      color: $white;
+      font-size: 1.5rem;
+      background: none;
+    }
+  }
+
+
+
+  .burgerIcon {
+    display: none;
+  }
+}
+
+
+@media(max-width: 768px) {
+  .header {
+    padding: 1rem;
+
+    .headerLogo__block {
+      .header__logo {
+        height: 3.063rem;
+        font-size: 1.065rem;
+        padding: 0 1.75rem;
+      }
+    }
+
+    .burgerIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    nav {
+      display: none;
+
+      ul {
+        li {
+          a {
+          }
+        }
+      }
+    }
+
+    .lanContacts {
+      display: none;
+      a {
+      }
+
+      button {
+      }
+    }
+  }
+}

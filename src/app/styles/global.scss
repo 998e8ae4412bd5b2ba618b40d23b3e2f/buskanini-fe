@@ -1,0 +1,109 @@
+@import 'values';
+@import 'fonts';
+
+body {
+  background-color: $black;
+}
+
+h1 {
+  color: $light;
+  font-size: $h1-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+h2 {
+  color: $light;
+  font-size: $h2-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h3 {
+  color: $light;
+  font-size: $h3-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h4 {
+  color: $light;
+  font-size: $h4-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+p {
+  color: $light;
+  font-family: "Craftwork Grotesk", sans-serif;
+  font-size: $p-size;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.313rem;
+}
+
+button {
+  font-family: "FixelText", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: $button-font-size;
+
+  background-color: $light;
+  border-radius: 90px;
+}
+
+a {
+  color: $light;
+  font-size: $a-size;
+  font-family: "Craftwork Grotesk", sans-serif;
+}
+
+.swiper-pagination-bullet {
+  transform: scale(1) !important;
+}
+
+
+
+@media(max-width: 1680px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+
+
+
+@media(max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: $h1-size-phone;
+  }
+
+  h2 {
+    font-size: $h2-size-phone;
+  }
+
+  h3 {
+    font-size: $h3-size-phone;
+  }
+
+  h4 {
+    font-size: $h4-size-phone;
+  }
+
+  p {
+    font-size: $p-size-phone;
+  }
+}

@@ -1,0 +1,244 @@
+@import "/src/app/styles/values.scss";
+
+.banner {
+  position: relative;
+  height: 100vh;
+
+  .swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+    width: 100vw;
+
+    img {
+      object-fit: cover;
+      height: 100vh;
+      width: 100%;
+
+      border-radius: 0 0 5.625rem 5.625rem;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .galleryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.8125rem;
+    width: calc(100% - 22.5rem);
+    max-width: 94rem;
+    padding: 8.4375rem 11.25rem 7.125rem;
+
+    .projectTitle {
+      margin: 0 auto;
+      width: fit-content;
+    }
+
+    .projectGallery {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 3.75rem;
+
+      .galleryBlock {
+        width: 100%;
+
+        .swiperMainBlock {
+          position: relative;
+
+          button {
+            position: absolute;
+            right: 1.875rem;
+            bottom: 1.875rem;
+            z-index: 100;
+          }
+
+          .swiperMain {
+            height: 48.4375rem;
+
+            .slide {
+              height: 100%;
+              width: 100%;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 1.875rem;
+              }
+            }
+          }
+
+          .previous {
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -7.5rem;
+
+            svg {
+              width: 3.188rem;
+              height: 3.678rem;
+            }
+          }
+          .next {
+            position: absolute;
+            cursor: pointer;
+            right: -7.5rem;
+            top: 50%;
+            transform: scaleX(-1) translateY(-50%);
+
+            svg {
+              width: 3.188rem;
+              height: 3.678rem;
+            }
+          }
+        }
+
+        .swiperSecondaryBlock {
+          .swiperSecondary {
+            height: 13.0625rem;
+            padding-top: 1.75rem;
+
+            .slide {
+              height: 100%;
+              width: 100%;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .projectSection {
+    padding: 0 0 10.9375rem 0;
+
+    .title {
+      text-align: center;
+      margin-bottom: 0.125rem;
+    }
+
+    .description {
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .detailsContainer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5rem;
+      gap: 18.75rem;
+
+      .detailItem {
+        text-align: center;
+
+        .detailTitle {
+          font-size: 2.5rem;
+          font-weight: 700;
+          line-height: 115%;
+          margin-bottom: 0.1875rem;
+        }
+
+        .detailValue {
+          color: $white;
+          text-align: center;
+          font-family: "FixelText", sans-serif;
+          font-size: 2.5rem;
+          font-weight: 400;
+          line-height: 135%;
+        }
+      }
+    }
+
+    .categoryContainer {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+
+      .categoryTitle {
+        font-size: 2.5rem;
+        margin-bottom: 1.6875rem;
+      }
+
+      .categoryButtons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+        width: 60%;
+
+        .categoryButton {
+          display: flex;
+          padding: 1.5625rem 3.75rem;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5.625rem;
+          background-color: $black;
+          border: 1px solid $white;
+          color: $white;
+          font-family: "FixelText", sans-serif;
+          font-size: 1.25rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 160%;
+          transition: .3s;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    width: calc(100% - 10rem);;
+    max-width: 1718px;
+    padding: 10.9375rem 5rem 6.9375rem;
+    justify-content: space-between;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 1.51rem;
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 135%;
+      background: none;
+
+      &:last-child {
+        svg {
+          scale: -1;
+        }
+      }
+    }
+
+  }
+
+  .question {
+    padding: 6.9375rem 5rem 20.3125rem;
+  }
+}

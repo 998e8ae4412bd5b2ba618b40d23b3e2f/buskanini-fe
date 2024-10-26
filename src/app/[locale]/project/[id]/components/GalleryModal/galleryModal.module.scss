@@ -1,0 +1,94 @@
+@import "/src/app/styles/values.scss";
+
+.galleryModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(31.450000762939453px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    pointer-events: initial;
+    animation: fadeOut .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+
+  &.out {
+    animation: fadeIn .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+
+  .photoPagination {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 0;
+    gap: 48px;
+    width: 100%;
+
+    .photo {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      height: 80%;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        border-radius: 30px;
+      }
+    }
+
+    .pagination {
+      width: 100%;
+      display: flex;
+      gap: 20%;
+      align-items: center;
+      justify-content: center;
+
+      .previous {
+        cursor: pointer;
+      }
+
+      .next {
+        cursor: pointer;
+        transform: scaleX(-1);
+      }
+
+      .activeButton {
+        padding: 15px 40px;
+        border-radius: 30px;
+        background-color: $black;
+      }
+    }
+  }
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
