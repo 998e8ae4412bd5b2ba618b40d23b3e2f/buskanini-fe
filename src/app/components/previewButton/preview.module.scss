@@ -12,8 +12,14 @@
   font-size: 1.5rem;
   font-weight: 500;
 
+  white-space: nowrap;
   border-radius: 1.125rem;
   background: $black;
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 @media (max-width: 768px) {

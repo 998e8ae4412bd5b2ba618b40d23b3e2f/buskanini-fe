@@ -21,9 +21,6 @@ const Index = () => {
 						<Link href="/en/projects">3D Проєкти</Link>
 					</li>
 					<li>
-						<Link href="/">Докладніше</Link>
-					</li>
-					<li>
 						<Link href="/en/services">Досвід</Link>
 					</li>
 					<li>

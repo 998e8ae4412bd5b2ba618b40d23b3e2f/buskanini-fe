@@ -1,6 +1,6 @@
 @import "/src/app/styles/values.scss";
 
-$side-padding: 3.125rem;
+$side-padding: 5.125rem;
 
 .banner {
   height: 100vh;
@@ -290,8 +290,5 @@ $side-padding: 3.125rem;
     .sectionQuestion {
       padding: 6.25rem 1.125rem 16.3125rem;
     }
-  }
-
-  .container {
   }
 }

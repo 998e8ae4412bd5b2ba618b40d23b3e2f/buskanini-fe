@@ -116,6 +116,7 @@
     line-height: 1.2;
     gap: 0.25rem;
     text-transform: capitalize;
+    cursor: pointer;
 
     input {
       display: none;
@@ -136,12 +137,7 @@
 
   .checkboxLabelActive {
     .square {
-      width: 2.4375rem;
-      height: 2.4375rem;
-      margin-right: 1rem;
-      border-radius: 0.8125rem;
       background-color: $white;
-      border: 0.1875rem solid $white;
     }
   }
 }
@@ -167,4 +163,53 @@
 .submitButton:hover {
   color: $black;
   background-color: $white;
+}
+
+
+@media (max-width: 768px) {
+  // ContactForm.module.scss
+  .form {
+    gap: 3rem;
+  }
+
+  .checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+
+    .checkboxLabel {
+      width: 100%;
+      font-size: 1.188rem;
+      gap: 1rem;
+
+
+      input {
+        display: none;
+      }
+
+      .square {
+        min-width: 1.875rem;
+        height: 1.875rem;
+        margin-right: 1rem;
+        border-radius: 0.8125rem;
+        border: 0.1875rem solid $white;
+      }
+
+      &:nth-of-type(even) {
+        margin-left: 0;
+      }
+    }
+
+    .checkboxLabelActive {
+      .square {
+        background-color: $white;
+      }
+    }
+  }
+
+  .submitButton {
+    justify-content: center;
+    padding: .9rem 2.1875rem;
+    font-size: 1.5rem;
+  }
 }
