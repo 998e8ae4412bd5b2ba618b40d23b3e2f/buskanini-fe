@@ -1,19 +1,24 @@
 @import "/src/app/styles/values.scss";
 
+$side-padding: 5.125rem;
+$side-padding-phone: 21px;
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 59px;
+
+  .aboutUs {
+    padding-top: 8.875rem $side-padding 1.75rem;
+  }
 
   .buskaniniBgTitle {
     overflow: hidden;
     width: 100%;
 
     &.Modelling {
-      padding: 6.0625rem 0 6rem;
+      padding: 6.0625rem 0 4.5625rem;
       font-size: 12vw;
     }
 
@@ -44,14 +49,71 @@
       line-height: 135%;
     }
 
-    opacity: 0.02;
+    opacity: 1;
   }
 
   .question {
     padding: 14.9375rem 0 20.125rem;
   }
 
+  section {
+    padding: 0 3.75rem;
+  }
+
   .container {
-    max-width: 1801px;
+    max-width: 109.75rem;
+  }
+}
+
+
+@media(max-width: 768px) {
+  .main {
+    .aboutUs {
+    }
+
+    .buskaniniBgTitle {
+      width: 100%;
+
+      &.Modelling {
+        padding: 127px 0 75px;
+        font-size: 12vw;
+      }
+
+      &.Rendering {
+        width: 80vw;
+        padding: 75px 0 75px;
+        font-size: 10.5vw;
+      }
+
+      &.Interior {
+        width: 80vw;
+        padding: 75px 0 75px;
+        font-size: 12.5vw;
+      }
+
+      &.Product {
+        width: 80vw;
+        padding: 75px 0 75px;
+        font-size: 12.5vw;
+      }
+
+      span {
+        white-space: wrap;
+      }
+
+      opacity: 0.02;
+    }
+
+    .question {
+      padding: 14.9375rem 1.125rem 20.125rem;
+    }
+
+    section {
+      padding: 0 $side-padding-phone;
+    }
+
+    .container {
+      max-width: 109.75rem;
+    }
   }
 }
