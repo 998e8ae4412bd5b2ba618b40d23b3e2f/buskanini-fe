@@ -39,3 +39,48 @@
     background-size: cover;
   }
 }
+
+@media(max-width: 768px) {
+  .infoModel {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-row-gap: 50px;
+    grid-template-areas:
+      "content"
+    "swiperContainer";
+
+
+    &.reverse {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "content"
+        "swiperContainer";
+    }
+
+    .swiperContainer {
+      height: 84vw;
+      width: calc(100vw - 44px);
+
+      .swiper {
+        .imageContainer {
+          border-radius: 4.375rem;
+
+          height: 100%;
+          background-repeat: no-repeat;
+          background-position: 50%;
+          background-size: cover;
+        }
+      }
+    }
+
+    .imageContainer {
+      border-radius: 4.375rem;
+
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
+      height: 84vw;
+    }
+  }
+}
