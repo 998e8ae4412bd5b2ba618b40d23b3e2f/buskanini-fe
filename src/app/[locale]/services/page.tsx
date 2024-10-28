@@ -9,7 +9,7 @@ type BuskaniniBgTitleProps = {
 	name: string;
 };
 
-const BuskaniniBgTitle = ({ title, name }: BuskaniniBgTitleProps) => (
+const BuskaniniBgTitle = ({title, name}: BuskaniniBgTitleProps) => (
 	<div className={`${styles.buskaniniBgTitle} ${styles[name]}`}>
 		<span>{title}</span>
 	</div>
@@ -25,9 +25,9 @@ const Page = () => {
 			],
 			ctaText: "Замовити",
 			images: [
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+				"https://i.ibb.co/xqPcbcq/image1.jpg",
+				"https://i.ibb.co/xqPcbcq/image1.jpg",
+				"https://i.ibb.co/xqPcbcq/image1.jpg",
 			],
 		},
 		{
@@ -38,9 +38,9 @@ const Page = () => {
 			],
 			ctaText: "Замовити",
 			images: [
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+				"https://i.ibb.co/1RfVnCJ/image2.jpg",
+				"https://i.ibb.co/1RfVnCJ/image2.jpg",
+				"https://i.ibb.co/1RfVnCJ/image2.jpg",
 			],
 		},
 		{
@@ -50,7 +50,7 @@ const Page = () => {
 			],
 			ctaText: "Замовити",
 			images: [
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+				"https://i.ibb.co/HnkwTfd/image3.png",
 			],
 		},
 		{
@@ -61,41 +61,41 @@ const Page = () => {
 			],
 			ctaText: "Замовити",
 			images: [
-				"https://imgnewtabl.pravda.com.ua/images/doc/7/e/7eee42f-kyva.jpg",
+				"https://i.ibb.co/yVGjgpP/image4.png",
 			],
 		},
 	];
 
 	return (
 		<>
-			<Header />
+			<Header/>
 			<main className={styles.main}>
-				<BuskaniniBgTitle title="3D Modelling" name="Modelling" />
+				<BuskaniniBgTitle title="3D Modelling" name="Modelling"/>
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[0]} reverse={false} />
+					<InfoModel obj={aboutPage[0]} reverse={false}/>
 				</section>
 
-				<BuskaniniBgTitle title="3D Product Rendering" name="Rendering" />
+				<BuskaniniBgTitle title="3D Product Rendering" name="Rendering"/>
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[1]} reverse />
+					<InfoModel obj={aboutPage[1]} reverse/>
 				</section>
 
-				<BuskaniniBgTitle title="3D Interior Visualization" name="Interior" />
+				<BuskaniniBgTitle title="3D Interior Visualization" name="Interior"/>
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[2]} reverse={false} />
+					<InfoModel obj={aboutPage[2]} reverse={false}/>
 				</section>
 
-				<BuskaniniBgTitle title="Product Designs" name="Product" />
+				<BuskaniniBgTitle title="Product Designs" name="Product"/>
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[3]} reverse />
+					<InfoModel obj={aboutPage[3]} reverse/>
 				</section>
 
 				<section className={`${styles.question}`}>
-					<HaveQuestion />
+					<HaveQuestion/>
 				</section>
 			</main>
 		</>
