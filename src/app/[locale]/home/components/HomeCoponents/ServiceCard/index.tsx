@@ -18,7 +18,7 @@ const ServiceCard = ({ title, subtitle, description }: ServiceCardProps) => {
 				dangerouslySetInnerHTML={{
 					__html: description.replace(/\n/g, "<br />"),
 				}}
-			></div>
+			/>
 
 			<button>Замовити</button>
 		</article>

@@ -15,12 +15,12 @@ const Page = () => {
 			is3D: false,
 		},
 		{
-			name: "Nimbus Ottoman",
+			name: "Zenith Horizon",
 			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 		{
-			name: "Sienna Vista Bench",
+			name: "Lumina Residence",
 			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
@@ -59,7 +59,7 @@ const Page = () => {
 					<nav>
 						<ul>
 							<li>
-								<button className={styles.active}>Інтер'єр</button>
+								<button className={styles.active}>Інтерєр</button>
 							</li>
 							<li>
 								<button>Рендер</button>
@@ -89,7 +89,7 @@ const Page = () => {
 					<div className={styles.projectsGridPagination}>
 						<div className={styles.interiorGrid}>
 							{project.map((el) => (
-								<DefaultProject name={el.name} image={el.image} />
+								<InteriorProject image={el.image} />
 							))}
 						</div>
 

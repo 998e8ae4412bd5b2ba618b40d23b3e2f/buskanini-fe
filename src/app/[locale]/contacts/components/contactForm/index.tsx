@@ -46,8 +46,10 @@ const ContactForm: React.FC = () => {
                 <div className={styles.fileUploadLabel}>
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} />
                     {selectedFile ? (
-                        <div className={styles.changeFile}>
-                            <FileSvg />
+                        <div className={styles.fileIcon}>
+                            <div className="fileIcon">
+                                <FileSvg />
+                            </div>
                             <span>{selectedFile.name}</span>
                             <button
                                 type="button"
@@ -59,9 +61,11 @@ const ContactForm: React.FC = () => {
                         </div>
                     ) : (
                         <div className={styles.fileInput}>
-                            <FileSvg />
+                            <div className={styles.fileIcon}>
+                                <FileSvg/>
+                            </div>
                             <button onClick={handleFileInputClick} formNoValidate>
-                                Upload File
+                            Upload File
                             </button>
                         </div>
                     )}

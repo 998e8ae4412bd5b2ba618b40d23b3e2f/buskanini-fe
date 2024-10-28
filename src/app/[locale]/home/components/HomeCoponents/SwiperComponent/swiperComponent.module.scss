@@ -35,7 +35,7 @@
     width: 10%;
     z-index: 2;
 
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 17.71%, #070707 94.2%);
+    //background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 17.71%, #070707 94.2%);
   }
 
   &::after {
@@ -47,6 +47,6 @@
     width: 10%;
     z-index: 2;
 
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 17.71%, #070707 94.2%);;
+    //background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 17.71%, #070707 94.2%);;
   }
 }

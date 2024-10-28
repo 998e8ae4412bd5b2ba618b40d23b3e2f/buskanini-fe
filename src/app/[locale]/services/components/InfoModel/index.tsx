@@ -29,11 +29,14 @@ const Index = ({ obj, reverse }: SwiperComponentProps) => {
 		"--swiper-pagination-bullet-inactive-opacity": "1",
 		"--swiper-pagination-bullet-size": "16px",
 		"--swiper-pagination-bullet-horizontal-gap": "6px",
+		"--swiper-pagination-bottom": "1.5625rem"
 	};
 
 	return (
 		<div className={`${styles.infoModel} ${reverse ? styles.reverse : ""}`}>
 			<ServiceBlock title={title} content={content} ctaText={ctaText} />
+
+
 			{images.length !== 1 ? (
 				<div className={styles.swiperContainer}>
 					<Swiper

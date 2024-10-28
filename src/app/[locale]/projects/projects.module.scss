@@ -6,12 +6,12 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 5.375rem 3.125rem 4.031rem;
+    padding: 5.375rem 4.325rem 1rem 4.325rem;
 
     nav {
       ul {
         display: flex;
-        gap: 4.375rem;
+        gap: 5.6rem;
 
         li {
           button {
@@ -51,7 +51,7 @@
       ul {
         display: flex;
         flex-direction: column;
-        gap: 2.813rem;
+        gap: 2.213rem;
 
         li {
           a {
@@ -96,9 +96,9 @@
 
       .pagination {
         display: flex;
-        width: calc(100% - 10rem);;
+        width: 100%;
         max-width: 1718px;
-        padding: 10.9375rem 5rem 6.9375rem;
+        padding: 10.9375rem 0 6.9375rem;
         justify-content: space-between;
 
         button {
@@ -145,7 +145,7 @@
   .main {
     .navLabel {
       flex-direction: column-reverse;
-      padding: 2.938rem 1.188rem 1.15rem;
+      padding: 7.125rem 1.188rem 1.15rem;
       align-items: flex-start;
       gap: 3.063rem;
 
@@ -213,8 +213,6 @@
           width: 100%;
           grid-template-rows: 1fr;
           grid-row-gap: 1.875rem;
-
-          border: 1px dashed $light;
         }
 
         .pagination {

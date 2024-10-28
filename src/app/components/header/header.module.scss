@@ -6,7 +6,7 @@
   padding: 2.375rem 3.975rem 0;
 
   position: relative;
-  z-index: 10;
+  z-index: 999999;
 
   .headerLogo__block {
     flex: 1;
@@ -105,6 +105,8 @@
         font-size: 1.065rem;
         padding: 0 1.75rem;
       }
+
+      z-index: 99999;
     }
 
     .burgerIcon {
@@ -129,20 +131,22 @@
     }
 
     &Show {
-      height: calc(100vh - 2.5rem);
+      height: calc(100dvh - 2rem);
+      transition: .3s;
 
       &:before {
         content: "";
         position: fixed;
         top: 0;
         left: 0;
-        height: 100lvh;
-        width: 100lvw;
+        height: 100dvh;
+        width: 100dvw;
         background-color: hsla(0, 0%, 0%, 1);
-        z-index: 0;
+        z-index: 10;
       }
 
       nav {
+        width: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -150,6 +154,8 @@
         transform: translate(-50%, -50%);
 
         display: flex;
+        justify-content: center;
+        z-index: 99999;
 
 
         ul {
@@ -186,6 +192,8 @@
         button {
           display: none;
         }
+
+        z-index: 99999;
       }
     }
   }

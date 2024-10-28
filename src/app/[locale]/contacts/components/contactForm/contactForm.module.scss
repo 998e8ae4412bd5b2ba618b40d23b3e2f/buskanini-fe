@@ -57,6 +57,16 @@
   gap: 0.625rem;
 }
 
+.fileIcon {
+  width: 2.625rem;
+  height: 3.5rem;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
 .changeFile {
   display: flex;
   align-items: center;

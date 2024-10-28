@@ -29,9 +29,9 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 		"--swiper-pagination-color": "#F3E2C6",
 		"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
 		"--swiper-pagination-bullet-inactive-opacity": "1",
-		"--swiper-pagination-bullet-size": "1rem",
+		"--swiper-pagination-bullet-size": "1.4rem",
 		"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
-		"--swiper-pagination-bottom": "35px",
+		"--swiper-pagination-bottom": "0",
 	};
 
 	const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
@@ -49,6 +49,8 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 	React.useEffect(() => {
 		setIsClient(true);
 	}, []);
+
+	console.log(isClient && window.innerWidth > 768)
 
 	return (
 		<Swiper

@@ -1,23 +1,19 @@
 @import "/src/app/styles/values.scss";
 
-$side-padding: 5.125rem;
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  .aboutUs {
-    padding-top: 8.875rem $side-padding 1.75rem;
-  }
+  padding: 0 59px;
 
   .buskaniniBgTitle {
     overflow: hidden;
     width: 100%;
 
     &.Modelling {
-      padding: 6.0625rem 0 4.5625rem;
+      padding: 6.0625rem 0 6rem;
       font-size: 12vw;
     }
 
@@ -55,11 +51,7 @@ $side-padding: 5.125rem;
     padding: 14.9375rem 0 20.125rem;
   }
 
-  section {
-    padding: 0 3.75rem;
-  }
-
   .container {
-    max-width: 109.75rem;
+    max-width: 1801px;
   }
 }
