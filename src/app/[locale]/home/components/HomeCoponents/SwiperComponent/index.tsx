@@ -31,7 +31,7 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 		"--swiper-pagination-bullet-inactive-opacity": "1",
 		"--swiper-pagination-bullet-size": "1.4rem",
 		"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
-		"--swiper-pagination-bottom": "0",
+		"--swiper-pagination-bottom": "5%",
 	};
 
 	const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {

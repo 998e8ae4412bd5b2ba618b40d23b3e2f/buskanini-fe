@@ -47,13 +47,15 @@
 
     .projectsList {
       min-width: 12.5rem;
+      position: relative;
+      height: fit-content;
 
       ul {
         display: flex;
         flex-direction: column;
-        gap: 2.213rem;
 
         li {
+          padding: 1.1rem 0;
           a {
             color: $white;
 
@@ -67,6 +69,26 @@
               color: $light;
             }
           }
+        }
+      }
+
+      &:hover {
+        .arrow {
+          opacity: 1;
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        top: 15px;
+        left: -25px;
+        width: 0.884rem;
+        transition: opacity 0.5s;
+        opacity: 0;
+
+        svg {
+          height: 100%;
+          width: 100%;
         }
       }
     }

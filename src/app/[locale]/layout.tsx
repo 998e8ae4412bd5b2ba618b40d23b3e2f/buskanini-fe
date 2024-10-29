@@ -6,6 +6,7 @@ import { NextIntlClientProvider, useTranslations } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import Footer from "@/app/components/footer";
 import React from "react";
+import GoUpButton from "@/app/components/GoUpButton";
 
 interface RootLayoutProps {
 	children: React.ReactNode;
@@ -27,6 +28,7 @@ export default async function RootLayout({
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					{children}
 					<Footer />
+					<GoUpButton/>
 				</NextIntlClientProvider>
 			</body>
 		</html>

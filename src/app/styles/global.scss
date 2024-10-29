@@ -75,7 +75,26 @@ a {
 
 @media(max-width: 1680px) {
   html {
+    font-size: 13.5px;
+  }
+}
+
+@media(max-width: 1600px) {
+  html {
+    font-size: 12.7px;
+  }
+}
+
+@media(max-width: 1440px) {
+  html {
     font-size: 10px;
+  }
+}
+
+
+@media(max-width: 1024px) {
+  html {
+    font-size: 8px;
   }
 }
 
@@ -108,17 +127,3 @@ a {
   }
 }
 
-* {
-  //border: 1px dashed red;
-}
-
-
-  /* Hide scrollbar but allow scrolling */
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Firefox */
-html {
-  scrollbar-width: none; /* Hides scrollbar in Firefox */
-}

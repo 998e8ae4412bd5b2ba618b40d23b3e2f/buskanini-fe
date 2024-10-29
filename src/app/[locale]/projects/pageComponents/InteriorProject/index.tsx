@@ -12,6 +12,7 @@ const Index = ({ image }: CardProject) => {
 		"Індивідуальні меблі на замовлення",
 	];
 
+
 	return (
 		<article className={styles.interiorProjectCard}>
 			<div className={styles.hoverInfo}>

@@ -18,11 +18,13 @@ $side-padding: 5.125rem;
 
 
     h1 {
-      color: $white;
       white-space: nowrap;
+      color: $light;
+      margin-right: 50%;
 
       > span {
-        color: $light;
+        position: absolute;
+        color: $white;
       }
     }
 
@@ -45,6 +47,7 @@ $side-padding: 5.125rem;
     left: 50%;
     transform: translate(-50%, 0%);
     bottom: 2.1rem;
+    cursor: pointer;
 
     display: flex;
     flex-direction: column;
@@ -172,6 +175,7 @@ $side-padding: 5.125rem;
 
     .sliderContainer {
       position: relative;
+      padding: 0 5.125rem;
     }
 
     .seeMore {
@@ -212,8 +216,12 @@ $side-padding: 5.125rem;
 
       h1 {
         text-align: center;
-        white-space: wrap;
         font-weight: 700;
+        margin-right: 0;
+
+        span {
+          position: unset;
+        }
       }
 
       p {
@@ -309,6 +317,7 @@ $side-padding: 5.125rem;
     .sectionFurnitureDesign {
       padding: 5rem 0 6.25rem;
       .sliderContainer {
+        padding: 0;
       }
     }
 

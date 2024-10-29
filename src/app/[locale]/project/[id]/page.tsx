@@ -34,7 +34,7 @@ const Page = () => {
         "--swiper-pagination-bottom": "1.75rem"
     };
 
-  const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
+    const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#F3E2C6",
         "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
         "--swiper-pagination-bullet-inactive-opacity": "1",

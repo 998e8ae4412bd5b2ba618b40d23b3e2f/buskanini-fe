@@ -1,0 +1,81 @@
+@import "/src/app/styles/values.scss";
+
+.goUpButton {
+  position: fixed;
+  bottom: 5.75rem;
+  right: 5.75rem;
+
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  border-radius: 2.18rem;
+  background: $light;
+
+  z-index: 9999999999;
+
+  transition: .5s;
+
+  div {
+    height: 1.875rem;
+    width: 1.875rem;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.goUpButtonIdle {
+  position: fixed;
+  bottom: 5.75rem;
+  right: 5.75rem;
+
+  padding: 0;
+  background: unset;
+
+
+  transition: .3s;
+
+  div {
+    height: 1.875rem;
+    width: 1.875rem;
+    opacity: 0;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .goUpButton {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+
+    padding: 1rem;
+
+    border-radius: 1.18rem;
+    background: $light;
+
+    z-index: 9999999999;
+
+    transition: .5s;
+  }
+
+  .goUpButtonIdle {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+
+    padding: 0;
+    background: unset;
+
+    transition: .3s;
+  }
+}
