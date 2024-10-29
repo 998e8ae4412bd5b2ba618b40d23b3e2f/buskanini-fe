@@ -112,7 +112,6 @@ const Page = () => {
                                     onClick={() => setGalleryModalActive('show')}
                                     onSlideChange={(swiper) => {
                                         setActiveIndex(swiper.realIndex);
-                                        console.log(swiper.realIndex)
                                     }}
                                 >
                                     {images.map((image, i) => (

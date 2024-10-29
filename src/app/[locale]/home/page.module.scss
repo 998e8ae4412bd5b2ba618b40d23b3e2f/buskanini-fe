@@ -16,21 +16,27 @@ $side-padding: 5.125rem;
     gap: 1.5rem;
     align-items: center;
 
+
     h1 {
       color: $white;
       white-space: nowrap;
+
+      > span {
+        color: $light;
+      }
+    }
+
+    p {
+      align-self: center;
+      color: $white;
 
       span {
         color: $light;
       }
     }
 
-    p {
-      color: $white;
-
-      span {
-        color: $light;
-      }
+    br {
+      display: none;
     }
   }
 
@@ -192,6 +198,8 @@ $side-padding: 5.125rem;
 
 @media (max-width: 768px) {
   .banner {
+    height: 88.4lvh;
+
     .centerText {
       width: calc(100% - 2.625rem);
       display: flex;
@@ -200,51 +208,65 @@ $side-padding: 5.125rem;
       gap: 0.625rem;
       padding: 0 1rem;
 
+      top: 37%;
+
       h1 {
         text-align: center;
         white-space: wrap;
         font-weight: 700;
-
-        span {
-        }
       }
 
       p {
         line-height: 1.5;
         text-align: center;
+      }
 
-        span {
-        }
+      br {
+        display: initial;
       }
     }
 
     .scrollDown {
+      bottom: 15%;
+      gap: 0.4rem;
+
       svg {
         width: 1.29575rem;
         height: 1.29575rem;
       }
-      gap: 0.3125rem;
+
       span {
+        line-height: 1;
         font-size: 0.875rem;
       }
     }
 
     .bannerContainer {
       position: absolute;
-      height: 100lvh;
+      height: 88lvh;
       top: 0;
       left: 0;
       width: 99%;
+
+      &::before {
+        border-radius: 0 0 40px 40px;
+      }
+
+      .bannerImage {
+        border-radius: 0 0 40px 40px;
+      }
     }
   }
 
   .main {
     .sectionCollaborate {
-      padding: 2.3125rem 0 1.5625rem;
+      padding: 1.825rem 0 1.5625rem;
 
       .slidersContainer {
         padding: 0 2rem;
+        height: 69vh;
         flex-direction: row;
+        overflow: hidden;
 
         &::before {
           content: "";
@@ -275,9 +297,11 @@ $side-padding: 5.125rem;
 
     .sectionServices {
       padding: 1.5625rem 0 5rem;
+      gap: 0.4rem;
 
       .cardServices {
         padding: 0 1.75rem;
+        gap: 2.1rem;
         flex-direction: column;
       }
     }

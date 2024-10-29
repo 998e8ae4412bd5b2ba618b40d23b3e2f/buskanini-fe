@@ -87,10 +87,10 @@
 
 @media (max-width: 768px) {
   .serviceCard {
-    gap: 63px;
+    gap: 22px;
     min-height: unset;
 
-    padding: 1.875rem;
+    padding: 1.275rem 1.875rem 1.875rem 1.875rem;
 
     border: 1px solid $white;
     border-radius: 35px;
@@ -103,18 +103,18 @@
       }
 
       p {
-        line-height: 1;
-        font-size: 14px;
+        line-height: 1.5;
+        font-size: .81rem;
       }
     }
 
     .description {
-      font-size: 1rem;
-      line-height: 1.5;
-
+      font-size: 0.8rem;
+      line-height: 1.8;
     }
 
     button {
+      margin-top: 69px;
       height: 47px;
       font-size: 1rem;
       line-height: 2.063;

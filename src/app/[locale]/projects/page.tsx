@@ -89,7 +89,7 @@ const Page = () => {
 					<div className={styles.projectsGridPagination}>
 						<div className={styles.interiorGrid}>
 							{project.map((el) => (
-								<InteriorProject image={el.image} />
+								<DefaultProject image={el.image}  name={'sfsfs'}/>
 							))}
 						</div>
 

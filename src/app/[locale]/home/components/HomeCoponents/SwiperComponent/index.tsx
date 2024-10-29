@@ -50,8 +50,6 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 		setIsClient(true);
 	}, []);
 
-	console.log(isClient && window.innerWidth > 768)
-
 	return (
 		<Swiper
 			style={isClient && window.innerWidth > 768 ? swiperStyles : swiperStylesMobile}

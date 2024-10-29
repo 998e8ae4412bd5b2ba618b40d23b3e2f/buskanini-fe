@@ -12,8 +12,6 @@ const Header = () => {
 		setShowBurgerMenu(prevState => (prevState === 'show' ? 'hide' : 'show'));
 	};
 
-	console.log(showBurgerMenu)
-
 	return (
 		<header className={`${styles.header} ${showBurgerMenu === 'show' ? styles.headerShow : ''}`}>
 			<div className={styles.headerLogo__block}>
