@@ -24,7 +24,7 @@ const Page = () => {
     const [activeIndex, setActiveIndex] = React.useState<number>(0);
     const [galleryModalActive, setGalleryModalActive] = React.useState<string>('idle')
     const [modelModalActive, setModelModalActive] = React.useState<boolean>(false)
-
+    const [isClient, setIsClient] = React.useState(false);
     const swiperStyles: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#F3E2C6",
         "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
@@ -34,7 +34,7 @@ const Page = () => {
         "--swiper-pagination-bottom": "1.75rem"
     };
 
-    const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
+  const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#F3E2C6",
         "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
         "--swiper-pagination-bullet-inactive-opacity": "1",
@@ -43,13 +43,14 @@ const Page = () => {
         "--swiper-pagination-bottom": "25px",
     };
 
+
     const [isClient, setIsClient] = React.useState(false);
 
     React.useEffect(() => {
         setIsClient(true);
     }, []);
 
-    const images: string[] = [
+  const images: string[] = [
         "https://picsum.photos/2550/1440",
         "https://picsum.photos/2550/1440",
         "https://picsum.photos/2550/1440",
@@ -64,6 +65,14 @@ const Page = () => {
         if (mainSwiper) mainSwiper.slidePrev();
     };
 
+
+
+    const isPhone = isClient && window.innerWidth < 768
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <>
             <section className={styles.banner}>
@@ -73,7 +82,7 @@ const Page = () => {
                 <Header/>
 
                 <Swiper
-                    style={isClient && window.innerWidth > 768 ? swiperStyles : swiperStylesMobile}
+                    style={isPhone ? swiperStylesMobile : swiperStyles}
                     className={styles.swiper}
                     slidesPerView={1}
                     spaceBetween={25}
@@ -105,14 +114,13 @@ const Page = () => {
                                 <Swiper
                                     loop={true}
                                     onSwiper={setMainSwiper}
-                                    spaceBetween={100}
+                                    spaceBetween={isPhone ? 25 : 100}
                                     thumbs={{swiper: thumbsSwiper}}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className={styles.swiperMain}
                                     onClick={() => setGalleryModalActive('show')}
                                     onSlideChange={(swiper) => {
                                         setActiveIndex(swiper.realIndex);
-                                        console.log(swiper.realIndex)
                                     }}
                                 >
                                     {images.map((image, i) => (
@@ -133,10 +141,17 @@ const Page = () => {
                                     onSwiper={setThumbsSwiper}
                                     speed={1000}
                                     spaceBetween={28}
-                                    slidesPerView={4}
                                     watchSlidesProgress={true}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className={styles.swiperSecondary}
+                                    breakpoints={{
+                                        0: {
+                                            slidesPerView: 2
+                                        },
+                                        778: {
+                                            slidesPerView: 3
+                                        }
+                                    }}
                                 >
                                     {images.map((image, i) => (
                                         <SwiperSlide key={i} className={styles.slide}>
