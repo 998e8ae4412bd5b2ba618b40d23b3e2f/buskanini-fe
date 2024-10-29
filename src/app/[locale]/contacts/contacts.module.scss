@@ -30,12 +30,42 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        padding-right: 100px;
         gap: 168px 129px;
       }
     }
 
     form {
       flex: 1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: auto;
+    padding: 0 23px;
+
+    .questionForm {
+      width: 100%;
+      max-width: none;
+      flex-direction: column;
+      padding: 86px 0 142px;
+
+      .haveQuestionSide {
+        h1 {
+          font-size: 40px;
+          margin-bottom: 65px;
+        }
+
+        .socMedias {
+          display: none;
+        }
+      }
+
+      form {
+        flex: 1;
+      }
     }
   }
 }

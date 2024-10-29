@@ -29,18 +29,20 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 		"--swiper-pagination-color": "#F3E2C6",
 		"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
 		"--swiper-pagination-bullet-inactive-opacity": "1",
-		"--swiper-pagination-bullet-size": "16px",
-		"--swiper-pagination-bullet-horizontal-gap": "6px",
+		"--swiper-pagination-bullet-size": "1rem",
+		"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
 		"--swiper-pagination-bottom": "35px",
 	};
+
 	const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
 		"--swiper-pagination-color": "#F3E2C6",
 		"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
 		"--swiper-pagination-bullet-inactive-opacity": "1",
-		"--swiper-pagination-bullet-size": "12.704px",
-		"--swiper-pagination-bullet-horizontal-gap": "6px",
-		"--swiper-pagination-bottom": "25px",
+		"--swiper-pagination-bullet-size": "0.794rem",
+		"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
+		"--swiper-pagination-bottom": "1.5625rem",
 	};
+
 
 	const [isClient, setIsClient] = React.useState(false);
 

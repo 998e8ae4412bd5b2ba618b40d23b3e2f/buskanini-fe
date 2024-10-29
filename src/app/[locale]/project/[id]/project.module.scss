@@ -95,6 +95,11 @@
             top: 50%;
             transform: translateY(-50%);
             left: -7.5rem;
+
+            svg {
+              width: 3.188rem;
+              height: 3.678rem;
+            }
           }
           .next {
             position: absolute;
@@ -102,6 +107,11 @@
             right: -7.5rem;
             top: 50%;
             transform: scaleX(-1) translateY(-50%);
+
+            svg {
+              width: 3.188rem;
+              height: 3.678rem;
+            }
           }
         }
 

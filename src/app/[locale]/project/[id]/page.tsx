@@ -29,20 +29,28 @@ const Page = () => {
         "--swiper-pagination-color": "#F3E2C6",
         "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
         "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "22px",
+        "--swiper-pagination-bullet-size": "1.375rem",
         "--swiper-pagination-bullet-horizontal-gap": "7px",
-        "--swiper-pagination-bottom": "28px"
+        "--swiper-pagination-bottom": "1.75rem"
     };
-    const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
+
+  const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
         "--swiper-pagination-color": "#F3E2C6",
-        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
+        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
         "--swiper-pagination-bullet-inactive-opacity": "1",
         "--swiper-pagination-bullet-size": "12.704px",
         "--swiper-pagination-bullet-horizontal-gap": "6px",
         "--swiper-pagination-bottom": "25px",
     };
 
-    const images: string[] = [
+
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+  const images: string[] = [
         "https://picsum.photos/2550/1440",
         "https://picsum.photos/2550/1440",
         "https://picsum.photos/2550/1440",
