@@ -44,8 +44,6 @@ const Page = () => {
     };
 
 
-    const [isClient, setIsClient] = React.useState(false);
-
     React.useEffect(() => {
         setIsClient(true);
     }, []);
