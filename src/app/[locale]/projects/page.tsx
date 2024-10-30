@@ -64,6 +64,7 @@ const Page: React.FC = () => {
 
 	const arrowRef = useRef<HTMLDivElement>(null);
 	const menuItemRefs = useRef<HTMLLIElement[]>([]);
+	const [isPhone, setIsPhone] = useState<boolean>(false)
 
 	const addToRefs = (el: HTMLLIElement) => {
 		if (el && !menuItemRefs.current.includes(el)) {
@@ -82,13 +83,16 @@ const Page: React.FC = () => {
 			});
 		});
 
-		// Cleanup event listeners on component unmount
 		return () => {
 			menuItemRefs.current.forEach((item) => {
 				item.removeEventListener('mouseenter', () => {});
 			});
 		};
 	}, []);
+
+	useEffect(() => {
+		window.innerWidth < 768 && setIsPhone(true)
+	}, [])
 
 	return (
 		<>

@@ -3,6 +3,7 @@ import React, {ChangeEvent, FormEvent, useState, useRef} from 'react';
 import FileSvg from '../../../../../../public/svg/file.svg';
 import CircleSvg from '../../../../../../public/svg/closeCircle.svg';
 import ArrowSubmit from '../../../../../../public/svg/ArrowSubmit.svg';
+import Change from '../../../../../../public/svg/change.svg';
 import styles from './contactForm.module.scss';
 
 const ContactForm: React.FC = () => {
@@ -46,17 +47,26 @@ const ContactForm: React.FC = () => {
                 <div className={styles.fileUploadLabel}>
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} />
                     {selectedFile ? (
-                        <div className={styles.fileIcon}>
-                            <div className="fileIcon">
+                        <div className={styles.fileInput}>
+                            <div className={styles.fileIcon}>
                                 <FileSvg />
                             </div>
                             <span>{selectedFile.name}</span>
                             <button
                                 type="button"
-                                className={styles.changeButton}
+                                className={styles.deleteButton}
                                 onClick={() => setSelectedFile(null)}
                             >
                                 <CircleSvg />
+                            </button>
+
+
+                            <button className={styles.changeButton}>
+                                <span>Замінити</span>
+
+                                <div className={styles.changeIcon}>
+                                    <Change />
+                                </div>
                             </button>
                         </div>
                     ) : (
@@ -65,7 +75,7 @@ const ContactForm: React.FC = () => {
                                 <FileSvg/>
                             </div>
                             <button onClick={handleFileInputClick} formNoValidate>
-                            Upload File
+                                Upload File
                             </button>
                         </div>
                     )}

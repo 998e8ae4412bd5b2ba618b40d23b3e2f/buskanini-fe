@@ -2,7 +2,7 @@
 import React, { CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./swiperComponent.module.scss";
-import { Pagination } from "swiper/modules";
+import {Autoplay, Pagination} from "swiper/modules";
 import PreviewButton from "@/app/components/previewButton";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -57,7 +57,7 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 			spaceBetween={25}
 			className={`${styles.swiper}`}
 			id="homeSlider"
-			modules={[Pagination]}
+			modules={[Pagination, Autoplay]}
 			speed={500}
 			centeredSlides={true}
 			initialSlide={Math.floor(elements.length / 2)}
@@ -65,6 +65,10 @@ export const SwiperComponent = ({ elements }: SwiperComponentProps) => {
 			pagination={{
 				clickable: true,
 				dynamicBullets: true,
+			}}
+			autoplay={{
+				delay: 3000,
+				disableOnInteraction: false,
 			}}
 			breakpoints={{
 				768: {

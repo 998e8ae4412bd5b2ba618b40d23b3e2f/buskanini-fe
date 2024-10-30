@@ -217,10 +217,11 @@
           grid-auto-rows: auto;
           gap: 1.75rem;
           overflow-x: auto;
-          width: 250vw;
+          width: 300vw;
           scrollbar-width: none;
 
           li {
+            padding: 0;
             a {
               white-space: nowrap;
               font-size: 1.25rem;
@@ -242,9 +243,12 @@
         padding: 0 1.5rem 0 1.5rem;
 
         .defaultGrid {
-          width: 100%;
-          grid-column-gap: 1.875rem;
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: 1fr;
           grid-row-gap: 1.875rem;
+
+          width: 100%;
         }
 
         .interiorGrid {
