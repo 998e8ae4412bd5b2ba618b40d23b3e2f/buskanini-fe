@@ -49,29 +49,29 @@ const ContactForm: React.FC = () => {
                     {selectedFile ? (
                         <div className={styles.fileInput}>
                             <div className={styles.fileIcon}>
-                                <FileSvg />
+                                <FileSvg/>
                             </div>
-                            <span>{selectedFile.name}</span>
+                            <span>{selectedFile.name.length > 10 ? `${selectedFile.name.slice(0, 10)}...` : selectedFile.name}</span>
                             <button
                                 type="button"
                                 className={styles.deleteButton}
                                 onClick={() => setSelectedFile(null)}
                             >
-                                <CircleSvg />
+                                <CircleSvg/>
                             </button>
 
 
-                            <button className={styles.changeButton}>
+                            <button className={styles.changeButton} onClick={handleFileInputClick}>
                                 <span>Замінити</span>
 
                                 <div className={styles.changeIcon}>
-                                    <Change />
+                                    <Change/>
                                 </div>
                             </button>
                         </div>
                     ) : (
                         <div className={styles.fileInput}>
-                            <div className={styles.fileIcon}>
+                        <div className={styles.fileIcon}>
                                 <FileSvg/>
                             </div>
                             <button onClick={handleFileInputClick} formNoValidate>

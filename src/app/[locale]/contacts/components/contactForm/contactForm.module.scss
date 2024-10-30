@@ -112,7 +112,9 @@
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 42px; /* 175% */
+    line-height: 175%;
+
+    white-space: nowrap;
   }
 
   .deleteButton {
@@ -217,7 +219,6 @@
 
 
 @media (max-width: 768px) {
-  // ContactForm.module.scss
   .form {
     gap: 2.1rem;
 
