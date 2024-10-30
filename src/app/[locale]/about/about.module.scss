@@ -1,5 +1,371 @@
 @import "/src/app/styles/values.scss";
 
+.aboutSectionStyles {
+  display: flex;
+  justify-content: center;
+  padding: 0 5rem;
+
+  h1, h2 {
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-weight: 600;
+    margin-bottom: 4rem;
+  }
+
+  p {
+    color: $white;
+    font-family: "FixelText", sans-serif;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.57143;
+  }
+
+  .content {
+    padding: 3.75rem;
+    align-items: flex-start;
+    border-radius: 6.25rem;
+    border: 0.09375rem solid var(--White, #F6F6F6);
+  }
+}
+
 .aboutUs {
-  height: 100px;
+  padding-top: 8.875rem;
+
+  .content {
+    display: flex;
+    gap: 3.9375rem;
+    align-items: stretch;
+    max-width: 109.75rem;
+  }
+
+  &Text {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      padding-bottom: 7.0625rem;
+    }
+
+    p:last-child {
+      padding: 0;
+    }
+  }
+
+  &Image {
+    min-width: 37.5%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 4.375rem;
+  }
+}
+
+.aboutBuskanini {
+  span {
+    display: block;
+    margin: 0 auto;
+    color: $white;
+    text-align: center;
+    font-family: "Craftwork Grotesk", sans-serif;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 1.35;
+    padding: 6.0625rem 0 4.5625rem;
+    font-size: 14vw;
+  }
+
+  opacity: 0.02;
+}
+
+.aboutMe {
+  padding-bottom: 8.8125rem;
+
+  .content {
+    display: flex;
+    gap: 3.3125rem;
+  }
+
+  &Texts {
+    p {
+      padding-bottom: 17rem;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-width: 38%;
+
+    &Image {
+      height: 84%;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 4.375rem;
+      box-shadow: 0 0 7.0625rem 1.625rem rgba(243, 226, 198, 0.13);
+    }
+
+    &Text {
+      h3 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.aboutProjects {
+  display: flex;
+  gap: 4.375rem;
+  padding: 8.8125rem 3rem 0 3rem;
+
+  &Wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.1875rem;
+    min-width: 56.7%;
+  }
+
+  &Project {
+    height: 29.2938rem;
+    background: linear-gradient(90deg, #592D25 0%, #F3E2C6 100%);
+    backdrop-filter: drop-shadow(0 0 7.0625rem rgba(243, 226, 198, 0.13));
+    border-radius: 1.875rem;
+    position: relative;
+
+    h3 {
+      position: absolute;
+      left: 2.5rem;
+      bottom: 3.3125rem;
+      color: $white;
+      font-family: "Craftwork Grotesk", sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  &Buttons {
+    display: flex;
+    gap: 0.9375rem;
+
+    .projectsLink {
+      display: flex;
+      min-height: 2.9375rem;
+      padding: 0.5rem 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      color: $black;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.75;
+      border-radius: 5.625rem;
+      border: 0.0625rem solid $white;
+      background: $light;
+
+      &:hover {
+      }
+    }
+
+    .arrowBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.4375rem;
+      border-radius: 1.5rem;
+      background: $white;
+
+      .arrowIcon {
+        height: 1.5rem;
+        width: 1.4375rem;
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+
+    p {
+      color: $white;
+      font-family: "FixelText", sans-serif;
+      font-size: 1.75rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.57143;
+    }
+  }
+}
+
+.askSection {
+  padding: 18.75rem 0 16rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .aboutSectionStyles {
+    padding: 0 18px;
+
+    h1, h2 {
+      margin-bottom: 38px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 162.5%;
+    }
+
+    .content {
+      padding: 35px;
+      border-radius: 40px;
+      border: 0.763px solid var(--White, #F6F6F6);
+    }
+  }
+
+  .aboutUs {
+    padding-top: 211px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      max-width: unset;
+    }
+
+    &Text {
+      p {
+        padding-bottom: 46px;
+      }
+    }
+
+    &Image {
+      height: 70vw;
+      min-width: unset;
+      border-radius: 15px;
+    }
+  }
+
+  .aboutBuskanini {
+    span {
+      padding: 12px 0 57px;
+    }
+  }
+
+  .aboutMe {
+    padding-bottom: 86px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    &Texts {
+      p {
+        padding-bottom: 46px;
+      }
+    }
+
+    &Info {
+      width: 100%;
+      min-width: unset;
+
+      &Image {
+        height: 70vw;
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 16px;
+      }
+
+      &Text {
+        h3 {
+          font-size: 25.872px;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-size: 17.248px;
+        }
+      }
+    }
+  }
+
+  .aboutProjects {
+    gap: 48px;
+    padding: 86px 18px 0;
+    flex-direction: column-reverse;
+
+    &Wrap {
+      gap: 20px;
+      flex-direction: column-reverse;
+      min-width: unset;
+    }
+
+    &Project {
+      height: 544px;
+
+      h3 {
+        position: absolute;
+        left: 40px;
+        bottom: 53px;
+        font-size: 48px;
+      }
+    }
+
+    &Buttons {
+      display: flex;
+      gap: 0.9375rem;
+
+      .projectsLink {
+        display: flex;
+        min-height: 2.9375rem;
+        padding: 0.42rem 1.5rem;
+        border-radius: 78px;
+        border: 1px solid $white;
+
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+
+        &:hover {
+        }
+      }
+
+      .arrowBtn {
+        display: none;
+      }
+    }
+
+    &Text {
+      gap: 161px;
+
+      p {
+        font-size: 24px;
+        line-height: 150%;
+      }
+    }
+  }
 }
