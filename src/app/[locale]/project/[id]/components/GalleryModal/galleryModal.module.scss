@@ -4,7 +4,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
 
   height: 100%;
   width: 100%;
@@ -13,30 +12,46 @@
   justify-content: center;
 
   background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(31.450000762939453px);
+  backdrop-filter: blur(1.966rem);
 
   opacity: 0;
   pointer-events: none;
+  z-index: 999999999999999;
 
   &.show {
     pointer-events: initial;
-    animation: fadeOut .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    animation: fadeOut 0.8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
   }
 
   &.out {
-    animation: fadeIn .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    animation: fadeIn 0.8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
   }
 
   .photoPagination {
     display: flex;
     flex-direction: column;
-
-    padding: 25px 0;
-    gap: 48px;
+    justify-content: space-between;
+    padding: 1.563rem 0;
     width: 100%;
+    height: calc(100% - 1.563rem);
 
     .close {
-      display: none;
+      position: absolute;
+      top: 5%;
+      right: 6.5%;
+      display: flex;
+      width: 4.125rem;
+      height: 4.125rem;
+      justify-content: center;
+      align-items: center;
+      align-self: flex-end;
+
+      border-radius: 0.75rem;
+      background: $white;
+
+      svg {
+        height: 1.25rem;
+      }
     }
 
     .photo {
@@ -46,39 +61,47 @@
       height: 80%;
 
       img {
-        max-width: 90vw;
+        max-width: 56.25vw;
         height: 100%;
         object-fit: contain;
-        border-radius: 30px;
+        border-radius: 1.875rem;
       }
     }
 
     .pagination {
       width: 100%;
       display: flex;
-      gap: 20%;
+      gap: 12.5%;
       align-items: center;
       justify-content: center;
 
       .previous {
         cursor: pointer;
+
+        svg {
+          width: 4.688rem;
+          height: 8.188rem;
+        }
       }
 
       .next {
         cursor: pointer;
         transform: scaleX(-1);
+
+        svg {
+          width: 4.688rem;
+          height: 8.188rem;
+        }
       }
 
       .activeButton {
-        padding: 15px 40px;
-        border-radius: 30px;
+        padding: 0.938rem 2.5rem;
+        border-radius: 1.875rem;
         background-color: $black;
       }
     }
   }
 }
-
-
 
 @keyframes fadeIn {
   0% {
@@ -98,29 +121,31 @@
   }
 }
 
-
-
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .galleryModal {
-    backdrop-filter: blur(31.450000762939453px);
+    backdrop-filter: blur(1.966rem);
+
+    div:first-child {
+      width: calc(100% - 2.5rem);;
+    }
 
     .photoPagination {
-      height: calc(100% - 40px);
-      padding: 20px;
-      gap: 48px;
-      width: calc(100% - 40px);
+      height: calc(100% - 2.5rem);
+      padding: 1.25rem;
+      gap: 1.875rem;
+      width: calc(100% - 2.5rem);
 
       .close {
         display: flex;
-        width: 66px;
-        height: 66px;
+        width: 4.125rem;
+        height: 4.125rem;
         justify-content: center;
         align-items: center;
         align-self: flex-end;
-        gap: 10px;
+        gap: 0.625rem;
         flex-shrink: 0;
 
-        border-radius: 12px;
+        border-radius: 0.75rem;
         background: $white;
       }
 
@@ -129,17 +154,16 @@
         height: 80%;
 
         img {
-          max-width: 90vw;
+          max-width: 90.25vw;
           height: 100%;
-          border-radius: 30px;
+          border-radius: 1.875rem;
         }
       }
 
       .pagination {
         width: 100%;
-        gap: 20%;
+        gap: 12.5%;
         justify-content: flex-end;
-
 
         div {
           display: none;

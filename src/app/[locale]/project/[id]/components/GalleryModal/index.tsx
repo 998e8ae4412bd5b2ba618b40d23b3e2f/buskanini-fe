@@ -9,16 +9,13 @@ interface GalleryModalProps {
     image: string;
     handleNext: () => void;
     handlePrev: () => void;
+    setModelModalActive: (active: boolean) => void;
 }
 
-const Index = ({active, setModalActive, image, handleNext, handlePrev}: GalleryModalProps) => {
+const Index = ({active, setModalActive, image, handleNext, handlePrev, setModelModalActive}: GalleryModalProps) => {
     return (
         <section
-            onClick={(e) => {
-                if (e.target === e.currentTarget) {
-                    setModalActive('out');
-                }
-            }}
+            onClick={() => setModalActive('out')}
             className={`${styles.galleryModal} ${active === 'show' ? styles.show : null} ${active === 'out' ? styles.out : null}`}
         >
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -40,16 +37,19 @@ const Index = ({active, setModalActive, image, handleNext, handlePrev}: GalleryM
                                 e.stopPropagation();
                                 handleNext();
                             }}>
-                            <ArrowButtonGallery/>
+                            <ArrowButtonGallery viewBox="0 0 60 51"/>
                         </div>
-                        <PreviewButton/>
+                        <PreviewButton onClick={() => {
+                            document.body.classList.add('no-scroll');
+                            setModelModalActive(true)
+                        }}/>
                         <div
                             className={styles.next}
                             onClick={(e) => {
                                 e.stopPropagation();
                                 handlePrev();
                             }}>
-                            <ArrowButtonGallery/>
+                            <ArrowButtonGallery viewBox="0 0 60 51"/>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,10 @@
 
 body {
   background-color: $black;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 h1 {

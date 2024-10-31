@@ -75,8 +75,13 @@ const Page = () => {
         <>
             <section className={styles.banner}>
                 <ModelModal active={modelModalActive} setActive={setModelModalActive}/>
-                <GalleryModal active={galleryModalActive} setModalActive={setGalleryModalActive}
-                              image={images[activeIndex]} handleNext={handleNext} handlePrev={handlePrev}/>
+                <GalleryModal active={galleryModalActive}
+                              setModalActive={setGalleryModalActive}
+                              image={images[activeIndex]}
+                              handleNext={handleNext}
+                              handlePrev={handlePrev}
+                              setModelModalActive={setModelModalActive}
+                />
                 <Header/>
 
                 <Swiper
@@ -130,7 +135,10 @@ const Page = () => {
                                 <div className={styles.next} onClick={handleNext}>
                                     <ArrowButtonGallery/>
                                 </div>
-                                <PreviewButton/>
+                                <PreviewButton onClick={() => {
+                                    document.body.classList.add('no-scroll');
+                                    setModelModalActive(true)
+                                }}/>
                             </div>
 
                             <div className={styles.swiperSecondaryBlock}>
