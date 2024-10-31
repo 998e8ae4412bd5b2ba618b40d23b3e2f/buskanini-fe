@@ -4,7 +4,7 @@ import Preview3D from "../../../../public/svg/preview3D.svg";
 
 
 interface PreviewButtonProps {
-	onClick: () => void;
+	onClick?: () => void;
 }
 
 const Index: React.FC<PreviewButtonProps> = ({ onClick }) => {
