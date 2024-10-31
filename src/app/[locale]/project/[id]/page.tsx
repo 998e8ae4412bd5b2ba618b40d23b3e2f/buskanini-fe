@@ -2,6 +2,7 @@
 import React, {CSSProperties} from 'react';
 import Header from "@/app/components/header";
 import styles from './project.module.scss'
+import './project.scss'
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Swiper as SwiperCore} from "swiper/types";
 import {FreeMode, Navigation, Pagination, Thumbs} from "swiper/modules";
@@ -153,7 +154,7 @@ const Page = () => {
                                             slidesPerView: 2
                                         },
                                         778: {
-                                            slidesPerView: 3
+                                            slidesPerView: 4
                                         }
                                     }}
                                 >
