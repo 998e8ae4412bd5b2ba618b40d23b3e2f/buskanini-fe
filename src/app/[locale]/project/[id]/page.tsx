@@ -63,8 +63,6 @@ const Page = () => {
         if (mainSwiper) mainSwiper.slidePrev();
     };
 
-
-
     const isPhone = isClient && window.innerWidth < 768
 
     React.useEffect(() => {
