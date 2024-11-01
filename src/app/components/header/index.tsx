@@ -10,6 +10,8 @@ const Header = () => {
 	const [showBurgerMenu, setShowBurgerMenu] = React.useState('idle');
 
 	const toggleBurgerMenu = () => {
+		showBurgerMenu !== 'show' ? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll');
+
 		setShowBurgerMenu(prevState => (prevState === 'show' ? 'hide' : 'show'));
 	};
 	const navLinksRef = React.useRef(null);

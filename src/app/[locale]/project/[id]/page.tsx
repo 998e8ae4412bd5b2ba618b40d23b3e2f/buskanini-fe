@@ -120,7 +120,10 @@ const Page = () => {
                                     thumbs={{swiper: thumbsSwiper}}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className={styles.swiperMain}
-                                    onClick={() => setGalleryModalActive('show')}
+                                    onClick={() => {
+                                        document.body.classList.add('no-scroll');
+                                        setGalleryModalActive('show')
+                                    }}
                                     onSlideChange={(swiper) => {
                                         setActiveIndex(swiper.realIndex);
                                     }}

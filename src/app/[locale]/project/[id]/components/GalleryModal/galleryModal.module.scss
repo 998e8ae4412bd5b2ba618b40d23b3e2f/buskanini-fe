@@ -16,7 +16,7 @@
 
   opacity: 0;
   pointer-events: none;
-  z-index: 999999999999999;
+  z-index: 999999999;
 
   &.show {
     pointer-events: initial;

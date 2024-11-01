@@ -7,13 +7,32 @@ interface ModelProps {
     setModelLoaded: (loaded: boolean) => void;
 }
 
+import * as THREE from 'three'; // Імпортуємо THREE для обчислення обмежуючого об’єму
+
 const Model: React.FC<ModelProps> = ({ setModelLoaded }) => {
     const { scene } = useGLTF('/models/5.glb', true) as any;
 
     React.useEffect(() => {
         setModelLoaded(true);
+
+        // Обчислюємо обмежуючий об’єм моделі
+        const box = new THREE.Box3().setFromObject(scene);
+        const size = new THREE.Vector3();
+        const center = new THREE.Vector3();
+
+        // Отримуємо розміри та центр моделі
+        box.getSize(size);
+        box.getCenter(center);
+
+        // Зміщуємо модель, щоб її центр був у (0, 0, 0)
+        scene.position.set(-center.x, -center.y - 1.5, -center.z);
+
+        // Додаємо масштабування, щоб модель виглядала більшою
+        const scaleFactor = 5 / Math.max(size.x, size.y, size.z);
+        scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
         return () => setModelLoaded(false);
-    }, [setModelLoaded]);
+    }, [scene, setModelLoaded]);
 
     return <primitive object={scene} />;
 };
