@@ -17,7 +17,9 @@ interface SwiperComponentProps {
 }
 export const Slide = ({ image }: Slide) => {
 	return (
-		<article className={styles.sliderElement}>
+		<article className={styles.sliderElement} onClick={() => {
+			window.location.href = 'en/project/22'
+		}}>
 			<img src="https://picsum.photos/200" alt="" />
 			<PreviewButton />
 		</article>

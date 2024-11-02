@@ -47,7 +47,7 @@ $side-padding: 5.125rem;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    bottom: 2.1rem;
+    bottom: 6.2vh;
     cursor: pointer;
 
     display: flex;
@@ -203,7 +203,7 @@ $side-padding: 5.125rem;
 
 @media (max-width: 768px) {
   .banner {
-    height: 88.4lvh;
+    height: 88.4dvh;
 
     .centerText {
       width: calc(100% - 2.625rem);
@@ -319,6 +319,10 @@ $side-padding: 5.125rem;
       padding: 5rem 0 6.25rem;
       .sliderContainer {
         padding: 0;
+      }
+
+      .seeMore {
+        bottom: 65px;
       }
     }
 

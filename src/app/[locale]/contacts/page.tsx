@@ -35,11 +35,10 @@ const Page = () => {
                                     </linearGradient>
                                 </defs>
                             </svg>
-
                             <Behance viewBox="0 0 152 29"/>
                             <Facebook viewBox="0 0 155 31"/>
                             <Patreon viewBox="0 0 142 29"/>
-                            <Telegram  viewBox="0 0 170 35"/>
+                            <Telegram viewBox="0 0 170 35"/>
                         </div>
                     </div>
 

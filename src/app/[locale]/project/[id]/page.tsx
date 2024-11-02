@@ -1,12 +1,12 @@
-'use client'
-import React, {CSSProperties} from 'react';
+'use client';
+import React, { CSSProperties, useState, useEffect } from 'react';
 import Header from "@/app/components/header";
-import styles from './project.module.scss'
-import './project.scss'
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Swiper as SwiperCore} from "swiper/types";
-import {FreeMode, Navigation, Pagination, Thumbs} from "swiper/modules";
-import ArrowButtonGallery from '../../../../../public/svg/arrowButtonGallery.svg'
+import styles from './project.module.scss';
+import './project.scss';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperCore } from "swiper/types";
+import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
+import ArrowButtonGallery from '../../../../../public/svg/arrowButtonGallery.svg';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,40 +20,22 @@ import GalleryModal from "@/app/[locale]/project/[id]/components/GalleryModal";
 import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 
 const Page = () => {
-    const [thumbsSwiper, setThumbsSwiper] = React.useState<SwiperCore | null>(null);
-    const [mainSwiper, setMainSwiper] = React.useState<SwiperCore | null>(null); // State for main swiper instance
-    const [activeIndex, setActiveIndex] = React.useState<number>(0);
-    const [galleryModalActive, setGalleryModalActive] = React.useState<string>('idle')
-    const [modelModalActive, setModelModalActive] = React.useState<boolean>(false)
-    const [isClient, setIsClient] = React.useState(false);
-    const swiperStyles: CSSProperties & { [key: string]: string | number } = {
-        "--swiper-pagination-color": "#F3E2C6",
-        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
-        "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "1.375rem",
-        "--swiper-pagination-bullet-horizontal-gap": "7px",
-        "--swiper-pagination-bottom": "1.75rem"
-    };
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
+    const [mainSwiper, setMainSwiper] = useState<SwiperCore | null>(null);
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [galleryModalActive, setGalleryModalActive] = useState<string>('idle');
+    const [modelModalActive, setModelModalActive] = useState<boolean>(false);
+    const [isPhone, setIsPhone] = useState<boolean>(false);
 
-    const swiperStylesMobile: CSSProperties & { [key: string]: string | number } = {
-        "--swiper-pagination-color": "#F3E2C6",
-        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
-        "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "12.704px",
-        "--swiper-pagination-bullet-horizontal-gap": "6px",
-        "--swiper-pagination-bottom": "25px",
-    };
-
-
-    React.useEffect(() => {
-        setIsClient(true);
+    useEffect(() => {
+        setIsPhone(window.innerWidth < 768);
     }, []);
 
-  const images: string[] = [
-        "https://picsum.photos/2550/1440",
-        "https://picsum.photos/2550/1440",
-        "https://picsum.photos/2550/1440",
-        "https://picsum.photos/2550/1440",
+    const images: string[] = [
+        "https://picsum.photos/1080/1920",
+        "https://picsum.photos/1920/1080",
+        "https://picsum.photos/1440/815",
+        "https://picsum.photos/1080/1920",
         "https://picsum.photos/2550/1440"
     ];
 
@@ -64,41 +46,52 @@ const Page = () => {
         if (mainSwiper) mainSwiper.slidePrev();
     };
 
-    const isPhone = isClient && window.innerWidth < 768
-
-    React.useEffect(() => {
-        setIsClient(true);
-    }, []);
+    const swiperStyles: CSSProperties & { [key: string]: string | number } = isPhone ? {
+        "--swiper-pagination-color": "#F3E2C6",
+        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
+        "--swiper-pagination-bullet-inactive-opacity": "1",
+        "--swiper-pagination-bullet-size": "12.704px",
+        "--swiper-pagination-bullet-horizontal-gap": "6px",
+        "--swiper-pagination-bottom": "25px",
+    } : {
+        "--swiper-pagination-color": "#F3E2C6",
+        "--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, 0.3)",
+        "--swiper-pagination-bullet-inactive-opacity": "1",
+        "--swiper-pagination-bullet-size": "1.375rem",
+        "--swiper-pagination-bullet-horizontal-gap": "7px",
+        "--swiper-pagination-bottom": "1.75rem"
+    };
 
     return (
         <>
             <section className={styles.banner}>
-                <ModelModal active={modelModalActive} setActive={setModelModalActive}/>
-                <GalleryModal active={galleryModalActive}
-                              setModalActive={setGalleryModalActive}
-                              image={images[activeIndex]}
-                              handleNext={handleNext}
-                              handlePrev={handlePrev}
-                              setModelModalActive={setModelModalActive}
+                <ModelModal active={modelModalActive} setActive={setModelModalActive} />
+                <GalleryModal
+                    active={galleryModalActive}
+                    setModalActive={setGalleryModalActive}
+                    images={images}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    setModelModalActive={setModelModalActive}
+                    initialSlide={activeIndex}
                 />
-                <Header/>
+
+                <Header />
 
                 <Swiper
-                    style={isPhone ? swiperStylesMobile : swiperStyles}
+                    style={swiperStyles}
                     className={styles.swiper}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     slidesPerView={1}
                     spaceBetween={25}
                     modules={[Pagination]}
                     speed={500}
                     loop={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-
+                    pagination={{ clickable: true }}
                 >
                     {images.map((el, index) => (
                         <SwiperSlide key={index}>
-                            <img src={el} alt=""/>
+                            <img src={el} alt={`Слайд ${index + 1}`} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -111,18 +104,18 @@ const Page = () => {
                         <div className={styles.galleryBlock}>
                             <div className={styles.swiperMainBlock}>
                                 <div className={styles.previous} onClick={handlePrev}>
-                                    <ArrowButtonGallery/>
+                                    <ArrowButtonGallery />
                                 </div>
                                 <Swiper
                                     loop={true}
                                     onSwiper={setMainSwiper}
                                     spaceBetween={isPhone ? 25 : 100}
-                                    thumbs={{swiper: thumbsSwiper}}
+                                    thumbs={{ swiper: thumbsSwiper }}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className={styles.swiperMain}
                                     onClick={() => {
                                         document.body.classList.add('no-scroll');
-                                        setGalleryModalActive('show')
+                                        setGalleryModalActive('show');
                                     }}
                                     onSlideChange={(swiper) => {
                                         setActiveIndex(swiper.realIndex);
@@ -130,17 +123,17 @@ const Page = () => {
                                 >
                                     {images.map((image, i) => (
                                         <SwiperSlide key={i} className={styles.slide}>
-                                            <img src={image}/>
+                                            <img src={image} alt={`Зображення ${i + 1}`} />
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
                                 <div className={styles.next} onClick={handleNext}>
-                                    <ArrowButtonGallery/>
+                                    <ArrowButtonGallery />
                                 </div>
                                 <PreviewButton onClick={() => {
                                     document.body.classList.add('no-scroll');
-                                    setModelModalActive(true)
-                                }}/>
+                                    setModelModalActive(true);
+                                }} />
                             </div>
 
                             <div className={styles.swiperSecondaryBlock}>
@@ -163,7 +156,7 @@ const Page = () => {
                                 >
                                     {images.map((image, i) => (
                                         <SwiperSlide key={i} className={styles.slide}>
-                                            <img src={image}/>
+                                            <img src={image} alt={`Мініатюра ${i + 1}`} />
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
@@ -175,7 +168,7 @@ const Page = () => {
                 <section className={styles.projectSection}>
                     <h2 className={styles.title}>Про проєкт</h2>
                     <p className={styles.description}>
-                        Рендеринг, 3D моделювання та аналіз простору для нової колекції меблів бренду Artiq, <br/>
+                        Рендеринг, 3D моделювання та аналіз простору для нової колекції меблів бренду Artiq, <br />
                         створеної українським дизайнером Олексієм Марченком.
                     </p>
 
@@ -206,18 +199,18 @@ const Page = () => {
 
                 <div className={styles.pagination}>
                     <button>
-                        <PaginationArrow/>
+                        <PaginationArrow />
                         Попередня сторінка
                     </button>
 
                     <button>
                         Наступна сторінка
-                        <PaginationArrow/>
+                        <PaginationArrow />
                     </button>
                 </div>
 
                 <section className={styles.question}>
-                    <HaveQuestion/>
+                    <HaveQuestion />
                 </section>
             </main>
         </>

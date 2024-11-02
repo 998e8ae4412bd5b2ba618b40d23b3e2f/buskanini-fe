@@ -47,8 +47,9 @@
 
     .projectsList {
       min-width: 12.5rem;
-      position: relative;
       height: fit-content;
+      position: sticky;
+      top: 5%;
 
       ul {
         display: flex;

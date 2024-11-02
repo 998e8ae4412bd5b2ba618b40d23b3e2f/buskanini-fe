@@ -4,7 +4,6 @@ import styles from './header.module.scss';
 import Link from 'next/link';
 import BurgerIcon from '../../../../public/svg/phone/burger-icon.svg';
 import BurgerHideIcon from '../../../../public/svg/phone/burger-hide-icon.svg';
-import gsap from 'gsap';
 
 const Header = () => {
 	const [showBurgerMenu, setShowBurgerMenu] = React.useState('idle');
@@ -46,7 +45,7 @@ const Header = () => {
 				<ul ref={navLinksRef}>
 					{nav.map((linkText, index) => (
 						<li key={index}>
-							<Link href={`/en${linkText.link}`}>{linkText.name}</Link>
+							<Link href={`/en${linkText.link}`} onClick={() => toggleBurgerMenu()}>{linkText.name}</Link>
 						</li>
 					))}
 				</ul>

@@ -76,9 +76,9 @@
 @media (max-width: 768px) {
   .defaultProjectCard {
     padding: 1rem;
-    border-radius: 16px;
-    height: 79.5vw;
     border: 0.963px solid $white;
+    border-radius: 16px;
+    height: 342px;
 
     &::before {
       content: "";

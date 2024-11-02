@@ -28,13 +28,19 @@
 
       .socMedias {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        padding-right: 100px;
-        gap: 12vw 12vw;
+        align-items: center;
+        flex-wrap: wrap;
 
         svg {
-          width: 10vw;
+          padding-top: 30%;
+          padding-right: 10%;
+        }
+
+        svg:nth-child(1),
+        svg:nth-child(2),
+        svg:nth-child(3) {
+          padding-top: 0;
         }
       }
     }
