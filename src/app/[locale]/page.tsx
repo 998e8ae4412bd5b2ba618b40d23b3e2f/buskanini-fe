@@ -1,3 +1,4 @@
+'use client'
 import styles from "@/app/[locale]/home/page.module.scss";
 import ScrollDown from "../../../public/svg/arrow-down-circle.svg";
 
@@ -11,6 +12,12 @@ import {
 import React from "react";
 import Link from "next/link";
 import HaveQuestion from "@/app/components/haveQuestion";
+import WordCycler from "@/app/components/WordCycler";
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 
 export default function Home() {
 	const elements = [
@@ -45,6 +52,18 @@ export default function Home() {
 			image: "https://picsum.photos/2550/1440",
 		},
 	];
+	const [projects, setProjects] = React.useState([])
+
+	const scrollToSection = () => {
+		gsap.to(window, {
+			duration: 1,
+			scrollTo: {
+				y: "#collaborateSection",
+				offsetY: 0,
+			},
+			ease: "power2.inOut"
+		});
+	};
 
 	return (
 		<>
@@ -53,7 +72,13 @@ export default function Home() {
 
 				<div className={styles.centerText}>
 					<h1>
-						<span>3D візуалізація</span> для комерції.
+						3D візуалізація <br/> для
+						<span>
+							<WordCycler
+							words={["комерції", "архітектури", "інтер'єрів"]}
+							intervalTime={60}
+							delayBetweenWords={200}
+						/></span>
 					</h1>
 
 					<p>
@@ -62,7 +87,7 @@ export default function Home() {
 					</p>
 				</div>
 
-				<div className={styles.scrollDown}>
+				<div className={styles.scrollDown} onClick={scrollToSection}>
 					<ScrollDown />
 					<span>Прокрутіть униз</span>
 				</div>
@@ -77,7 +102,7 @@ export default function Home() {
 			</section>
 
 			<main className={styles.main}>
-				<section className={styles.sectionCollaborate}>
+				<section id='collaborateSection' className={styles.sectionCollaborate}>
 					<TitleWithSubtitle
 						title="Співпраця"
 						subtitle={`Співпраці з компаніями, \nякими пишаємося`}

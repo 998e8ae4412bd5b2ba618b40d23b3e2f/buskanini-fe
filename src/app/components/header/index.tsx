@@ -9,10 +9,29 @@ const Header = () => {
 	const [showBurgerMenu, setShowBurgerMenu] = React.useState('idle');
 
 	const toggleBurgerMenu = () => {
+		showBurgerMenu !== 'show' ? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll');
+
 		setShowBurgerMenu(prevState => (prevState === 'show' ? 'hide' : 'show'));
 	};
-
-	console.log(showBurgerMenu)
+	const navLinksRef = React.useRef(null);
+	const nav = [
+		{
+			name: 'Головна',
+			link: '/'
+		},
+		{
+			name: '3D Проєкти',
+			link: '/projects'
+		},
+		{
+			name: 'Досвід',
+			link: '/about'
+		},
+		{
+			name: 'Послуги',
+			link: '/services'
+		}
+	]
 
 	return (
 		<header className={`${styles.header} ${showBurgerMenu === 'show' ? styles.headerShow : ''}`}>
@@ -23,19 +42,12 @@ const Header = () => {
 			</div>
 
 			<nav>
-				<ul>
-					<li>
-						<Link href="/">Головна</Link>
-					</li>
-					<li>
-						<Link href="/en/projects">3D Проєкти</Link>
-					</li>
-					<li>
-						<Link href="/en/services">Досвід</Link>
-					</li>
-					<li>
-						<Link href="/en/services">Послуги</Link>
-					</li>
+				<ul ref={navLinksRef}>
+					{nav.map((linkText, index) => (
+						<li key={index}>
+							<Link href={`/en${linkText.link}`} onClick={() => toggleBurgerMenu()}>{linkText.name}</Link>
+						</li>
+					))}
 				</ul>
 			</nav>
 
@@ -45,7 +57,7 @@ const Header = () => {
 			</div>
 
 			<div className={styles.burgerIcon} onClick={toggleBurgerMenu}>
-				{showBurgerMenu === 'show' ? <BurgerHideIcon /> : <BurgerIcon />}
+				{showBurgerMenu === 'show' ? <BurgerHideIcon/> : <BurgerIcon />}
 			</div>
 		</header>
 	);

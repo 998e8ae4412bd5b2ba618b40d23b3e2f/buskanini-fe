@@ -19,7 +19,7 @@
       h1 {
         font-weight: 700;
         line-height: 135%;
-        margin-bottom: 105px;
+        margin-bottom: 12.188rem;
 
         span {
           color: $white;
@@ -28,10 +28,20 @@
 
       .socMedias {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        padding-right: 100px;
-        gap: 168px 129px;
+        align-items: center;
+        flex-wrap: wrap;
+
+        svg {
+          padding-top: 30%;
+          padding-right: 10%;
+        }
+
+        svg:nth-child(1),
+        svg:nth-child(2),
+        svg:nth-child(3) {
+          padding-top: 0;
+        }
       }
     }
 
@@ -50,12 +60,13 @@
       width: 100%;
       max-width: none;
       flex-direction: column;
-      padding: 86px 0 142px;
+      padding: 142px 0 142px;
 
       .haveQuestionSide {
         h1 {
           font-size: 40px;
-          margin-bottom: 65px;
+          margin-bottom: 55px;
+          line-height: 1.2;
         }
 
         .socMedias {

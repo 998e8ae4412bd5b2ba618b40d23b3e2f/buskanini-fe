@@ -76,22 +76,20 @@
 @media (max-width: 768px) {
   .defaultProjectCard {
     padding: 1rem;
-    border-radius: 25px;
-    height: 342px;
-    border-radius: 25px;
     border: 0.963px solid $white;
+    border-radius: 16px;
+    height: 342px;
 
     &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 0;
-
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 73.53%, rgba(0, 0, 0, 0.85) 99.14%);
-      }
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 73.53%, rgba(0, 0, 0, 0.85) 99.14%);
+    }
 
     .hoverInfo {
       opacity: 1;

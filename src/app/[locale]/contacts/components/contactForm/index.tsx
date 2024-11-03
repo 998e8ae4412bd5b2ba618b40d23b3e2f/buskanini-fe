@@ -3,6 +3,7 @@ import React, {ChangeEvent, FormEvent, useState, useRef} from 'react';
 import FileSvg from '../../../../../../public/svg/file.svg';
 import CircleSvg from '../../../../../../public/svg/closeCircle.svg';
 import ArrowSubmit from '../../../../../../public/svg/ArrowSubmit.svg';
+import Change from '../../../../../../public/svg/change.svg';
 import styles from './contactForm.module.scss';
 
 const ContactForm: React.FC = () => {
@@ -46,20 +47,33 @@ const ContactForm: React.FC = () => {
                 <div className={styles.fileUploadLabel}>
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} />
                     {selectedFile ? (
-                        <div className={styles.changeFile}>
-                            <FileSvg />
-                            <span>{selectedFile.name}</span>
+                        <div className={styles.fileInput}>
+                            <div className={styles.fileIcon}>
+                                <FileSvg/>
+                            </div>
+                            <span>{selectedFile.name.length > 10 ? `${selectedFile.name.slice(0, 10)}...` : selectedFile.name}</span>
                             <button
                                 type="button"
-                                className={styles.changeButton}
+                                className={styles.deleteButton}
                                 onClick={() => setSelectedFile(null)}
                             >
-                                <CircleSvg />
+                                <CircleSvg/>
+                            </button>
+
+
+                            <button className={styles.changeButton} onClick={handleFileInputClick}>
+                                <span>Замінити</span>
+
+                                <div className={styles.changeIcon}>
+                                    <Change/>
+                                </div>
                             </button>
                         </div>
                     ) : (
                         <div className={styles.fileInput}>
-                            <FileSvg />
+                        <div className={styles.fileIcon}>
+                                <FileSvg/>
+                            </div>
                             <button onClick={handleFileInputClick} formNoValidate>
                                 Upload File
                             </button>

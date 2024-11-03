@@ -123,6 +123,7 @@
             .slide {
               height: 100%;
               width: 100%;
+              opacity: .4;
 
               img {
                 height: 100%;
@@ -300,7 +301,7 @@
                   height: 100%;
                   width: 100%;
                   object-fit: cover;
-                  border-radius: 1.875rem;
+                  border-radius: 0rem;
                 }
               }
             }

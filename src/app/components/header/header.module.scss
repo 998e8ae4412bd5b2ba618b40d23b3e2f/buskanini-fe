@@ -6,7 +6,7 @@
   padding: 2.375rem 3.975rem 0;
 
   position: relative;
-  z-index: 10;
+  z-index: 999999;
 
   .headerLogo__block {
     flex: 1;
@@ -105,6 +105,8 @@
         font-size: 1.065rem;
         padding: 0 1.75rem;
       }
+
+      z-index: 99999;
     }
 
     .burgerIcon {
@@ -129,20 +131,24 @@
     }
 
     &Show {
-      height: calc(100vh - 2.5rem);
+      height: calc(100dvh - 2rem);
+      transition: .3s;
 
       &:before {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 100lvh;
-        width: 100lvw;
-        background-color: hsla(0, 0%, 0%, 1);
-        z-index: 0;
+        top: 1.5%;
+        right: 4.5%;
+        height: 5dvh;
+        width: 5dvh;
+        border-radius: 100%;
+        background-color: black;
+        z-index: 10;
+        animation: scaleBurgerBackground .5s linear forwards;
       }
 
       nav {
+        width: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -150,6 +156,8 @@
         transform: translate(-50%, -50%);
 
         display: flex;
+        justify-content: center;
+        z-index: 99999;
 
 
         ul {
@@ -159,6 +167,7 @@
           gap: 7vh;
 
           background: transparent;
+          backdrop-filter: none;
 
           li {
             a {
@@ -185,6 +194,19 @@
 
         button {
           display: none;
+        }
+
+        z-index: 99999;
+      }
+
+      @keyframes scaleBurgerBackground {
+        0% {
+          scale: 1;
+        }
+
+        100% {
+
+          scale: 55;
         }
       }
     }

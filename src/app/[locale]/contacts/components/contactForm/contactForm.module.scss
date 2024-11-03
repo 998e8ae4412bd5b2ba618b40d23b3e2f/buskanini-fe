@@ -1,7 +1,6 @@
 @import "/src/app/styles/values.scss";
 
 
-// ContactForm.module.scss
 .form {
   display: flex;
   flex-direction: column;
@@ -57,6 +56,20 @@
   gap: 0.625rem;
 }
 
+.fileUploadLabel {
+  width: 100%;
+}
+
+.fileIcon {
+  width: 2.625rem;
+  height: 3.5rem;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
 .changeFile {
   display: flex;
   align-items: center;
@@ -84,18 +97,57 @@
   display: flex;
   gap: 1.25rem;
   cursor: pointer;
+  align-items: center;
 
   button {
     background: none;
     color: $white;
   }
-}
 
-.changeButton {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+  span {
+    color: $white;
+    text-align: center;
+
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 175%;
+
+    white-space: nowrap;
+  }
+
+  .deleteButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-right: auto;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .changeButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .changeIcon {
+      height: 1.5rem;
+      width: 1.5rem;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .checkboxGroup {
@@ -167,9 +219,32 @@
 
 
 @media (max-width: 768px) {
-  // ContactForm.module.scss
   .form {
-    gap: 3rem;
+    gap: 2.1rem;
+
+    .inputGroup {
+      input, textarea {
+        &::placeholder {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .fileUploadGroup {
+      .fileUploadLabel {
+        .fileInput {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.0rem;
+
+          .changeButton {
+            span {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
   }
 
   .checkboxGroup {
@@ -182,7 +257,6 @@
       font-size: 1.188rem;
       gap: 1rem;
 
-
       input {
         display: none;
       }
@@ -190,7 +264,7 @@
       .square {
         min-width: 1.875rem;
         height: 1.875rem;
-        margin-right: 1rem;
+        margin-right: 0;
         border-radius: 0.8125rem;
         border: 0.1875rem solid $white;
       }

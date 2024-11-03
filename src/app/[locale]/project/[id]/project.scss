@@ -1,0 +1,9 @@
+.swiper-slide-thumb-active {
+  opacity: 1 !important;
+  transition: .5s !important;
+
+  img {
+    transition: .5s !important;
+    border-radius: 15px !important;
+  }
+}

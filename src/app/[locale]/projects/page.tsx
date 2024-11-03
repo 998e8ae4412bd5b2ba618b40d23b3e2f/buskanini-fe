@@ -1,26 +1,37 @@
-import React from "react";
+'use client'
+import React, { useState, useRef, useEffect } from "react";
 import Header from "@/app/components/header";
 import styles from "./projects.module.scss";
 import Link from "next/link";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
+import NavArrow from "../../../../public/svg/arrowNav.svg";
+import { DefaultProject } from "@/app/[locale]/projects/pageComponents";
+import gsap from 'gsap';
 import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
-import DefaultLayout from "next/dist/client/components/default-layout";
-import {DefaultProject} from "@/app/[locale]/projects/pageComponents";
 
-const Page = () => {
-	const project = [
+interface Project {
+	name: string;
+	image: string;
+	is3D: boolean;
+}
+
+const Page: React.FC = () => {
+	const projectTypes = ["Інтер'єр", "Рендер", "Моделювання"];
+	const [projectsType, setProjectsType] = useState<string>(projectTypes[0]);
+
+	const projects: Project[] = [
 		{
 			name: "Zenith Lounge Chair",
 			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
 		{
-			name: "Nimbus Ottoman",
+			name: "Zenith Horizon",
 			image: "https://picsum.photos/2550/1440",
 			is3D: true,
 		},
 		{
-			name: "Sienna Vista Bench",
+			name: "Lumina Residence",
 			image: "https://picsum.photos/2550/1440",
 			is3D: false,
 		},
@@ -51,6 +62,38 @@ const Page = () => {
 		},
 	];
 
+	const arrowRef = useRef<HTMLDivElement>(null);
+	const menuItemRefs = useRef<HTMLLIElement[]>([]);
+	const [isPhone, setIsPhone] = useState<boolean>(false)
+
+	const addToRefs = (el: HTMLLIElement) => {
+		if (el && !menuItemRefs.current.includes(el)) {
+			menuItemRefs.current.push(el);
+		}
+	};
+
+	useEffect(() => {
+		menuItemRefs.current.forEach((item) => {
+			item.addEventListener('mouseenter', () => {
+				if (arrowRef.current) {
+					gsap.to(arrowRef.current, {
+						y: item.offsetTop
+					});
+				}
+			});
+		});
+
+		return () => {
+			menuItemRefs.current.forEach((item) => {
+				item.removeEventListener('mouseenter', () => {});
+			});
+		};
+	}, []);
+
+	useEffect(() => {
+		window.innerWidth < 768 && setIsPhone(true)
+	}, [])
+
 	return (
 		<>
 			<Header />
@@ -58,15 +101,16 @@ const Page = () => {
 				<div className={styles.navLabel}>
 					<nav>
 						<ul>
-							<li>
-								<button className={styles.active}>Інтер'єр</button>
-							</li>
-							<li>
-								<button>Рендер</button>
-							</li>
-							<li>
-								<button>Моделювання</button>
-							</li>
+							{projectTypes.map((item) => (
+								<li key={item}>
+									<button
+										onClick={() => setProjectsType(item)}
+										className={`${item === projectsType ? styles.active : ''}`}
+									>
+										{item}
+									</button>
+								</li>
+							))}
 						</ul>
 					</nav>
 
@@ -78,18 +122,23 @@ const Page = () => {
 				<div className={styles.projects}>
 					<nav className={styles.projectsList}>
 						<ul>
-							{project.map((el) => (
-								<li key={el.name}>
+							{projects.map((el) => (
+								<li ref={addToRefs} key={el.name}>
 									<Link href="/">{el.name}</Link>
 								</li>
 							))}
 						</ul>
+						<div ref={arrowRef} className={styles.arrow} style={{ color: "red" }}>
+							<NavArrow/>
+						</div>
 					</nav>
 
 					<div className={styles.projectsGridPagination}>
-						<div className={styles.interiorGrid}>
-							{project.map((el) => (
-								<DefaultProject name={el.name} image={el.image} />
+						<div className={`${projectsType === projectTypes[0] ? styles.interiorGrid : styles.defaultGrid}`}>
+							{projects.map((el) => (
+								projectsType === projectTypes[0]
+									? <InteriorProject key={el.name} image={el.image}/>
+									: <DefaultProject key={el.name} image={el.image} name={el.name} />
 							))}
 						</div>
 
