@@ -203,7 +203,7 @@ $side-padding: 5.125rem;
 
 @media (max-width: 768px) {
   .banner {
-    height: 88.4dvh;
+    height: 88.4vh;
 
     .centerText {
       width: calc(100% - 2.625rem);
@@ -236,7 +236,7 @@ $side-padding: 5.125rem;
     }
 
     .scrollDown {
-      bottom: 15%;
+      bottom: 8%;
       gap: 0.4rem;
 
       svg {
