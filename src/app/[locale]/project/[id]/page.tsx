@@ -72,17 +72,17 @@ const Page: React.FC = () => {
                             }
                         }
                         photos {
-                            directus_files_id
+                            directus_files_id {id}
                         }
                         date
                     }
                     models(filter: { project: { id: { _eq: "${projectId}" } } }) {
-                        model
+                        model {id}
                         translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
                             name
                         }
                         images {
-                            directus_files_id
+                            directus_files_id {id}
                         }
                     }
                 }
@@ -137,7 +137,7 @@ const Page: React.FC = () => {
 
 	const imageIds =
 		models[currentIndex]?.images.map(
-			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id}`
+			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id.id}`
 		) || [];
 	const tags = project?.tags.map((tag) => tag.tags_id.translations[0].name) || [];
 
@@ -189,7 +189,7 @@ const Page: React.FC = () => {
 						</Swiper>
 					</div>
 
-					<ProjectGallery model={models[currentIndex]?.model} imageIds={imageIds} />
+					<ProjectGallery model={models[currentIndex]?.model.id} imageIds={imageIds} />
 				</section>
 
 				<section className={styles.projectSection}>

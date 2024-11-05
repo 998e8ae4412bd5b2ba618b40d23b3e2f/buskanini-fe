@@ -19,40 +19,6 @@ import React from "react";
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function Home() {
-	const elements = [
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-		{
-			image: "https://picsum.photos/2550/1440",
-		},
-	];
-	const [projects, setProjects] = React.useState([]);
-
 	const scrollToSection = () => {
 		gsap.to(window, {
 			duration: 1,

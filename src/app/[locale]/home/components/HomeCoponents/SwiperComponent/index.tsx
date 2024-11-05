@@ -70,7 +70,7 @@ const SwiperComponent: React.FC = () => {
 				query Models {
 				  models {
 					images {
-					  directus_files_id
+					  directus_files_id { id }
 					}
 					project {
 					  id
@@ -111,7 +111,7 @@ const SwiperComponent: React.FC = () => {
 			{models.map((model, index) => (
 				<SwiperSlide className="homeSlide" key={index}>
 					<SlideComponent
-						imageId={model.images[0]?.directus_files_id}
+						imageId={model.images[0]?.directus_files_id.id}
 						projectId={model.project.id}
 					/>
 				</SwiperSlide>

@@ -72,24 +72,23 @@ const Page: React.FC = () => {
 		const query = `
 		  query Models {
 			modellingModels: models(filter: { drop: { _eq: "modelling" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
-			  model
-        	  drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id}
+			  images { directus_files_id { id } }
 			}
 			renderModels: models(filter: { drop: { _eq: "render" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
-			  model drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id}
+			  images { directus_files_id { id } }
 			}
 			interiorModels: models(filter: { drop: { _eq: "interior" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
-			  model drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id}
+			  images { directus_files_id { id } }
 			}
 			interiorCount: models_aggregated(filter: { drop: { _eq: "interior" } }) {
 				count {
-					model
+					model 
 				}
 			}
 			renderCount: models_aggregated(filter: { drop: { _eq: "render" } }) {
@@ -194,7 +193,7 @@ const Page: React.FC = () => {
 							{currentProjects.map((el, i) => {
 								const imageUrl =
 									el.images && el.images.length > 0
-										? `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${el.images[0].directus_files_id}`
+										? `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${el.images[0].directus_files_id.id}`
 										: "https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png";
 
 								return projectsType === "interior" ? (
@@ -212,7 +211,7 @@ const Page: React.FC = () => {
 												: "Без назви"
 										}
 										image={imageUrl}
-										model={el.model ? el.model : ""}
+										model={el.model.id ? el.model.id : ""}
 										projectId={el.project.id}
 									/>
 								);
