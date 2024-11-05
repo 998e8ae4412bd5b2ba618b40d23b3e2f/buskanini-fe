@@ -193,7 +193,7 @@ const Page: React.FC = () => {
 							{currentProjects.map((el, i) => {
 								const imageUrl =
 									el.images && el.images.length > 0
-										? `http://localhost:8055/assets/${el.images[0].directus_files_id}`
+										? `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${el.images[0].directus_files_id}`
 										: "https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png";
 
 								return projectsType === "interior" ? (

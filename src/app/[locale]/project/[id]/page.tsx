@@ -137,7 +137,7 @@ const Page: React.FC = () => {
 
 	const imageIds =
 		models[currentIndex]?.images.map(
-			(image) => `http://localhost:8055/assets/${image.directus_files_id}`
+			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id}`
 		) || [];
 	const tags = project?.tags.map((tag) => tag.tags_id.translations[0].name) || [];
 
@@ -160,7 +160,7 @@ const Page: React.FC = () => {
 					{project?.photos.map((photo, index) => (
 						<SwiperSlide key={index}>
 							<img
-								src={`http://localhost:8055/assets/${photo.directus_files_id}`}
+								src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/${photo.directus_files_id}`}
 								alt={`Slide ${index + 1}`}
 							/>
 						</SwiperSlide>

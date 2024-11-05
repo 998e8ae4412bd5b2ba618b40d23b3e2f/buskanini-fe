@@ -48,7 +48,7 @@ const SlideComponent: React.FC<SlideProps> = ({ imageId, projectId }) => (
 			window.location.href = `en/project/${projectId}`;
 		}}
 	>
-		<img src={`http://localhost:8055/assets/${imageId}`} alt="" />
+		<img src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${imageId}`} alt="" />
 		<PreviewButton />
 	</article>
 );
