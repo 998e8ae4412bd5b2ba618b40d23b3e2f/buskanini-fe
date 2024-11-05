@@ -4,13 +4,14 @@ import styles from '../ModelModal/modelModal.module.scss'
 import React, {Suspense} from "react";
 
 interface ModelProps {
+    model: string;
     setModelLoaded: (loaded: boolean) => void;
 }
 
-import * as THREE from 'three'; // Імпортуємо THREE для обчислення обмежуючого об’єму
+import * as THREE from 'three';
 
-const Model: React.FC<ModelProps> = ({ setModelLoaded }) => {
-    const { scene } = useGLTF('/models/5.glb', true) as any;
+const Model: React.FC<ModelProps> = ({ model, setModelLoaded }) => {
+    const { scene } = useGLTF(model, true) as any;
 
     React.useEffect(() => {
         setModelLoaded(true);
@@ -39,10 +40,11 @@ const Model: React.FC<ModelProps> = ({ setModelLoaded }) => {
 
 
 interface ModelViewerProps {
+    model: string;
     setModelLoaded: (loaded: boolean) => void;
 }
 
-const ModelViewer: React.FC<ModelViewerProps> = ({ setModelLoaded }) => {
+const ModelViewer: React.FC<ModelViewerProps> = ({ model, setModelLoaded }) => {
     return (
         <Canvas
             className={styles.canvas}
@@ -53,7 +55,7 @@ const ModelViewer: React.FC<ModelViewerProps> = ({ setModelLoaded }) => {
 
             <Suspense fallback={null}>
                 <Center>
-                    <Model setModelLoaded={setModelLoaded}/>
+                    <Model model={model} setModelLoaded={setModelLoaded}/>
                 </Center>
             </Suspense>
             <OrbitControls enablePan enableZoom enableRotate/>

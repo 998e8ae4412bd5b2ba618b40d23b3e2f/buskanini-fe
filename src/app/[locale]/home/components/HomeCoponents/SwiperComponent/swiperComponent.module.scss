@@ -2,6 +2,8 @@
 
 .sliderElement {
   position: relative;
+  height: 28vw;
+  max-height: 591px;
 
   img {
     width: 100%;
@@ -54,6 +56,9 @@
 
 @media (max-width: 768px) {
   .sliderElement {
+    max-height: unset;
+    height: 60vw;
+
     img {
       border-radius: 10.765px;
       border: 0.88px solid var(--White, #F6F6F6);

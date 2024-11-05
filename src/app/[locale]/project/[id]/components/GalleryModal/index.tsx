@@ -58,7 +58,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                             }}
                             className={styles.mainModalSwiper}
                         >
-                            {images.map((image, i) => (
+                            {images && images.map((image, i) => (
                                 <SwiperSlide key={i}>
                                     <img src={image} alt={`Зображення ${i + 1}`} />
                                 </SwiperSlide>

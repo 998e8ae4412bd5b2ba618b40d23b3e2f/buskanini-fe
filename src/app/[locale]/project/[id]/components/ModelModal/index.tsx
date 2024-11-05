@@ -4,11 +4,12 @@ import CloseModalModel from "../../../../../../../public/svg/closeModalModel.svg
 import ModelViewer from "@/app/[locale]/project/[id]/components/ModelViewer";
 
 interface ModalProps {
+    model: string;
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
-const Index = ({ active, setActive }: ModalProps) => {
+const Index = ({ model, active, setActive }: ModalProps) => {
     const [modelLoaded, setModelLoaded] = React.useState<boolean>(false);
 
     return (
@@ -22,7 +23,7 @@ const Index = ({ active, setActive }: ModalProps) => {
                             <div className={styles.loadingLine} />
                         </div>
                     )}
-                    <ModelViewer setModelLoaded={setModelLoaded} />
+                    <ModelViewer model={model} setModelLoaded={setModelLoaded} />
                 </div>
                 <div className={styles.close} onClick={() => {
                     setActive(false)

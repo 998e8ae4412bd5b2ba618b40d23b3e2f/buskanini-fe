@@ -45,13 +45,20 @@
     display: flex;
     flex-direction: column;
     gap: 2.8125rem;
-    width: calc(100% - 22.5rem);
-    max-width: 94rem;
-    padding: 8.4375rem 11.25rem 7.125rem;
+    width: calc(100% - 0rem);
+    max-width: 100%;
+    padding: 8.4375rem 0rem 7.125rem;
+    align-items: center;
 
-    .projectTitle {
-      margin: 0 auto;
-      width: fit-content;
+    .galleryTitles {
+      width: 100%;
+
+      .projectTitle {
+        margin: 0 auto;
+        width: fit-content;
+        transition: .5s !important;
+        color: #666;
+      }
     }
 
     .projectGallery {
@@ -59,6 +66,7 @@
       display: flex;
       align-items: center;
       gap: 3.75rem;
+      max-width: 94rem;
 
       .galleryBlock {
         width: 100%;
@@ -152,7 +160,9 @@
       font-weight: 400;
       line-height: 1.5;
       text-align: center;
-      margin-bottom: 5rem;
+      width: 80%;
+
+      margin: 0 auto 5rem;
     }
 
     .detailsContainer {

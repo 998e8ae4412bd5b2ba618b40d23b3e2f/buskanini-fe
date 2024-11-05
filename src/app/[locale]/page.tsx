@@ -147,7 +147,7 @@ export default function Home() {
 					/>
 
 					<div className={styles.sliderContainer}>
-						<SwiperComponent elements={elements} />
+						<SwiperComponent />
 
 						<Link href="/" className={styles.seeMore}>
 							Переглянути більше

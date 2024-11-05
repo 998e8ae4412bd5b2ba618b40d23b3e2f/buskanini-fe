@@ -5,36 +5,26 @@ import Link from 'next/link';
 import BurgerIcon from '../../../../public/svg/phone/burger-icon.svg';
 import BurgerHideIcon from '../../../../public/svg/phone/burger-hide-icon.svg';
 
+const navItems = [
+	{ name: 'Головна', link: '/' },
+	{ name: '3D Проєкти', link: '/projects' },
+	{ name: 'Досвід', link: '/about' },
+	{ name: 'Послуги', link: '/services' },
+];
+
 const Header = () => {
-	const [showBurgerMenu, setShowBurgerMenu] = React.useState('idle');
+	const [isBurgerMenuVisible, setIsBurgerMenuVisible] = React.useState(false);
+
+	React.useEffect(() => {
+		document.body.classList.toggle('no-scroll', isBurgerMenuVisible);
+	}, [isBurgerMenuVisible]);
 
 	const toggleBurgerMenu = () => {
-		showBurgerMenu !== 'show' ? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll');
-
-		setShowBurgerMenu(prevState => (prevState === 'show' ? 'hide' : 'show'));
+		setIsBurgerMenuVisible((prev) => !prev);
 	};
-	const navLinksRef = React.useRef(null);
-	const nav = [
-		{
-			name: 'Головна',
-			link: '/'
-		},
-		{
-			name: '3D Проєкти',
-			link: '/projects'
-		},
-		{
-			name: 'Досвід',
-			link: '/about'
-		},
-		{
-			name: 'Послуги',
-			link: '/services'
-		}
-	]
 
 	return (
-		<header className={`${styles.header} ${showBurgerMenu === 'show' ? styles.headerShow : ''}`}>
+		<header className={`${styles.header} ${isBurgerMenuVisible ? styles.headerShow : ''}`}>
 			<div className={styles.headerLogo__block}>
 				<Link href="/" className={styles.header__logo}>
 					buskanini
@@ -42,10 +32,12 @@ const Header = () => {
 			</div>
 
 			<nav>
-				<ul ref={navLinksRef}>
-					{nav.map((linkText, index) => (
+				<ul>
+					{navItems.map(({ name, link }, index) => (
 						<li key={index}>
-							<Link href={`/en${linkText.link}`} onClick={() => toggleBurgerMenu()}>{linkText.name}</Link>
+							<Link href={`/en${link}`}>
+								{name}
+							</Link>
 						</li>
 					))}
 				</ul>
@@ -57,7 +49,7 @@ const Header = () => {
 			</div>
 
 			<div className={styles.burgerIcon} onClick={toggleBurgerMenu}>
-				{showBurgerMenu === 'show' ? <BurgerHideIcon/> : <BurgerIcon />}
+				{isBurgerMenuVisible ? <BurgerHideIcon /> : <BurgerIcon />}
 			</div>
 		</header>
 	);

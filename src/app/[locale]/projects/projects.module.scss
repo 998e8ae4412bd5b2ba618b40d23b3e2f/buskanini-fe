@@ -120,9 +120,13 @@
       .pagination {
         display: flex;
         width: 100%;
-        max-width: 1718px;
         padding: 10.9375rem 0 6.9375rem;
         justify-content: space-between;
+
+        .buttonActive {
+          opacity: 1;
+        }
+
 
         button {
           display: flex;
@@ -134,6 +138,7 @@
           font-weight: 400;
           line-height: 135%;
           background: none;
+          opacity: 0.3;
 
           &:last-child {
             svg {
