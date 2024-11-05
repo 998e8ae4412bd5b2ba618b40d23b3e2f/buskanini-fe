@@ -18,7 +18,7 @@ const SWIPER_STYLES_DESKTOP: CSSProperties & {
 	"--swiper-pagination-bullet-inactive-opacity": "1",
 	"--swiper-pagination-bullet-size": "1.4rem",
 	"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
-	"--swiper-pagination-bottom": "5%",
+	"--swiper-pagination-bottom": "1%",
 };
 
 const SWIPER_STYLES_MOBILE: CSSProperties & { [key: string]: string | number } =
@@ -67,17 +67,17 @@ const SwiperComponent: React.FC = () => {
 	useEffect(() => {
 		const fetchModels = async () => {
 			const query = `
-        query Models {
-          models {
-            images {
-              directus_files_id
-            }
-            project {
-              id
-            }
-          }
-        }
-      `;
+				query Models {
+				  models {
+					images {
+					  directus_files_id
+					}
+					project {
+					  id
+					}
+				  }
+				}
+			  `;
 			try {
 				const response = await fetchGraphQL(query);
 				setModels(response.data.models);

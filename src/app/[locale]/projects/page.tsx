@@ -72,19 +72,20 @@ const Page: React.FC = () => {
 		const query = `
 		  query Models {
 			modellingModels: models(filter: { drop: { _eq: "modelling" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
-			  model drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  model
+        	  drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id }
+			  images { directus_files_id}
 			}
 			renderModels: models(filter: { drop: { _eq: "render" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
 			  model drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id }
+			  images { directus_files_id}
 			}
 			interiorModels: models(filter: { drop: { _eq: "interior" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
 			  model drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
-			  images { directus_files_id }
+			  images { directus_files_id}
 			}
 			interiorCount: models_aggregated(filter: { drop: { _eq: "interior" } }) {
 				count {

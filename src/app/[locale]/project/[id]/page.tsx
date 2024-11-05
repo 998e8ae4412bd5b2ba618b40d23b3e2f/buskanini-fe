@@ -160,7 +160,7 @@ const Page: React.FC = () => {
 					{project?.photos.map((photo, index) => (
 						<SwiperSlide key={index}>
 							<img
-								src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/${photo.directus_files_id}`}
+								src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${photo.directus_files_id}`}
 								alt={`Slide ${index + 1}`}
 							/>
 						</SwiperSlide>
@@ -170,18 +170,15 @@ const Page: React.FC = () => {
 
 			<main className={styles.main}>
 				<section className={styles.galleryContainer}>
-					<div className={styles.galleryTitles}>
+					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
-							speed={1000}
 							spaceBetween={28}
 							modules={[FreeMode, Navigation, Thumbs]}
 							className={styles.swiperSecondary}
 							centeredSlides={true}
-							breakpoints={{
-								0: { slidesPerView: 1 },
-								768: { slidesPerView: 1.8 },
-							}}
+							slidesPerView={'auto'}
+
 							onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
 						>
 							{models.map((model, i) => (
