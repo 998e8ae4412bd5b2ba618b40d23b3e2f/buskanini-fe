@@ -1,7 +1,6 @@
-import React from "react";
-import styles from "./preview.module.scss";
+import type React from "react";
 import Preview3D from "../../../../public/svg/preview3D.svg";
-
+import styles from "./preview.module.scss";
 
 interface PreviewButtonProps {
 	onClick?: () => void;

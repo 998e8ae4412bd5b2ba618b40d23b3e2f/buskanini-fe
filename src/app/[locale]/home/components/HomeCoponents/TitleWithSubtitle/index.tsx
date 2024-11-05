@@ -1,5 +1,5 @@
-import styles from "./titleWithSubtitle.module.scss";
 import React from "react";
+import styles from "./titleWithSubtitle.module.scss";
 
 type TitleWithSubtitleProps = {
 	title: string;

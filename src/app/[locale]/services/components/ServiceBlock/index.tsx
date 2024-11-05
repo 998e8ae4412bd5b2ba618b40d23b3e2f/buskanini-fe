@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import styles from "./serviceBlock.module.scss";
 
 interface Props {

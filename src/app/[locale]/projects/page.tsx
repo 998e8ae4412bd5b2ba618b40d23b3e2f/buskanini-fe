@@ -1,16 +1,17 @@
-'use client';
-import React, { useState, useRef, useEffect } from "react";
+"use client";
+import { log } from "node:util";
+import { DefaultProject } from "@/app/[locale]/projects/pageComponents";
+import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
 import Header from "@/app/components/header";
-import styles from "./projects.module.scss";
+import { fetchGraphQL } from "@/app/lib/directus";
+import gsap from "gsap";
 import Link from "next/link";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
 import NavArrow from "../../../../public/svg/arrowNav.svg";
-import { DefaultProject } from "@/app/[locale]/projects/pageComponents";
-import gsap from 'gsap';
-import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
-import { fetchGraphQL } from "@/app/lib/directus";
-import { useLocale } from "use-intl";
-import {log} from "node:util";
+import styles from "./projects.module.scss";
 
 interface ProjectTranslation {
 	name: string;
@@ -30,25 +31,29 @@ interface ProjectItem {
 
 const Page: React.FC = () => {
 	const locale = useLocale();
-	const lang = locale === 'en' ? "en-US" : "ua-UA";
+	const lang = locale === "en" ? "en-US" : "ua-UA";
 
 	const projectTypes = [
 		{ name: "Інтер'єр", value: "interior" },
 		{ name: "Рендер", value: "render" },
-		{ name: "Моделювання", value: "modelling" }
+		{ name: "Моделювання", value: "modelling" },
 	];
 
-	const [projectsType, setProjectsType] = useState<string>(projectTypes[0].value);
-	const [projectsData, setProjectsData] = useState<Record<string, ProjectItem[]>>({
+	const [projectsType, setProjectsType] = useState<string>(
+		projectTypes[0].value,
+	);
+	const [projectsData, setProjectsData] = useState<
+		Record<string, ProjectItem[]>
+	>({
 		interior: [],
 		render: [],
-		modelling: []
+		modelling: [],
 	});
 
 	const [projectCounts, setProjectCounts] = useState<Record<string, number>>({
 		interior: 0,
 		render: 0,
-		modelling: 0
+		modelling: 0,
 	});
 
 	const [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +63,7 @@ const Page: React.FC = () => {
 	const handleMouseEnter = (e: React.MouseEvent<HTMLLIElement>) => {
 		if (arrowRef.current) {
 			gsap.to(arrowRef.current, {
-				y: e.currentTarget.offsetTop
+				y: e.currentTarget.offsetTop,
 			});
 		}
 	};
@@ -104,13 +109,13 @@ const Page: React.FC = () => {
 			setProjectsData({
 				interior: response.data.interiorModels,
 				render: response.data.renderModels,
-				modelling: response.data.modellingModels
+				modelling: response.data.modellingModels,
 			});
 
 			setProjectCounts({
 				interior: response.data.interiorCount[0].count.model,
 				render: response.data.renderCount[0].count.model,
-				modelling: response.data.modellingCount[0].count.model
+				modelling: response.data.modellingCount[0].count.model,
 			});
 		} catch (error) {
 			console.error("Error fetching models:", error);
@@ -124,12 +129,12 @@ const Page: React.FC = () => {
 	const scrollToTop = () => {
 		window.scrollTo({
 			top: 0,
-			behavior: 'smooth'
+			behavior: "smooth",
 		});
 	};
 
 	const currentProjects = projectsData[projectsType] || [];
-	if (!currentProjects) return null
+	if (!currentProjects) return null;
 
 	return (
 		<>
@@ -141,8 +146,11 @@ const Page: React.FC = () => {
 							{projectTypes.map((item) => (
 								<li key={item.value}>
 									<button
-										onClick={() => { setProjectsType(item.value); setCurrentPage(1); }}
-										className={item.value === projectsType ? styles.active : ''}
+										onClick={() => {
+											setProjectsType(item.value);
+											setCurrentPage(1);
+										}}
+										className={item.value === projectsType ? styles.active : ""}
 									>
 										{item.name}
 									</button>
@@ -158,11 +166,16 @@ const Page: React.FC = () => {
 				<div className={styles.projects}>
 					<nav className={styles.projectsList}>
 						<ul>
-							{currentProjects && currentProjects.map((el, i) => (
-								<li key={i} onMouseEnter={handleMouseEnter}>
-									<Link href="/">{el.translations.length > 0 ? el.translations[0].name : "Без назви"}</Link>
-								</li>
-							))}
+							{currentProjects &&
+								currentProjects.map((el, i) => (
+									<li key={i} onMouseEnter={handleMouseEnter}>
+										<Link href="/">
+											{el.translations.length > 0
+												? el.translations[0].name
+												: "Без назви"}
+										</Link>
+									</li>
+								))}
 						</ul>
 						<div ref={arrowRef} className={styles.arrow}>
 							<NavArrow />
@@ -170,11 +183,18 @@ const Page: React.FC = () => {
 					</nav>
 
 					<div className={styles.projectsGridPagination}>
-						<div className={projectsType === "interior" ? styles.interiorGrid : styles.defaultGrid}>
+						<div
+							className={
+								projectsType === "interior"
+									? styles.interiorGrid
+									: styles.defaultGrid
+							}
+						>
 							{currentProjects.map((el, i) => {
-								const imageUrl = el.images && el.images.length > 0
-									? `http://localhost:8055/assets/${el.images[0].directus_files_id}`
-									: 'https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png';
+								const imageUrl =
+									el.images && el.images.length > 0
+										? `http://localhost:8055/assets/${el.images[0].directus_files_id}`
+										: "https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png";
 
 								return projectsType === "interior" ? (
 									<InteriorProject
@@ -185,9 +205,13 @@ const Page: React.FC = () => {
 								) : (
 									<DefaultProject
 										key={i}
-										name={el.translations.length > 0 ? el.translations[0].name : "Без назви"}
+										name={
+											el.translations.length > 0
+												? el.translations[0].name
+												: "Без назви"
+										}
 										image={imageUrl}
-										model={el.model ? el.model : ''}
+										model={el.model ? el.model : ""}
 										projectId={el.project.id}
 									/>
 								);
@@ -197,41 +221,45 @@ const Page: React.FC = () => {
 						<div className={styles.pagination}>
 							<button
 								onClick={() => {
-									scrollToTop()
+									scrollToTop();
 									setTimeout(() => {
-										setCurrentPage((prev) => Math.max(prev - 1, 1))
-									}, 1000)
+										setCurrentPage((prev) => Math.max(prev - 1, 1));
+									}, 1000);
 								}}
 								disabled={currentPage === 1}
-								className={`${currentPage > 1 ? styles.buttonActive : ''}`}
+								className={`${currentPage > 1 ? styles.buttonActive : ""}`}
 							>
 								<PaginationArrow />
 								Попередня сторінка
 							</button>
 							<div className={styles.circles}>
-								{[...Array(Math.ceil(projectCounts[projectsType] / 8))].map((_, idx) => (
-									<div
-										key={idx}
-										className={`${styles.circle} ${currentPage === idx + 1 ? styles.active : ''}`}
-										onClick={() => {
-											scrollToTop()
-											setTimeout(() => {
-												setCurrentPage(idx + 1)
-											}, 1000)
-										}}
-									/>
-								))}
+								{[...Array(Math.ceil(projectCounts[projectsType] / 8))].map(
+									(_, idx) => (
+										<div
+											key={idx}
+											className={`${styles.circle} ${currentPage === idx + 1 ? styles.active : ""}`}
+											onClick={() => {
+												scrollToTop();
+												setTimeout(() => {
+													setCurrentPage(idx + 1);
+												}, 1000);
+											}}
+										/>
+									),
+								)}
 							</div>
 
 							<button
 								onClick={() => {
-									scrollToTop()
+									scrollToTop();
 									setTimeout(() => {
-										setCurrentPage((prev) => prev + 1)
-									}, 1000)
+										setCurrentPage((prev) => prev + 1);
+									}, 1000);
 								}}
-								disabled={currentPage >= Math.ceil(projectCounts[projectsType] / 8)}
-								className={`${currentPage < Math.ceil(projectCounts[projectsType] / 8) ? styles.buttonActive : ''}`}
+								disabled={
+									currentPage >= Math.ceil(projectCounts[projectsType] / 8)
+								}
+								className={`${currentPage < Math.ceil(projectCounts[projectsType] / 8) ? styles.buttonActive : ""}`}
 							>
 								Наступна сторінка
 								<PaginationArrow />

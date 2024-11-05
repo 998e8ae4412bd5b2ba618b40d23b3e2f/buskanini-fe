@@ -1,23 +1,22 @@
-'use client'
+"use client";
 import styles from "@/app/[locale]/home/page.module.scss";
 import ScrollDown from "../../../public/svg/arrow-down-circle.svg";
 
-import Header from "@/app/components/header";
 import {
 	InfinitySlider,
 	ServiceCard,
 	SwiperComponent,
 	TitleWithSubtitle,
 } from "@/app/[locale]/home/components/HomeCoponents";
-import React from "react";
-import Link from "next/link";
-import HaveQuestion from "@/app/components/haveQuestion";
 import WordCycler from "@/app/components/WordCycler";
-import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import HaveQuestion from "@/app/components/haveQuestion";
+import Header from "@/app/components/header";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import Link from "next/link";
+import React from "react";
 
 gsap.registerPlugin(ScrollToPlugin);
-
 
 export default function Home() {
 	const elements = [
@@ -52,7 +51,7 @@ export default function Home() {
 			image: "https://picsum.photos/2550/1440",
 		},
 	];
-	const [projects, setProjects] = React.useState([])
+	const [projects, setProjects] = React.useState([]);
 
 	const scrollToSection = () => {
 		gsap.to(window, {
@@ -61,7 +60,7 @@ export default function Home() {
 				y: "#collaborateSection",
 				offsetY: 0,
 			},
-			ease: "power2.inOut"
+			ease: "power2.inOut",
 		});
 	};
 
@@ -72,13 +71,14 @@ export default function Home() {
 
 				<div className={styles.centerText}>
 					<h1>
-						3D візуалізація <br/> для
+						3D візуалізація <br /> для
 						<span>
 							<WordCycler
-							words={["комерції", "архітектури", "інтер'єрів"]}
-							intervalTime={60}
-							delayBetweenWords={200}
-						/></span>
+								words={["комерції", "архітектури", "інтер'єрів"]}
+								intervalTime={60}
+								delayBetweenWords={200}
+							/>
+						</span>
 					</h1>
 
 					<p>
@@ -102,7 +102,7 @@ export default function Home() {
 			</section>
 
 			<main className={styles.main}>
-				<section id='collaborateSection' className={styles.sectionCollaborate}>
+				<section id="collaborateSection" className={styles.sectionCollaborate}>
 					<TitleWithSubtitle
 						title="Співпраця"
 						subtitle={`Співпраці з компаніями, \nякими пишаємося`}
@@ -140,7 +140,9 @@ export default function Home() {
 					</div>
 				</section>
 
-				<section className={`${styles.sectionFurnitureDesign} ${styles.container}`}>
+				<section
+					className={`${styles.sectionFurnitureDesign} ${styles.container}`}
+				>
 					<TitleWithSubtitle
 						title="Дизайн меблів"
 						subtitle={`Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.`}

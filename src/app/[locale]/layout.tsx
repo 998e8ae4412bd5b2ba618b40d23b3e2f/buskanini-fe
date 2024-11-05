@@ -2,11 +2,11 @@ import "../styles/fonts.scss";
 import "../styles/default.scss";
 import "../styles/global.scss";
 
+import GoUpButton from "@/app/components/GoUpButton";
+import Footer from "@/app/components/footer";
 import { NextIntlClientProvider, useTranslations } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import Footer from "@/app/components/footer";
-import React from "react";
-import GoUpButton from "@/app/components/GoUpButton";
+import type React from "react";
 
 interface RootLayoutProps {
 	children: React.ReactNode;
@@ -28,7 +28,7 @@ export default async function RootLayout({
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					{children}
 					<Footer />
-					<GoUpButton/>
+					<GoUpButton />
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -1,15 +1,15 @@
-import React from "react";
-import Header from "@/app/components/header";
-import styles from "./services.module.scss";
-import InfoModel from "./components/InfoModel/index";
 import HaveQuestion from "@/app/components/haveQuestion";
+import Header from "@/app/components/header";
+import React from "react";
+import InfoModel from "./components/InfoModel/index";
+import styles from "./services.module.scss";
 
 type BuskaniniBgTitleProps = {
 	title: string;
 	name: string;
 };
 
-const BuskaniniBgTitle = ({title, name}: BuskaniniBgTitleProps) => (
+const BuskaniniBgTitle = ({ title, name }: BuskaniniBgTitleProps) => (
 	<div className={`${styles.buskaniniBgTitle} ${styles[name]}`}>
 		<span>{title}</span>
 	</div>
@@ -49,9 +49,7 @@ const Page = () => {
 				"Візуалізація меблів в інтер'єрі дозволяє побачити, як вони органічно вписуються в конкретне середовище. Це надає клієнтам можливість оцінити, як меблі виглядатимуть в реальному інтер'єрі, підкреслюючи їх стиль і функціональність.",
 			],
 			ctaText: "Замовити",
-			images: [
-				"https://i.ibb.co/HnkwTfd/image3.png",
-			],
+			images: ["https://i.ibb.co/HnkwTfd/image3.png"],
 		},
 		{
 			title: "Product Design",
@@ -60,42 +58,40 @@ const Page = () => {
 				"Відображення меблів на білому тлі дозволяє зосередити увагу насамих меблях, не відволікаючись на  додаткові елементи чи контекст.",
 			],
 			ctaText: "Замовити",
-			images: [
-				"https://i.ibb.co/yVGjgpP/image4.png",
-			],
+			images: ["https://i.ibb.co/yVGjgpP/image4.png"],
 		},
 	];
 
 	return (
 		<>
-			<Header/>
+			<Header />
 			<main className={styles.main}>
-				<BuskaniniBgTitle title="3D Modelling" name="Modelling"/>
+				<BuskaniniBgTitle title="3D Modelling" name="Modelling" />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[0]} reverse={false}/>
+					<InfoModel obj={aboutPage[0]} reverse={false} />
 				</section>
 
-				<BuskaniniBgTitle title="3D Product Rendering" name="Rendering"/>
+				<BuskaniniBgTitle title="3D Product Rendering" name="Rendering" />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[1]} reverse/>
+					<InfoModel obj={aboutPage[1]} reverse />
 				</section>
 
-				<BuskaniniBgTitle title="3D Interior Visualization" name="Interior"/>
+				<BuskaniniBgTitle title="3D Interior Visualization" name="Interior" />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[2]} reverse={false}/>
+					<InfoModel obj={aboutPage[2]} reverse={false} />
 				</section>
 
-				<BuskaniniBgTitle title="Product Designs" name="Product"/>
+				<BuskaniniBgTitle title="Product Designs" name="Product" />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
-					<InfoModel obj={aboutPage[3]} reverse/>
+					<InfoModel obj={aboutPage[3]} reverse />
 				</section>
 
 				<section className={`${styles.question}`}>
-					<HaveQuestion/>
+					<HaveQuestion />
 				</section>
 			</main>
 		</>

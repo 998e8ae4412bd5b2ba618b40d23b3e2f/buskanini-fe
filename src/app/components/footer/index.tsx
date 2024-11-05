@@ -1,12 +1,12 @@
+import Link from "next/link";
 import React from "react";
 import styles from "./footer.module.scss";
-import Link from "next/link";
 
-import Instagram from "../../../../public/svg/socialMedia/instagram.svg";
-import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
-import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
-import Facebook from "../../../../public/svg/socialMedia/facebook.svg";
 import Behance from "../../../../public/svg/socialMedia/behance.svg";
+import Facebook from "../../../../public/svg/socialMedia/facebook.svg";
+import Instagram from "../../../../public/svg/socialMedia/instagram.svg";
+import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
+import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
 
 const Index = () => {
 	return (
@@ -24,13 +24,15 @@ const Index = () => {
 					</div>
 
 					<div className={styles.footerNav}>
-						<div className={`${styles.footerNavList} ${styles.footerNavListContacts}`}>
+						<div
+							className={`${styles.footerNavList} ${styles.footerNavListContacts}`}
+						>
 							<div className={styles.title}>Контакти</div>
 
 							<ul>
 								<li>
 									<Link className={styles.icon} href="/">
-										<Instagram/>
+										<Instagram />
 									</Link>
 								</li>
 								<li>

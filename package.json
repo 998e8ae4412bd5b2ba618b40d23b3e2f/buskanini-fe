@@ -1,35 +1,35 @@
 {
-  "name": "buskanini-fe",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@react-three/drei": "^9.115.0",
-    "@react-three/fiber": "^8.17.10",
-    "@svgr/webpack": "^8.1.0",
-    "@types/three": "^0.169.0",
-    "axios": "^1.7.7",
-    "gsap": "^3.12.5",
-    "next": "14.2.15",
-    "next-intl": "^3.21.1",
-    "react": "^18",
-    "react-dom": "^18",
-    "sass": "^1.79.5",
-    "swiper": "^11.1.14",
-    "three": "^0.170.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+	"name": "buskanini-fe",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@react-three/drei": "^9.115.0",
+		"@react-three/fiber": "^8.17.10",
+		"@svgr/webpack": "^8.1.0",
+		"@types/three": "^0.169.0",
+		"axios": "^1.7.7",
+		"gsap": "^3.12.5",
+		"next": "14.2.15",
+		"next-intl": "^3.21.1",
+		"react": "^18",
+		"react-dom": "^18",
+		"sass": "^1.79.5",
+		"swiper": "^11.1.14",
+		"three": "^0.170.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }

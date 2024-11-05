@@ -13,9 +13,11 @@ const Index = ({ image, projectId }: CardProject) => {
 		"Індивідуальні меблі на замовлення",
 	];
 
-
 	return (
-		<article onClick={() => (window.location.href = `project/?id=${projectId}`)} className={styles.interiorProjectCard}>
+		<article
+			onClick={() => (window.location.href = `project/?id=${projectId}`)}
+			className={styles.interiorProjectCard}
+		>
 			<div className={styles.hoverInfo}>
 				<div className={styles.name}>THavana Hammock Chair</div>
 

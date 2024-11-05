@@ -1,15 +1,18 @@
 "use client";
-import React, { CSSProperties, useEffect, useState } from "react";
+import PreviewButton from "@/app/components/previewButton";
+import type React from "react";
+import { type CSSProperties, useEffect, useState } from "react";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./swiperComponent.module.scss";
-import { Autoplay, Pagination } from "swiper/modules";
-import PreviewButton from "@/app/components/previewButton";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { fetchGraphQL } from "@/app/lib/directus";
 
-const SWIPER_STYLES_DESKTOP: CSSProperties & { [key: string]: string | number } = {
+const SWIPER_STYLES_DESKTOP: CSSProperties & {
+	[key: string]: string | number;
+} = {
 	"--swiper-pagination-color": "#F3E2C6",
 	"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
 	"--swiper-pagination-bullet-inactive-opacity": "1",
@@ -18,14 +21,15 @@ const SWIPER_STYLES_DESKTOP: CSSProperties & { [key: string]: string | number } 
 	"--swiper-pagination-bottom": "5%",
 };
 
-const SWIPER_STYLES_MOBILE: CSSProperties & { [key: string]: string | number } = {
-	"--swiper-pagination-color": "#F3E2C6",
-	"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
-	"--swiper-pagination-bullet-inactive-opacity": "1",
-	"--swiper-pagination-bullet-size": "0.794rem",
-	"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
-	"--swiper-pagination-bottom": "1.5625rem",
-};
+const SWIPER_STYLES_MOBILE: CSSProperties & { [key: string]: string | number } =
+	{
+		"--swiper-pagination-color": "#F3E2C6",
+		"--swiper-pagination-bullet-inactive-color": "hsla(37, 65%, 86%, .3)",
+		"--swiper-pagination-bullet-inactive-opacity": "1",
+		"--swiper-pagination-bullet-size": "0.794rem",
+		"--swiper-pagination-bullet-horizontal-gap": "0.375rem",
+		"--swiper-pagination-bottom": "1.5625rem",
+	};
 
 interface Model {
 	images: { directus_files_id: string }[];

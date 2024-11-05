@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./infinitySlider.module.scss";
+import type React from "react";
 import LogoCompanyOne from "../../../../../../../public/svg/sliderCompanyLogos/LogoCompanyOne.svg";
-import LogoCompanyTwo from "../../../../../../../public/svg/sliderCompanyLogos/LogoCompanyTwo.svg";
 import LogoCompanyThree from "../../../../../../../public/svg/sliderCompanyLogos/LogoCompanyThree.svg";
+import LogoCompanyTwo from "../../../../../../../public/svg/sliderCompanyLogos/LogoCompanyTwo.svg";
+import styles from "./infinitySlider.module.scss";
 
 interface ItemsProps {
 	items: React.FC[];
