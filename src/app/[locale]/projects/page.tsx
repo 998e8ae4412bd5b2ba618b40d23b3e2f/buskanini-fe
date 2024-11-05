@@ -18,11 +18,11 @@ interface ProjectTranslation {
 }
 
 interface ProjectImage {
-	directus_files_id: string;
+	directus_files_id: {id: string};
 }
 
 interface ProjectItem {
-	model: string;
+	model: {id: string};
 	drop: string;
 	translations: ProjectTranslation[];
 	project: { id: string };

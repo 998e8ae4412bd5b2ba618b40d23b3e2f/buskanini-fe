@@ -32,7 +32,7 @@ const SWIPER_STYLES_MOBILE: CSSProperties & { [key: string]: string | number } =
 	};
 
 interface Model {
-	images: { directus_files_id: string }[];
+	images: { directus_files_id: {id: string} }[];
 	project: { id: string };
 }
 

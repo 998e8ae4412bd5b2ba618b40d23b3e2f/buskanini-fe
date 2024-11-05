@@ -27,9 +27,9 @@ interface Project {
 }
 
 interface Model {
-	model: string;
+	model: {id: string};
 	translations: { name: string }[];
-	images: { directus_files_id: string }[];
+	images: { directus_files_id: {id: string} }[];
 }
 
 const Page: React.FC = () => {
