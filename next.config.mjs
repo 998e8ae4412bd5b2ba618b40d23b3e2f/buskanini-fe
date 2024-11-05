@@ -12,6 +12,15 @@ const nextConfig = {
 
 		return config;
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "buskanini-cms.onrender.com",
+				pathname: "/assets/**",
+			},
+		],
+	}
 };
 
 export default withNextIntl(nextConfig);
