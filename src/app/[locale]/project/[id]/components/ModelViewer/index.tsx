@@ -11,7 +11,7 @@ interface ModelProps {
 import * as THREE from "three";
 
 const Model: React.FC<ModelProps> = ({ model, setModelLoaded }) => {
-	const { scene } = useGLTF(model, true) as any;
+	const { scene } = useGLTF(`https://buskanini-cms.onrender.com/assets/${model}`, true) as any;
 
 	React.useEffect(() => {
 		setModelLoaded(true);
