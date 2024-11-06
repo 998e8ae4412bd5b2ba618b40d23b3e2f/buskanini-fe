@@ -224,9 +224,14 @@
 
     .inputGroup {
       input, textarea {
+        font-size: 1.1rem;
         &::placeholder {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
         }
+      }
+
+      input {
+        padding: 1.2rem 2.1875rem;
       }
     }
 

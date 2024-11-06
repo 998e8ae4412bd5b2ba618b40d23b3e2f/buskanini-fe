@@ -17,12 +17,13 @@ import { fetchGraphQL } from "@/app/lib/directus";
 import { useParams, useRouter } from "next/navigation";
 import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../../public/svg/PaginationArrow.svg";
+import LoadingScreen from "@/app/components/LoadingScreen";
 
 interface Project {
 	id: string;
 	date: string;
 	tags: { tags_id: { name: string; translations: { name: string }[] } }[];
-	photos: { directus_files_id: string }[];
+	photos: { directus_files_id: {id: string} }[];
 	translations: { name: string; description: string; client: string }[];
 }
 
@@ -38,6 +39,7 @@ const Page: React.FC = () => {
 	const [projectIds, setProjectIds] = useState<number[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isPhone, setIsPhone] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	const locale = useLocale();
 	const router = useRouter();
@@ -97,8 +99,10 @@ const Page: React.FC = () => {
 					parseInt(p.id, 10)
 				);
 				setProjectIds(ids);
+				setIsLoading(false)
 			} catch (error) {
 				console.error("Error fetching models:", error);
+				setIsLoading(false)
 			}
 		};
 		fetchModels();
@@ -143,6 +147,12 @@ const Page: React.FC = () => {
 
 	const { description = "", client = "" } = project?.translations[0] || {};
 
+	if (isLoading) {
+		return (
+			<LoadingScreen/>
+		);
+	}
+
 	return (
 		<>
 			<section className={styles.banner}>
@@ -160,7 +170,7 @@ const Page: React.FC = () => {
 					{project?.photos.map((photo, index) => (
 						<SwiperSlide key={index}>
 							<img
-								src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${photo.directus_files_id}`}
+								src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${photo.directus_files_id.id}`}
 								alt={`Slide ${index + 1}`}
 							/>
 						</SwiperSlide>

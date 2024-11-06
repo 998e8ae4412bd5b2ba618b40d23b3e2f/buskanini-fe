@@ -14,21 +14,33 @@ const Index = ({ image, projectId }: CardProject) => {
 	];
 
 	return (
-		<article
-			onClick={() => (window.location.href = `project/?id=${projectId}`)}
-			className={styles.interiorProjectCard}
-		>
-			<div className={styles.hoverInfo}>
-				<div className={styles.name}>THavana Hammock Chair</div>
+		<>
+			<article className={styles.interiorProjectCardContainer}>
+				<div
+					onClick={() => (window.location.href = `project/${projectId}`)}
+					className={styles.interiorProjectCard}
+				>
+					<div className={styles.hoverInfo}>
+						<div className={styles.name}>THavana Hammock Chair</div>
 
-				<div className={styles.tags}>
+						<div className={styles.tags}>
+							{tags.map((tag) => (
+								<div className={styles.tag}>{tag}</div>
+							))}
+						</div>
+					</div>
+					<img src={image} alt=""/>
+				</div>
+
+				<div className={styles.tagsMob}
+					 onClick={() => (window.location.href = `project/${projectId}`)}
+				>
 					{tags.map((tag) => (
 						<div className={styles.tag}>{tag}</div>
 					))}
 				</div>
-			</div>
-			<img src={image} alt="" />
-		</article>
+			</article>
+		</>
 	);
 };
 

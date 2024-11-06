@@ -9,7 +9,6 @@
 }
 
 .swiper-slide-active  {
-
   h2 {
     color: #F3E2C6 !important;
   }
@@ -18,5 +17,14 @@
 #ff {
   .swiper-slide {
     width: 40% !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #ff {
+    .swiper-slide {
+      width: 46% !important;
+    }
   }
 }

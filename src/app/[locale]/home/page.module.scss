@@ -47,7 +47,7 @@ $side-padding: 5.125rem;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    bottom: 6.2vh;
+    bottom: 5vh;
     cursor: pointer;
 
     display: flex;
@@ -180,6 +180,7 @@ $side-padding: 5.125rem;
     }
 
     .seeMore {
+      opacity: .7;
       position: absolute;
       bottom: 55px;
       left: 50%;
@@ -189,6 +190,8 @@ $side-padding: 5.125rem;
       font-family: "FixelText", sans-serif;
       font-size: 1rem;
       font-weight: 400;
+
+      z-index: 10;
     }
   }
 
@@ -236,7 +239,7 @@ $side-padding: 5.125rem;
     }
 
     .scrollDown {
-      bottom: 8%;
+      bottom: 14dvh;
       gap: 0.4rem;
 
       svg {
@@ -252,7 +255,7 @@ $side-padding: 5.125rem;
 
     .bannerContainer {
       position: absolute;
-      height: 88lvh;
+      height: 88dvh;
       top: 0;
       left: 0;
       width: 99%;
@@ -322,6 +325,8 @@ $side-padding: 5.125rem;
       }
 
       .seeMore {
+        cursor: pointer;
+
         bottom: 65px;
       }
     }

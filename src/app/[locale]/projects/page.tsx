@@ -12,6 +12,7 @@ import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
 import NavArrow from "../../../../public/svg/arrowNav.svg";
 import styles from "./projects.module.scss";
+import LoadingScreen from "@/app/components/LoadingScreen";
 
 interface ProjectTranslation {
 	name: string;
@@ -42,6 +43,7 @@ const Page: React.FC = () => {
 	const [projectsType, setProjectsType] = useState<string>(
 		projectTypes[0].value,
 	);
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [projectsData, setProjectsData] = useState<
 		Record<string, ProjectItem[]>
 	>({
@@ -117,8 +119,10 @@ const Page: React.FC = () => {
 				render: response.data.renderCount[0].count.model,
 				modelling: response.data.modellingCount[0].count.model,
 			});
+			setIsLoading(false)
 		} catch (error) {
 			console.error("Error fetching models:", error);
+			setIsLoading(false)
 		}
 	};
 
@@ -135,6 +139,12 @@ const Page: React.FC = () => {
 
 	const currentProjects = projectsData[projectsType] || [];
 	if (!currentProjects) return null;
+
+	if (isLoading) {
+		return (
+			<LoadingScreen/>
+		);
+	}
 
 	return (
 		<>
@@ -178,11 +188,11 @@ const Page: React.FC = () => {
 								))}
 						</ul>
 						<div ref={arrowRef} className={styles.arrow}>
-							<NavArrow />
+							<NavArrow/>
 						</div>
 					</nav>
 
-					<div className={styles.projectsGridPagination}>
+					<div className={`${styles.projectsGridPagination} ${projectCounts[projectsType] / 8 > 1 ? '' : styles.bottomPadding}`}>
 						<div
 							className={
 								projectsType === "interior"
@@ -218,18 +228,18 @@ const Page: React.FC = () => {
 							})}
 						</div>
 
-						<div className={styles.pagination}>
+						{projectCounts[projectsType] / 8 > 1 && <div className={styles.pagination}>
 							<button
 								onClick={() => {
 									scrollToTop();
 									setTimeout(() => {
 										setCurrentPage((prev) => Math.max(prev - 1, 1));
-									}, 1000);
+									}, 200);
 								}}
 								disabled={currentPage === 1}
 								className={`${currentPage > 1 ? styles.buttonActive : ""}`}
 							>
-								<PaginationArrow />
+								<PaginationArrow/>
 								Попередня сторінка
 							</button>
 							<div className={styles.circles}>
@@ -254,7 +264,7 @@ const Page: React.FC = () => {
 									scrollToTop();
 									setTimeout(() => {
 										setCurrentPage((prev) => prev + 1);
-									}, 1000);
+									}, 200);
 								}}
 								disabled={
 									currentPage >= Math.ceil(projectCounts[projectsType] / 8)
@@ -262,10 +272,11 @@ const Page: React.FC = () => {
 								className={`${currentPage < Math.ceil(projectCounts[projectsType] / 8) ? styles.buttonActive : ""}`}
 							>
 								Наступна сторінка
-								<PaginationArrow />
+								<PaginationArrow/>
 							</button>
-						</div>
+						</div>}
 					</div>
+
 				</div>
 			</main>
 		</>

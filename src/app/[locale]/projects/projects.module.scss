@@ -209,6 +209,7 @@
         min-width: 12.5rem;
         padding: 1.15rem 0 0 1.188rem;
         overflow: scroll;
+        position: unset;
 
         scrollbar-width: none;
 
@@ -247,6 +248,10 @@
         width: calc(100% - 3rem);
         gap: 6.875rem;
         padding: 0 1.5rem 0 1.5rem;
+
+        &.bottomPadding {
+          padding-bottom: 140px;
+        }
 
         .defaultGrid {
           display: grid;

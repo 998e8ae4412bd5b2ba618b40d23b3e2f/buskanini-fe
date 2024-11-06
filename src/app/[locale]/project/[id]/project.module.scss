@@ -10,7 +10,7 @@
     left: 0;
 
     z-index: 0;
-    width: 100vw;
+    width: 100%;
 
     &:before {
       content: "";
@@ -317,13 +317,15 @@
       padding: 119px 0 130px;
 
       .projectTitle {
-        padding: 0 10px;
+        padding: 0 0px;
         text-align: center;
         font-size: 36px;
       }
 
       .projectGallery {
+        max-width: 100vw;
         gap: 3.75rem;
+
         .galleryBlock {
           .swiperMainBlock {
             .swiperMain {

@@ -1,6 +1,6 @@
 "use client";
 import PreviewButton from "@/app/components/previewButton";
-import type React from "react";
+import React, {useRef} from "react";
 import { type CSSProperties, useEffect, useState } from "react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -68,7 +68,7 @@ const SwiperComponent: React.FC = () => {
 		const fetchModels = async () => {
 			const query = `
 				query Models {
-				  models {
+				  models(limit: 8) {
 					images {
 					  directus_files_id { id }
 					}
@@ -79,8 +79,7 @@ const SwiperComponent: React.FC = () => {
 				}
 			  `;
 			try {
-				const response = await fetchGraphQL(query);
-				setModels(response.data.models);
+				await fetchGraphQL(query).then(res => setModels(res.data.models));
 			} catch (error) {
 				console.error("Error fetching models:", error);
 			}
@@ -89,7 +88,7 @@ const SwiperComponent: React.FC = () => {
 	}, []);
 
 	return (
-		<Swiper
+		models.length !== 0 && <Swiper
 			style={isDesktop ? SWIPER_STYLES_DESKTOP : SWIPER_STYLES_MOBILE}
 			slidesPerView={isDesktop ? 3 : 1.5}
 			spaceBetween={isDesktop ? 40 : 25}
@@ -97,7 +96,7 @@ const SwiperComponent: React.FC = () => {
 			id="homeSlider"
 			modules={[Pagination, Autoplay]}
 			speed={500}
-			centeredSlides
+			centeredSlides={true}
 			loop
 			pagination={{
 				clickable: true,
