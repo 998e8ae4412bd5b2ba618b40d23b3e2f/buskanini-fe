@@ -86,7 +86,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 								}
 							}}
 						>
-							<ArrowButtonGallery viewBox="0 0 60 51" />
+							{images.length !== 1 && <ArrowButtonGallery viewBox="0 0 60 51" />}
 						</div>
 						<PreviewButton
 							onClick={() => {
@@ -103,7 +103,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 								}
 							}}
 						>
-							<ArrowButtonGallery viewBox="0 0 60 51" />
+							{images.length !== 1 && <ArrowButtonGallery viewBox="0 0 60 51"/>}
 						</div>
 					</div>
 				</div>

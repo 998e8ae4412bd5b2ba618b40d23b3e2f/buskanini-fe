@@ -2,7 +2,7 @@ import GalleryModal from "@/app/[locale]/project/[id]/components/GalleryModal";
 import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 import styles from "@/app/[locale]/project/[id]/project.module.scss";
 import PreviewButton from "@/app/components/previewButton";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperCore } from "swiper/types";
@@ -26,14 +26,17 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 		setIsPhone(window.innerWidth < 768);
 	}, [imageIds]);
 
+	console.log(imageIds.length)
+
 	const breakpoints = {
 		0: {
 			slidesPerView: 2,
 		},
 		778: {
-			slidesPerView: 4,
+			slidesPerView: imageIds.length < 4 ? imageIds.length : 4,
 		},
 	};
+
 
 	return (
 		<>
@@ -72,7 +75,7 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 								setActiveIndex(swiper.realIndex);
 							}}
 						>
-							{imageIds &&
+							{imageIds.length !== 0 &&
 								imageIds.map((image: string, i: number) => (
 									<SwiperSlide key={i} className={styles.slide}>
 										<img src={image} alt={`Зображення ${i + 1}`} />
@@ -102,8 +105,9 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 							modules={[FreeMode, Navigation, Thumbs]}
 							className={styles.swiperSecondary}
 							breakpoints={breakpoints}
+							slidesPerView={imageIds.length < 4 ? imageIds.length : 4}
 						>
-							{imageIds &&
+							{imageIds.length !== 0 &&
 								imageIds.map((image: string, i: number) => (
 									<SwiperSlide key={i} className={styles.slide}>
 										<img src={image} alt={`Мініатюра ${i + 1}`} />

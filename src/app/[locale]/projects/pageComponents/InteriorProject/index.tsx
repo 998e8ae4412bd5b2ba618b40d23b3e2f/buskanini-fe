@@ -29,7 +29,7 @@ const Index = ({ image, projectId }: CardProject) => {
 							))}
 						</div>
 					</div>
-					<img src={image} alt=""/>
+					<img loading={"lazy"} src={image} alt=""/>
 				</div>
 
 				<div className={styles.tagsMob}

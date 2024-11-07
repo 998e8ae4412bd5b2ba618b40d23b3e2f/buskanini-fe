@@ -139,13 +139,20 @@ const Page: React.FC = () => {
 			"--swiper-pagination-bottom": "1.75rem",
 		};
 
+	const filteredModels = models.filter(model => model.images.length > 0);
+
+	const slidesToShow = filteredModels.length < 3 ? [...filteredModels, ...filteredModels] : filteredModels;
+
+
 	const imageIds =
-		models[currentIndex]?.images.map(
+		slidesToShow[currentIndex]?.images.map(
 			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id.id}`
 		) || [];
 	const tags = project?.tags.map((tag) => tag.tags_id.translations[0].name) || [];
 
 	const { description = "", client = "" } = project?.translations[0] || {};
+
+	console.log(slidesToShow)
 
 	if (isLoading) {
 		return (
@@ -191,15 +198,21 @@ const Page: React.FC = () => {
 
 							onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
 						>
-							{models.map((model, i) => (
-								<SwiperSlide key={i} className={styles.slide}>
-									<h2 className={styles.projectTitle}>{model.translations[0]?.name}</h2>
-								</SwiperSlide>
-							))}
+							{slidesToShow.map((model, i) => {
+								if (model.images.length === 0) {
+									return null
+								}
+
+								return (
+									<SwiperSlide key={i} className={styles.slide}>
+										<h2 className={styles.projectTitle}>{model.translations[0]?.name}</h2>
+									</SwiperSlide>
+								)
+							})}
 						</Swiper>
 					</div>
 
-					<ProjectGallery model={models[currentIndex]?.model.id} imageIds={imageIds} />
+					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds} />
 				</section>
 
 				<section className={styles.projectSection}>

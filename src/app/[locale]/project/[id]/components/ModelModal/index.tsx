@@ -14,9 +14,14 @@ const Index = ({ model, active, setActive }: ModalProps) => {
 
 	return (
 		<section
+			onClick={() => {
+				setActive(false);
+				document.body.classList.remove("no-scroll");
+			}}
 			className={`${styles.modelModal} ${active ? styles.modalActive : ""}`}
 		>
-			<div className={styles.modelContainer}>
+			<div className={styles.modelContainer}
+			>
 				<div className={styles.model}>
 					{!modelLoaded && (
 						<div className={styles.loading}>
@@ -32,10 +37,6 @@ const Index = ({ model, active, setActive }: ModalProps) => {
 				</div>
 				<div
 					className={styles.close}
-					onClick={() => {
-						setActive(false);
-						document.body.classList.remove("no-scroll");
-					}}
 				>
 					<CloseModalModel viewBox="0 0 35 35" />
 				</div>

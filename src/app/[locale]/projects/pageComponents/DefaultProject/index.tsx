@@ -18,7 +18,7 @@ const Index = ({ name, image, model, projectId }: CardProject) => {
 				<div className={styles.name}>{name}</div>
 				{model !== "" && <PreviewButton />}
 			</div>
-			<img src={image} alt="" />
+			<img loading={"lazy"} src={image} alt="" />
 		</article>
 	);
 };

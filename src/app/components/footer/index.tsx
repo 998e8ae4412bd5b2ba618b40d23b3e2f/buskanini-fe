@@ -1,5 +1,6 @@
+'use client';
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./footer.module.scss";
 
 import Behance from "../../../../public/svg/socialMedia/behance.svg";
@@ -7,8 +8,43 @@ import Facebook from "../../../../public/svg/socialMedia/facebook.svg";
 import Instagram from "../../../../public/svg/socialMedia/instagram.svg";
 import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
 import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
+import { fetchGraphQL } from "@/app/lib/directus";
 
-const Index = () => {
+interface SocialLinks {
+	instagram: string;
+	telegram: string;
+	behance: string;
+	facebook: string;
+	patreon: string;
+}
+
+const Footer: React.FC = () => {
+	const [media, setMedia] = useState<SocialLinks | null>(null);
+
+	useEffect(() => {
+		const fetchMedia = async () => {
+			const query = `
+                query Social {
+					social {
+						instagram
+						telegram
+						behance
+						facebook
+						patreon
+					}
+				}
+            `;
+
+			try {
+				const response = await fetchGraphQL(query);
+				setMedia(response.data.social[0]);
+			} catch (error) {
+				console.error("Error fetching social media links:", error);
+			}
+		};
+		fetchMedia();
+	}, []);
+
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.footerContainer}>
@@ -24,37 +60,39 @@ const Index = () => {
 					</div>
 
 					<div className={styles.footerNav}>
-						<div
-							className={`${styles.footerNavList} ${styles.footerNavListContacts}`}
-						>
+						<div className={`${styles.footerNavList} ${styles.footerNavListContacts}`}>
 							<div className={styles.title}>Контакти</div>
 
 							<ul>
-								<li>
-									<Link className={styles.icon} href="/">
-										<Instagram />
-									</Link>
-								</li>
-								<li>
-									<Link className={styles.icon} href="/">
-										<Telegram />
-									</Link>
-								</li>
-								<li>
-									<Link className={styles.icon} href="/">
-										<Patreon />
-									</Link>
-								</li>
-								<li>
-									<Link className={styles.icon} href="/">
-										<Facebook />
-									</Link>
-								</li>
-								<li>
-									<Link className={styles.icon} href="/">
-										<Behance />
-									</Link>
-								</li>
+								{media && (
+									<>
+										<li>
+											<Link className={styles.icon} href={media.instagram} target="_blank" rel="noopener noreferrer">
+												<Instagram />
+											</Link>
+										</li>
+										<li>
+											<Link className={styles.icon} href={media.telegram} target="_blank" rel="noopener noreferrer">
+												<Telegram />
+											</Link>
+										</li>
+										<li>
+											<Link className={styles.icon} href={media.patreon} target="_blank" rel="noopener noreferrer">
+												<Patreon />
+											</Link>
+										</li>
+										<li>
+											<Link className={styles.icon} href={media.facebook} target="_blank" rel="noopener noreferrer">
+												<Facebook />
+											</Link>
+										</li>
+										<li>
+											<Link className={styles.icon} href={media.behance} target="_blank" rel="noopener noreferrer">
+												<Behance />
+											</Link>
+										</li>
+									</>
+								)}
 							</ul>
 						</div>
 
@@ -66,16 +104,13 @@ const Index = () => {
 									<Link href="/">Головна</Link>
 								</li>
 								<li>
-									<Link href="/">3D Проєкти</Link>
+									<Link href="/projects">3D Проєкти</Link>
 								</li>
 								<li>
-									<Link href="/">Докладніше</Link>
+									<Link href="/about">Досвід</Link>
 								</li>
 								<li>
-									<Link href="/">Портфоліо</Link>
-								</li>
-								<li>
-									<Link href="/">Послуги</Link>
+									<Link href="/services">Послуги</Link>
 								</li>
 							</ul>
 						</nav>
@@ -90,4 +125,4 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default Footer;
