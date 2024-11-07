@@ -67,7 +67,6 @@ const Page: React.FC = () => {
                         }
                         tags {
                             tags_id {
-                                name
                                 translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
                                     name
                                 }

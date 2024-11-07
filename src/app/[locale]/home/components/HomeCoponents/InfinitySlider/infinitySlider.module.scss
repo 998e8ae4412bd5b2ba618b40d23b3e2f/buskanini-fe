@@ -64,11 +64,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    width: 8.88338rem;
+    width: fit-content;
     height: 8.87725rem;
 
     margin-left: auto;
+
+    img {
+      height: 100%;
+    }
 
     svg {
       width: 100%;

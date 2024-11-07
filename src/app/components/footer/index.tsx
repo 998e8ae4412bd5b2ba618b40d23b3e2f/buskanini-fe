@@ -9,6 +9,7 @@ import Instagram from "../../../../public/svg/socialMedia/instagram.svg";
 import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
 import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
 import { fetchGraphQL } from "@/app/lib/directus";
+import {useLocale} from "use-intl";
 
 interface SocialLinks {
 	instagram: string;
@@ -19,6 +20,7 @@ interface SocialLinks {
 }
 
 const Footer: React.FC = () => {
+	const locale = useLocale();
 	const [media, setMedia] = useState<SocialLinks | null>(null);
 
 	useEffect(() => {
@@ -101,16 +103,16 @@ const Footer: React.FC = () => {
 
 							<ul className={styles.vertical}>
 								<li>
-									<Link href="/">Головна</Link>
+									<Link href={`/${locale}`}>Головна</Link>
 								</li>
 								<li>
-									<Link href="/projects">3D Проєкти</Link>
+									<Link href={`/${locale}/projects`}>3D Проєкти</Link>
 								</li>
 								<li>
-									<Link href="/about">Досвід</Link>
+									<Link href={`/${locale}/about`}>Досвід</Link>
 								</li>
 								<li>
-									<Link href="/services">Послуги</Link>
+									<Link href={`/${locale}/services`}>Послуги</Link>
 								</li>
 							</ul>
 						</nav>

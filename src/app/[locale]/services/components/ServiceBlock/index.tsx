@@ -13,11 +13,7 @@ const Index: React.FC<Props> = ({ title, content, ctaText }) => {
 			<h2 className={styles.title}>{title}</h2>
 			<div className={styles.contentWrapper}>
 				{content.map((item, index) => (
-					<>
-						<p key={index} className={styles.paragraph}>
-							{item}
-						</p>
-					</>
+					<p key={index} className={styles.paragraph} dangerouslySetInnerHTML={{ __html: item }}></p>
 				))}
 			</div>
 			<button className={styles.ctaButton}>{ctaText}</button>

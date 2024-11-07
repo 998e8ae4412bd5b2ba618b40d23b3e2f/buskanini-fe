@@ -26,8 +26,6 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 		setIsPhone(window.innerWidth < 768);
 	}, [imageIds]);
 
-	console.log(imageIds.length)
-
 	const breakpoints = {
 		0: {
 			slidesPerView: 2,

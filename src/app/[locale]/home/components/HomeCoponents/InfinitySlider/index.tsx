@@ -5,15 +5,15 @@ import LogoCompanyTwo from "../../../../../../../public/svg/sliderCompanyLogos/L
 import styles from "./infinitySlider.module.scss";
 
 interface ItemsProps {
-	items: React.FC[];
+	items: string[];
 }
 
 export const SliderItems = ({ items }: ItemsProps) => {
 	return (
 		<>
-			{items.map((ItemComponent, index) => (
+			{items.map((item, index) => (
 				<div className={styles.item} key={index}>
-					<ItemComponent />
+					<img src={item} alt=""/>
 				</div>
 			))}
 		</>
@@ -26,12 +26,16 @@ interface SliderState {
 
 const InfinitySlider = ({ left = false }: SliderState) => {
 	const logos = [
-		LogoCompanyOne,
-		LogoCompanyTwo,
-		LogoCompanyThree,
-		LogoCompanyOne,
-		LogoCompanyTwo,
-		LogoCompanyThree,
+		'https://i.ibb.co/FVtRfS9/Logo-Company-Three.png',
+		'https://i.ibb.co/Bt6xBtS/Logo-Company-Two.png',
+		'https://i.ibb.co/WkczstK/Logo-Company-One.png',
+		'https://i.ibb.co/FVtRfS9/Logo-Company-Three.png',
+		'https://i.ibb.co/Bt6xBtS/Logo-Company-Two.png',
+		'https://i.ibb.co/WkczstK/Logo-Company-One.png',
+		'https://i.ibb.co/FVtRfS9/Logo-Company-Three.png',
+		'https://i.ibb.co/Bt6xBtS/Logo-Company-Two.png',
+		'https://i.ibb.co/WkczstK/Logo-Company-One.png',
+		'https://i.ibb.co/WkczstK/Logo-Company-One.png',
 	];
 
 	return (

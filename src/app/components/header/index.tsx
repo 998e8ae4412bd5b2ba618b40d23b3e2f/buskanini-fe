@@ -4,6 +4,7 @@ import React from "react";
 import BurgerHideIcon from "../../../../public/svg/phone/burger-hide-icon.svg";
 import BurgerIcon from "../../../../public/svg/phone/burger-icon.svg";
 import styles from "./header.module.scss";
+import {useLocale} from "use-intl";
 
 const navItems = [
 	{ name: "Головна", link: "/" },
@@ -13,6 +14,7 @@ const navItems = [
 ];
 
 const Header = () => {
+	const locale = useLocale()
 	const [isBurgerMenuVisible, setIsBurgerMenuVisible] = React.useState(false);
 
 	React.useEffect(() => {
@@ -37,14 +39,14 @@ const Header = () => {
 				<ul>
 					{navItems.map(({ name, link }, index) => (
 						<li key={index}>
-							<Link href={`/en${link}`}>{name}</Link>
+							<Link href={`/${locale}${link}`}>{name}</Link>
 						</li>
 					))}
 				</ul>
 			</nav>
 
 			<div className={styles.lanContacts}>
-				<Link href="/en/contacts">Контакти</Link>
+				<Link href={`${locale}/contacts`}>Контакти</Link>
 				<button>UA</button>
 			</div>
 
