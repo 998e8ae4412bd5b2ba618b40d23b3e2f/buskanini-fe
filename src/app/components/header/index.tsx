@@ -23,72 +23,58 @@ const Header = () => {
 	}, [isBurgerMenuVisible]);
 
 	const toggleBurgerMenu = () => {
-		gsap.killTweensOf([
-			liRefs.current,
-			contactsRef.current,
-			bgScreenRef.current,
-			lanRef.current,
-			navRef.current,
-		]);
+		if (!liRefs.current || !contactsRef.current || !bgScreenRef.current) return;
 
 		if (!isBurgerMenuVisible) {
-			gsap.fromTo(
-				liRefs.current,
-				{ opacity: 0, y: -20 },
-				{
-					opacity: 1,
-					y: 0,
-					duration: 0.5,
-					stagger: 0.2,
-					ease: "power2.out"
-				}
-			);
+			// Set initial states before animations
+			gsap.set([liRefs.current], { opacity: 0, y: -20 });
+			gsap.set(contactsRef.current, { opacity: 0, x: '-50%', y: 50 });
+			gsap.set(bgScreenRef.current, { scale: 1, opacity: 1 });
+			gsap.set(lanRef.current, { opacity: 0 });
+			gsap.set(navRef.current, { opacity: 0 });
 
-			gsap.fromTo(
-				contactsRef.current,
-				{ opacity: 0, x: '-50%', y: 50 },
-				{
-					opacity: 1,
-					y: 0,
-					duration: 0.7,
-					stagger: 0.2,
-					ease: "power2.out",
-					delay: 0.6
-				}
-			);
+			// Run animations
+			gsap.to(liRefs.current, {
+				opacity: 1,
+				y: 0,
+				duration: 0.5,
+				stagger: 0.2,
+				ease: "power2.out"
+			});
 
-			gsap.fromTo(
-				bgScreenRef.current,
-				{ scale: 1, opacity: 1 },
-				{
-					opacity: 1,
-					scale: 55,
-					duration: 1,
-					ease: "power2.out",
-				}
-			);
+			gsap.to(contactsRef.current, {
+				opacity: 1,
+				y: 0,
+				duration: 0.7,
+				stagger: 0.2,
+				ease: "power2.out",
+				delay: 0.6
+			});
 
-			gsap.fromTo(
-				headerRef.current,
-				{  },
-				{
-					height: `calc(100dvh - 2rem)`,
-					ease: "power2.out",
-				}
-			);
+			gsap.to(bgScreenRef.current, {
+				opacity: 1,
+				scale: 55,
+				duration: 1,
+				ease: "power2.out",
+			});
 
-			gsap.fromTo(
-				lanRef.current,
-				{ opacity: 0},
-				{ opacity: 1, duration: .5, ease: "power2.out" }
-			);
+			gsap.to(headerRef.current, {
+				height: `calc(100dvh - 2rem)`,
+				ease: "power2.out",
+			});
 
-			gsap.fromTo(
-				navRef.current,
-				{ opacity: 0, },
-				{ opacity: 1,  ease: "power2.out" }
-			);
+			gsap.to(lanRef.current, {
+				opacity: 1,
+				duration: .5,
+				ease: "power2.out"
+			});
+
+			gsap.to(navRef.current, {
+				opacity: 1,
+				ease: "power2.out"
+			});
 		} else {
+			// Close animations
 			gsap.to(liRefs.current, {
 				opacity: 0,
 				y: -20,
@@ -105,23 +91,24 @@ const Header = () => {
 				delay: 0.2
 			});
 
-			gsap.fromTo(
-				bgScreenRef.current,
-				{ scale: 55,  },
-				{
-					y: -100,
-					scale: 1,
-					duration: 1,
-					ease: "power2.out",
-					delay: 0.4
-				}
-			);
+			gsap.to(bgScreenRef.current, {
+				y: -100,
+				scale: 1,
+				duration: 1,
+				ease: "power2.out",
+				delay: 0.4
+			});
 
-			gsap.fromTo(
-				lanRef.current,
-				{ opacity: 1},
-				{ opacity: 0, duration: .5, ease: "power2.out" }
-			);
+			gsap.to(lanRef.current, {
+				opacity: 0,
+				duration: .5,
+				ease: "power2.out"
+			});
+
+			gsap.to(headerRef.current, {
+				height: "auto",
+				ease: "power2.out",
+			});
 		}
 
 		setIsBurgerMenuVisible((prev) => !prev);
