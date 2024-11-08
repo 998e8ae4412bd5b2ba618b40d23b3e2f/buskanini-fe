@@ -124,14 +124,21 @@ const Header = () => {
 			);
 		}
 
-		!isBurgerMenuVisible && setIsBurgerMenuVisible((prev) => !prev);
-		isBurgerMenuVisible && setIsBurgerMenuVisible((prev) => !prev);
+		setIsBurgerMenuVisible((prev) => !prev);
 	};
+
+	useEffect(() => {
+		gsap.set([liRefs.current, contactsRef.current, bgScreenRef.current], {
+			opacity: 0,
+			y: 0,
+			scale: 1,
+		});
+	}, []);
+
 
 	const headerRef = useRef(null);
 	const ulRef = useRef(null);
 	const navRef = useRef(null);
-	const scrollRef = useRef(null);
 	const lanRef = useRef(null);
 	const contactsRef = useRef(null);
 	const bgScreenRef = useRef(null);
