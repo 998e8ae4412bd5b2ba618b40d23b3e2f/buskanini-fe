@@ -32,14 +32,14 @@
         align-items: center;
         flex-wrap: wrap;
 
-        svg {
+        a {
           padding-top: 30%;
           padding-right: 10%;
         }
 
-        svg:nth-child(1),
-        svg:nth-child(2),
-        svg:nth-child(3) {
+        a:nth-child(1),
+        a:nth-child(2),
+        a:nth-child(3) {
           padding-top: 0;
         }
       }

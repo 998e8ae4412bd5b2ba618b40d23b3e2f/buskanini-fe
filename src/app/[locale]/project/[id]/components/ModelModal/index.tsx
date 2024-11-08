@@ -12,6 +12,8 @@ interface ModalProps {
 const Index = ({ model, active, setActive }: ModalProps) => {
 	const [modelLoaded, setModelLoaded] = React.useState<boolean>(false);
 
+	console.log(modelLoaded)
+
 	return (
 		<section
 			onClick={() => {

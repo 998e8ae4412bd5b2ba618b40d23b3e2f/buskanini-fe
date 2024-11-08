@@ -67,7 +67,11 @@ const Index = ({ obj, reverse }: SwiperComponentProps) => {
 						speed={500}
 						loop={true}
 						pagination={{
-							clickable: true,
+							clickable: true
+						}}
+						autoplay={{
+							delay: 3000,
+							disableOnInteraction: false,
 						}}
 					>
 						{images.map((el, index) => (

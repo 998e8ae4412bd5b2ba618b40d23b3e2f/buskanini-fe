@@ -1,41 +1,53 @@
 import { Center, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import styles from "../ModelModal/modelModal.module.scss";
+import * as THREE from "three";
 
 interface ModelProps {
 	model: string;
 	setModelLoaded: (loaded: boolean) => void;
+	setError: (error: string | null) => void;
 }
 
-import * as THREE from "three";
+const Model: React.FC<ModelProps> = ({ model, setModelLoaded, setError }) => {
+	let scene: THREE.Object3D;
 
-const Model: React.FC<ModelProps> = ({ model, setModelLoaded }) => {
-	const { scene } = useGLTF(`https://buskanini-cms.onrender.com/assets/${model}`, true) as any;
+	try {
+		const gltf = useGLTF(
+			`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${model}`,
+			true
+		) as any;
+		scene = gltf.scene;
+	} catch (error) {
+		console.error("Failed to load model:", error);
+		setModelLoaded(true)
+		setError("123");
+		return null;
+	}
 
 	React.useEffect(() => {
-		setModelLoaded(true);
+		if (scene) {
+			setModelLoaded(true);
+			setError(null);
 
-		// Обчислюємо обмежуючий об’єм моделі
-		const box = new THREE.Box3().setFromObject(scene);
-		const size = new THREE.Vector3();
-		const center = new THREE.Vector3();
+			const box = new THREE.Box3().setFromObject(scene);
+			const size = new THREE.Vector3();
+			const center = new THREE.Vector3();
 
-		// Отримуємо розміри та центр моделі
-		box.getSize(size);
-		box.getCenter(center);
+			box.getSize(size);
+			box.getCenter(center);
 
-		// Зміщуємо модель, щоб її центр був у (0, 0, 0)
-		scene.position.set(-center.x, -center.y - 1.5, -center.z);
+			scene.position.set(-center.x, -center.y - 1.5, -center.z);
 
-		// Додаємо масштабування, щоб модель виглядала більшою
-		const scaleFactor = 5 / Math.max(size.x, size.y, size.z);
-		scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
+			const scaleFactor = 5 / Math.max(size.x, size.y, size.z);
+			scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
+		}
 
 		return () => setModelLoaded(false);
-	}, [scene, setModelLoaded]);
+	}, [scene, setModelLoaded, setError]);
 
-	return <primitive object={scene} />;
+	return scene ? <primitive object={scene} /> : null;
 };
 
 interface ModelViewerProps {
@@ -44,18 +56,28 @@ interface ModelViewerProps {
 }
 
 const ModelViewer: React.FC<ModelViewerProps> = ({ model, setModelLoaded }) => {
-	return (
-		<Canvas className={styles.canvas} camera={{ position: [0, 0, 10] }}>
-			<ambientLight intensity={0.5} />
-			<directionalLight position={[5, 5, 5]} intensity={1} />
+	const [error, setError] = useState<string | null>(null);
 
-			<Suspense fallback={null}>
-				<Center>
-					<Model model={model} setModelLoaded={setModelLoaded} />
-				</Center>
-			</Suspense>
-			<OrbitControls enablePan enableZoom enableRotate />
-		</Canvas>
+	return (
+		<div className={styles.viewerContainer}>
+			{error ? (
+				<div className={styles.errorMessage}>
+					<h3>Не вдалось завантажити модель :(</h3>
+				</div>
+			) : (
+				<Canvas className={styles.canvas} camera={{ position: [0, 0, 10] }}>
+					<ambientLight intensity={0.5} />
+					<directionalLight position={[5, 5, 5]} intensity={1} />
+
+					<Suspense fallback={null}>
+						<Center>
+							<Model model={model} setModelLoaded={setModelLoaded} setError={setError} />
+						</Center>
+					</Suspense>
+					<OrbitControls enablePan enableZoom enableRotate />
+				</Canvas>
+			)}
+		</div>
 	);
 };
 

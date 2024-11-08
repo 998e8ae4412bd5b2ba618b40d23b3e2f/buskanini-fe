@@ -84,6 +84,7 @@
   .content {
     display: flex;
     gap: 3.3125rem;
+    max-width: 109.75rem;
   }
 
   &Texts {
@@ -118,6 +119,7 @@
       }
 
       p {
+        line-height: 1;
         font-size: 2rem;
       }
     }
@@ -128,6 +130,9 @@
   display: flex;
   gap: 4.375rem;
   padding: 8.8125rem 3rem 0 3rem;
+  max-width: 109.75rem;
+  margin: 0 auto;
+
 
   &Wrap {
     display: flex;

@@ -89,18 +89,20 @@ const SwiperComponent: React.FC = () => {
 
 	return (
 		models.length !== 0 && <Swiper
+			initialSlide={2}
 			style={isDesktop ? SWIPER_STYLES_DESKTOP : SWIPER_STYLES_MOBILE}
 			slidesPerView={isDesktop ? 3 : 1.5}
 			spaceBetween={isDesktop ? 40 : 25}
+			centeredSlides={!isDesktop}
 			className={styles.swiper}
 			id="homeSlider"
 			modules={[Pagination, Autoplay]}
 			speed={500}
-			centeredSlides={true}
 			loop
 			pagination={{
 				clickable: true,
 				dynamicBullets: true,
+				dynamicMainBullets: 1
 			}}
 			autoplay={{
 				delay: 3000,

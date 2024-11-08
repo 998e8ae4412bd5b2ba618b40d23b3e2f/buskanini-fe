@@ -241,11 +241,11 @@ const Page: React.FC = () => {
 				<div className={styles.pagination}>
 					<button onClick={handlePrevious}>
 						<PaginationArrow />
-						Попередня сторінка
+						Попередній інтер'єр
 					</button>
 
 					<button onClick={handleNext}>
-						Наступна сторінка
+						Наступний інтер'єр
 						<PaginationArrow />
 					</button>
 				</div>

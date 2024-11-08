@@ -81,6 +81,21 @@
           background: $light;
         }
       }
+
+      .errorMessage {
+        h3 {
+          color: $black;
+          text-align: center;
+
+          font-family: "Craftwork Grotesk", sans-serif;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 105%;
+
+          margin-bottom: 16px;
+        }
+
+      }
     }
 
     .close {
@@ -172,6 +187,13 @@
             width: 90%;
             height: 0.625rem;
             background: $light;
+          }
+        }
+
+        .errorMessage {
+          h3 {
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
           }
         }
       }
