@@ -86,6 +86,10 @@
     }
   }
 
+  .lanButton {
+    display: none;
+  }
+
   .burgerIcon {
     display: none;
   }
@@ -105,7 +109,8 @@
         font-size: 1.065rem;
         padding: 0 1.75rem;
       }
-
+      display: flex;
+      flex: 0;
       z-index: 99999;
     }
 
@@ -159,6 +164,7 @@
         justify-content: center;
         z-index: 99999;
 
+
         ul {
           display: flex;
           flex-direction: column;
@@ -174,6 +180,22 @@
             }
           }
         }
+      }
+
+      .lanButton {
+        display: flex;
+        font-family: "FixelText", sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 36px;
+
+        color: $white;
+        background: unset;
+
+        z-index: 9999;
+
+        margin: 0 auto;
       }
 
       .lanContacts {

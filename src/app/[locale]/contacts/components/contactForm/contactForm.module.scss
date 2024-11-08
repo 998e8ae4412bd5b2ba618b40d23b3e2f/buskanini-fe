@@ -200,20 +200,61 @@
   justify-content: flex-end;
   align-items: center;
   gap: 1.5rem;
-  font-family: "FixelText", sans-serif;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.75;
-  color: $white;
+
   transition: 0.3s;
   border-radius: 1.25rem;
   border: 0.09375rem solid $white;
   background-color: $black;
+
+  span {
+    font-family: "FixelText", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.75;
+    color: $white;
+  }
+
+  &.active {
+    .fill {
+      display: none;
+    }
+
+    .sent {
+      display: flex;
+      color: $black;
+    }
+
+    svg {
+      path {
+        fill: $black;
+      }
+      transform: rotate(90deg);
+    }
+
+    background: $light;
+  }
+
+  .fill {
+
+  }
+
+  .sent {
+    display: none;
+  }
 }
 
 .submitButton:hover {
-  color: $black;
+  span {
+    color: $black;
+  }
+
+  svg {
+    path {
+      fill: $black
+    }
+  }
+
   background-color: $white;
 }
 

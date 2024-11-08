@@ -37,7 +37,7 @@ const Header = () => {
 
 			<nav>
 				<ul>
-					{navItems.map(({ name, link }, index) => (
+					{navItems.map(({name, link}, index) => (
 						<li key={index}>
 							<Link href={`/${locale}${link}`}>{name}</Link>
 						</li>
@@ -46,12 +46,14 @@ const Header = () => {
 			</nav>
 
 			<div className={styles.lanContacts}>
-				<Link href={`${locale}/contacts`}>Контакти</Link>
+				<Link href={`/${locale}/contacts`}>Контакти</Link>
 				<button>UA</button>
 			</div>
 
+			<button className={styles.lanButton}>{locale}</button>
+
 			<div className={styles.burgerIcon} onClick={toggleBurgerMenu}>
-				{isBurgerMenuVisible ? <BurgerHideIcon /> : <BurgerIcon />}
+				{isBurgerMenuVisible ? <BurgerHideIcon/> : <BurgerIcon/>}
 			</div>
 		</header>
 	);

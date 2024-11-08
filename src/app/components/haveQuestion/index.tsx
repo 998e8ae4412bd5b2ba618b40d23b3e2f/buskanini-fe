@@ -1,8 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./haveQuestion.module.scss";
+import {useLocale} from "use-intl";
 
 const Index = () => {
+	const locale = useLocale();
+
 	return (
 		<div className={styles.haveQuestion}>
 			<h4>Маєте запитання?</h4>
@@ -12,7 +15,7 @@ const Index = () => {
 				створити ваш ідеальний простір.
 			</p>
 
-			<Link href="/contacts">Написати</Link>
+			<Link href={`${locale}/contacts`}>Написати</Link>
 		</div>
 	);
 };

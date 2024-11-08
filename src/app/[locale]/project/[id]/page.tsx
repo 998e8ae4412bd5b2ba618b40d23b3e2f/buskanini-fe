@@ -140,7 +140,7 @@ const Page: React.FC = () => {
 
 	const filteredModels = models.filter(model => model.images.length > 0);
 
-	const slidesToShow = filteredModels.length < 3 ? [...filteredModels, ...filteredModels] : filteredModels;
+	const slidesToShow = filteredModels.length < 3 ? [...filteredModels, ...filteredModels, ...filteredModels] : filteredModels;
 
 
 	const imageIds =
@@ -150,8 +150,6 @@ const Page: React.FC = () => {
 	const tags = project?.tags.map((tag) => tag.tags_id.translations[0].name) || [];
 
 	const { description = "", client = "" } = project?.translations[0] || {};
-
-	console.log(slidesToShow)
 
 	if (isLoading) {
 		return (
@@ -189,19 +187,17 @@ const Page: React.FC = () => {
 					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
-							spaceBetween={28}
+							spaceBetween={76}
 							modules={[FreeMode, Navigation, Thumbs]}
 							className={styles.swiperSecondary}
 							centeredSlides={true}
 							slidesPerView={'auto'}
-
 							onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
 						>
 							{slidesToShow.map((model, i) => {
 								if (model.images.length === 0) {
 									return null
 								}
-
 								return (
 									<SwiperSlide key={i} className={styles.slide}>
 										<h2 className={styles.projectTitle}>{model.translations[0]?.name}</h2>
