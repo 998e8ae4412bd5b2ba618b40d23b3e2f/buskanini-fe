@@ -14,6 +14,7 @@
   border: 1px solid $white;
   box-shadow: 0 0 0.38125rem 0 #FFF;
 
+
   .titleSubtitle {
     min-height: 9.375rem;
 
@@ -59,11 +60,8 @@
     border: 1px solid $white;
   }
 
-  transition: 0.3s;
-
   &:hover {
     background-color: $light;
-
     .titleSubtitle {
       h3 {
         color: $black;

@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/app/[locale]/home/page.module.scss";
+import "@/app/[locale]/home/page.scss";
 import ScrollDown from "../../../public/svg/arrow-down-circle.svg";
 
 import {
@@ -12,11 +13,13 @@ import WordCycler from "@/app/components/WordCycler";
 import HaveQuestion from "@/app/components/haveQuestion";
 import Header from "@/app/components/header";
 import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect, useLayoutEffect, useRef} from "react";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 	const scrollToSection = () => {
@@ -29,6 +32,41 @@ export default function Home() {
 			ease: "power2.inOut",
 		});
 	};
+
+	const cardRefs = useRef([]);
+
+	const addToRefs = (el) => {
+		if (el && !cardRefs.current.includes(el)) {
+			cardRefs.current.push(el);
+		}
+	};
+
+	useEffect(() => {
+		if (cardRefs.current.length > 0) {
+			gsap.fromTo(
+				cardRefs.current,
+				{ opacity: 0, x: '100vw' },
+				{
+					x: 0,
+					opacity: 1,
+					duration: 1.5,
+					stagger: 0.2,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: cardRefs.current[0],
+						start: "top 60%",
+						markers: true
+					},
+					onComplete: () => {
+						cardRefs.current.forEach((card) => {
+							card.style.transition = "0.5s ease";
+							card.classList.add("cardHoverAnim");
+						});
+					},
+				}
+			);
+		}
+	}, []);
 
 	return (
 		<>
@@ -89,16 +127,19 @@ export default function Home() {
 
 					<div className={styles.cardServices}>
 						<ServiceCard
+							ref={addToRefs}
 							title="3D Modelling"
 							subtitle="Transforming Ideas into Reality"
 							description={`Ваша візуалізація — наш політ фантазії. Ми створюємо простори, де ваш продукт стає центром уваги.\n\nОрганічно, вишукано, стильно.`}
 						/>
 						<ServiceCard
+							ref={addToRefs}
 							title="3D Product Rendering"
 							subtitle="Lights. Camera. Wow!"
 							description={`Покажіть свій продукт у вигідному світлі. \n\nМи додаємо магію до кожної текстури та матеріалу, створюючи образи, що викликають захоплення.`}
 						/>
 						<ServiceCard
+							ref={addToRefs}
 							title="3D Interior Visualization"
 							subtitle="Static is Boring, Let’s Move!"
 							description={`Динаміка — це новий стандарт. Покажіть світові, як ваш продукт працює та виглядає у русі.\n\nМи додаємо життя кожному кадру.`}
@@ -115,7 +156,7 @@ export default function Home() {
 					/>
 
 					<div className={styles.sliderContainer}>
-						<SwiperComponent />
+						<SwiperComponent/>
 
 						<Link href="/en/projects" className={styles.seeMore}>
 							Переглянути більше
@@ -124,7 +165,7 @@ export default function Home() {
 				</section>
 
 				<section className={styles.sectionQuestion}>
-					<HaveQuestion />
+					<HaveQuestion/>
 				</section>
 			</main>
 		</>

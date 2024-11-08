@@ -74,7 +74,6 @@ const Header = () => {
 				ease: "power2.out"
 			});
 		} else {
-			// Close animations
 			gsap.to(liRefs.current, {
 				opacity: 0,
 				y: -20,
@@ -107,21 +106,13 @@ const Header = () => {
 
 			gsap.to(headerRef.current, {
 				height: "auto",
+				delay: 1,
 				ease: "power2.out",
 			});
 		}
 
 		setIsBurgerMenuVisible((prev) => !prev);
 	};
-
-	useEffect(() => {
-		gsap.set([liRefs.current, contactsRef.current, bgScreenRef.current], {
-			opacity: 0,
-			y: 0,
-			scale: 1,
-		});
-	}, []);
-
 
 	const headerRef = useRef(null);
 	const ulRef = useRef(null);

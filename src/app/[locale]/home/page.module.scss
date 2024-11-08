@@ -158,6 +158,8 @@ $side-padding: 5.125rem;
     display: flex;
     flex-direction: column;
     padding: 7.2rem $side-padding 6.8375rem;
+    overflow: hidden;
+
 
     .cardServices {
       display: flex;
