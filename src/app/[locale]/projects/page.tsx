@@ -189,7 +189,7 @@ const Page: React.FC = () => {
 								return (
 									<div
 										key={i}
-										ref={(el) => (projectRefs.current[i] = el)} // Assign ref for each project
+										ref={(el) => {projectRefs.current[i] = el}} // Assign ref for each project
 										className={styles.projectItem}
 									>
 										{projectsType === "interior" ? (
