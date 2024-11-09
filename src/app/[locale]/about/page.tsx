@@ -5,8 +5,9 @@ import BlackArrow from "../../../../public/svg/blackArrow.svg";
 import styles from "./about.module.scss";
 import { fetchGraphQL } from "@/app/lib/directus";
 import { useLocale } from "use-intl";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import LoadingScreen from "@/app/components/LoadingScreen";
+import gsap from "gsap";
 
 type Block = {
 	id: string;
@@ -65,7 +66,7 @@ const Page = () => {
 					about_me {
 						id
 					}
-					translations(filter: { languages_code: { code: { _eq: "ua-UA" } } }) {
+					translations(filter: { languages_code: { code: { _eq: "${locale === 'ua' ? 'ua-UA' : 'en-US'}" } } }) {
 						name_occupation
 						about_description
 						about_me_description
@@ -90,35 +91,142 @@ const Page = () => {
 		fetchMedia();
 	}, []);
 
+
+	const aboutMeTextRef = useRef<HTMLDivElement | null>(null);
+	const aboutMeImageRef = useRef<HTMLDivElement | null>(null);
+	const aboutBuskaniniRef = useRef<HTMLDivElement | null>(null);
+	const aboutUsTextRef = useRef<HTMLDivElement | null>(null);
+	const aboutUsImageRef = useRef<HTMLDivElement | null>(null);
+	const arrowBtnRef = useRef<HTMLButtonElement | null>(null);
+
+	useEffect(() => {
+		if (aboutMeTextRef.current && aboutMeImageRef.current && aboutBuskaniniRef.current && aboutUsTextRef.current && aboutUsImageRef.current) {
+			gsap.fromTo(
+				aboutMeTextRef.current,
+				{ opacity: 0, y: 50 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: 'power2.out',
+					stagger: 0.3,
+					scrollTrigger: {
+						trigger: aboutMeTextRef.current,
+						start: 'top 80%',
+						scrub: true
+					}
+				}
+			);
+
+			gsap.fromTo(
+				aboutUsTextRef.current,
+				{ opacity: 0, y: 50 }, // Start from opacity 0, 50px below
+				{
+					opacity: 1,
+					y: 0, // End at original position
+					duration: 1, // 1 second duration
+					ease: 'power2.out', // Smooth easing
+					stagger: 0.3, // Delay each child element slightly for a cascade effect
+				}
+			);
+
+			// Animate the image
+			gsap.fromTo(
+				aboutUsImageRef.current,
+				{ opacity: 0, scale: 0.9 }, // Start from opacity 0 and slightly smaller
+				{
+					opacity: 1,
+					scale: 1, // End at original scale
+					duration: 1.5, // Slightly longer duration for the image
+					ease: 'power2.out',
+				}
+			);
+
+			gsap.fromTo(
+				aboutMeImageRef.current,
+				{ opacity: 0, scale: 0.9 },
+				{
+					opacity: 1,
+					scale: 1,
+					duration: 1,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: aboutMeImageRef.current,
+						start: 'top 60%',
+						end: 'top 20%',
+						scrub: true,
+					}
+				}
+			);
+
+			gsap.fromTo(
+				aboutMeImageRef.current,
+				{
+					boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)"
+				}, // initial box shadow
+				{
+					boxShadow: "0 0 7.0625rem 1.625rem rgba(243, 226, 198, 0.13)", // box shadow when scrolled
+					duration: 1,
+					scrollTrigger: {
+						trigger: aboutMeImageRef.current,
+						start: 'top 60%',
+						end: 'top 20%',
+						scrub: true,
+					},
+				}
+			);
+
+			gsap.fromTo(
+				aboutBuskaniniRef.current,
+				{ y: 50 },
+				{
+					y: -100,
+					scrollTrigger: {
+						trigger: aboutBuskaniniRef.current,
+						start: "top bottom",
+						end: "bottom top",
+						scrub: true,
+						markers: true
+					},
+				}
+			);
+
+
+		}
+	}, [data]);
+
 	if (isLoading) {
 		return <LoadingScreen />;
 	}
 
 	return (
 		<>
-			<Header />
+			<Header/>
 			<section className={`${styles.aboutUs} ${styles.aboutSectionStyles}`}>
 				<div className={styles.content}>
-					<div className={styles.aboutUsText}>
+					<div ref={aboutUsTextRef} className={styles.aboutUsText}>
 						<h1>{data?.translations[0].about_description.blocks[0].data.text}</h1>
 						{data?.translations[0].about_description.blocks.slice(1).map((block, index) => (
 							<p key={index}>{block.data.text}</p>
 						))}
 					</div>
 					<div
+						ref={aboutUsImageRef}
 						className={styles.aboutUsImage}
-						style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${data?.about_image.id})` }}
+						style={{
+							backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${data?.about_image.id})`,
+						}}
 					/>
 				</div>
 			</section>
 
-			<div className={`${styles.aboutBuskanini}`}>
+			<div className={`${styles.aboutBuskanini}`} ref={aboutBuskaniniRef}>
 				<span>bushkanini</span>
 			</div>
 
 			<section className={`${styles.aboutMe} ${styles.aboutSectionStyles}`}>
 				<div className={styles.content}>
-					<div className={styles.aboutMeTexts}>
+					<div ref={aboutMeTextRef} className={styles.aboutMeTexts}>
 						<h2>{data?.translations[0].about_me_description.blocks[0].data.text}</h2>
 						{data?.translations[0].about_me_description.blocks.slice(1).map((block, index) => (
 							<p key={index}>{block.data.text}</p>
@@ -127,6 +235,7 @@ const Page = () => {
 
 					<div className={styles.aboutMeInfo}>
 						<div
+							ref={aboutMeImageRef}
 							className={styles.aboutMeInfoImage}
 							style={{
 								backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${data?.about_me.id})`,
@@ -142,19 +251,50 @@ const Page = () => {
 
 			<section className={styles.aboutProjects}>
 				<div className={styles.aboutProjectsWrap}>
-					<div className={styles.aboutProjectsProject}>
+					<div className={styles.mainWrapper}>
 						<h3>
-							50+ <br />
+							50+ <br/>
 							Проєктів
 						</h3>
 					</div>
+
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/200/300)`,
+						 }}
+					/>
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/400/300})`,
+						 }}
+					/>
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/500/300)`,
+						 }}
+					/>
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/600/300)`,
+						 }}
+					/>
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/900/300)`,
+						 }}
+					/>
+					<div className={styles.project}
+						 style={{
+							 backgroundImage: `url(https://picsum.photos/1000/300)`,
+						 }}
+					/>
 					<div className={styles.aboutProjectsButtons}>
 						<a href="#projects" className={styles.projectsLink}>
 							Переглянути проєкти
 						</a>
-						<button className={styles.arrowBtn}>
+						<button ref={arrowBtnRef} className={styles.arrowBtn}>
 							<div className={styles.arrowIcon}>
-								<BlackArrow />
+								<BlackArrow/>
 							</div>
 						</button>
 					</div>
@@ -167,7 +307,7 @@ const Page = () => {
 			</section>
 
 			<section className={styles.askSection}>
-				<HaveQuestion />
+				<HaveQuestion/>
 			</section>
 		</>
 	);

@@ -33,9 +33,9 @@ export default function Home() {
 		});
 	};
 
-	const cardRefs = useRef([]);
+	const cardRefs = useRef<HTMLDivElement[]>([]);
 
-	const addToRefs = (el) => {
+	const addToRefs = (el: HTMLDivElement | null) => {
 		if (el && !cardRefs.current.includes(el)) {
 			cardRefs.current.push(el);
 		}
@@ -45,7 +45,7 @@ export default function Home() {
 		if (cardRefs.current.length > 0) {
 			gsap.fromTo(
 				cardRefs.current,
-				{ opacity: 0, x: '100vw' },
+				{ opacity: 0, x: "100vw" },
 				{
 					x: 0,
 					opacity: 1,
@@ -55,7 +55,6 @@ export default function Home() {
 					scrollTrigger: {
 						trigger: cardRefs.current[0],
 						start: "top 60%",
-						markers: true
 					},
 					onComplete: () => {
 						cardRefs.current.forEach((card) => {

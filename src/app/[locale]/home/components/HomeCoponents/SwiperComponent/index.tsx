@@ -88,7 +88,7 @@ const SwiperComponent: React.FC = () => {
 	}, []);
 
 	return (
-		models.length !== 0 && <Swiper
+		models.length !== 0 ? <Swiper
 			initialSlide={2}
 			style={isDesktop ? SWIPER_STYLES_DESKTOP : SWIPER_STYLES_MOBILE}
 			slidesPerView={isDesktop ? 3 : 1.5}
@@ -117,7 +117,34 @@ const SwiperComponent: React.FC = () => {
 					/>
 				</SwiperSlide>
 			))}
-		</Swiper>
+		</Swiper> :
+			<Swiper
+				initialSlide={2}
+				style={isDesktop ? SWIPER_STYLES_DESKTOP : SWIPER_STYLES_MOBILE}
+				slidesPerView={isDesktop ? 3 : 1.5}
+				spaceBetween={isDesktop ? 40 : 25}
+				centeredSlides={!isDesktop}
+				className={styles.swiper}
+				id="homeSlider"
+				modules={[Pagination, Autoplay]}
+				speed={500}
+				loop
+				pagination={{
+					clickable: true,
+					dynamicBullets: true,
+					dynamicMainBullets: 1
+				}}
+				autoplay={{
+					delay: 3000,
+					disableOnInteraction: false,
+				}}
+			>
+				{[1, 2, 3, 4, 5, 6, 7, 8].map((model, index) => (
+					<SwiperSlide style={{height: '28vw', maxHeight: '591px'}} key={index}>
+						<div><h1></h1></div>
+					</SwiperSlide>
+				))}
+			</Swiper>
 	);
 };
 

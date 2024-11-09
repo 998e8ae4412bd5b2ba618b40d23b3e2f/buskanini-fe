@@ -1,34 +1,13 @@
 "use client";
-import { log } from "node:util";
-import { DefaultProject } from "@/app/[locale]/projects/pageComponents";
-import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
+import { DefaultProject, InteriorProject, ProjectsNav} from "@/app/[locale]/projects/pageComponents";
 import Header from "@/app/components/header";
 import { fetchGraphQL } from "@/app/lib/directus";
-import gsap from "gsap";
-import Link from "next/link";
-import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
-import NavArrow from "../../../../public/svg/arrowNav.svg";
 import styles from "./projects.module.scss";
 import LoadingScreen from "@/app/components/LoadingScreen";
-
-interface ProjectTranslation {
-	name: string;
-}
-
-interface ProjectImage {
-	directus_files_id: {id: string};
-}
-
-interface ProjectItem {
-	model: {id: string};
-	drop: string;
-	translations: ProjectTranslation[];
-	project: { id: string };
-	images: ProjectImage[];
-}
+import gsap from "gsap";
 
 const Page: React.FC = () => {
 	const locale = useLocale();
@@ -60,18 +39,10 @@ const Page: React.FC = () => {
 
 	const [currentPage, setCurrentPage] = useState(1);
 
-	const arrowRef = useRef<HTMLDivElement>(null);
 
-	const handleMouseEnter = (e: React.MouseEvent<HTMLLIElement>) => {
-		if (arrowRef.current) {
-			gsap.to(arrowRef.current, {
-				y: e.currentTarget.offsetTop,
-			});
-		}
-	};
-
-	const fetchModels = async () => {
-		const query = `
+	useEffect(() => {
+		const fetchModels = async () => {
+			const query = `
 		  query Models {
 			modellingModels: models(filter: { drop: { _eq: "modelling" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
 			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
@@ -106,27 +77,27 @@ const Page: React.FC = () => {
 		}
 		`;
 
-		try {
-			const response = await fetchGraphQL(query);
-			setProjectsData({
-				interior: response.data.interiorModels,
-				render: response.data.renderModels,
-				modelling: response.data.modellingModels,
-			});
+			try {
+				const response = await fetchGraphQL(query);
+				setProjectsData({
+					interior: response.data.interiorModels,
+					render: response.data.renderModels,
+					modelling: response.data.modellingModels,
+				});
 
-			setProjectCounts({
-				interior: response.data.interiorCount[0].count.model,
-				render: response.data.renderCount[0].count.model,
-				modelling: response.data.modellingCount[0].count.model,
-			});
-			setIsLoading(false)
-		} catch (error) {
-			console.error("Error fetching models:", error);
-			setIsLoading(false)
-		}
-	};
+				setProjectCounts({
+					interior: response.data.interiorCount[0].count.model,
+					render: response.data.renderCount[0].count.model,
+					modelling: response.data.modellingCount[0].count.model,
+				});
 
-	useEffect(() => {
+				setIsLoading(false)
+			} catch (error) {
+				console.error("Error fetching models:", error);
+				setIsLoading(false)
+			}
+		};
+
 		fetchModels();
 	}, [lang, projectsType, currentPage]);
 
@@ -138,7 +109,32 @@ const Page: React.FC = () => {
 	};
 
 	const currentProjects = projectsData[projectsType] || [];
+	const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+
 	if (!currentProjects) return null;
+
+	useEffect(() => {
+		gsap.fromTo(
+			projectRefs.current,
+			{
+				opacity: 0,
+				y: 50,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				stagger: 0.2,
+				duration: 0.6,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: projectRefs.current,
+					start: "top 80%",
+					once: true
+				},
+			}
+		);
+	}, [currentProjects]);
 
 	if (isLoading) {
 		return (
@@ -174,23 +170,7 @@ const Page: React.FC = () => {
 				</div>
 
 				<div className={styles.projects}>
-					<nav className={styles.projectsList}>
-						<ul>
-							{currentProjects &&
-								currentProjects.map((el, i) => (
-									<li key={i} onMouseEnter={handleMouseEnter}>
-										<Link href="/">
-											{el.translations.length > 0
-												? el.translations[0].name
-												: "Без назви"}
-										</Link>
-									</li>
-								))}
-						</ul>
-						<div ref={arrowRef} className={styles.arrow}>
-							<NavArrow/>
-						</div>
-					</nav>
+					<ProjectsNav currentProjects={currentProjects}/>
 
 					<div className={`${styles.projectsGridPagination} ${projectCounts[projectsType] / 8 > 1 ? '' : styles.bottomPadding}`}>
 						<div
@@ -206,25 +186,33 @@ const Page: React.FC = () => {
 										? `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${el.images[0].directus_files_id.id}`
 										: "https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png";
 
-								return projectsType === "interior" ? (
-									<InteriorProject
+								return (
+									<div
 										key={i}
-										image={imageUrl}
-										projectId={el.project.id}
-									/>
-								) : (
-									<DefaultProject
-										key={i}
-										name={
-											el.translations.length > 0
-												? el.translations[0].name
-												: "Без назви"
-										}
-										image={imageUrl}
-										model={el.model.id ? el.model.id : ""}
-										projectId={el.project.id}
-									/>
-								);
+										ref={(el) => (projectRefs.current[i] = el)} // Assign ref for each project
+										className={styles.projectItem}
+									>
+										{projectsType === "interior" ? (
+											<InteriorProject
+												key={i}
+												image={imageUrl}
+												projectId={el.project.id}
+											/>
+										) : (
+											<DefaultProject
+												key={i}
+												name={
+													el.translations.length > 0
+														? el.translations[0].name
+														: "Без назви"
+												}
+												image={imageUrl}
+												model={el.model.id ? el.model.id : ""}
+												projectId={el.project.id}
+											/>
+										)}
+									</div>
+								)
 							})}
 						</div>
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { CSSProperties, useState, useEffect } from "react";
+import React, {CSSProperties, useState, useEffect, useRef} from "react";
 import Header from "@/app/components/header";
 import styles from "./project.module.scss";
 import "./project.scss";
@@ -18,6 +18,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../../public/svg/PaginationArrow.svg";
 import LoadingScreen from "@/app/components/LoadingScreen";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
 	id: string;
@@ -151,6 +154,7 @@ const Page: React.FC = () => {
 
 	const { description = "", client = "" } = project?.translations[0] || {};
 
+
 	if (isLoading) {
 		return (
 			<LoadingScreen/>
@@ -207,7 +211,7 @@ const Page: React.FC = () => {
 						</Swiper>
 					</div>
 
-					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds} />
+					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
 				</section>
 
 				<section className={styles.projectSection}>
@@ -229,7 +233,7 @@ const Page: React.FC = () => {
 					<div className={styles.categoryContainer}>
 						<h2 className={styles.categoryTitle}>Категорія</h2>
 						<div className={styles.categoryButtons}>
-							{tags.map((tag) => (
+							{tags.map((tag: string) => (
 								<button key={tag} className={styles.categoryButton}>
 									{tag}
 								</button>
@@ -240,18 +244,18 @@ const Page: React.FC = () => {
 
 				<div className={styles.pagination}>
 					<button onClick={handlePrevious}>
-						<PaginationArrow />
+						<PaginationArrow/>
 						Попередній інтер'єр
 					</button>
 
 					<button onClick={handleNext}>
 						Наступний інтер'єр
-						<PaginationArrow />
+						<PaginationArrow/>
 					</button>
 				</div>
 
 				<section className={styles.question}>
-					<HaveQuestion />
+					<HaveQuestion/>
 				</section>
 			</main>
 		</>
