@@ -23,21 +23,21 @@ const Index = ({ currentProjects }: Props) => {
     useEffect(() => {
         if (listRef.current) {
             gsap.fromTo(
-                listRef.current.children,  // Target each <li> inside <ul>
+                listRef.current.children,
                 {
-                    opacity: 0, // Start with opacity 0
-                    y: 20, // Start with the items slightly shifted down (for a "slide-up" effect)
+                    opacity: 0,
+                    y: 20,
                 },
                 {
-                    opacity: 1, // Fade in to opacity 1
-                    y: 0, // Move items to their final position
-                    stagger: 0.2, // Stagger each item with a 0.2s delay
-                    ease: "power2.out", // Ease the animation for smoothness
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.2,
+                    ease: "power2.out",
                     duration: 0.5
                 }
             );
         }
-    }, [currentProjects]);
+    }, []);
 
     return (
         <nav className={styles.projectsList}>

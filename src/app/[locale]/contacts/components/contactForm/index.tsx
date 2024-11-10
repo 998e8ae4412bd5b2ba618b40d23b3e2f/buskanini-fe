@@ -17,6 +17,8 @@ interface FormData {
 	services: string[];
 }
 
+type SubmitStatus = "idle" | "success" | "error";
+
 const ContactForm: React.FC = () => {
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
@@ -25,6 +27,8 @@ const ContactForm: React.FC = () => {
 		file: null,
 		services: [],
 	});
+
+	const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
 	const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -36,9 +40,16 @@ const ContactForm: React.FC = () => {
 		}));
 	};
 
+	const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
+
 	const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
 		if (file) {
+			if (file.size > MAX_FILE_SIZE) {
+				alert("Файл перевищує максимально допустимий розмір у 100 МБ.");
+				event.target.value = ""; // Скидаємо вибір файлу
+				return;
+			}
 			setFormData((prev) => ({
 				...prev,
 				file,
@@ -61,8 +72,52 @@ const ContactForm: React.FC = () => {
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		console.log("Submitting form data:", formData);
+
+		const formdata = new FormData();
+		const message = `
+			message: ${formData.message}\nemail: ${formData.email}\nservices: ${formData.services.join(
+			", "
+		)}
+		`;
+
+		// @ts-ignore
+		formdata.append("file", formData.file);
+		formdata.append("chatId", "1805986720");
+		formdata.append("message", message);
+		formdata.append("fileType", "document");
+
+		setSubmitStatus("idle"); // Скидаємо статус перед запитом
+
+		fetch("https://buskanini-tg-k9ac.onrender.com/send-data", {
+			method: "POST",
+			body: formdata,
+			redirect: "follow",
+		})
+			.then((response) => {
+				if (response.ok) {
+					setSubmitStatus("success"); // Успішно
+					setTimeout(() => {
+						setSubmitStatus("idle");
+					}, 4000)
+					setFormData({
+						name: "",
+						email: "",
+						message: "",
+						file: null,
+						services: [],
+					});
+				} else {
+					throw new Error("Failed to send");
+				}
+			})
+			.catch(() => {
+				setSubmitStatus("error"); // Помилка
+				setTimeout(() => {
+					setSubmitStatus("idle");
+				}, 4000)
+			});
 	};
+
 
 	const serviceOptions = [
 		"3D Modelling",
@@ -112,6 +167,8 @@ const ContactForm: React.FC = () => {
 			});
 		});
 	}, []);
+
+	console.log(submitStatus)
 
 
 	return (
@@ -214,11 +271,21 @@ const ContactForm: React.FC = () => {
 
 			<button
 				type="submit"
-				className={`${styles.submitButton} ${isReadyToSent ? styles.active : ""}`}
+				className={`${styles.submitButton} ${isReadyToSent ? styles.active : ""} ${
+					submitStatus === "success"
+						? styles.success
+						: submitStatus === "error"
+							? styles.error
+							: ""
+				}`}
 			>
 				<span className={styles.fill}>Заповніть форму</span>
-				<span className={styles.sent}>Надіслати запит</span>
-				<ArrowSubmit />
+				<span
+					className={`${styles.sent}`}
+				>
+					Надіслати запит
+				</span>
+				<ArrowSubmit/>
 			</button>
 		</form>
 	);

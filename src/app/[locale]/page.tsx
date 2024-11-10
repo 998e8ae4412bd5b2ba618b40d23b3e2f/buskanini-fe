@@ -100,7 +100,7 @@ export default function Home() {
 					<img
 						className={styles.bannerImage}
 						alt="interior image"
-						src="/images/home/banerImage.png"
+						src="/images/home/banerImage.webp"
 					/>
 				</div>
 			</section>

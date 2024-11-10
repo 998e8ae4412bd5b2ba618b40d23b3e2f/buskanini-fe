@@ -389,6 +389,11 @@
       flex-direction: column-reverse;
       min-width: unset;
 
+
+      .mainWrapper {
+        transform: skew(0deg, 0deg) rotateX(0deg) !important;
+      }
+
       .project {
         display: none;
       }

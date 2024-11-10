@@ -174,7 +174,6 @@ const Page: React.FC = () => {
 						start: "top 80%",
 						end: "top 50%",
 						toggleActions: "play none none reverse",
-						markers: true
 					},
 				}
 			);
@@ -233,7 +232,6 @@ const Page: React.FC = () => {
 						trigger: sectionRef.current,
 						start: "top 60%",
 						toggleActions: "play none none reverse",
-						markers: true
 					},
 				}
 			);
@@ -254,7 +252,7 @@ const Page: React.FC = () => {
 					style={swiperStyles}
 					className={styles.swiper}
 					slidesPerView={1}
-					spaceBetween={25}
+					spaceBetween={isPhone ? 5 : 25}
 					modules={[Pagination]}
 					speed={500}
 					loop={true}

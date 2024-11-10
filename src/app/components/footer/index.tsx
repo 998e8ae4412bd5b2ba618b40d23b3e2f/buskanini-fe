@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
 						trigger: footerRef.current,
 						start: "top 70%",
 						end: "top 50%",
-						toggleActions: "play none none reverse"
+						toggleActions: "play none none"
 					},
 				}
 			);
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 						trigger: footerRef.current,
 						start: "top 80%",
 						end: "top 50%",
-						toggleActions: "play none none reverse",
+						toggleActions: "play none none",
 					},
 				}
 			);
@@ -197,8 +197,11 @@ const Footer: React.FC = () => {
 				</div>
 
 				<div className={styles.allRights}>
+					<Link href='https://frant.digital' className={styles.madeByFrant}>Made by Frant</Link>
 					<span>© 2024, buskanini, All Rights Reserved.</span>
 				</div>
+
+				<div className={styles.bgBuskanini}>buskanini</div>
 			</div>
 		</footer>
 	);

@@ -30,6 +30,10 @@
       opacity: 0.02;
     }
 
+    .bgBuskanini {
+      display: none;
+    }
+
     .footerInfoNav {
       display: flex;
       justify-content: space-between;
@@ -109,8 +113,21 @@
     .allRights {
       display: flex;
       justify-content: center;
+      position: relative;
 
       span {
+        color: #E7E7E7;
+        font-family: "FixelText", sans-serif;
+        font-size: 1.188rem;
+        font-weight: 300;
+        line-height: 185%;
+      }
+
+      .madeByFrant {
+        position: absolute;
+        left: 0%;
+        bottom: 0.5%;
+
         color: #E7E7E7;
         font-family: "FixelText", sans-serif;
         font-size: 1.188rem;
@@ -128,6 +145,28 @@
     .footerContainer {
       max-width: 100%;
       padding: 50px 0 0 0;
+      &:before {
+        opacity: 0;
+      }
+
+      .bgBuskanini {
+        display: flex;
+        position: absolute;
+        top: 40%;
+        right: -304px;
+
+        color: $white;
+        text-align: center;
+        font-family: "Craftwork Grotesk", sans-serif;
+        font-size: 128px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 135%; /* 172.8px */
+        z-index: -1;
+        opacity: 0.02 !important;
+
+        transform: rotate(-90deg) !important;
+      }
 
       .footerInfoNav {
         padding:0 30px 50px;
@@ -198,10 +237,25 @@
       }
 
       .allRights {
+        display: flex;
+        flex-direction: column;
         padding: 0 10px;
         span {
           text-align: center;
           font-size: 1.188rem;
+          line-height: 185%;
+        }
+
+        .madeByFrant {
+          position: relative;
+          left: 0%;
+          bottom: 0.5%;
+
+          text-align: center;
+          color: #E7E7E7;
+          font-family: "FixelText", sans-serif;
+          font-size: 1.188rem;
+          font-weight: 300;
           line-height: 185%;
         }
       }

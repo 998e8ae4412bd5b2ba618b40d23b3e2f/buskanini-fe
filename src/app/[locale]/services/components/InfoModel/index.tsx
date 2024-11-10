@@ -1,7 +1,7 @@
 "use client";
 import ServiceBlock from "@/app/[locale]/services/components/ServiceBlock";
 import React, { type CSSProperties } from "react";
-import { Pagination } from "swiper/modules";
+import {Autoplay, Pagination} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./infoModel.module.scss";
 
@@ -63,7 +63,7 @@ const Index = ({ obj, reverse }: SwiperComponentProps) => {
 						className={styles.swiper}
 						slidesPerView={1}
 						spaceBetween={25}
-						modules={[Pagination]}
+						modules={[Pagination, Autoplay]}
 						speed={500}
 						loop={true}
 						pagination={{

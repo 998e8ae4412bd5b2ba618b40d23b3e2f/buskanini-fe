@@ -20,7 +20,7 @@ const GoUpButton: React.FC = () => {
 		setIsVisible(scrolled > threshold);
 
 		const isBottom =
-			window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
+			window.innerHeight + window.scrollY + 200 >= document.documentElement.scrollHeight - 1;
 		setIsAtBottom(isBottom);
 	};
 
