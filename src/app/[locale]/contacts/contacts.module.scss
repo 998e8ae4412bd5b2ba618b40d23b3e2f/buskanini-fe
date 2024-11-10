@@ -32,9 +32,45 @@
         align-items: center;
         flex-wrap: wrap;
 
+        a:first-child {
+        }
+
         a {
+          position: relative;
           padding-top: 30%;
           padding-right: 10%;
+
+          div {
+            position: relative;
+            height: fit-content;
+
+            svg {
+              z-index: 100;
+            }
+
+            &:hover {
+              &::before {
+                opacity: 0.42;
+              }
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 150px;
+              height: 150px;
+
+              background: $light;
+              z-index: 0;
+              filter: blur(58.4190788269043px);
+              transition: .3s;
+              opacity: 0;
+            }
+          }
+
         }
 
         a:nth-child(1),

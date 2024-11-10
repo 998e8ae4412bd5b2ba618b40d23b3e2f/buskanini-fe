@@ -6,14 +6,35 @@
   background: var(--Black, #070707);
 
   .footerContainer {
+    position: relative;
     margin: 0 auto;
     max-width: $container-pc;
     padding: 50px 50px 0 50px;
+    overflow: hidden;
+    z-index: 4;
+
+    &:before {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: "buskanini";
+      color: $white;
+      text-align: center;
+      font-family: "Craftwork Grotesk", sans-serif;
+      font-size: 17.4vw;
+
+      font-style: normal;
+      font-weight: 900;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.02;
+    }
 
     .footerInfoNav {
       display: flex;
       justify-content: space-between;
       padding-bottom: 50px;
+      z-index: 4555;
 
       .footerInfo {
         width: 35%;

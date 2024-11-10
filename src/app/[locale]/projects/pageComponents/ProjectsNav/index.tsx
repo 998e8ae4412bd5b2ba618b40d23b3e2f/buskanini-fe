@@ -21,7 +21,6 @@ const Index = ({ currentProjects }: Props) => {
     };
 
     useEffect(() => {
-        // GSAP animation for the list items, using stagger to animate them one by one
         if (listRef.current) {
             gsap.fromTo(
                 listRef.current.children,  // Target each <li> inside <ul>
@@ -34,11 +33,11 @@ const Index = ({ currentProjects }: Props) => {
                     y: 0, // Move items to their final position
                     stagger: 0.2, // Stagger each item with a 0.2s delay
                     ease: "power2.out", // Ease the animation for smoothness
-                    duration: 0.5, // Duration of each individual animation
+                    duration: 0.5
                 }
             );
         }
-    }, [currentProjects]); // Re-run animation when currentProjects change
+    }, [currentProjects]);
 
     return (
         <nav className={styles.projectsList}>

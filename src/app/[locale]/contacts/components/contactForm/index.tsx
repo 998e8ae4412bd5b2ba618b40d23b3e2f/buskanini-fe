@@ -1,5 +1,6 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
+import React, { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
+import gsap from "gsap";
 import ArrowSubmit from "../../../../../../public/svg/ArrowSubmit.svg";
 import ArrowSubmitAnim from "../../../../../../public/svg/ArrowSubmitAnim.svg";
 import Change from "../../../../../../public/svg/change.svg";
@@ -45,7 +46,6 @@ const ContactForm: React.FC = () => {
 		}
 	};
 
-
 	const toggleServiceSelection = (service: string) => {
 		setFormData((prev) => ({
 			...prev,
@@ -61,17 +61,7 @@ const ContactForm: React.FC = () => {
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-
-		// Validation or form submission logic
 		console.log("Submitting form data:", formData);
-
-		// Example of form submission to an API
-		// const formDataToSubmit = new FormData();
-		// formDataToSubmit.append("name", formData.name);
-		// formDataToSubmit.append("email", formData.email);
-		// formDataToSubmit.append("message", formData.message);
-		// if (formData.file) formDataToSubmit.append("file", formData.file);
-		// formData.services.forEach((service) => formDataToSubmit.append("services", service));
 	};
 
 	const serviceOptions = [
@@ -81,7 +71,48 @@ const ContactForm: React.FC = () => {
 		"Product Design",
 	];
 
-	const isReadyToSent = formData.name !== '' && formData.email !== '';
+	const isReadyToSent = formData.name !== "" && formData.email !== "";
+
+	// GSAP Animation on Form Load
+	useEffect(() => {
+		// Animate input fields (input and textarea)
+		gsap.from(`.${styles.inputGroup} input, .${styles.inputGroup} textarea`, {
+			opacity: 0,
+			y: 30,
+			stagger: 0.1,
+			duration: 1.5,
+			ease: "power3.out",
+		});
+
+		// Animate file upload group with a bounce effect
+		gsap.from(`.${styles.fileUploadGroup}`, {
+			opacity: 0,
+			x: -50,
+			duration: 1.5,
+			ease: "power3.out",
+		});
+
+		// Animate service checkboxes with a "spring" effect
+		gsap.from(`.${styles.checkboxGroup} label`, {
+			opacity: 0,
+			x: -50,
+			stagger: 0.1,
+			duration: 1.5,
+			ease: "back.out(1.7)", // Adds a springy bounce effect
+		});
+
+		// Focus animation on input fields when clicked
+		const inputs = document.querySelectorAll(`.${styles.input}, .${styles.textarea}`);
+		inputs.forEach((input) => {
+			input.addEventListener("focus", () => {
+				gsap.to(input, { scale: 1.05, duration: 0.3, ease: "power1.out" });
+			});
+			input.addEventListener("blur", () => {
+				gsap.to(input, { scale: 1, duration: 0.3, ease: "power1.out" });
+			});
+		});
+	}, []);
+
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
@@ -154,10 +185,7 @@ const ContactForm: React.FC = () => {
 							<div className={styles.fileIcon}>
 								<FileAdd />
 							</div>
-							<button
-								type="button"
-								className={styles.uploadButton}
-							>
+							<button type="button" className={styles.uploadButton}>
 								Upload File
 							</button>
 						</div>
@@ -173,8 +201,8 @@ const ContactForm: React.FC = () => {
 							formData.services.includes(service) ? styles.checkboxLabelActive : ""
 						}`}
 						onClick={(e) => {
-							e.preventDefault()
-							toggleServiceSelection(service)
+							e.preventDefault();
+							toggleServiceSelection(service);
 						}}
 					>
 						<input type="checkbox" checked={formData.services.includes(service)} readOnly />
@@ -184,7 +212,10 @@ const ContactForm: React.FC = () => {
 				))}
 			</div>
 
-			<button type="submit" className={`${styles.submitButton} ${isReadyToSent ? styles.active : ''}`}>
+			<button
+				type="submit"
+				className={`${styles.submitButton} ${isReadyToSent ? styles.active : ""}`}
+			>
 				<span className={styles.fill}>Заповніть форму</span>
 				<span className={styles.sent}>Надіслати запит</span>
 				<ArrowSubmit />

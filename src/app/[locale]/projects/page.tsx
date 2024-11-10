@@ -8,6 +8,7 @@ import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
 import styles from "./projects.module.scss";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from "gsap";
+import Footer from "@/app/components/footer";
 
 const Page: React.FC = () => {
 	const locale = useLocale();
@@ -115,6 +116,8 @@ const Page: React.FC = () => {
 	if (!currentProjects) return null;
 
 	useEffect(() => {
+		if (currentProjects.length === 0) return;
+		gsap.killTweensOf(projectRefs.current);
 		gsap.fromTo(
 			projectRefs.current,
 			{
@@ -130,11 +133,11 @@ const Page: React.FC = () => {
 				scrollTrigger: {
 					trigger: projectRefs.current,
 					start: "top 80%",
-					once: true
+					once: true,
 				},
 			}
 		);
-	}, [currentProjects]);
+	}, [projectsData]);
 
 	if (isLoading) {
 		return (
@@ -267,6 +270,8 @@ const Page: React.FC = () => {
 
 				</div>
 			</main>
+
+			<Footer />
 		</>
 	);
 };

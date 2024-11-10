@@ -132,7 +132,7 @@ const Header = () => {
 		gsap.fromTo(
 			ulRef.current,
 			{ opacity: 0, width: 0 },
-			{ opacity: 1, width: "auto", duration: 1, ease: "power2.out", delay: 1 }
+			{ opacity: 1, width: "auto", duration: 1, ease: "power2.out", delay: .5 }
 		);
 
 		window.innerWidth > 768 && gsap.fromTo(

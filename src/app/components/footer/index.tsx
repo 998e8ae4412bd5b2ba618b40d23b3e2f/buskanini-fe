@@ -1,6 +1,8 @@
 'use client';
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import styles from "./footer.module.scss";
 
 import Behance from "../../../../public/svg/socialMedia/behance.svg";
@@ -9,7 +11,7 @@ import Instagram from "../../../../public/svg/socialMedia/instagram.svg";
 import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
 import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
 import { fetchGraphQL } from "@/app/lib/directus";
-import {useLocale} from "use-intl";
+import { useLocale } from "use-intl";
 
 interface SocialLinks {
 	instagram: string;
@@ -22,20 +24,23 @@ interface SocialLinks {
 const Footer: React.FC = () => {
 	const locale = useLocale();
 	const [media, setMedia] = useState<SocialLinks | null>(null);
+	const footerRef = useRef<HTMLDivElement | null>(null);
+	const footerContentRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
+		// Fetch social links
 		const fetchMedia = async () => {
 			const query = `
-                query Social {
-					social {
-						instagram
-						telegram
-						behance
-						facebook
-						patreon
-					}
-				}
-            `;
+        query Social {
+          social {
+            instagram
+            telegram
+            behance
+            facebook
+            patreon
+          }
+        }
+      `;
 
 			try {
 				const response = await fetchGraphQL(query);
@@ -45,11 +50,56 @@ const Footer: React.FC = () => {
 			}
 		};
 		fetchMedia();
+
+		// GSAP Animation
+		gsap.registerPlugin(ScrollTrigger);
+
+		if (footerRef.current && footerContentRef.current) {
+			// Animation for the entire footer
+			gsap.fromTo(
+				footerRef.current,
+				{ opacity: 0, y: 50 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: footerRef.current,
+						start: "top 70%",
+						end: "top 50%",
+						toggleActions: "play none none reverse"
+					},
+				}
+			);
+
+			const elements = gsap.utils.toArray(
+				footerContentRef.current.querySelectorAll("div, p, ul, li, a, span")
+			);
+
+			gsap.fromTo(
+				elements,
+				{ opacity: 0, y: 30 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+					stagger: 0.1, // Delay between animations for each element
+					scrollTrigger: {
+						trigger: footerRef.current,
+						start: "top 80%",
+						end: "top 50%",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+		}
 	}, []);
 
 	return (
-		<footer className={styles.footer}>
-			<div className={styles.footerContainer}>
+		<footer className={styles.footer} ref={footerRef}>
+			<div className={styles.footerContainer} ref={footerContentRef}>
 				<div className={styles.footerInfoNav}>
 					<div className={styles.footerInfo}>
 						<Link href="">buskanini</Link>
@@ -62,34 +112,61 @@ const Footer: React.FC = () => {
 					</div>
 
 					<div className={styles.footerNav}>
-						<div className={`${styles.footerNavList} ${styles.footerNavListContacts}`}>
+						<div
+							className={`${styles.footerNavList} ${styles.footerNavListContacts}`}
+						>
 							<div className={styles.title}>Контакти</div>
 
 							<ul>
 								{media && (
 									<>
 										<li>
-											<Link className={styles.icon} href={media.instagram} target="_blank" rel="noopener noreferrer">
+											<Link
+												className={styles.icon}
+												href={media.instagram}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Instagram />
 											</Link>
 										</li>
 										<li>
-											<Link className={styles.icon} href={media.telegram} target="_blank" rel="noopener noreferrer">
+											<Link
+												className={styles.icon}
+												href={media.telegram}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Telegram />
 											</Link>
 										</li>
 										<li>
-											<Link className={styles.icon} href={media.patreon} target="_blank" rel="noopener noreferrer">
+											<Link
+												className={styles.icon}
+												href={media.patreon}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Patreon />
 											</Link>
 										</li>
 										<li>
-											<Link className={styles.icon} href={media.facebook} target="_blank" rel="noopener noreferrer">
+											<Link
+												className={styles.icon}
+												href={media.facebook}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Facebook />
 											</Link>
 										</li>
 										<li>
-											<Link className={styles.icon} href={media.behance} target="_blank" rel="noopener noreferrer">
+											<Link
+												className={styles.icon}
+												href={media.behance}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Behance />
 											</Link>
 										</li>

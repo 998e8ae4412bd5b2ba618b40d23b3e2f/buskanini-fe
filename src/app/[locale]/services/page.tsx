@@ -7,6 +7,7 @@ import styles from "./services.module.scss";
 import {fetchGraphQL} from "@/app/lib/directus";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import {useLocale} from "use-intl";
+import Footer from "@/app/components/footer";
 
 type BuskaniniBgTitleProps = {
 	title: string;
@@ -165,6 +166,8 @@ const Page = () => {
 					<HaveQuestion />
 				</section>
 			</main>
+
+			<Footer />
 		</>
 	);
 };

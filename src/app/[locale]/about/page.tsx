@@ -5,9 +5,11 @@ import BlackArrow from "../../../../public/svg/blackArrow.svg";
 import styles from "./about.module.scss";
 import { fetchGraphQL } from "@/app/lib/directus";
 import { useLocale } from "use-intl";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from "gsap";
+import Link from "next/link";
+import Footer from "@/app/components/footer";
 
 type Block = {
 	id: string;
@@ -50,6 +52,12 @@ type AboutData = {
 	translations: Translation[];
 };
 
+interface Model {
+	image: string;
+	projectId: string;
+}
+
+
 const Page = () => {
 	const locale = useLocale();
 	const [data, setData] = useState<AboutData | null>(null);
@@ -58,7 +66,7 @@ const Page = () => {
 	useEffect(() => {
 		const fetchMedia = async () => {
 			const query = `
-			query About {
+			query AboutModels {
 				about {
 					about_image {
 						id
@@ -72,15 +80,32 @@ const Page = () => {
 						about_me_description
 						folder
 					}
-				}
+				},
+				models(limit: 6) {
+						model {
+							id
+						}
+						project {
+							id
+						}
+					}
 			}
 		`;
 
 			try {
 				const response = await fetchGraphQL(query);
 				const data = response.data.about as AboutData;
+				const objects: Model[] = response.data.models.map((obj: {
+					model: { id: string};
+					project: {id: string}
+				}) => {
+					return ({
+						image: obj.model.id,
+						projectId: obj.project.id,
+					})
+				})
+				setModels(objects);
 				setData(data);
-				console.log(data)
 				setIsLoading(false);
 			} catch (error) {
 				console.error("Error fetching data:", error);
@@ -98,9 +123,10 @@ const Page = () => {
 	const aboutUsTextRef = useRef<HTMLDivElement | null>(null);
 	const aboutUsImageRef = useRef<HTMLDivElement | null>(null);
 	const arrowBtnRef = useRef<HTMLButtonElement | null>(null);
+	const aboutProjectsTextRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		if (aboutMeTextRef.current && aboutMeImageRef.current && aboutBuskaniniRef.current && aboutUsTextRef.current && aboutUsImageRef.current) {
+		if (aboutMeTextRef.current && aboutMeImageRef.current && aboutBuskaniniRef.current && aboutUsTextRef.current && aboutUsImageRef.current && aboutProjectsTextRef.current) {
 			gsap.fromTo(
 				aboutMeTextRef.current,
 				{ opacity: 0, y: 50 },
@@ -186,14 +212,34 @@ const Page = () => {
 						start: "top bottom",
 						end: "bottom top",
 						scrub: true,
-						markers: true
 					},
 				}
 			);
 
 
+			const paragraphs = aboutProjectsTextRef.current.querySelectorAll("p");
+			gsap.fromTo(
+				paragraphs,
+				{ opacity: 0, y: 20 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power2.out",
+					stagger: 0.2,
+					scrollTrigger: {
+						trigger: aboutProjectsTextRef.current,
+						start: "top 80%",
+						end: "bottom 60%",
+						scrub: true,
+					},
+				}
+			);
+
 		}
 	}, [data]);
+
+	const [models, setModels] = React.useState<Model[]>([]);
 
 	if (isLoading) {
 		return <LoadingScreen />;
@@ -258,36 +304,16 @@ const Page = () => {
 						</h3>
 					</div>
 
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/200/300)`,
-						 }}
-					/>
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/400/300})`,
-						 }}
-					/>
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/500/300)`,
-						 }}
-					/>
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/600/300)`,
-						 }}
-					/>
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/900/300)`,
-						 }}
-					/>
-					<div className={styles.project}
-						 style={{
-							 backgroundImage: `url(https://picsum.photos/1000/300)`,
-						 }}
-					/>
+					{
+						models.map((obj, i) => {
+							return <Link key={i} href={obj.projectId} className={styles.project}
+										style={{
+											backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${obj.image})`,
+										}}
+							/>
+						})
+					}
+
 					<div className={styles.aboutProjectsButtons}>
 						<a href="#projects" className={styles.projectsLink}>
 							Переглянути проєкти
@@ -299,7 +325,10 @@ const Page = () => {
 						</button>
 					</div>
 				</div>
-				<div className={styles.aboutProjectsText}>
+				<div
+					className={styles.aboutProjectsText}
+					ref={aboutProjectsTextRef}
+				>
 					{data?.translations[0].folder.blocks.map((block, index) => (
 						<p key={index}>{block.data.text}</p>
 					))}
@@ -309,6 +338,7 @@ const Page = () => {
 			<section className={styles.askSection}>
 				<HaveQuestion/>
 			</section>
+			<Footer />
 		</>
 	);
 };

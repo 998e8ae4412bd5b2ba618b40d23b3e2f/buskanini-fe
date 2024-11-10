@@ -17,6 +17,7 @@ import Link from "next/link";
 import React, {useEffect, useLayoutEffect, useRef} from "react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Footer from "@/app/components/footer";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -167,6 +168,8 @@ export default function Home() {
 					<HaveQuestion/>
 				</section>
 			</main>
+
+			<Footer />
 		</>
 	);
 }

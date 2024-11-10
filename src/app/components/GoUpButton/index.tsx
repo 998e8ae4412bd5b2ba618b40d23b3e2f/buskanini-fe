@@ -1,11 +1,11 @@
 "use client";
-import type React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Behance from "../../../../public/svg/goUp.svg";
 import styles from "./goUpButton.module.scss";
 
 const GoUpButton: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [isAtBottom, setIsAtBottom] = useState(false);
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -18,6 +18,10 @@ const GoUpButton: React.FC = () => {
 		const scrolled = window.scrollY;
 		const threshold = document.documentElement.scrollHeight * 0.5;
 		setIsVisible(scrolled > threshold);
+
+		const isBottom =
+			window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
+		setIsAtBottom(isBottom);
 	};
 
 	useEffect(() => {
@@ -29,7 +33,9 @@ const GoUpButton: React.FC = () => {
 
 	return (
 		<button
-			className={`${isVisible ? styles.goUpButton : styles.goUpButtonIdle}`}
+			className={`${isVisible ? styles.goUpButton : styles.goUpButtonIdle} ${
+				isAtBottom ? styles.atBottom : ""
+			}`}
 			onClick={scrollToTop}
 		>
 			<div>

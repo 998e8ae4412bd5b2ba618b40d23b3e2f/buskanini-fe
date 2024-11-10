@@ -20,6 +20,7 @@ import PaginationArrow from "../../../../../public/svg/PaginationArrow.svg";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Footer from "@/app/components/footer";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -35,6 +36,7 @@ interface Model {
 	translations: { name: string }[];
 	images: { directus_files_id: {id: string} }[];
 }
+
 
 const Page: React.FC = () => {
 	const [project, setProject] = useState<Project | null>(null);
@@ -154,6 +156,89 @@ const Page: React.FC = () => {
 
 	const { description = "", client = "" } = project?.translations[0] || {};
 
+	const sectionRef = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		if (sectionRef.current) {
+			// Animate title and description
+			gsap.fromTo(
+				sectionRef.current.querySelector(`.${styles.title}`),
+				{ opacity: 0, y: 30 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: sectionRef.current,
+						start: "top 80%",
+						end: "top 50%",
+						toggleActions: "play none none reverse",
+						markers: true
+					},
+				}
+			);
+
+			gsap.fromTo(
+				sectionRef.current.querySelector(`.${styles.description}`),
+				{ opacity: 0, x: -30 },
+				{
+					opacity: 1,
+					x: 0,
+					duration: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: sectionRef.current,
+						start: "top 75%",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+
+			// Animate detail items
+			const detailItems = sectionRef.current.querySelectorAll(
+				`.${styles.detailItem}`
+			);
+			gsap.fromTo(
+				detailItems,
+				{ opacity: 0, y: 20 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.8,
+					ease: "power3.out",
+					stagger: 0.2, // Animate each item sequentially
+					scrollTrigger: {
+						trigger: sectionRef.current,
+						start: "top 70%",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+
+			// Animate category buttons
+			const categoryButtons = sectionRef.current.querySelectorAll(
+				`.${styles.categoryButton}`
+			);
+			gsap.fromTo(
+				categoryButtons,
+				{ opacity: 0, scale: 0.9 },
+				{
+					opacity: 1,
+					scale: 1,
+					duration: 0.5,
+					ease: "power3.out",
+					stagger: 0.1,
+					scrollTrigger: {
+						trigger: sectionRef.current,
+						start: "top 60%",
+						toggleActions: "play none none reverse",
+						markers: true
+					},
+				}
+			);
+		}
+	}, [project]);
 
 	if (isLoading) {
 		return (
@@ -214,7 +299,7 @@ const Page: React.FC = () => {
 					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
 				</section>
 
-				<section className={styles.projectSection}>
+				<section className={styles.projectSection} ref={sectionRef}>
 					<h2 className={styles.title}>Про проєкт</h2>
 					<p className={styles.description}>{description}</p>
 
@@ -258,6 +343,8 @@ const Page: React.FC = () => {
 					<HaveQuestion/>
 				</section>
 			</main>
+
+			<Footer/>
 		</>
 	);
 };
