@@ -36,11 +36,19 @@ const Header = () => {
 		]);
 
 		if (!isBurgerMenuVisible) {
+			// Під час відкриття меню
 			gsap.set([liRefs.current], { opacity: 0, y: -20 });
 			gsap.set(contactsRef.current, { opacity: 0, x: '-50%', y: 50 });
 			gsap.set(bgScreenRef.current, { scale: 1, opacity: 1 });
 			gsap.set(lanRef.current, { opacity: 0 });
-			gsap.set(navRef.current, { opacity: 0 });
+			gsap.set(navRef.current, { opacity: 0, pointerEvents: 'none' }); // Початково блокувати
+
+			gsap.to(navRef.current, {
+				opacity: 1,
+				pointerEvents: 'auto', // Розблокувати, коли анімація завершиться
+				ease: "power2.out",
+				duration: 0.5,
+			});
 
 			gsap.to(liRefs.current, {
 				opacity: 1,
@@ -76,18 +84,14 @@ const Header = () => {
 				duration: 0.5,
 				ease: "power2.out"
 			});
-
-			gsap.to(navRef.current, {
-				opacity: 1,
-				ease: "power2.out"
-			});
 		} else {
+			// Під час закриття меню
 			gsap.to(liRefs.current, {
 				opacity: 0,
 				y: -20,
 				duration: 0.2,
 				stagger: 0.2,
-				ease: "power2.in"
+				ease: "power2.in",
 			});
 
 			gsap.to(contactsRef.current, {
@@ -95,7 +99,7 @@ const Header = () => {
 				y: 50,
 				duration: 0.5,
 				ease: "power2.in",
-				delay: 0.2
+				delay: 0.2,
 			});
 
 			gsap.to(bgScreenRef.current, {
@@ -103,18 +107,25 @@ const Header = () => {
 				scale: 1,
 				duration: 1,
 				ease: "power2.out",
-				delay: 0.4
+				delay: 0.4,
 			});
 
 			gsap.to(lanRef.current, {
 				opacity: 0,
 				duration: 0.5,
-				ease: "power2.out"
+				ease: "power2.out",
 			});
 
 			gsap.to(headerRef.current, {
 				height: "auto",
 				delay: 1,
+				ease: "power2.out",
+			});
+
+			gsap.to(navRef.current, {
+				opacity: 0,
+				pointerEvents: 'none', // Заблокувати після завершення анімації
+				duration: 0.5,
 				ease: "power2.out",
 			});
 		}
@@ -141,7 +152,7 @@ const Header = () => {
 		gsap.fromTo(
 			ulRef.current,
 			{ opacity: 0, width: 0 },
-			{ opacity: 1, width: "auto", duration: 1, ease: "power2.out", delay: .5 }
+			{  opacity: 1, width: "auto", duration: 1, ease: "power2.out", delay: .5 }
 		);
 
 		window.innerWidth > 768 && gsap.fromTo(
