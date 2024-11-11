@@ -274,7 +274,7 @@ const Page: React.FC = () => {
 					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
-							spaceBetween={76}
+							spaceBetween={isPhone ? 0 : 75}
 							modules={[FreeMode, Navigation, Thumbs]}
 							className={styles.swiperSecondary}
 							centeredSlides={true}

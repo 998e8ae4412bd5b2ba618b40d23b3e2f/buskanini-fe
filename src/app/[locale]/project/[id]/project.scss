@@ -25,8 +25,10 @@
   #ff {
     .swiper-slide {
       width: fit-content !important;
+      margin: 0 5% !important;
 
       h2 {
+        margin: 0 auto !important;
       }
     }
   }
