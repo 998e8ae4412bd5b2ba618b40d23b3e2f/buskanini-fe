@@ -52,6 +52,10 @@
   }
 }
 
+.atBottom {
+  right: 15.75rem;
+}
+
 @media (max-width: 768px) {
   .goUpButton {
     position: fixed;
@@ -77,5 +81,9 @@
     background: unset;
 
     transition: .3s;
+  }
+
+  .atBottom {
+    right: 1.75rem;
   }
 }

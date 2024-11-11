@@ -1,0 +1,62 @@
+@import "/src/app/styles/values.scss";
+
+.notFoundBody {
+  overflow: hidden;
+
+  height: 100vh;
+  background-color: $black;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  h1 {
+    color: $white;
+    text-align: center;
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 135%;
+
+    margin-bottom: 24px;
+  }
+
+  > span {
+    color: $white;
+    text-align: center;
+    font-family: "Craftwork Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 135%;
+
+    opacity: 0.8;
+    margin-bottom: 72px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    padding: 10px 0;
+    border-radius: 90px;
+    border: 1px solid var(--White, #F6F6F6);
+    background: var(--Light, #F3E2C6);
+    cursor: pointer;
+
+    span {
+      color: $black;
+
+      font-family: "FixelText", sans-serif;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 42px; /* 175% */
+    }
+  }
+}

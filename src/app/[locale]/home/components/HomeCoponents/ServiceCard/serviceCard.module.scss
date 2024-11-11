@@ -14,6 +14,7 @@
   border: 1px solid $white;
   box-shadow: 0 0 0.38125rem 0 #FFF;
 
+
   .titleSubtitle {
     min-height: 9.375rem;
 
@@ -59,11 +60,8 @@
     border: 1px solid $white;
   }
 
-  transition: 0.3s;
-
   &:hover {
     background-color: $light;
-
     .titleSubtitle {
       h3 {
         color: $black;
@@ -86,7 +84,7 @@
 
 @media (max-width: 768px) {
   .serviceCard {
-    gap: 1.675rem;
+    gap: 2.675rem;
     min-height: unset;
 
     padding: 1.275rem 1.875rem 1.875rem 1.875rem;

@@ -1,18 +1,20 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = process.env.DIRECTUS_API_URL; // Set in your .env file
-const API_TOKEN = process.env.DIRECTUS_API_TOKEN; // Set in your .env file
+const API_URL = process.env.DIRECTUS_API_URL;
+const API_TOKEN = process.env.DIRECTUS_API_TOKEN;
 
 const directus = axios.create({
-    baseURL: 'https://buskanini-cms.onrender.com'
+	baseURL: "https://buskanini-cms.onrender.com",
 });
 
-export const fetchData = async (collection) => {
-    try {
-        const response = await directus.get(`/items/${collection}`);
-        return response.data.data; // Returns array of items from Directus
-    } catch (error) {
-        console.error("Error fetching data from Directus:", error);
-        return null;
-    }
-};
+export async function fetchGraphQL(query, variables = {}) {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/graphql`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ query }),
+	});
+	const data = await res.json();
+	return data;
+}

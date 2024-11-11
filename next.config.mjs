@@ -1,17 +1,28 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.svg$/,
-            use: ['@svgr/webpack'],
-        });
+	reactStrictMode: false,
+	webpack(config) {
+		config.module.rules.push({
+			test: /\.svg$/,
+			use: ["@svgr/webpack"],
+		});
 
-        return config;
-    },
+		return config;
+	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "buskanini-cms.onrender.com",
+				pathname: "/assets/**",
+			},
+		],
+	}
+
 };
 
 export default withNextIntl(nextConfig);

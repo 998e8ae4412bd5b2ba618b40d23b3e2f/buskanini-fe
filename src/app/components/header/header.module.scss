@@ -8,6 +8,9 @@
   position: relative;
   z-index: 999999;
 
+  opacity: 0;
+  transform: translateY(-50);
+
   .headerLogo__block {
     flex: 1;
 
@@ -44,12 +47,19 @@
       backdrop-filter: blur(10.199999809265137px);
 
       li {
+        opacity: 0;
         a {
           color: $white;
           font-family: "FixelText", sans-serif;
           font-size: 1.5rem;
           font-weight: 500;
           line-height: 135%;
+          transition: 0.3s;
+          white-space: nowrap;
+
+          &:hover {
+            color: $light;
+          }
         }
       }
     }
@@ -77,17 +87,74 @@
       font-size: 1.5rem;
       font-weight: 500;
       line-height: 135%;
+      transition: .3s;
+
+      &:hover {
+        background: $light;
+      }
     }
 
     button {
       color: $white;
       font-size: 1.5rem;
       background: none;
+
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      width: 2rem;
+
+      border-radius: 0;
+
+      .languageText,
+      .languageHoverText {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transition: .2s linear;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+          color: $light;
+        }
+      }
+
+
+      .languageHoverText {
+        transform: translate(-50%, 100%);
+      }
+
+      &:hover {
+        .languageText {
+          transform: translate(-50%, -100%);
+        }
+
+        .languageHoverText {
+          transform: translate(-50%, 0%);
+        }
+      }
     }
+  }
+
+  .lanButton {
+    display: none;
   }
 
   .burgerIcon {
     display: none;
+  }
+
+  .bgPhoneScreen {
+    position: absolute;
+    opacity: 0;
+    top: 1.5%;
+    right: 4.5%;
+    height: 5dvh;
+    width: 5dvh;
+    border-radius: 100%;
+    background-color: black;
+    z-index: 10;
   }
 }
 
@@ -105,7 +172,8 @@
         font-size: 1.065rem;
         padding: 0 1.75rem;
       }
-
+      display: flex;
+      flex: 0;
       z-index: 99999;
     }
 
@@ -115,89 +183,87 @@
       justify-content: center;
 
       z-index: 99999;
+
+      min-height: 49px;
     }
 
     nav {
-      display: none;
+      opacity: 0;
+      position: absolute;
+
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      justify-content: center;
+      z-index: 99999;
+
+      pointer-events: none;
+
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        gap: 7vh;
+
+        background: transparent;
+        backdrop-filter: none;
+
+        li {
+          a {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .lanButton {
+      opacity: 0;
+      display: flex;
+      font-family: "FixelText", sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 36px;
+
+      color: $white;
+      background: unset;
+
+      z-index: 9999;
+
+      margin: 0 auto;
     }
 
     .lanContacts {
-      display: none;
+      opacity: 0;
+      display: flex;
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, 50);
+      width: calc(100% - 2.5rem);
+
       a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 69px;
       }
 
       button {
+        display: none;
       }
+
+      z-index: 99999;
     }
 
     &Show {
       height: calc(100dvh - 2rem);
-      transition: .3s;
-
-      &:before {
-        content: "";
-        position: fixed;
-        top: 1.5%;
-        right: 4.5%;
-        height: 5dvh;
-        width: 5dvh;
-        border-radius: 100%;
-        background-color: black;
-        z-index: 10;
-        animation: scaleBurgerBackground .5s linear forwards;
-      }
-
-      nav {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-
-        transform: translate(-50%, -50%);
-
-        display: flex;
-        justify-content: center;
-        z-index: 99999;
-
-
-        ul {
-          display: flex;
-          flex-direction: column;
-
-          gap: 7vh;
-
-          background: transparent;
-          backdrop-filter: none;
-
-          li {
-            a {
-              font-size: 1.5rem;
-            }
-          }
-        }
-      }
-
-      .lanContacts {
-        display: flex;
-        position: absolute;
-        left: 50%;
-        bottom: 20px;
-        transform: translate(-50%, 0);
-        width: calc(100% - 2.5rem);
-
-        a {
-          display: flex;
-          justify-content: center;
-          width: 100%;
-          height: 69px;
-        }
-
-        button {
-          display: none;
-        }
-
-        z-index: 99999;
-      }
 
       @keyframes scaleBurgerBackground {
         0% {

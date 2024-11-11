@@ -1,98 +1,149 @@
-'use client'
-import React, { useState, useRef, useEffect } from "react";
+"use client";
+import { DefaultProject, InteriorProject, ProjectsNav} from "@/app/[locale]/projects/pageComponents";
 import Header from "@/app/components/header";
-import styles from "./projects.module.scss";
-import Link from "next/link";
+import { fetchGraphQL } from "@/app/lib/directus";
+import React, {useState, useEffect, useRef} from "react";
+import { useLocale } from "use-intl";
 import PaginationArrow from "../../../../public/svg/PaginationArrow.svg";
-import NavArrow from "../../../../public/svg/arrowNav.svg";
-import { DefaultProject } from "@/app/[locale]/projects/pageComponents";
-import gsap from 'gsap';
-import InteriorProject from "@/app/[locale]/projects/pageComponents/InteriorProject";
-
-interface Project {
-	name: string;
-	image: string;
-	is3D: boolean;
-}
+import styles from "./projects.module.scss";
+import LoadingScreen from "@/app/components/LoadingScreen";
+import gsap from "gsap";
+import Footer from "@/app/components/footer";
 
 const Page: React.FC = () => {
-	const projectTypes = ["Інтер'єр", "Рендер", "Моделювання"];
-	const [projectsType, setProjectsType] = useState<string>(projectTypes[0]);
+	const locale = useLocale();
+	const lang = locale === "en" ? "en-US" : "ua-UA";
 
-	const projects: Project[] = [
-		{
-			name: "Zenith Lounge Chair",
-			image: "https://picsum.photos/2550/1440",
-			is3D: false,
-		},
-		{
-			name: "Zenith Horizon",
-			image: "https://picsum.photos/2550/1440",
-			is3D: true,
-		},
-		{
-			name: "Lumina Residence",
-			image: "https://picsum.photos/2550/1440",
-			is3D: false,
-		},
-		{
-			name: "Slate Pavilion Stool",
-			image: "https://picsum.photos/2550/1440",
-			is3D: true,
-		},
-		{
-			name: "Vertex Studio Chair",
-			image: "https://picsum.photos/2550/1440",
-			is3D: false,
-		},
-		{
-			name: "Aura Gardens Swing",
-			image: "https://picsum.photos/2550/1440",
-			is3D: true,
-		},
-		{
-			name: "Echo Loft Rocker",
-			image: "https://picsum.photos/2550/1440",
-			is3D: false,
-		},
-		{
-			name: "Lumina Residence Sofa",
-			image: "https://picsum.photos/2550/1440",
-			is3D: true,
-		},
+	const projectTypes = [
+		{ name: "Інтер'єр", value: "interior" },
+		{ name: "Рендер", value: "render" },
+		{ name: "Моделювання", value: "modelling" },
 	];
 
-	const arrowRef = useRef<HTMLDivElement>(null);
-	const menuItemRefs = useRef<HTMLLIElement[]>([]);
-	const [isPhone, setIsPhone] = useState<boolean>(false)
+	const [projectsType, setProjectsType] = useState<string>(
+		projectTypes[0].value,
+	);
+	const [isLoading, setIsLoading] = useState<boolean>(true)
+	const [projectsData, setProjectsData] = useState<
+		Record<string, ProjectItem[]>
+	>({
+		interior: [],
+		render: [],
+		modelling: [],
+	});
 
-	const addToRefs = (el: HTMLLIElement) => {
-		if (el && !menuItemRefs.current.includes(el)) {
-			menuItemRefs.current.push(el);
+	const [projectCounts, setProjectCounts] = useState<Record<string, number>>({
+		interior: 0,
+		render: 0,
+		modelling: 0,
+	});
+
+	const [currentPage, setCurrentPage] = useState(1);
+
+
+	useEffect(() => {
+		const fetchModels = async () => {
+			const query = `
+		  query Models {
+			modellingModels: models(filter: { drop: { _eq: "modelling" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  project { id }
+			  images { directus_files_id { id } }
+			}
+			renderModels: models(filter: { drop: { _eq: "render" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  project { id }
+			  images { directus_files_id { id } }
+			}
+			interiorModels: models(filter: { drop: { _eq: "interior" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
+			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
+			  project { id }
+			  images { directus_files_id { id } }
+			}
+			interiorCount: models_aggregated(filter: { drop: { _eq: "interior" } }) {
+				count {
+					model 
+				}
+			}
+			renderCount: models_aggregated(filter: { drop: { _eq: "render" } }) {
+				count {
+					model
+				}
+			}
+			 modellingCount: models_aggregated(filter: { drop: { _eq: "modelling" } }) {
+				count {
+					model
+				}
+			}
 		}
+		`;
+
+			try {
+				const response = await fetchGraphQL(query);
+				setProjectsData({
+					interior: response.data.interiorModels,
+					render: response.data.renderModels,
+					modelling: response.data.modellingModels,
+				});
+
+				setProjectCounts({
+					interior: response.data.interiorCount[0].count.model,
+					render: response.data.renderCount[0].count.model,
+					modelling: response.data.modellingCount[0].count.model,
+				});
+
+				setIsLoading(false)
+			} catch (error) {
+				console.error("Error fetching models:", error);
+				setIsLoading(false)
+			}
+		};
+
+		fetchModels();
+	}, [lang, projectsType, currentPage]);
+
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
 	};
 
-	useEffect(() => {
-		menuItemRefs.current.forEach((item) => {
-			item.addEventListener('mouseenter', () => {
-				if (arrowRef.current) {
-					gsap.to(arrowRef.current, {
-						y: item.offsetTop
-					});
-				}
-			});
-		});
+	const currentProjects = projectsData[projectsType] || [];
+	const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-		return () => {
-			menuItemRefs.current.forEach((item) => {
-				item.removeEventListener('mouseenter', () => {});
-			});
-		};
-	}, []);
+
+	if (!currentProjects) return null;
 
 	useEffect(() => {
-		window.innerWidth < 768 && setIsPhone(true)
-	}, [])
+		if (currentProjects.length === 0) return;
+		gsap.killTweensOf(projectRefs.current);
+		gsap.fromTo(
+			projectRefs.current,
+			{
+				opacity: 0,
+				y: 50,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				stagger: 0.2,
+				duration: 0.6,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: projectRefs.current,
+					start: "top 80%",
+					once: true,
+				},
+			}
+		);
+	}, [projectsData]);
+
+	if (isLoading) {
+		return (
+			<LoadingScreen/>
+		);
+	}
 
 	return (
 		<>
@@ -102,68 +153,125 @@ const Page: React.FC = () => {
 					<nav>
 						<ul>
 							{projectTypes.map((item) => (
-								<li key={item}>
+								<li key={item.value}>
 									<button
-										onClick={() => setProjectsType(item)}
-										className={`${item === projectsType ? styles.active : ''}`}
+										onClick={() => {
+											setProjectsType(item.value);
+											setCurrentPage(1);
+										}}
+										className={item.value === projectsType ? styles.active : ""}
 									>
-										{item}
+										{item.name}
 									</button>
 								</li>
 							))}
 						</ul>
 					</nav>
-
 					<p>
 						Відкрийте для себе наші <br /> трансформаційні 3D-візуалізації.
 					</p>
 				</div>
 
 				<div className={styles.projects}>
-					<nav className={styles.projectsList}>
-						<ul>
-							{projects.map((el) => (
-								<li ref={addToRefs} key={el.name}>
-									<Link href="/">{el.name}</Link>
-								</li>
-							))}
-						</ul>
-						<div ref={arrowRef} className={styles.arrow} style={{ color: "red" }}>
-							<NavArrow/>
-						</div>
-					</nav>
+					<ProjectsNav currentProjects={currentProjects}/>
 
-					<div className={styles.projectsGridPagination}>
-						<div className={`${projectsType === projectTypes[0] ? styles.interiorGrid : styles.defaultGrid}`}>
-							{projects.map((el) => (
-								projectsType === projectTypes[0]
-									? <InteriorProject key={el.name} image={el.image}/>
-									: <DefaultProject key={el.name} image={el.image} name={el.name} />
-							))}
+					<div className={`${styles.projectsGridPagination} ${projectCounts[projectsType] / 8 > 1 ? '' : styles.bottomPadding}`}>
+						<div
+							className={
+								projectsType === "interior"
+									? styles.interiorGrid
+									: styles.defaultGrid
+							}
+						>
+							{currentProjects.map((el, i) => {
+								const imageUrl =
+									el.images && el.images.length > 0
+										? `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${el.images[0].directus_files_id.id}`
+										: "https://www.landuse-ca.org/wp-content/uploads/2019/04/no-photo-available.png";
+
+								return (
+									<div
+										key={i}
+										ref={(el) => {projectRefs.current[i] = el}} // Assign ref for each project
+										className={styles.projectItem}
+									>
+										{projectsType === "interior" ? (
+											<InteriorProject
+												key={i}
+												image={imageUrl}
+												projectId={el.project.id}
+											/>
+										) : (
+											<DefaultProject
+												key={i}
+												name={
+													el.translations.length > 0
+														? el.translations[0].name
+														: "Без назви"
+												}
+												image={imageUrl}
+												model={el.model.id ? el.model.id : ""}
+												projectId={el.project.id}
+											/>
+										)}
+									</div>
+								)
+							})}
 						</div>
 
-						<div className={styles.pagination}>
-							<button>
-								<PaginationArrow />
+						{projectCounts[projectsType] / 8 > 1 && <div className={styles.pagination}>
+							<button
+								onClick={() => {
+									scrollToTop();
+									setTimeout(() => {
+										setCurrentPage((prev) => Math.max(prev - 1, 1));
+									}, 200);
+								}}
+								disabled={currentPage === 1}
+								className={`${currentPage > 1 ? styles.buttonActive : ""}`}
+							>
+								<PaginationArrow/>
 								Попередня сторінка
 							</button>
-
 							<div className={styles.circles}>
-								<div className={`${styles.circle} ${styles.active}`} />
-								<div className={`${styles.circle}`} />
-								<div className={`${styles.circle}`} />
-								<div className={`${styles.circle}`} />
-								<div className={`${styles.circle}`} />
+								{[...Array(Math.ceil(projectCounts[projectsType] / 8))].map(
+									(_, idx) => (
+										<div
+											key={idx}
+											className={`${styles.circle} ${currentPage === idx + 1 ? styles.active : ""}`}
+											onClick={() => {
+												scrollToTop();
+												setTimeout(() => {
+													setCurrentPage(idx + 1);
+												}, 1000);
+											}}
+										/>
+									),
+								)}
 							</div>
 
-							<button>
+							<button
+								onClick={() => {
+									scrollToTop();
+									setTimeout(() => {
+										setCurrentPage((prev) => prev + 1);
+									}, 200);
+								}}
+								disabled={
+									currentPage >= Math.ceil(projectCounts[projectsType] / 8)
+								}
+								className={`${currentPage < Math.ceil(projectCounts[projectsType] / 8) ? styles.buttonActive : ""}`}
+							>
 								Наступна сторінка
-								<PaginationArrow />
+								<PaginationArrow/>
 							</button>
-						</div>
+						</div>}
 					</div>
+
 				</div>
 			</main>
+
+			<Footer />
 		</>
 	);
 };

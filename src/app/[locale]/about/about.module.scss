@@ -84,6 +84,7 @@
   .content {
     display: flex;
     gap: 3.3125rem;
+    max-width: 109.75rem;
   }
 
   &Texts {
@@ -118,6 +119,7 @@
       }
 
       p {
+        line-height: 1;
         font-size: 2rem;
       }
     }
@@ -128,20 +130,56 @@
   display: flex;
   gap: 4.375rem;
   padding: 8.8125rem 3rem 0 3rem;
+  max-width: 109.75rem;
+  margin: 0 auto;
 
   &Wrap {
     display: flex;
     flex-direction: column;
     gap: 2.1875rem;
     min-width: 56.7%;
+
+    position: relative;
+    z-index: 25;
+
+    &:hover {
+      .project:nth-child(2) {
+        transform: skew(1deg, 0deg) rotateX(5deg);
+      }
+
+      .project:nth-child(3) {
+        transform: skew(2deg, 0deg) rotateX(10deg);
+      }
+
+      .project:nth-child(4) {
+        transform: skew(3deg, 0deg) rotateX(15deg);
+      }
+
+      .project:nth-child(5) {
+        transform: skew(4deg, 0deg) rotateX(20deg);
+      }
+
+      .project:nth-child(6) {
+        transform: skew(5deg, 0deg) rotateX(25deg);
+      }
+
+      .project:nth-child(7) {
+        transform: skew(6deg, 0deg) rotateX(30deg);
+      }
+
+      .mainWrapper {
+        transform: skew(7deg, 0deg) rotateX(35deg);
+      }
+    }
   }
 
-  &Project {
+  .mainWrapper {
     height: 29.2938rem;
     background: linear-gradient(90deg, #592D25 0%, #F3E2C6 100%);
     backdrop-filter: drop-shadow(0 0 7.0625rem rgba(243, 226, 198, 0.13));
     border-radius: 1.875rem;
     position: relative;
+    z-index: 25;
 
     h3 {
       position: absolute;
@@ -153,6 +191,28 @@
       font-weight: 700;
       line-height: normal;
     }
+
+    transition: .3s;
+    transform-origin: bottom;
+  }
+
+  .project {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    z-index: -1;
+
+    height: 29rem;
+    width: 99.9%;
+
+    border-radius: 2rem;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: .3s;
+
+    transform-origin: bottom;
   }
 
   &Buttons {
@@ -174,8 +234,14 @@
       border-radius: 5.625rem;
       border: 0.0625rem solid $white;
       background: $light;
-
-      &:hover {
+      transition: .3s;
+    }
+    &:hover {
+      .projectsLink {
+        background: $white;
+      }
+      .arrowBtn {
+        background: $light;
       }
     }
 
@@ -186,7 +252,7 @@
       padding: 0 1.4375rem;
       border-radius: 1.5rem;
       background: $white;
-
+      transition: .3s;
       .arrowIcon {
         height: 1.5rem;
         width: 1.4375rem;
@@ -322,6 +388,15 @@
       gap: 20px;
       flex-direction: column-reverse;
       min-width: unset;
+
+
+      .mainWrapper {
+        transform: skew(0deg, 0deg) rotateX(0deg) !important;
+      }
+
+      .project {
+        display: none;
+      }
     }
 
     &Project {
@@ -367,5 +442,9 @@
         line-height: 150%;
       }
     }
+  }
+
+  .askSection {
+    padding: 18.75rem 18px 16rem;
   }
 }

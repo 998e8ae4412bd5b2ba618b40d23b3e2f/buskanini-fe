@@ -47,7 +47,7 @@ $side-padding: 5.125rem;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    bottom: 6.2vh;
+    bottom: 7vh;
     cursor: pointer;
 
     display: flex;
@@ -134,7 +134,7 @@ $side-padding: 5.125rem;
         top: 0;
         left: 0;
         height: 100%;
-        width: 10%;
+        width: 20%;
         z-index: 2;
 
         background: linear-gradient(270deg, rgba(0, 0, 0, 0.10) 0%, #070707 94.2%);
@@ -158,6 +158,8 @@ $side-padding: 5.125rem;
     display: flex;
     flex-direction: column;
     padding: 7.2rem $side-padding 6.8375rem;
+    overflow: hidden;
+
 
     .cardServices {
       display: flex;
@@ -180,6 +182,7 @@ $side-padding: 5.125rem;
     }
 
     .seeMore {
+      opacity: .7;
       position: absolute;
       bottom: 55px;
       left: 50%;
@@ -189,6 +192,8 @@ $side-padding: 5.125rem;
       font-family: "FixelText", sans-serif;
       font-size: 1rem;
       font-weight: 400;
+
+      z-index: 10;
     }
   }
 
@@ -203,7 +208,7 @@ $side-padding: 5.125rem;
 
 @media (max-width: 768px) {
   .banner {
-    height: 88.4vh;
+    height: 88.4svh;
 
     .centerText {
       width: calc(100% - 2.625rem);
@@ -236,7 +241,7 @@ $side-padding: 5.125rem;
     }
 
     .scrollDown {
-      bottom: 8%;
+      bottom: 14svh;
       gap: 0.4rem;
 
       svg {
@@ -252,7 +257,7 @@ $side-padding: 5.125rem;
 
     .bannerContainer {
       position: absolute;
-      height: 88lvh;
+      height: 88.4svh;
       top: 0;
       left: 0;
       width: 99%;
@@ -269,7 +274,7 @@ $side-padding: 5.125rem;
 
   .main {
     .sectionCollaborate {
-      padding: 1.825rem 0 1.5625rem;
+      padding: 3.825rem 0 1.5625rem;
 
       .slidersContainer {
         padding: 0 2rem;
@@ -322,6 +327,8 @@ $side-padding: 5.125rem;
       }
 
       .seeMore {
+        cursor: pointer;
+
         bottom: 65px;
       }
     }

@@ -7,3 +7,29 @@
     border-radius: 15px !important;
   }
 }
+
+.swiper-slide-active  {
+  h2 {
+    color: #F3E2C6 !important;
+  }
+}
+
+#ff {
+  .swiper-slide {
+    width: 40% !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #ff {
+    .swiper-slide {
+      width: fit-content !important;
+      margin: 0 5% !important;
+
+      h2 {
+        margin: 0 auto !important;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import styles from "./serviceCard.module.scss";
+import {forwardRef} from "react";
 
 type ServiceCardProps = {
 	title: string;
@@ -6,9 +7,11 @@ type ServiceCardProps = {
 	description: string;
 };
 
-const ServiceCard = ({ title, subtitle, description }: ServiceCardProps) => {
+const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>((props, ref) => {
+	const { title, subtitle, description } = props;
+
 	return (
-		<article className={styles.serviceCard}>
+		<article ref={ref}  className={styles.serviceCard}>
 			<div className={styles.titleSubtitle}>
 				<h3>{title}</h3>
 				<p>{subtitle}</p>
@@ -23,6 +26,6 @@ const ServiceCard = ({ title, subtitle, description }: ServiceCardProps) => {
 			<button>Замовити</button>
 		</article>
 	);
-};
+});
 
 export default ServiceCard;

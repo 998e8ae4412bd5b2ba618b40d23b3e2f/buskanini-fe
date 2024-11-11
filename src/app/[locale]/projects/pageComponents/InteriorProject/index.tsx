@@ -3,8 +3,9 @@ import styles from "./interiorProject.module.scss";
 
 type CardProject = {
 	image: string;
+	projectId: string;
 };
-const Index = ({ image }: CardProject) => {
+const Index = ({ image, projectId }: CardProject) => {
 	const tags = [
 		"Меблі для спальні",
 		"Ліжка преміум-класу",
@@ -12,20 +13,34 @@ const Index = ({ image }: CardProject) => {
 		"Індивідуальні меблі на замовлення",
 	];
 
-
 	return (
-		<article onClick={() => (window.location.href = 'project/22')} className={styles.interiorProjectCard}>
-			<div className={styles.hoverInfo}>
-				<div className={styles.name}>THavana Hammock Chair</div>
+		<>
+			<article className={styles.interiorProjectCardContainer}>
+				<div
+					onClick={() => (window.location.href = `project/${projectId}`)}
+					className={styles.interiorProjectCard}
+				>
+					<div className={styles.hoverInfo}>
+						<div className={styles.name}>THavana Hammock Chair</div>
 
-				<div className={styles.tags}>
+						<div className={styles.tags}>
+							{tags.map((tag) => (
+								<div className={styles.tag}>{tag}</div>
+							))}
+						</div>
+					</div>
+					<img loading={"lazy"} src={image} alt=""/>
+				</div>
+
+				<div className={styles.tagsMob}
+					 onClick={() => (window.location.href = `project/${projectId}`)}
+				>
 					{tags.map((tag) => (
 						<div className={styles.tag}>{tag}</div>
 					))}
 				</div>
-			</div>
-			<img src={image} alt="" />
-		</article>
+			</article>
+		</>
 	);
 };
 
