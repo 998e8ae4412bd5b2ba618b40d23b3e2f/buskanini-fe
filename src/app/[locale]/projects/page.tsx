@@ -15,9 +15,9 @@ const Page: React.FC = () => {
 	const lang = locale === "en" ? "en-US" : "ua-UA";
 
 	const projectTypes = [
+		{ name: "3D Моделювання", value: "modelling" },
 		{ name: "Інтер'єр", value: "interior" },
-		{ name: "Рендер", value: "render" },
-		{ name: "Моделювання", value: "modelling" },
+		{ name: "Екстер'єр", value: "exterior" },
 	];
 
 	const [projectsType, setProjectsType] = useState<string>(
@@ -28,13 +28,13 @@ const Page: React.FC = () => {
 		Record<string, ProjectItem[]>
 	>({
 		interior: [],
-		render: [],
+		exterior: [],
 		modelling: [],
 	});
 
 	const [projectCounts, setProjectCounts] = useState<Record<string, number>>({
 		interior: 0,
-		render: 0,
+		exterior: 0,
 		modelling: 0,
 	});
 
@@ -50,7 +50,7 @@ const Page: React.FC = () => {
 			  project { id }
 			  images { directus_files_id { id } }
 			}
-			renderModels: models(filter: { drop: { _eq: "render" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
+			exteriorModels: models(filter: { drop: { _eq: "exterior" } }, limit: 8, offset: ${(currentPage - 1) * 8}) {
 			  model { id } drop translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) { name }
 			  project { id }
 			  images { directus_files_id { id } }
@@ -65,7 +65,7 @@ const Page: React.FC = () => {
 					model 
 				}
 			}
-			renderCount: models_aggregated(filter: { drop: { _eq: "render" } }) {
+			exteriorCount: models_aggregated(filter: { drop: { _eq: "exterior" } }) {
 				count {
 					model
 				}
@@ -82,13 +82,13 @@ const Page: React.FC = () => {
 				const response = await fetchGraphQL(query);
 				setProjectsData({
 					interior: response.data.interiorModels,
-					render: response.data.renderModels,
+					exterior: response.data.exteriorModels,
 					modelling: response.data.modellingModels,
 				});
 
 				setProjectCounts({
 					interior: response.data.interiorCount[0].count.model,
-					render: response.data.renderCount[0].count.model,
+					exterior: response.data.exteriorCount[0].count.model,
 					modelling: response.data.modellingCount[0].count.model,
 				});
 

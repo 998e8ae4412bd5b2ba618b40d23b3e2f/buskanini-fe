@@ -60,7 +60,6 @@ export default function Home() {
 					onComplete: () => {
 						cardRefs.current.forEach((card) => {
 							card.style.transition = "0.5s ease";
-							card.classList.add("cardHoverAnim");
 						});
 					},
 				}
@@ -151,7 +150,7 @@ export default function Home() {
 					className={`${styles.sectionFurnitureDesign} ${styles.container}`}
 				>
 					<TitleWithSubtitle
-						title="Дизайн меблів"
+						title="Дизайн продуктів"
 						subtitle={`Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.`}
 					/>
 
