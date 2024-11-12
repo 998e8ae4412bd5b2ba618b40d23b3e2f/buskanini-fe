@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
 					ease: "power3.out",
 					scrollTrigger: {
 						trigger: footerRef.current,
-						start: "top 70%",
+						start: "top 90%",
 						end: "top 50%",
 						toggleActions: "play none none"
 					},
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
 					stagger: 0.1, // Delay between animations for each element
 					scrollTrigger: {
 						trigger: footerRef.current,
-						start: "top 80%",
+						start: "top 90%",
 						end: "top 50%",
 						toggleActions: "play none none",
 					},
