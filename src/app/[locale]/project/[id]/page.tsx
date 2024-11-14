@@ -270,7 +270,7 @@ const Page: React.FC = () => {
 			</section>
 
 			<main className={styles.main}>
-				<section className={styles.galleryContainer}>
+				{slidesToShow.length !== 0 && <section className={styles.galleryContainer}>
 					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
@@ -295,7 +295,7 @@ const Page: React.FC = () => {
 					</div>
 
 					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
-				</section>
+				</section>}
 
 				<section className={styles.projectSection} ref={sectionRef}>
 					<h2 className={styles.title}>Про проєкт</h2>

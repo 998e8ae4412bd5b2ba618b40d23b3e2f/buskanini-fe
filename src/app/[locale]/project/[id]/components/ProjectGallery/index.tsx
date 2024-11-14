@@ -103,7 +103,7 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 							modules={[FreeMode, Navigation, Thumbs]}
 							className={styles.swiperSecondary}
 							breakpoints={breakpoints}
-							slidesPerView={imageIds.length < 4 ? imageIds.length : 4}
+							slidesPerView={4}
 						>
 							{imageIds.length !== 0 &&
 								imageIds.map((image: string, i: number) => (
