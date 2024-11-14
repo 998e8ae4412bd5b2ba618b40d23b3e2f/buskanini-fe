@@ -10,9 +10,27 @@
   border-radius: 25px;
   border: 2.043px solid $white;
 
-  height: 60.2vh;
+  height: calc(65vh);
   border-radius: 25px;
   overflow: hidden;
+
+  @media(max-width: 1680px) {
+    height: calc(60vh);
+  }
+
+  @media(max-width: 1600px) {
+    height: calc(59vh);
+  }
+
+  @media(max-width: 1440px) {
+    height: calc(66vh);
+  }
+
+
+  @media(max-width: 1024px) {
+    height: calc(62vh);
+  }
+
 
   img {
     position: absolute;

@@ -23,7 +23,7 @@
     font-weight: 900;
     line-height: 135%;
 
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 
   > span {
@@ -35,16 +35,16 @@
     line-height: 135%;
 
     opacity: 0.8;
-    margin-bottom: 72px;
+    margin-bottom: 4.5rem;
   }
 
   a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 600px;
-    padding: 10px 0;
-    border-radius: 90px;
+    width: 37.5rem;
+    padding: 0.625rem 0;
+    border-radius: 5.625rem;
     border: 1px solid var(--White, #F6F6F6);
     background: var(--Light, #F3E2C6);
     cursor: pointer;
@@ -56,7 +56,33 @@
       font-size: 1.5rem;
       font-style: normal;
       font-weight: 500;
-      line-height: 42px; /* 175% */
+      line-height: 2.625rem
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .notFound {
+    padding: 0 20px;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    > span {
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    a {
+      width: 90%;
+      padding: 0.5rem 0;
+      border-radius: 2.5rem;
+
+      span {
+        font-size: 1.25rem;
+      }
     }
   }
 }

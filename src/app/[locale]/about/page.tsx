@@ -306,7 +306,7 @@ const Page = () => {
 
 					{
 						models.map((obj, i) => {
-							return <Link key={i} href={obj.projectId} className={styles.project}
+							return <Link key={i} href={`/${locale}/project/${obj.projectId}`} className={styles.project}
 										style={{
 											backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${obj.image})`,
 										}}
