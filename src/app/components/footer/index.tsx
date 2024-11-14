@@ -28,7 +28,6 @@ const Footer: React.FC = () => {
 	const footerContentRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		// Fetch social links
 		const fetchMedia = async () => {
 			const query = `
         query Social {
@@ -51,11 +50,9 @@ const Footer: React.FC = () => {
 		};
 		fetchMedia();
 
-		// GSAP Animation
 		gsap.registerPlugin(ScrollTrigger);
 
 		if (footerRef.current && footerContentRef.current) {
-			// Animation for the entire footer
 			gsap.fromTo(
 				footerRef.current,
 				{ opacity: 0, y: 50 },
@@ -85,7 +82,7 @@ const Footer: React.FC = () => {
 					y: 0,
 					duration: 1,
 					ease: "power3.out",
-					stagger: 0.1, // Delay between animations for each element
+					stagger: 0.1,
 					scrollTrigger: {
 						trigger: footerRef.current,
 						start: "top 90%",

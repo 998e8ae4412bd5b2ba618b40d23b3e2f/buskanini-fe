@@ -28,12 +28,13 @@
     }
   }
 
-  button {
+  a {
     display: flex;
     padding: 0.875rem 1.5rem;
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    border-radius: 5.625rem;
 
     span {
       color: $black;
@@ -69,7 +70,7 @@
       }
     }
 
-    button {
+    a {
       margin-top: 0;
       padding: 0.47rem 1.5rem;
       line-height: 1.75;
