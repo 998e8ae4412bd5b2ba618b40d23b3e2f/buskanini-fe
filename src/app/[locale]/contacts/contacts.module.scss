@@ -32,19 +32,6 @@
         align-items: center;
         flex-wrap: wrap;
 
-        a:first-child {
-          div {
-            path {
-              fill: #fff;
-            }
-            &:hover {
-              path {
-                fill: #dd2a5a;
-              }
-            }
-          }
-        }
-
         a {
           position: relative;
           padding-top: 30%;
@@ -83,11 +70,32 @@
           }
         }
 
+        a:first-child {
+          div {
+            path {
+              fill: #fff;
+            }
+            &:hover {
+              path {
+                fill: #dd2a5a;
+              }
+
+              &::before {
+                background:  #dd2a5a;
+              }
+            }
+          }
+        }
+
         a:nth-child(2) {
           div {
             &:hover {
               path {
                 fill: #1769FF;
+              }
+
+              &::before {
+                background: #1769FF;
               }
             }
           }
@@ -99,6 +107,10 @@
               path {
                 fill: #1877F2;
               }
+
+              &::before {
+                background:#1877F2;
+              }
             }
           }
         }
@@ -109,6 +121,10 @@
               path {
                 fill: #FF424D;
               }
+
+              &::before {
+                background: #FF424D;
+              }
             }
           }
         }
@@ -118,6 +134,10 @@
             &:hover {
               path {
                 fill: #0088CC;
+              }
+
+              &::before {
+                background: #0088CC;
               }
             }
           }

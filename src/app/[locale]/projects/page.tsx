@@ -178,7 +178,7 @@ const Page: React.FC = () => {
 					<div className={`${styles.projectsGridPagination} ${projectCounts[projectsType] / 8 > 1 ? '' : styles.bottomPadding}`}>
 						<div
 							className={
-								projectsType === "interior"
+								projectsType !== "modelling"
 									? styles.interiorGrid
 									: styles.defaultGrid
 							}
