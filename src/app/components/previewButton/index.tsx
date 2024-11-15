@@ -3,12 +3,12 @@ import Preview3D from "../../../../public/svg/preview3D.svg";
 import styles from "./preview.module.scss";
 
 interface PreviewButtonProps {
-	onClick?: () => void;
+	onClick?: (e: Event) => void;
 }
 
 const Index: React.FC<PreviewButtonProps> = ({ onClick }) => {
 	return (
-		<button className={styles.preview} onClick={onClick}>
+		<button className={styles.preview} onClick={e => onClick}>
 			3D Перегляд
 			<Preview3D />
 		</button>

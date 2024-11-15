@@ -4,8 +4,9 @@ import styles from "./interiorProject.module.scss";
 type CardProject = {
 	image: string;
 	projectId: string;
+	name: string;
 };
-const Index = ({ image, projectId }: CardProject) => {
+const Index = ({ image, name, projectId }: CardProject) => {
 	const tags = [
 		"Меблі для спальні",
 		"Ліжка преміум-класу",
@@ -21,7 +22,7 @@ const Index = ({ image, projectId }: CardProject) => {
 					className={styles.interiorProjectCard}
 				>
 					<div className={styles.hoverInfo}>
-						<div className={styles.name}>THavana Hammock Chair</div>
+						<div className={styles.name}>{name}</div>
 
 						<div className={styles.tags}>
 							{tags.map((tag) => (

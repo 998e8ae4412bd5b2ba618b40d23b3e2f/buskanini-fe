@@ -1,5 +1,5 @@
 import PreviewButton from "@/app/components/previewButton";
-import React from "react";
+import React, {useState} from "react";
 import styles from "./defultProject.module.scss";
 
 type CardProject = {
@@ -7,19 +7,28 @@ type CardProject = {
 	image: string;
 	model: string;
 	projectId: string;
+	setModelModalActive: (active: boolean) => void;
+	setModel: (model: string) => void;
 };
-const Index = ({ name, image, model, projectId }: CardProject) => {
+const Index = ({ name, image, model, projectId, setModelModalActive, setModel }: CardProject) => {
 	return (
-		<article
-			onClick={() => (window.location.href = `project/${projectId}`)}
-			className={styles.defaultProjectCard}
-		>
-			<div className={styles.hoverInfo}>
-				<div className={styles.name}>{name}</div>
-				{model !== "" && <PreviewButton />}
-			</div>
-			<img loading={"lazy"} src={image} alt="" />
-		</article>
+		<>
+			<article
+				onClick={() => (window.location.href = `project/${projectId}`)}
+				className={styles.defaultProjectCard}
+			>
+				<div className={styles.hoverInfo}>
+					<div className={styles.name}>{name}</div>
+					{model !== undefined && <PreviewButton onClick={(e) => {
+						e.stopPropagation();
+						setModelModalActive(true)
+						setModel(model)
+					}} />}
+				</div>
+				<img loading={"lazy"} src={image} alt="" />
+			</article>
+		</>
+
 	);
 };
 

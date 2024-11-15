@@ -21,6 +21,7 @@ import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "@/app/components/footer";
+import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -270,7 +271,7 @@ const Page: React.FC = () => {
 			</section>
 
 			<main className={styles.main}>
-				{slidesToShow.length !== 0 && <section className={styles.galleryContainer}>
+				{slidesToShow.length !== 0 &&  <section className={styles.galleryContainer}>
 					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
@@ -297,7 +298,7 @@ const Page: React.FC = () => {
 					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
 				</section>}
 
-				<section className={styles.projectSection} ref={sectionRef}>
+				<section className={`${styles.projectSection} ${slidesToShow.length !== 0 ? styles.paddingTop : styles.paddingTop}`} ref={sectionRef}>
 					<h2 className={styles.title}>Про проєкт</h2>
 					<p className={styles.description}>{description}</p>
 

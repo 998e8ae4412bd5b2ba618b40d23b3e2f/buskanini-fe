@@ -38,6 +38,9 @@ const Index = ({ currentProjects }: Props) => {
             );
         }
     }, []);
+
+    console.log(currentProjects)
+
     const truncateText = (text: string, maxLength: number) => {
         if (text.length > maxLength) {
             return text.slice(0, maxLength) + '...';
@@ -53,7 +56,7 @@ const Index = ({ currentProjects }: Props) => {
                         <li key={i} onMouseEnter={handleMouseEnter}>
                             <Link href="/">
                                 {truncateText(
-                                    el.translations.length > 0 ? el.translations[0].name : "Без назви",
+                                    el.name !== undefined ? el.name : "Без назви",
                                     12
                                 )}
                             </Link>
