@@ -1,5 +1,60 @@
 {
 	"Home": {
-		"hello": "Hello i'm mr. Frog"
+		"3DVisualisation": "3D візуалізація",
+		"for": "для",
+		"commercial": "комерції",
+		"architecture": "архітектури",
+		"interiors": "інтер'єрів",
+		"3DVisualisationParagraph": "3D візуалізації",
+		"realisticVisualizations": "Створюємо реалістичні",
+		"forBusinessArchitectureAdvertising": "для бізнесу, архітектури та реклами.",
+
+		"ScrollDown": "Прокрутіть униз",
+
+		"collaborationTitle": "Співпраця",
+		"collaborationSubtitle": "Співпраці з компаніями, \nякими пишаємося",
+
+		"servicesTitle": "Послуги",
+		"servicesSubtitle": "Індивідуальні послуги 3D-дизайну щоб задовольнити всі ваші потреби.",
+
+		"cardServiceFirstTitle": "3D Modelling",
+		"cardServiceFirstSubtitle": "Transforming Ideas into Reality",
+		"cardServiceFirstDescription": "Ваша візуалізація — наш політ фантазії. Ми створюємо простори, де ваш продукт стає центром уваги.\n\nОрганічно, вишукано, стильно.",
+
+		"cardServiceSecondTitle": "3D Product Rendering",
+		"cardServiceSecondSubtitle": "Lights. Camera. Wow!",
+		"cardServiceSecondDescription": "Покажіть свій продукт у вигідному світлі. \n\nМи додаємо магію до кожної текстури та матеріалу, створюючи образи, що викликають захоплення.",
+
+		"cardServiceThirdTitle": "3D Interior Visualization",
+		"cardServiceThirdSubtitle": "Static is Boring, Let’s Move!",
+		"cardServiceThirdDescription": "Динаміка — це новий стандарт. Покажіть світові, як ваш продукт працює та виглядає у русі.\n\nМи додаємо життя кожному кадру.",
+
+		"productDesignTitle": "Дизайн продуктів",
+		"productDesignSubtitle": "Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.",
+
+		"seeMore": "Переглянути більше"
+	},
+	"AskQuestions": {
+		"title": "Маєте запитання",
+		"subtitle": "Пишіть нам у будь-який час — ми завжди на зв'язку, щоб допомогти створити ваш ідеальний простір.",
+		"contact": "Написати"
+	},
+	"Header": {
+		"contacts": "Контакти",
+		"Home": "Головна",
+		"3DProjects": "3D Проєкти",
+		"AboutUs": "Досвід",
+		"Services": "Послуги",
+		"MadeByFrant": "Made by Frant"
+	},
+	"Footer": {
+		"description": "Ми створюємо унікальні рішення та пропонуємо широкий асортимент меблів і освітлення, щоб перетворити кожен простір на джерело натхнення і затишку.",
+		"contacts": "Контакти",
+		"Home": "Головна",
+		"3DProjects": "3D Проєкти",
+		"AboutUs": "Досвід",
+		"Services": "Послуги",
+		"MadeByFrant": "Made by Frant",
+		"AllRightsReserved": "© 2024, buskanini, All Rights Reserved."
 	}
 }
