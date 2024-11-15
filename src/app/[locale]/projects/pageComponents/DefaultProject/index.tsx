@@ -7,14 +7,14 @@ type CardProject = {
 	image: string;
 	model: string;
 	projectId: string;
-	setModelModalActive: (active: boolean) => void;
+	setModelModalActive: (model: boolean) => void;
 	setModel: (model: string) => void;
 };
 const Index = ({ name, image, model, projectId, setModelModalActive, setModel }: CardProject) => {
 	return (
 		<>
 			<article
-				onClick={() => (window.location.href = `project/${projectId}`)}
+				onClick={() => projectId && (window.location.href = `project/${projectId}`)}
 				className={styles.defaultProjectCard}
 			>
 				<div className={styles.hoverInfo}>

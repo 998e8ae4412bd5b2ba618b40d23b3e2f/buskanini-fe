@@ -82,23 +82,25 @@ const Page: React.FC = () => {
                             directus_files_id {id}
                         }
                         date
-                    }
-                    models(filter: { project: { id: { _eq: "${projectId}" } } }) {
-                        model {id}
-                        translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
-                            name
-                        }
-                        images {
-                            directus_files_id {id}
-                        }
+                        models(filter: { project: { id: { _eq: "${projectId}" } } }) {
+							model {id}
+							translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
+								name
+							}
+							images {
+								directus_files_id {id}
+							}
+						}
                     }
                 }
             `;
 
 			try {
 				const response = await fetchGraphQL(query);
+				console.log(response)
+				console.log(response.data.currentProject[0])
 				setProject(response.data.currentProject[0] as Project);
-				setModels(response.data.models as Model[]);
+				setModels(response.data.currentProject[0].models as Model[]);
 
 				const ids = response.data.allProjects.map((p: { id: string }) =>
 					parseInt(p.id, 10)
@@ -161,7 +163,6 @@ const Page: React.FC = () => {
 
 	useEffect(() => {
 		if (sectionRef.current) {
-			// Animate title and description
 			gsap.fromTo(
 				sectionRef.current.querySelector(`.${styles.title}`),
 				{ opacity: 0, y: 30 },
@@ -195,7 +196,6 @@ const Page: React.FC = () => {
 				}
 			);
 
-			// Animate detail items
 			const detailItems = sectionRef.current.querySelectorAll(
 				`.${styles.detailItem}`
 			);
@@ -207,7 +207,7 @@ const Page: React.FC = () => {
 					y: 0,
 					duration: 0.8,
 					ease: "power3.out",
-					stagger: 0.2, // Animate each item sequentially
+					stagger: 0.2,
 					scrollTrigger: {
 						trigger: sectionRef.current,
 						start: "top 70%",
@@ -216,7 +216,6 @@ const Page: React.FC = () => {
 				}
 			);
 
-			// Animate category buttons
 			const categoryButtons = sectionRef.current.querySelectorAll(
 				`.${styles.categoryButton}`
 			);

@@ -114,24 +114,24 @@ const Page: React.FC = () => {
 				const interior = interiorModels.map((obj: { translations: { name: any; }[]; id: any; photos: { directus_files_id: { id: any; }; }[]; }) => {
 					return ({
 						name: obj?.translations[0]?.name,
-						projectId: obj.id,
-						image: obj.photos[0].directus_files_id.id
+						projectId: obj?.id,
+						image: obj?.photos[0].directus_files_id.id
 					})
 				})
 
 				const exterior = exteriorModels.map((obj: { translations: { name: any; }[]; id: any; photos: { directus_files_id: { id: any; }; }[]; }) => {
 					return ({
 						name: obj?.translations[0]?.name,
-						projectId: obj.id,
-						image: obj.photos[0].directus_files_id.id
+						projectId: obj?.id,
+						image: obj?.photos[0].directus_files_id.id
 					})
 				})
 
 				const modelling = modellingModels.map((obj: { translations: { name: any; }[]; project: { id: any; }; model: { id: any; }; images: { directus_files_id: { id: any; }; }[]; }) => {
 					return ({
 						name: obj?.translations[0]?.name,
-						projectId: obj.project.id,
-						model: obj.model.id,
+						projectId: obj?.project?.id,
+						model: obj?.model?.id,
 						image: obj?.images[0]?.directus_files_id?.id
 					})
 				})
