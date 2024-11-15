@@ -1,3 +1,5 @@
 {
-	"hello": "Hello i'm mr. Frog"
+	"Home": {
+		"hello": "Hello i'm mr. Frog"
+	}
 }

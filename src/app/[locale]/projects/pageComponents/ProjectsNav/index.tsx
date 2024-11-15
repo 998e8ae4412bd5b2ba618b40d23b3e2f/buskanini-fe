@@ -56,7 +56,7 @@ const Index = ({ currentProjects }: Props) => {
                         <li key={i} onMouseEnter={handleMouseEnter}>
                             <Link href="/">
                                 {truncateText(
-                                    el.name !== undefined ? el.name : "Без назви",
+                                    el?.name !== undefined ? el?.name : "Без назви",
                                     12
                                 )}
                             </Link>

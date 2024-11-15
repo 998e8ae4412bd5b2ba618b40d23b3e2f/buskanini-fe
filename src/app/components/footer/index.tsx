@@ -12,6 +12,7 @@ import Patreon from "../../../../public/svg/socialMedia/patreon.svg";
 import Telegram from "../../../../public/svg/socialMedia/telegram.svg";
 import { fetchGraphQL } from "@/app/lib/directus";
 import { useLocale } from "use-intl";
+import {useTranslations} from "next-intl";
 
 interface SocialLinks {
 	instagram: string;
@@ -26,6 +27,7 @@ const Footer: React.FC = () => {
 	const [media, setMedia] = useState<SocialLinks | null>(null);
 	const footerRef = useRef<HTMLDivElement | null>(null);
 	const footerContentRef = useRef<HTMLDivElement | null>(null);
+	const t = useTranslations("Footer")
 
 	useEffect(() => {
 		const fetchMedia = async () => {
@@ -101,18 +103,14 @@ const Footer: React.FC = () => {
 					<div className={styles.footerInfo}>
 						<Link href="">buskanini</Link>
 
-						<p>
-							Ми створюємо унікальні рішення та пропонуємо широкий асортимент
-							меблів і освітлення, щоб перетворити кожен простір на джерело
-							натхнення і затишку.
-						</p>
+						<p>{t("description")}</p>
 					</div>
 
 					<div className={styles.footerNav}>
 						<div
 							className={`${styles.footerNavList} ${styles.footerNavListContacts}`}
 						>
-							<div className={styles.title}>Контакти</div>
+							<div className={styles.title}>{t("contacts")}</div>
 
 							<ul>
 								{media && (
@@ -177,16 +175,16 @@ const Footer: React.FC = () => {
 
 							<ul className={styles.vertical}>
 								<li>
-									<Link href={`/${locale}`}>Головна</Link>
+									<Link href={`/${locale}`}>{t("Home")}</Link>
 								</li>
 								<li>
-									<Link href={`/${locale}/projects`}>3D Проєкти</Link>
+									<Link href={`/${locale}/projects`}>{t("3DProjects")}</Link>
 								</li>
 								<li>
-									<Link href={`/${locale}/about`}>Досвід</Link>
+									<Link href={`/${locale}/about`}>{t("AboutUs")}</Link>
 								</li>
 								<li>
-									<Link href={`/${locale}/services`}>Послуги</Link>
+									<Link href={`/${locale}/services`}>{t("Services")}</Link>
 								</li>
 							</ul>
 						</nav>
@@ -194,8 +192,8 @@ const Footer: React.FC = () => {
 				</div>
 
 				<div className={styles.allRights}>
-					<Link href='https://frant.digital' className={styles.madeByFrant}>Made by Frant</Link>
-					<span>© 2024, buskanini, All Rights Reserved.</span>
+					<Link href='https://frant.digital' className={styles.madeByFrant}>{t("MadeByFrant")}</Link>
+					<span>{t("AllRightsReserved")}</span>
 				</div>
 
 				<div className={styles.bgBuskanini}>buskanini</div>

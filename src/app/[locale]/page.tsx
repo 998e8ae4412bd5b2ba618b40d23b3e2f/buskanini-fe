@@ -18,11 +18,14 @@ import React, {useEffect, useLayoutEffect, useRef} from "react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "@/app/components/footer";
+import {useTranslations} from "next-intl";
+import {useLocale} from "use-intl";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+	const t = useTranslations("Home")
 	const scrollToSection = () => {
 		gsap.to(window, {
 			duration: 1,
@@ -33,6 +36,7 @@ export default function Home() {
 			ease: "power2.inOut",
 		});
 	};
+	const locale = useLocale();
 
 	const cardRefs = useRef<HTMLDivElement[]>([]);
 
@@ -74,10 +78,10 @@ export default function Home() {
 
 				<div className={styles.centerText}>
 					<h1>
-						3D візуалізація <br /> для
+						{t("3DVisualisation")} <br /> {t("for")}
 						<span>
 							<WordCycler
-								words={["комерції", "архітектури", "інтер'єрів"]}
+								words={[t("commercial"), t("architecture"), t("interiors")]}
 								intervalTime={60}
 								delayBetweenWords={200}
 							/>
@@ -85,14 +89,13 @@ export default function Home() {
 					</h1>
 
 					<p>
-						Створюємо реалістичні <span>3D візуалізації</span> для бізнесу,
-						архітектури та реклами.
+						{t('realisticVisualizations')} <span>{t("3DVisualisationParagraph")}</span> {t('forBusinessArchitectureAdvertising')}
 					</p>
 				</div>
 
 				<div className={styles.scrollDown} onClick={scrollToSection}>
 					<ScrollDown />
-					<span>Прокрутіть униз</span>
+					<span>{t("ScrollDown")}</span>
 				</div>
 
 				<div className={styles.bannerContainer}>
@@ -107,8 +110,8 @@ export default function Home() {
 			<main className={styles.main}>
 				<section id="collaborateSection" className={styles.sectionCollaborate}>
 					<TitleWithSubtitle
-						title="Співпраця"
-						subtitle={`Співпраці з компаніями, \nякими пишаємося`}
+						title={t('collaborationTitle')}
+						subtitle={t('collaborationSubtitle')}
 					/>
 
 					<div className={styles.slidersContainer}>
@@ -120,28 +123,28 @@ export default function Home() {
 
 				<section className={`${styles.sectionServices} ${styles.container}`}>
 					<TitleWithSubtitle
-						title="Послуги"
-						subtitle={`Індивідуальні послуги 3D-дизайну \nщоб задовольнити всі ваші потреби.`}
+						title={t("servicesTitle")}
+						subtitle={t("servicesSubtitle")}
 					/>
 
 					<div className={styles.cardServices}>
 						<ServiceCard
 							ref={addToRefs}
-							title="3D Modelling"
-							subtitle="Transforming Ideas into Reality"
-							description={`Ваша візуалізація — наш політ фантазії. Ми створюємо простори, де ваш продукт стає центром уваги.\n\nОрганічно, вишукано, стильно.`}
+							title={t("cardServiceFirstTitle")}
+							subtitle={t("cardServiceFirstSubtitle")}
+							description={t("cardServiceFirstDescription")}
 						/>
 						<ServiceCard
 							ref={addToRefs}
-							title="3D Product Rendering"
-							subtitle="Lights. Camera. Wow!"
-							description={`Покажіть свій продукт у вигідному світлі. \n\nМи додаємо магію до кожної текстури та матеріалу, створюючи образи, що викликають захоплення.`}
+							title={t("cardServiceSecondTitle")}
+							subtitle={t("cardServiceSecondSubtitle")}
+							description={t("cardServiceSecondDescription")}
 						/>
 						<ServiceCard
 							ref={addToRefs}
-							title="3D Interior Visualization"
-							subtitle="Static is Boring, Let’s Move!"
-							description={`Динаміка — це новий стандарт. Покажіть світові, як ваш продукт працює та виглядає у русі.\n\nМи додаємо життя кожному кадру.`}
+							title={t("cardServiceThirdTitle")}
+							subtitle={t("cardServiceThirdSubtitle")}
+							description={t("cardServiceThirdDescription")}
 						/>
 					</div>
 				</section>
@@ -150,15 +153,15 @@ export default function Home() {
 					className={`${styles.sectionFurnitureDesign} ${styles.container}`}
 				>
 					<TitleWithSubtitle
-						title="Дизайн продуктів"
-						subtitle={`Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.`}
+						title={t("productDesignTitle")}
+						subtitle={t("productDesignSubtitle")}
 					/>
 
 					<div className={styles.sliderContainer}>
 						<SwiperComponent/>
 
-						<Link href="/en/projects" className={styles.seeMore}>
-							Переглянути більше
+						<Link href={`/${locale}/projects`} className={styles.seeMore}>
+							{t("seeMore")}
 						</Link>
 					</div>
 				</section>
