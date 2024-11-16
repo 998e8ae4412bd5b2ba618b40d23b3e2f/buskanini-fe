@@ -22,6 +22,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "@/app/components/footer";
 import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
+import {useTranslations} from "next-intl";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -46,7 +47,7 @@ const Page: React.FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isPhone, setIsPhone] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-
+	const t = useTranslations("Project")
 	const locale = useLocale();
 	const router = useRouter();
 	const params = useParams();
@@ -97,8 +98,6 @@ const Page: React.FC = () => {
 
 			try {
 				const response = await fetchGraphQL(query);
-				console.log(response)
-				console.log(response.data.currentProject[0])
 				setProject(response.data.currentProject[0] as Project);
 				setModels(response.data.currentProject[0].models as Model[]);
 
@@ -303,12 +302,12 @@ const Page: React.FC = () => {
 
 					<div className={styles.detailsContainer}>
 						<div className={styles.detailItem}>
-							<h2 className={styles.detailTitle}>Дата створення</h2>
+							<h2 className={styles.detailTitle}>{t("CreateDate")}</h2>
 							<p className={styles.detailValue}>{project?.date}</p>
 						</div>
 
 						<div className={styles.detailItem}>
-							<h2 className={styles.detailTitle}>Замовник</h2>
+							<h2 className={styles.detailTitle}>{t("Client")}</h2>
 							<p className={styles.detailValue}>{client}</p>
 						</div>
 					</div>
@@ -328,11 +327,11 @@ const Page: React.FC = () => {
 				<div className={styles.pagination}>
 					<button onClick={handlePrevious}>
 						<PaginationArrow/>
-						Попередній інтер'єр
+						{t("PreviousInterior")}
 					</button>
 
 					<button onClick={handleNext}>
-						Наступний інтер'єр
+						{t("NextInterior")}
 						<PaginationArrow/>
 					</button>
 				</div>

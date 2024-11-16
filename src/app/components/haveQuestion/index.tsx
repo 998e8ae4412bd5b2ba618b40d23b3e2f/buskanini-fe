@@ -102,7 +102,7 @@ const Index = () => {
 			<h4 ref={h4Ref}>{t("title")}</h4>
 			<p ref={pRef}>{t("subtitle")}</p>
 
-			<Link ref={linkRef} href={`${locale}/contacts`} className={styles.animatedLink}>
+			<Link ref={linkRef} href={`/${locale}/contacts`} className={styles.animatedLink}>
 				<span ref={linkTextRef} className={styles.linkText}>{t("contact")}</span>
 			</Link>
 		</div>

@@ -2,12 +2,12 @@
 import React, { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import ArrowSubmit from "../../../../../../public/svg/ArrowSubmit.svg";
-import ArrowSubmitAnim from "../../../../../../public/svg/ArrowSubmitAnim.svg";
 import Change from "../../../../../../public/svg/change.svg";
 import CircleSvg from "../../../../../../public/svg/closeCircle.svg";
 import FileSvg from "../../../../../../public/svg/file.svg";
 import FileAdd from "../../../../../../public/svg/fileAdd.svg";
 import styles from "./contactForm.module.scss";
+import {useTranslations} from "next-intl";
 
 interface FormData {
 	name: string;
@@ -20,6 +20,7 @@ interface FormData {
 type SubmitStatus = "idle" | "success" | "error";
 
 const ContactForm: React.FC = () => {
+	const t = useTranslations("Contacts");
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
 		email: "",
@@ -46,8 +47,8 @@ const ContactForm: React.FC = () => {
 		const file = event.target.files?.[0];
 		if (file) {
 			if (file.size > MAX_FILE_SIZE) {
-				alert("Файл перевищує максимально допустимий розмір у 100 МБ.");
-				event.target.value = ""; // Скидаємо вибір файлу
+				alert(t("MaxFile"));
+				event.target.value = "";
 				return;
 			}
 			setFormData((prev) => ({
@@ -86,7 +87,7 @@ const ContactForm: React.FC = () => {
 		formdata.append("message", message);
 		formdata.append("fileType", "document");
 
-		setSubmitStatus("idle"); // Скидаємо статус перед запитом
+		setSubmitStatus("idle");
 
 		fetch("https://buskanini-tg-k9ac.onrender.com/send-data", {
 			method: "POST",
@@ -95,7 +96,7 @@ const ContactForm: React.FC = () => {
 		})
 			.then((response) => {
 				if (response.ok) {
-					setSubmitStatus("success"); // Успішно
+					setSubmitStatus("success");
 					setTimeout(() => {
 						setSubmitStatus("idle");
 					}, 4000)
@@ -128,9 +129,7 @@ const ContactForm: React.FC = () => {
 
 	const isReadyToSent = formData.name !== "" && formData.email !== "";
 
-	// GSAP Animation on Form Load
 	useEffect(() => {
-		// Animate input fields (input and textarea)
 		gsap.from(`.${styles.inputGroup} input, .${styles.inputGroup} textarea`, {
 			opacity: 0,
 			y: 30,
@@ -139,7 +138,6 @@ const ContactForm: React.FC = () => {
 			ease: "power3.out",
 		});
 
-		// Animate file upload group with a bounce effect
 		gsap.from(`.${styles.fileUploadGroup}`, {
 			opacity: 0,
 			x: -50,
@@ -147,16 +145,14 @@ const ContactForm: React.FC = () => {
 			ease: "power3.out",
 		});
 
-		// Animate service checkboxes with a "spring" effect
 		gsap.from(`.${styles.checkboxGroup} label`, {
 			opacity: 0,
 			x: -50,
 			stagger: 0.1,
 			duration: 1.5,
-			ease: "back.out(1.7)", // Adds a springy bounce effect
+			ease: "back.out(1.7)",
 		});
 
-		// Focus animation on input fields when clicked
 		const inputs = document.querySelectorAll(`.${styles.input}, .${styles.textarea}`);
 		inputs.forEach((input) => {
 			input.addEventListener("focus", () => {
@@ -168,16 +164,13 @@ const ContactForm: React.FC = () => {
 		});
 	}, []);
 
-	console.log(submitStatus)
-
-
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<div className={styles.inputGroup}>
 				<input
 					type="text"
 					name="name"
-					placeholder="Name*"
+					placeholder={t("Name*")}
 					required
 					className={styles.input}
 					value={formData.name}
@@ -186,7 +179,7 @@ const ContactForm: React.FC = () => {
 				<input
 					type="email"
 					name="email"
-					placeholder="Email*"
+					placeholder={t("Email*")}
 					required
 					className={styles.input}
 					value={formData.email}
@@ -194,7 +187,7 @@ const ContactForm: React.FC = () => {
 				/>
 				<textarea
 					name="message"
-					placeholder="Message"
+					placeholder={t("Message")}
 					className={styles.textarea}
 					value={formData.message}
 					onChange={handleInputChange}
@@ -231,7 +224,7 @@ const ContactForm: React.FC = () => {
 								className={styles.changeButton}
 								onClick={handleFileInputClick}
 							>
-								<span>Replace</span>
+								<span>{t("Replace")}</span>
 								<div className={styles.changeIcon}>
 									<Change />
 								</div>
@@ -243,7 +236,7 @@ const ContactForm: React.FC = () => {
 								<FileAdd />
 							</div>
 							<button type="button" className={styles.uploadButton}>
-								Upload File
+								{t("UploadFile")}
 							</button>
 						</div>
 					)}
@@ -264,7 +257,7 @@ const ContactForm: React.FC = () => {
 					>
 						<input type="checkbox" checked={formData.services.includes(service)} readOnly />
 						<div className={styles.square} />
-						{service}
+						{t(service)}
 					</label>
 				))}
 			</div>
@@ -279,11 +272,11 @@ const ContactForm: React.FC = () => {
 							: ""
 				}`}
 			>
-				<span className={styles.fill}>Заповніть форму</span>
+				<span className={styles.fill}>{t("FillForm")}</span>
 				<span
 					className={`${styles.sent}`}
 				>
-					Надіслати запит
+					{t("Sent")}
 				</span>
 				<ArrowSubmit/>
 			</button>

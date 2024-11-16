@@ -10,15 +10,17 @@ import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from "gsap";
 import Footer from "@/app/components/footer";
 import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
+import {useTranslations} from "next-intl";
 
 const Page: React.FC = () => {
 	const locale = useLocale();
 	const lang = locale === "en" ? "en-US" : "ua-UA";
+	const t = useTranslations("Projects")
 
 	const projectTypes = [
-		{ name: "3D Моделювання", value: "modelling" },
-		{ name: "Інтер'єр", value: "interior" },
-		{ name: "Екстер'єр", value: "exterior" },
+		{ name: t("3DModelling"), value: "modelling" },
+		{ name: t("Interior"), value: "interior" },
+		{ name: t("Exterior"), value: "exterior" },
 	];
 
 	const [projectsType, setProjectsType] = useState<string>(
@@ -227,7 +229,7 @@ const Page: React.FC = () => {
 						</ul>
 					</nav>
 					<p>
-						Відкрийте для себе наші <br /> трансформаційні 3D-візуалізації.
+						{t("Open")}
 					</p>
 				</div>
 
@@ -300,7 +302,7 @@ const Page: React.FC = () => {
 									className={`${currentPage > 1 ? styles.buttonActive : ""}`}
 								>
 									<PaginationArrow />
-									Попередня сторінка
+									{t("PreviousPage")}
 								</button>
 								<div className={styles.circles}>
 									{[...Array(Math.ceil(projectCounts[projectsType] / 8))].map(
@@ -337,7 +339,7 @@ const Page: React.FC = () => {
 											: ""
 									}`}
 								>
-									Наступна сторінка
+									{t("NextPage")}
 									<PaginationArrow />
 								</button>
 							</div>

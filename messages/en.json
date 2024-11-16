@@ -39,6 +39,46 @@
 		"subtitle": "Пишіть нам у будь-який час — ми завжди на зв'язку, щоб допомогти створити ваш ідеальний простір.",
 		"contact": "Написати"
 	},
+	"About": {
+		"projects": "projects",
+		"viewAllProjects": "View all projects"
+	},
+	"Services": {
+		"order": "Order",
+		"3D Modelling": "3D Modelling",
+		"3D Product Rendering": "3D Product Rendering",
+		"3D Interior Visualization": "3D Interior Visualization",
+		"Product Design": "Product Design"
+	},
+	"Contacts": {
+		"HaveQuestion": "Маєте запитання?",
+		"ContactUs": "Напишіть нам!",
+		"MaxFile": "Файл перевищує максимально допустимий розмір у 100 МБ.",
+		"Name*": "Name*",
+		"Email*": "Email*",
+		"Message": "Message",
+		"UploadFile": "Upload File",
+		"FillForm": "Заповніть форму",
+		"Sent": "Надіслати запит",
+		"3D Product Rendering": "3D Product Rendering",
+		"3D Interior Visualization": "3D Interior Visualization",
+		"Product Design": "Product Design"
+	},
+	"Project": {
+		"CreateDate": "дата створення",
+		"Client": "Замовник",
+		"Category": "Категорія",
+		"PreviousInterior": "Попередній інтер'єр",
+		"NextInterior": "Наступний інтер'єр"
+	},
+	"Projects": {
+		"3DModelling": "3D Моделювання",
+		"Interior": "Interior",
+		"Exterior": "Exterior",
+		"Open": "Відкрийте для себе наші трансформаційні 3D-візуалізації.",
+		"PreviousPage": "Попередня сторінка",
+		"NextPage": "Наступна сторінка"
+	},
 	"Header": {
 		"contacts": "Контакти",
 		"Home": "Головна",

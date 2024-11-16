@@ -45,10 +45,12 @@
       font-weight: 500;
       line-height: 1.75;
     }
+    background: rgb(243, 226, 198);
   }
 
   border-radius: 4.375rem;
   border: 2px solid $white;
+
 }
 
 @media(max-width: 768px) {
