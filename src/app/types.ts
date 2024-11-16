@@ -7,6 +7,7 @@ interface ProjectImage {
 }
 
 interface ProjectItem {
+    name: string;
     model: { id: string };
     drop: string;
     translations: ProjectTranslation[];

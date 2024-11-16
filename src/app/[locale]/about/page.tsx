@@ -248,23 +248,23 @@ const Page = () => {
 	return (
 		<>
 			<Header/>
-			<section className={`${styles.aboutUs} ${styles.aboutSectionStyles}`}>
-				<div className={styles.content}>
-					<div ref={aboutUsTextRef} className={styles.aboutUsText}>
-						<h1>{data?.translations[0].about_description.blocks[0].data.text}</h1>
-						{data?.translations[0].about_description.blocks.slice(1).map((block, index) => (
-							<p key={index}>{block.data.text}</p>
-						))}
-					</div>
-					<div
-						ref={aboutUsImageRef}
-						className={styles.aboutUsImage}
-						style={{
-							backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${data?.about_image.id})`,
-						}}
-					/>
-				</div>
-			</section>
+			{/*<section className={`${styles.aboutUs} ${styles.aboutSectionStyles}`}>*/}
+			{/*	<div className={styles.content}>*/}
+			{/*		<div ref={aboutUsTextRef} className={styles.aboutUsText}>*/}
+			{/*			<h1>{data?.translations[0].about_description.blocks[0].data.text}</h1>*/}
+			{/*			{data?.translations[0].about_description.blocks.slice(1).map((block, index) => (*/}
+			{/*				<p key={index}>{block.data.text}</p>*/}
+			{/*			))}*/}
+			{/*		</div>*/}
+			{/*		<div*/}
+			{/*			ref={aboutUsImageRef}*/}
+			{/*			className={styles.aboutUsImage}*/}
+			{/*			style={{*/}
+			{/*				backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${data?.about_image.id})`,*/}
+			{/*			}}*/}
+			{/*		/>*/}
+			{/*	</div>*/}
+			{/*</section>*/}
 
 			<div className={`${styles.aboutBuskanini}`} ref={aboutBuskaniniRef}>
 				<span>bushkanini</span>
@@ -306,7 +306,7 @@ const Page = () => {
 
 					{
 						models.map((obj, i) => {
-							return <Link key={i} href={obj.projectId} className={styles.project}
+							return <Link key={i} href={`/${locale}/project/${obj.projectId}`} className={styles.project}
 										style={{
 											backgroundImage: `url(${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${obj.image})`,
 										}}
@@ -314,16 +314,16 @@ const Page = () => {
 						})
 					}
 
-					<div className={styles.aboutProjectsButtons}>
-						<a href="#projects" className={styles.projectsLink}>
+					<Link href={`/${locale}/projects`} className={styles.aboutProjectsButtons}>
+						<div className={styles.projectsLink}>
 							Переглянути проєкти
-						</a>
+						</div>
 						<button ref={arrowBtnRef} className={styles.arrowBtn}>
 							<div className={styles.arrowIcon}>
 								<BlackArrow/>
 							</div>
 						</button>
-					</div>
+					</Link>
 				</div>
 				<div
 					className={styles.aboutProjectsText}

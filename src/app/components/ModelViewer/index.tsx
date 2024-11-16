@@ -1,7 +1,7 @@
 import { Center, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useState } from "react";
-import styles from "../ModelModal/modelModal.module.scss";
+import styles from "../../[locale]/project/[id]/components/ModelModal/modelModal.module.scss";
 import * as THREE from "three";
 
 interface ModelProps {

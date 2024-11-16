@@ -1,4 +1,4 @@
-import ModelViewer from "@/app/[locale]/project/[id]/components/ModelViewer";
+import ModelViewer from "../../../../../components/ModelViewer";
 import React from "react";
 import CloseModalModel from "../../../../../../../public/svg/closeModalModel.svg";
 import styles from "./modelModal.module.scss";
@@ -11,8 +11,6 @@ interface ModalProps {
 
 const Index = ({ model, active, setActive }: ModalProps) => {
 	const [modelLoaded, setModelLoaded] = React.useState<boolean>(false);
-
-	console.log(modelLoaded)
 
 	return (
 		<section

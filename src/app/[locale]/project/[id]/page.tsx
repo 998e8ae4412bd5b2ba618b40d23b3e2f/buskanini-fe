@@ -21,6 +21,7 @@ import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "@/app/components/footer";
+import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -81,23 +82,25 @@ const Page: React.FC = () => {
                             directus_files_id {id}
                         }
                         date
-                    }
-                    models(filter: { project: { id: { _eq: "${projectId}" } } }) {
-                        model {id}
-                        translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
-                            name
-                        }
-                        images {
-                            directus_files_id {id}
-                        }
+                        models(filter: { project: { id: { _eq: "${projectId}" } } }) {
+							model {id}
+							translations(filter: { languages_code: { code: { _eq: "${lang}" } } }) {
+								name
+							}
+							images {
+								directus_files_id {id}
+							}
+						}
                     }
                 }
             `;
 
 			try {
 				const response = await fetchGraphQL(query);
+				console.log(response)
+				console.log(response.data.currentProject[0])
 				setProject(response.data.currentProject[0] as Project);
-				setModels(response.data.models as Model[]);
+				setModels(response.data.currentProject[0].models as Model[]);
 
 				const ids = response.data.allProjects.map((p: { id: string }) =>
 					parseInt(p.id, 10)
@@ -160,7 +163,6 @@ const Page: React.FC = () => {
 
 	useEffect(() => {
 		if (sectionRef.current) {
-			// Animate title and description
 			gsap.fromTo(
 				sectionRef.current.querySelector(`.${styles.title}`),
 				{ opacity: 0, y: 30 },
@@ -194,7 +196,6 @@ const Page: React.FC = () => {
 				}
 			);
 
-			// Animate detail items
 			const detailItems = sectionRef.current.querySelectorAll(
 				`.${styles.detailItem}`
 			);
@@ -206,7 +207,7 @@ const Page: React.FC = () => {
 					y: 0,
 					duration: 0.8,
 					ease: "power3.out",
-					stagger: 0.2, // Animate each item sequentially
+					stagger: 0.2,
 					scrollTrigger: {
 						trigger: sectionRef.current,
 						start: "top 70%",
@@ -215,7 +216,6 @@ const Page: React.FC = () => {
 				}
 			);
 
-			// Animate category buttons
 			const categoryButtons = sectionRef.current.querySelectorAll(
 				`.${styles.categoryButton}`
 			);
@@ -270,7 +270,7 @@ const Page: React.FC = () => {
 			</section>
 
 			<main className={styles.main}>
-				<section className={styles.galleryContainer}>
+				{slidesToShow.length !== 0 &&  <section className={styles.galleryContainer}>
 					<div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
@@ -295,9 +295,9 @@ const Page: React.FC = () => {
 					</div>
 
 					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
-				</section>
+				</section>}
 
-				<section className={styles.projectSection} ref={sectionRef}>
+				<section className={`${styles.projectSection} ${slidesToShow.length !== 0 ? styles.paddingTop : styles.paddingTop}`} ref={sectionRef}>
 					<h2 className={styles.title}>Про проєкт</h2>
 					<p className={styles.description}>{description}</p>
 

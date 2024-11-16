@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import styles from "./serviceBlock.module.scss";
+import Link from "next/link";
+import {useLocale} from "use-intl";
 
 interface Props {
 	title: string;
@@ -15,8 +17,9 @@ const Index: React.FC<Props> = ({ title, content, ctaText }) => {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const paragraphsRef = useRef<HTMLParagraphElement[]>([]);
-	const buttonRef = useRef<HTMLButtonElement>(null);
+	const buttonRef = useRef<HTMLAnchorElement>(null);
 	const buttonTextRef = useRef<HTMLSpanElement>(null);
+	const locale = useLocale();
 
 	useEffect(() => {
 		if (sectionRef.current) {
@@ -136,9 +139,9 @@ const Index: React.FC<Props> = ({ title, content, ctaText }) => {
 					/>
 				))}
 			</div>
-			<button className={styles.ctaButton} ref={buttonRef}>
+			<Link href={`${locale}/contacts`} className={styles.ctaButton} ref={buttonRef}>
 				<span ref={buttonTextRef}>{ctaText}</span>
-			</button>
+			</Link>
 		</div>
 	);
 };

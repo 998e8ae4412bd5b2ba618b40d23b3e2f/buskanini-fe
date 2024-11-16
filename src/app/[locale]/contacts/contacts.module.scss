@@ -32,13 +32,11 @@
         align-items: center;
         flex-wrap: wrap;
 
-        a:first-child {
-        }
-
         a {
           position: relative;
           padding-top: 30%;
           padding-right: 10%;
+          transition: .3s;
 
           div {
             position: relative;
@@ -70,8 +68,81 @@
               opacity: 0;
             }
           }
-
         }
+
+        a:first-child {
+          div {
+            path {
+              fill: #fff;
+            }
+            &:hover {
+              path {
+                fill: #dd2a5a;
+              }
+
+              &::before {
+                background:  #dd2a5a;
+              }
+            }
+          }
+        }
+
+        a:nth-child(2) {
+          div {
+            &:hover {
+              path {
+                fill: #1769FF;
+              }
+
+              &::before {
+                background: #1769FF;
+              }
+            }
+          }
+        }
+
+        a:nth-child(3) {
+          div {
+            &:hover {
+              path {
+                fill: #1877F2;
+              }
+
+              &::before {
+                background:#1877F2;
+              }
+            }
+          }
+        }
+
+        a:nth-child(4) {
+          div {
+            &:hover {
+              path {
+                fill: #FF424D;
+              }
+
+              &::before {
+                background: #FF424D;
+              }
+            }
+          }
+        }
+
+        a:nth-child(5) {
+          div {
+            &:hover {
+              path {
+                fill: #0088CC;
+              }
+
+              &::before {
+                background: #0088CC;
+              }
+            }
+          }
+        }
+
 
         a:nth-child(1),
         a:nth-child(2),

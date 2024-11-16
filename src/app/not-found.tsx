@@ -1,6 +1,7 @@
 'use client'
 import styles from './not-found/notFound.module.scss'
 import '@/app/styles/default.scss'
+import '@/app/styles/global.scss'
 
 export default function NotFound() {
 	return (

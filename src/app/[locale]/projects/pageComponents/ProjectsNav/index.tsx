@@ -39,6 +39,13 @@ const Index = ({ currentProjects }: Props) => {
         }
     }, []);
 
+    const truncateText = (text: string, maxLength: number) => {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + '...';
+        }
+        return text;
+    };
+
     return (
         <nav className={styles.projectsList}>
             <ul ref={listRef}>
@@ -46,9 +53,10 @@ const Index = ({ currentProjects }: Props) => {
                     currentProjects.map((el, i) => (
                         <li key={i} onMouseEnter={handleMouseEnter}>
                             <Link href="/">
-                                {el.translations.length > 0
-                                    ? el.translations[0].name
-                                    : "Без назви"}
+                                {truncateText(
+                                    el?.name !== undefined ? el?.name : "Без назви",
+                                    12
+                                )}
                             </Link>
                         </li>
                     ))}

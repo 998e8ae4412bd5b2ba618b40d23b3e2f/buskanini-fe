@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./haveQuestion.module.scss";
 import Link from "next/link";
 import { useLocale } from "use-intl";
+import {useTranslations} from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ const Index = () => {
 	const linkRef = useRef<HTMLAnchorElement>(null);
 	const linkTextRef = useRef<HTMLSpanElement>(null);
 	const blockRef = useRef<HTMLDivElement>(null);
+	const t = useTranslations("AskQuestions")
 
 	useEffect(() => {
 		if (linkRef.current) {
@@ -97,16 +99,11 @@ const Index = () => {
 
 	return (
 		<div ref={blockRef} className={styles.haveQuestion}>
-			<h4 ref={h4Ref}>Маєте запитання?</h4>
-			<p ref={pRef}>
-				Пишіть нам у будь-який час — ми завжди на зв'язку, щоб допомогти
-				створити ваш ідеальний простір.
-			</p>
+			<h4 ref={h4Ref}>{t("title")}</h4>
+			<p ref={pRef}>{t("subtitle")}</p>
 
 			<Link ref={linkRef} href={`${locale}/contacts`} className={styles.animatedLink}>
-				<span ref={linkTextRef} className={styles.linkText}>
-				  Написати
-				</span>
+				<span ref={linkTextRef} className={styles.linkText}>{t("contact")}</span>
 			</Link>
 		</div>
 	);

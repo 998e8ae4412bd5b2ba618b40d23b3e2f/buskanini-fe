@@ -10,8 +10,25 @@
   border-radius: 1.5625rem;
   border: 2px solid $white;
 
-  height: 33.2vw;
+  height: calc(65vh);
   overflow: hidden;
+
+  @media(max-width: 1680px) {
+    height: calc(60vh);
+  }
+
+  @media(max-width: 1600px) {
+    height: calc(59vh);
+  }
+
+  @media(max-width: 1440px) {
+    height: calc(66vh);
+  }
+
+
+  @media(max-width: 1024px) {
+    height: calc(62vh);
+  }
 
   img {
     position: absolute;

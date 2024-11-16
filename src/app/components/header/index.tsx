@@ -25,7 +25,6 @@ const Header = () => {
 	const toggleBurgerMenu = () => {
 		if (!liRefs.current || !contactsRef.current || !bgScreenRef.current) return;
 
-		// Скасувати всі активні анімації
 		gsap.killTweensOf([
 			liRefs.current,
 			contactsRef.current,
@@ -36,16 +35,15 @@ const Header = () => {
 		]);
 
 		if (!isBurgerMenuVisible) {
-			// Під час відкриття меню
 			gsap.set([liRefs.current], { opacity: 0, y: -20 });
 			gsap.set(contactsRef.current, { opacity: 0, x: '-50%', y: 50 });
 			gsap.set(bgScreenRef.current, { scale: 1, opacity: 1 });
 			gsap.set(lanRef.current, { opacity: 0 });
-			gsap.set(navRef.current, { opacity: 0, pointerEvents: 'none' }); // Початково блокувати
+			gsap.set(navRef.current, { opacity: 0, pointerEvents: 'none' });
 
 			gsap.to(navRef.current, {
 				opacity: 1,
-				pointerEvents: 'auto', // Розблокувати, коли анімація завершиться
+				pointerEvents: 'auto',
 				ease: "power2.out",
 				duration: 0.5,
 			});
@@ -124,7 +122,7 @@ const Header = () => {
 
 			gsap.to(navRef.current, {
 				opacity: 0,
-				pointerEvents: 'none', // Заблокувати після завершення анімації
+				pointerEvents: 'none',
 				duration: 0.5,
 				ease: "power2.out",
 			});
@@ -132,7 +130,6 @@ const Header = () => {
 
 		setIsBurgerMenuVisible((prev) => !prev);
 	};
-
 
 	const headerRef = useRef(null);
 	const ulRef = useRef(null);

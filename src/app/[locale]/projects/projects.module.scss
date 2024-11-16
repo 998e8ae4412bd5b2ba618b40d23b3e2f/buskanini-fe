@@ -43,7 +43,7 @@
   .projects {
     display: flex;
     gap: 6.313rem;
-    padding: 4.063rem 3.125rem 6.375rem 6.563rem;
+    padding: 2.063rem 3.125rem 6.375rem 6.563rem;
 
     .projectsList {
       min-width: 12.5rem;
@@ -57,8 +57,10 @@
 
         li {
           padding: 1.1rem 0;
+          width: 100%;
 
           a {
+            display: block;
             color: $white;
 
             font-family: "FixelText", sans-serif;
@@ -81,7 +83,7 @@
 
       .arrow {
         position: absolute;
-        top: 29px;
+        top: 22px;
         left: -25px;
         width: 0.884rem;
         transition: opacity 0.5s;

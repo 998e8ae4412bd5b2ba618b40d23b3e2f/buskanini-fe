@@ -190,7 +190,7 @@ $side-padding: 5.125rem;
 
       color: $white;
       font-family: "FixelText", sans-serif;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 400;
 
       z-index: 10;
@@ -328,8 +328,9 @@ $side-padding: 5.125rem;
 
       .seeMore {
         cursor: pointer;
+        font-size: .9rem;
 
-        bottom: 65px;
+        bottom: 62px;
       }
     }
 

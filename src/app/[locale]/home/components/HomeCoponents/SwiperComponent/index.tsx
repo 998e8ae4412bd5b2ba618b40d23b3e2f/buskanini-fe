@@ -113,7 +113,7 @@ const SwiperComponent: React.FC = () => {
 				<SwiperSlide className="homeSlide" key={index}>
 					<SlideComponent
 						imageId={model.images[0]?.directus_files_id.id}
-						projectId={model.project.id}
+						projectId={model.project && model.project.id}
 					/>
 				</SwiperSlide>
 			))}
