@@ -7,12 +7,13 @@ import styles from "./header.module.scss";
 import { useLocale } from "use-intl"; // Додано useRouter для зміни мови
 import { gsap } from "gsap";
 import {usePathname, useRouter} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 const navItems = [
-	{ name: "Головна", link: "/" },
-	{ name: "3D Проєкти", link: "/projects" },
-	{ name: "Досвід", link: "/about" },
-	{ name: "Послуги", link: "/services" },
+	{ name: "Home", link: "/" },
+	{ name: "3DProjects", link: "/projects" },
+	{ name: "AboutUs", link: "/about" },
+	{ name: "Services", link: "/services" },
 ];
 
 const Header = () => {
@@ -20,6 +21,7 @@ const Header = () => {
 	const router = useRouter(); // Додано для роботи з маршрутизатором
 	const [isBurgerMenuVisible, setIsBurgerMenuVisible] = React.useState(false);
 	const pathname = usePathname();
+	const t = useTranslations("Header")
 
 	const changeLanguage = () => {
 		const newLocale = locale === "ua" ? "en" : "ua";
@@ -200,14 +202,14 @@ const Header = () => {
 								}
 							}}
 						>
-							<Link href={`/${locale}${link}`}>{name}</Link>
+							<Link href={`/${locale}${link}`}>{t(name)}</Link>
 						</li>
 					))}
 				</ul>
 			</nav>
 
 			<div ref={contactsRef} className={styles.lanContacts}>
-				<Link href={`/${locale}/contacts`}>Контакти</Link>
+				<Link href={`/${locale}/contacts`}>{t("contacts")}</Link>
 				<button
 					className={styles.languageButton}
 				>

@@ -16,6 +16,7 @@
 
 		"servicesTitle": "Послуги",
 		"servicesSubtitle": "Індивідуальні послуги 3D-дизайну щоб задовольнити всі ваші потреби.",
+		"order": "Замовити",
 
 		"cardServiceFirstTitle": "3D Моделювання",
 		"cardServiceFirstSubtitle": "Перетворюємо ідеї на реальність",
@@ -43,12 +44,33 @@
 		"projects": "projects",
 		"viewAllProjects": "View all projects"
 	},
+	"Contacts": {
+		"Have question": "Маєте запитання?",
+		"Contact us": "Напишіть нам!",
+		"Name*": "Ім'я*",
+		"Email*": "Електронна пошта*",
+		"Message": "Повідомлення",
+		"Replace": "Замінити",
+		"UploadFile": "Завантажити файл",
+		"Sent": "Надіслат",
+		"FillForm": "Заповність форму",
+		"3D Modelling": "3D моделювання",
+		"3D Product Rendering": "3D рендеринг продуктів",
+		"3D Interior Visualization": "3D візуалізація інтер'єру",
+		"Product Design": "Дизайн продукту"
+	},
 	"Services": {
-		"order": "Order",
-		"3D Modelling": "3D Modelling",
-		"3D Product Rendering": "3D Product Rendering",
-		"3D Interior Visualization": "3D Interior Visualization",
-		"Product Design": "Product Design"
+		"order": "Замовити",
+		"3D Modelling": "3D моделювання",
+		"3D Product Rendering": "3D рендеринг продуктів",
+		"3D Interior Visualization": "3D візуалізація інтер'єру",
+		"Product Design": "Дизайн продукту"
+	},
+	"Projects": {
+		"3DModelling": "3D Моделювання",
+		"Interior": "Інтер'єр",
+		"Exterior": "Екстерє'р",
+		"Open": "Відкрийте для себе наші трансформаційні 3D-візуалізації."
 	},
 	"Header": {
 		"contacts": "Контакти",

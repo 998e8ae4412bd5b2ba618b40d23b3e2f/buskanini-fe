@@ -1,5 +1,6 @@
 import styles from "./serviceCard.module.scss";
 import {forwardRef} from "react";
+import {useTranslations} from "next-intl";
 
 type ServiceCardProps = {
 	title: string;
@@ -9,6 +10,7 @@ type ServiceCardProps = {
 
 const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>((props, ref) => {
 	const { title, subtitle, description } = props;
+	const t = useTranslations("Home")
 
 	return (
 		<article ref={ref}  className={styles.serviceCard}>
@@ -23,7 +25,7 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>((props, ref) =>
 				}}
 			/>
 
-			<button>Замовити</button>
+			<button>{t("order")}</button>
 		</article>
 	);
 });

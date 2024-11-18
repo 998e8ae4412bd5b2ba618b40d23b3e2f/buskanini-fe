@@ -123,14 +123,13 @@ const Page = () => {
 	}, []);
 
 	return (
-
 		<>
 			<Header/>
 			<main className={styles.main}>
 				<div className={styles.questionForm}>
 					<div className={styles.haveQuestionSide}>
 						<h1 ref={headingRef}>
-							<span>Маєте запитання?</span> <br/> Напишіть нам!
+							<span>{t("Have question")}</span> <br/>{t("Contact us")}
 						</h1>
 						<SocMedias media={media || {
 							instagram: "",

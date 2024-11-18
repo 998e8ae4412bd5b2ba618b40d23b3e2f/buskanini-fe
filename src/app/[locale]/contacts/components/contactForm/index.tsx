@@ -164,6 +164,7 @@ const ContactForm: React.FC = () => {
 		});
 	}, []);
 
+
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<div className={styles.inputGroup}>
