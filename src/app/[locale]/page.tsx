@@ -24,6 +24,8 @@ import {useLocale} from "use-intl";
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 export default function Home() {
 	const t = useTranslations("Home")
 	const scrollToSection = () => {

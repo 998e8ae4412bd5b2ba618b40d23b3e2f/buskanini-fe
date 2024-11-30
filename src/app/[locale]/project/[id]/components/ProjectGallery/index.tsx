@@ -31,7 +31,7 @@ const Index = ({ model, imageIds }: { model: string; imageIds: string[] }) => {
 			slidesPerView: 2,
 		},
 		778: {
-			slidesPerView: imageIds.length < 4 ? imageIds.length : 4,
+			slidesPerView: 4,
 		},
 	};
 

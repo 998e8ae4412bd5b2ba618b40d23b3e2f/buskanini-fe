@@ -2,66 +2,67 @@
 	"Home": {
 		"3DVisualisation": "3D Visualization",
 		"for": "for",
-		"commercial": "commercial",
+		"commercial": "commerce",
 		"architecture": "architecture",
 		"interiors": "interiors",
 		"3DVisualisationParagraph": "3D Visualizations",
 		"realisticVisualizations": "We create realistic",
 		"forBusinessArchitectureAdvertising": "for business, architecture, and advertising.",
 
-		"ScrollDown": "Scroll Down",
+		"ScrollDown": "Scroll down",
 
 		"collaborationTitle": "Collaboration",
-		"collaborationSubtitle": "Collaboration with companies we \nare proud of",
+		"collaborationSubtitle": "Collaboration with companies \nwe are proud of",
 
 		"servicesTitle": "Services",
-		"servicesSubtitle": "Individual 3D design services to meet all your needs.",
+		"servicesSubtitle": "Custom 3D design services to meet all your needs.",
 		"order": "Order",
 
 		"cardServiceFirstTitle": "3D Modeling",
-		"cardServiceFirstSubtitle": "Transforming ideas into reality",
-		"cardServiceFirstDescription": "Your visualization is our flight of fantasy. We create spaces where your product becomes the center of attention. Organically, elegantly, stylishly.",
+		"cardServiceFirstSubtitle": "Turning ideas into reality",
+		"cardServiceFirstDescription": "Your visualization is our flight of fantasy. We create spaces where your product becomes the center of attention. Organic, refined, stylish.",
 
 		"cardServiceSecondTitle": "3D Product Visualization",
-		"cardServiceSecondSubtitle": "Light. Camera. Wow!",
-		"cardServiceSecondDescription": "Show your product in the best light. We add magic to every texture and material, creating images that inspire admiration.",
+		"cardServiceSecondSubtitle": "Lights. Camera. Wow!",
+		"cardServiceSecondDescription": "Showcase your product in the best light. We add magic to every texture and material, creating images that captivate.",
 
 		"cardServiceThirdTitle": "3D Interior Visualization",
-		"cardServiceThirdSubtitle": "Static is boring, let's move forward!",
-		"cardServiceThirdDescription": "Dynamics is the new standard. Show the world how your product works and looks in motion. We add life to every frame.",
+		"cardServiceThirdSubtitle": "Static is boring, moving forward!",
+		"cardServiceThirdDescription": "Dynamics is the new standard. Show the world how your product works and looks in motion. We bring life to every frame.",
 
 		"productDesignTitle": "Product Design",
-		"productDesignSubtitle": "Discover our transformative \n3D visualizations.",
+		"productDesignSubtitle": "Discover our transformational 3D visualizations.",
 
-		"seeMore": "See More"
+		"seeMore": "See more"
 	},
+
 	"AskQuestions": {
-		"title": "Have Questions",
-		"subtitle": "Contact us at any time - we are always available to help you create your perfect space.",
-		"contact": "Contact"
+		"title": "Do you have a question?",
+		"subtitle": "Write to us at any time - we are always in touch to help create your perfect space.",
+		"contact": "Write"
 	},
 	"About": {
 		"projects": "projects",
 		"viewAllProjects": "View all projects"
 	},
 	"Contacts": {
-		"Have question": "Have a Question?",
-		"Contact us": "Contact us!",
+		"Have question": "Have a question?",
+		"Contact us": "Write to us!",
 		"Name*": "Name*",
-		"Email*": "Email*",
+		"Email*": "E-mail*",
 		"Message": "Message",
 		"Replace": "Replace",
-		"UploadFile": "Upload File",
-		"Sent": "Send",
+		"UploadFile": "Download file",
+		"Sent": "send",
 		"FillForm": "Fill out the form",
-		"3D Modelling": "3D Modeling",
-		"3D Product Rendering": "3D Product Rendering",
-		"3D Interior Visualization": "3D Interior Visualization",
-		"Product Design": "Product Design"
+		"3D Modelling": "3D modeling",
+		"3D Product Rendering": "3D rendering of products",
+		"3D Interior Visualization": "3D visualization of the interior",
+		"Product Design": "Product design"
 	},
 	"Services": {
 		"order": "Order",
-		"3D Modelling": "3D Modeling",
+		"3D Modelling": "3D modeling",
 		"3D Product Rendering": "3D Product Rendering",
 		"3D Interior Visualization": "3D Interior Visualization",
 		"Product Design": "Product Design"
@@ -70,24 +71,51 @@
 		"3DModelling": "3D Modeling",
 		"Interior": "Interior",
 		"Exterior": "Exterior",
-		"Open": "Discover our transformative 3D visualizations."
+		"Open": "Discover our transformative 3D visualizations.",
+		"PreviousPage": "Previous Page",
+		"NextPage": "Next Page"
+	},
+	"Project": {
+		"AboutProject": "About the project",
+		"CreateDate": "Creation date",
+		"Client": "Customer",
+		"Categories": "Category",
+		"PreviousInterior": "Previous project",
+		"NextInterior": "The next project"
 	},
 	"Header": {
 		"contacts": "Contacts",
 		"Home": "Home",
 		"3DProjects": "3D Projects",
-		"AboutUs": "Experience",
+		"AboutUs": "About Us",
 		"Services": "Services",
 		"MadeByFrant": "Made by Frant"
 	},
 	"Footer": {
 		"description": "We create unique solutions and offer a wide range of furniture and lighting to transform every space into a source of inspiration and comfort.",
 		"contacts": "Contacts",
-		"Home": "Home",
+		"Home": "Main",
 		"3DProjects": "3D Projects",
 		"AboutUs": "Experience",
 		"Services": "Services",
 		"MadeByFrant": "Made by Frant",
 		"AllRightsReserved": "© 2024, buskanini, All Rights Reserved."
+	},
+
+
+
+	"metadata": {
+		"main_title": "3D Visualization of Interiors, Interior Design, Custom 3D Solutions",
+		"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+		"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals.",
+		"keywords": "3D visualization, interior design, custom 3D solutions",
+		"openGraph": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		},
+		"twitter": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		}
 	}
 }

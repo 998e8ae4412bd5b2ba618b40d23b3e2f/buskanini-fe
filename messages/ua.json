@@ -70,7 +70,17 @@
 		"3DModelling": "3D Моделювання",
 		"Interior": "Інтер'єр",
 		"Exterior": "Екстерє'р",
-		"Open": "Відкрийте для себе наші трансформаційні 3D-візуалізації."
+		"Open": "Відкрийте для себе наші трансформаційні 3D-візуалізації.",
+		"PreviousPage": "Попередня сторінка",
+		"NextPage": "Настпуна сторінка"
+	},
+	"Project": {
+		"AboutProject": "Про проєкт",
+		"CreateDate": "Дата створення",
+		"Client": "Замовник",
+		"Categories": "Категорія",
+		"PreviousInterior": "Попередній проєкт",
+		"NextInterior": "Наступний проєкт"
 	},
 	"Header": {
 		"contacts": "Контакти",
@@ -89,5 +99,20 @@
 		"Services": "Послуги",
 		"MadeByFrant": "Made by Frant",
 		"AllRightsReserved": "© 2024, buskanini, All Rights Reserved."
+	},
+
+	"metadata": {
+		"main_title": "3D Visualization of Interiors, Interior Design, Custom 3D Solutions",
+		"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+		"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals.",
+		"keywords": "3D visualization, interior design, custom 3D solutions",
+		"openGraph": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		},
+		"twitter": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		}
 	}
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./interiorProject.module.scss";
+import truncateText from "@/app/utils/TruncateText";
 
 type CardProject = {
 	image: string;
@@ -22,7 +23,10 @@ const Index = ({ image, name, projectId }: CardProject) => {
 					className={styles.interiorProjectCard}
 				>
 					<div className={styles.hoverInfo}>
-						<div className={styles.name}>{name}</div>
+						<div className={styles.name}>{truncateText(
+							name !== undefined ? name : "Без назви",
+							24
+						)}</div>
 
 						<div className={styles.tags}>
 							{tags.map((tag) => (
