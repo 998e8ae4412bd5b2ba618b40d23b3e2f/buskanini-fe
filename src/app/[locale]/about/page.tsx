@@ -10,6 +10,7 @@ import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from "gsap";
 import Link from "next/link";
 import Footer from "@/app/components/footer";
+import {useTranslations} from "next-intl";
 
 type Block = {
 	id: string;
@@ -62,6 +63,7 @@ const Page = () => {
 	const locale = useLocale();
 	const [data, setData] = useState<AboutData | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const t = useTranslations("About")
 
 	useEffect(() => {
 		const fetchMedia = async () => {
@@ -100,10 +102,11 @@ const Page = () => {
 					project: {id: string}
 				}) => {
 					return ({
-						image: obj.model.id,
-						projectId: obj.project.id,
+						image: obj?.model?.id,
+						projectId: obj?.project?.id || 3,
 					})
 				})
+
 				setModels(objects);
 				setData(data);
 				setIsLoading(false);
@@ -300,7 +303,7 @@ const Page = () => {
 					<div className={styles.mainWrapper}>
 						<h3>
 							50+ <br/>
-							Проєктів
+							{t("projects")}
 						</h3>
 					</div>
 
@@ -316,7 +319,7 @@ const Page = () => {
 
 					<Link href={`/${locale}/projects`} className={styles.aboutProjectsButtons}>
 						<div className={styles.projectsLink}>
-							Переглянути проєкти
+							{t("viewAllProjects")}
 						</div>
 						<button ref={arrowBtnRef} className={styles.arrowBtn}>
 							<div className={styles.arrowIcon}>

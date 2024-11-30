@@ -16,18 +16,19 @@
 
 		"servicesTitle": "Послуги",
 		"servicesSubtitle": "Індивідуальні послуги 3D-дизайну щоб задовольнити всі ваші потреби.",
+		"order": "Замовити",
 
-		"cardServiceFirstTitle": "3D Modelling",
-		"cardServiceFirstSubtitle": "Transforming Ideas into Reality",
-		"cardServiceFirstDescription": "Ваша візуалізація — наш політ фантазії. Ми створюємо простори, де ваш продукт стає центром уваги.\n\nОрганічно, вишукано, стильно.",
+		"cardServiceFirstTitle": "3D Моделювання",
+		"cardServiceFirstSubtitle": "Перетворюємо ідеї на реальність",
+		"cardServiceFirstDescription": "Ваша візуалізація — наш політ фантазії. Ми створюємо простори, де ваш продукт стає центром уваги. Органічно, вишукано, стильно.",
 
-		"cardServiceSecondTitle": "3D Product Rendering",
-		"cardServiceSecondSubtitle": "Lights. Camera. Wow!",
-		"cardServiceSecondDescription": "Покажіть свій продукт у вигідному світлі. \n\nМи додаємо магію до кожної текстури та матеріалу, створюючи образи, що викликають захоплення.",
+		"cardServiceSecondTitle": "3D Візуалізація продуктів",
+		"cardServiceSecondSubtitle": "Світло. Камера. Вау!",
+		"cardServiceSecondDescription": "Покажіть свій продукт у вигідному світлі. Ми додаємо магію до кожної текстури та матеріалу, створюючи образи, що викликають захоплення.",
 
-		"cardServiceThirdTitle": "3D Interior Visualization",
-		"cardServiceThirdSubtitle": "Static is Boring, Let’s Move!",
-		"cardServiceThirdDescription": "Динаміка — це новий стандарт. Покажіть світові, як ваш продукт працює та виглядає у русі.\n\nМи додаємо життя кожному кадру.",
+		"cardServiceThirdTitle": "3D Візуалізація інтер'єру",
+		"cardServiceThirdSubtitle": "Статика — це нудно, рухаємося вперед!",
+		"cardServiceThirdDescription": "Динаміка — це новий стандарт. Покажіть світові, як ваш продукт працює та виглядає у русі. Ми додаємо життя кожному кадру.",
 
 		"productDesignTitle": "Дизайн продуктів",
 		"productDesignSubtitle": "Відкрийте для себе наші \nтрансформаційні 3D-візуалізації.",
@@ -38,6 +39,48 @@
 		"title": "Маєте запитання",
 		"subtitle": "Пишіть нам у будь-який час — ми завжди на зв'язку, щоб допомогти створити ваш ідеальний простір.",
 		"contact": "Написати"
+	},
+	"About": {
+		"projects": "projects",
+		"viewAllProjects": "View all projects"
+	},
+	"Contacts": {
+		"Have question": "Маєте запитання?",
+		"Contact us": "Напишіть нам!",
+		"Name*": "Ім'я*",
+		"Email*": "Електронна пошта*",
+		"Message": "Повідомлення",
+		"Replace": "Замінити",
+		"UploadFile": "Завантажити файл",
+		"Sent": "Надіслат",
+		"FillForm": "Заповність форму",
+		"3D Modelling": "3D моделювання",
+		"3D Product Rendering": "3D рендеринг продуктів",
+		"3D Interior Visualization": "3D візуалізація інтер'єру",
+		"Product Design": "Дизайн продукту"
+	},
+	"Services": {
+		"order": "Замовити",
+		"3D Modelling": "3D моделювання",
+		"3D Product Rendering": "3D рендеринг продуктів",
+		"3D Interior Visualization": "3D візуалізація інтер'єру",
+		"Product Design": "Дизайн продукту"
+	},
+	"Projects": {
+		"3DModelling": "3D Моделювання",
+		"Interior": "Інтер'єр",
+		"Exterior": "Екстерє'р",
+		"Open": "Відкрийте для себе наші трансформаційні 3D-візуалізації.",
+		"PreviousPage": "Попередня сторінка",
+		"NextPage": "Настпуна сторінка"
+	},
+	"Project": {
+		"AboutProject": "Про проєкт",
+		"CreateDate": "Дата створення",
+		"Client": "Замовник",
+		"Categories": "Категорія",
+		"PreviousInterior": "Попередній проєкт",
+		"NextInterior": "Наступний проєкт"
 	},
 	"Header": {
 		"contacts": "Контакти",
@@ -56,5 +99,20 @@
 		"Services": "Послуги",
 		"MadeByFrant": "Made by Frant",
 		"AllRightsReserved": "© 2024, buskanini, All Rights Reserved."
+	},
+
+	"metadata": {
+		"main_title": "3D Visualization of Interiors, Interior Design, Custom 3D Solutions",
+		"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+		"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals.",
+		"keywords": "3D visualization, interior design, custom 3D solutions",
+		"openGraph": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		},
+		"twitter": {
+			"title": "Professional 3D Visualization of Interiors, Interior Design, and Custom 3D Solutions",
+			"description": "We offer professional 3D visualization of interiors, interior design, and custom 3D solutions tailored to your business needs. From residential spaces to commercial properties, our team provides complete visualization services, including photorealistic rendering and virtual tours. Order your 3D visualization today and bring your interior design ideas to life with stunning, detailed visuals."
+		}
 	}
 }

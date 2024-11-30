@@ -1,6 +1,7 @@
 import PreviewButton from "@/app/components/previewButton";
 import React, {useState} from "react";
 import styles from "./defultProject.module.scss";
+import truncateText from "@/app/utils/TruncateText";
 
 type CardProject = {
 	name: string;
@@ -18,7 +19,12 @@ const Index = ({ name, image, model, projectId, setModelModalActive, setModel }:
 				className={styles.defaultProjectCard}
 			>
 				<div className={styles.hoverInfo}>
-					<div className={styles.name}>{name}</div>
+					<div className={styles.name}>
+						{truncateText(
+							name !== undefined ? name : "Без назви",
+							24
+						)}
+					</div>
 					{model !== undefined && <PreviewButton onClick={(e) => {
 						e.stopPropagation();
 						setModelModalActive(true)

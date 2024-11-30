@@ -3,6 +3,7 @@ import styles from "@/app/[locale]/projects/projects.module.scss";
 import Link from "next/link";
 import NavArrow from "../../../../../../public/svg/arrowNav.svg";
 import gsap from "gsap";
+import truncateText from "@/app/utils/TruncateText";
 
 interface Props {
     currentProjects: ProjectItem[];
@@ -38,13 +39,6 @@ const Index = ({ currentProjects }: Props) => {
             );
         }
     }, []);
-
-    const truncateText = (text: string, maxLength: number) => {
-        if (text.length > maxLength) {
-            return text.slice(0, maxLength) + '...';
-        }
-        return text;
-    };
 
     return (
         <nav className={styles.projectsList}>

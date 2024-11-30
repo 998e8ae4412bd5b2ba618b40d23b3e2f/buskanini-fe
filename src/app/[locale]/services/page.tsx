@@ -8,6 +8,7 @@ import {fetchGraphQL} from "@/app/lib/directus";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import {useLocale} from "use-intl";
 import Footer from "@/app/components/footer";
+import {useTranslations} from "next-intl";
 
 type BuskaniniBgTitleProps = {
 	title: string;
@@ -22,30 +23,31 @@ const BuskaniniBgTitle = ({ title, name }: BuskaniniBgTitleProps) => (
 
 const Page = () => {
 	const locale = useLocale();
+	const t = useTranslations("Services")
 	const [isLoading, setIsLoading] = useState(true);
 	const [aboutPage, setAboutPage] = useState([
 		{
 			title: "",
 			content: [],
-			ctaText: "Замовити",
+			ctaText: t("order"),
 			images: []
 		},
 		{
 			title: "",
 			content: [],
-			ctaText: "Замовити",
+			ctaText: t("order"),
 			images: []
 		},
 		{
 			title: "",
 			content: [],
-			ctaText: "Замовити",
+			ctaText: t("order"),
 			images: []
 		},
 		{
 			title: "",
 			content: [],
-			ctaText: "Замовити",
+			ctaText: t("order"),
 			images: []
 		},
 	]);
@@ -96,27 +98,27 @@ const Page = () => {
 
 				const updatedAboutPage = [
 					{
-						title: parseBlockContent(response.translations[0].first_block)[0] || "3D Modelling",
+						title: parseBlockContent(response.translations[0].first_block)[0] || t("3D Modelling"),
 						content: parseBlockContent(response.translations[0].first_block).slice(1),
-						ctaText: "Замовити",
+						ctaText: t("order"),
 						images: modellingImages
 					},
 					{
-						title: parseBlockContent(response.translations[0].second_block)[0] || "3D Product Rendering",
+						title: parseBlockContent(response.translations[0].second_block)[0] || t("3D Product Rendering"),
 						content: parseBlockContent(response.translations[0].second_block).slice(1),
-						ctaText: "Замовити",
+						ctaText: t("order"),
 						images: renderingImages
 					},
 					{
-						title: parseBlockContent(response.translations[0].third_block)[0] || "3D Interior Visualization",
+						title: parseBlockContent(response.translations[0].third_block)[0] || t("3D Interior Visualization"),
 						content: parseBlockContent(response.translations[0].third_block).slice(1),
-						ctaText: "Замовити",
+						ctaText: t("order"),
 						images: [visualizationImage]
 					},
 					{
-						title: parseBlockContent(response.translations[0].fourth_block)[0] || "Product Design",
+						title: parseBlockContent(response.translations[0].fourth_block)[0] || t("Product Design"),
 						content: parseBlockContent(response.translations[0].fourth_block).slice(1),
-						ctaText: "Замовити",
+						ctaText: t("order"),
 						images: [designImage]
 					},
 				];
@@ -138,25 +140,25 @@ const Page = () => {
 		<>
 			<Header />
 			<main className={styles.main}>
-				<BuskaniniBgTitle title="3D Modelling" name="Modelling" />
+				<BuskaniniBgTitle title={t("3D Modelling")} name={"Modelling"} />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
 					<InfoModel obj={aboutPage[0]} reverse={false} />
 				</section>
 
-				<BuskaniniBgTitle title="3D Product Rendering" name="Rendering" />
+				<BuskaniniBgTitle title={t("3D Product Rendering")} name={"Rendering"} />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
 					<InfoModel obj={aboutPage[1]} reverse />
 				</section>
 
-				<BuskaniniBgTitle title="3D Interior Visualization" name="Interior" />
+				<BuskaniniBgTitle title={t("3D Interior Visualization")} name={"Interior"} />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
 					<InfoModel obj={aboutPage[2]} reverse={false} />
 				</section>
 
-				<BuskaniniBgTitle title="Product Designs" name="Product" />
+				<BuskaniniBgTitle title={t("Product Designs")} name={"Product"} />
 
 				<section className={`${styles.aboutUs} ${styles.container}`}>
 					<InfoModel obj={aboutPage[3]} reverse />

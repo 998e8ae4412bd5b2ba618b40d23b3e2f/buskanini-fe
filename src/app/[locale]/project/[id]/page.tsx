@@ -22,6 +22,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "@/app/components/footer";
 import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
+import {useTranslations} from "next-intl";
+import Head from "next/head";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -46,7 +48,7 @@ const Page: React.FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isPhone, setIsPhone] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-
+	const t = useTranslations("Project")
 	const locale = useLocale();
 	const router = useRouter();
 	const params = useParams();
@@ -97,8 +99,6 @@ const Page: React.FC = () => {
 
 			try {
 				const response = await fetchGraphQL(query);
-				console.log(response)
-				console.log(response.data.currentProject[0])
 				setProject(response.data.currentProject[0] as Project);
 				setModels(response.data.currentProject[0].models as Model[]);
 
@@ -246,6 +246,14 @@ const Page: React.FC = () => {
 
 	return (
 		<>
+			<Head>
+				<title>{project?.translations[0]?.name || "Project Page"}</title>
+				<meta name="description" content={description} />
+				<meta name="keywords" content={tags.join(", ")} />
+				<meta property="og:title" content={project?.translations[0]?.name || "Project Page"} />
+				<meta property="og:description" content={description} />
+				<meta property="og:image" content={imageIds[0] || "/default-image.jpg"} />
+			</Head>
 			<section className={styles.banner}>
 				<Header />
 				<Swiper
@@ -270,8 +278,8 @@ const Page: React.FC = () => {
 			</section>
 
 			<main className={styles.main}>
-				{slidesToShow.length !== 0 &&  <section className={styles.galleryContainer}>
-					<div id='ff' className={styles.galleryTitles}>
+				{slidesToShow.length > 0 && <section className={styles.galleryContainer}>
+					{filteredModels.length > 1 ? <div id='ff' className={styles.galleryTitles}>
 						<Swiper
 							loop={true}
 							spaceBetween={isPhone ? 0 : 75}
@@ -292,29 +300,29 @@ const Page: React.FC = () => {
 								)
 							})}
 						</Swiper>
-					</div>
+					</div> : <h2 className={styles.projectTitle}>{filteredModels[0].translations[0]?.name}</h2>}
 
 					<ProjectGallery model={slidesToShow[currentIndex]?.model.id} imageIds={imageIds}/>
 				</section>}
 
 				<section className={`${styles.projectSection} ${slidesToShow.length !== 0 ? styles.paddingTop : styles.paddingTop}`} ref={sectionRef}>
-					<h2 className={styles.title}>Про проєкт</h2>
+					<h2 className={styles.title}>{t("AboutProject")}</h2>
 					<p className={styles.description}>{description}</p>
 
 					<div className={styles.detailsContainer}>
 						<div className={styles.detailItem}>
-							<h2 className={styles.detailTitle}>Дата створення</h2>
+							<h2 className={styles.detailTitle}>{t("CreateDate")}</h2>
 							<p className={styles.detailValue}>{project?.date}</p>
 						</div>
 
 						<div className={styles.detailItem}>
-							<h2 className={styles.detailTitle}>Замовник</h2>
+							<h2 className={styles.detailTitle}>{t("Client")}</h2>
 							<p className={styles.detailValue}>{client}</p>
 						</div>
 					</div>
 
 					<div className={styles.categoryContainer}>
-						<h2 className={styles.categoryTitle}>Категорія</h2>
+						<h2 className={styles.categoryTitle}>{t("Categories")}</h2>
 						<div className={styles.categoryButtons}>
 							{tags.map((tag: string) => (
 								<button key={tag} className={styles.categoryButton}>
@@ -328,11 +336,11 @@ const Page: React.FC = () => {
 				<div className={styles.pagination}>
 					<button onClick={handlePrevious}>
 						<PaginationArrow/>
-						Попередній інтер'єр
+						{t("PreviousInterior")}
 					</button>
 
 					<button onClick={handleNext}>
-						Наступний інтер'єр
+						{t("NextInterior")}
 						<PaginationArrow/>
 					</button>
 				</div>

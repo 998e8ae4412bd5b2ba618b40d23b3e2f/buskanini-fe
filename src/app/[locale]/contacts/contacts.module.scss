@@ -34,15 +34,18 @@
 
         a {
           position: relative;
-          padding-top: 30%;
-          padding-right: 10%;
+          padding-top: 10vw;
+          padding-right: 9%;
           transition: .3s;
 
           div {
+            transition: .3s;
             position: relative;
             height: fit-content;
 
             svg {
+              width: 15rem;
+              transition: .3s;
               z-index: 100;
             }
 
@@ -58,8 +61,8 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
-              width: 150px;
-              height: 150px;
+              width: 9.375rem;
+              height: 9.375rem;
 
               background: $light;
               z-index: 0;
@@ -77,11 +80,15 @@
             }
             &:hover {
               path {
-                fill: #dd2a5a;
+                fill: url(#paint0_linear_387_385);
               }
 
               &::before {
-                background:  #dd2a5a;
+                background: linear-gradient(90deg,
+                        #5B51D8 0%,
+                        #C13584 45%,
+                        #F77737 69.5%,
+                        #FFDC80 99.99%);
               }
             }
           }
@@ -155,6 +162,10 @@
     form {
       flex: 1;
     }
+
+    > .socMedias {
+      display: none;
+    }
   }
 }
 
@@ -183,6 +194,31 @@
 
       form {
         flex: 1;
+      }
+
+      > .socMedias {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+
+        a {
+          position: relative;
+          padding-top: 30%;
+          transition: .3s;
+          margin: 0 auto;
+
+          &:first-child {
+            div {
+              svg {
+                path {
+                  fill: #fff
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
