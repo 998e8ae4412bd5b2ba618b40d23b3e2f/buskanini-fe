@@ -5,13 +5,14 @@ import Patreon from "../../../../public/svg/socialMediaContacts/Patreon.svg";
 import Behance from "../../../../public/svg/socialMediaContacts/behance.svg";
 import Facebook from "../../../../public/svg/socialMediaContacts/facebook.svg";
 import Telegram from "../../../../public/svg/socialMediaContacts/telegram.svg";
-import { ContactForm } from "./components";
+import {ContactForm} from "./components";
 import styles from "./contacts.module.scss";
 import {fetchGraphQL} from "@/app/lib/directus";
 import Link from "next/link";
 import gsap from "gsap";
 import Footer from "@/app/components/footer";
 import {useTranslations} from "next-intl";
+import {Metadata} from "next";
 
 interface SocialLinks {
 	instagram: string;
@@ -151,7 +152,6 @@ const Page = () => {
 					}}/>
 				</div>
 			</main>
-
 			<Footer/>
 		</>
 	);
