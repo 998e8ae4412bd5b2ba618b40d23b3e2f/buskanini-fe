@@ -5,7 +5,6 @@ import styles from "./project.module.scss";
 import "./project.scss";
 import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
@@ -21,9 +20,7 @@ import LoadingScreen from "@/app/components/LoadingScreen";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "@/app/components/footer";
-import ModelModal from "@/app/[locale]/project/[id]/components/ModelModal";
 import {useTranslations} from "next-intl";
-import Head from "next/head";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
@@ -246,14 +243,6 @@ const Page: React.FC = () => {
 
 	return (
 		<>
-			<Head>
-				<title>{project?.translations[0]?.name || "Project Page"}</title>
-				<meta name="description" content={description} />
-				<meta name="keywords" content={tags.join(", ")} />
-				<meta property="og:title" content={project?.translations[0]?.name || "Project Page"} />
-				<meta property="og:description" content={description} />
-				<meta property="og:image" content={imageIds[0] || "/default-image.jpg"} />
-			</Head>
 			<section className={styles.banner}>
 				<Header />
 				<Swiper
