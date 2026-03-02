@@ -154,14 +154,21 @@ const ContactForm: React.FC = () => {
 		});
 
 		const inputs = document.querySelectorAll(`.${styles.input}, .${styles.textarea}`);
+		const handlers: { el: Element; focus: () => void; blur: () => void }[] = [];
 		inputs.forEach((input) => {
-			input.addEventListener("focus", () => {
-				gsap.to(input, { scale: 1.05, duration: 0.3, ease: "power1.out" });
-			});
-			input.addEventListener("blur", () => {
-				gsap.to(input, { scale: 1, duration: 0.3, ease: "power1.out" });
-			});
+			const onFocus = () => gsap.to(input, { scale: 1.05, duration: 0.3, ease: "power1.out" });
+			const onBlur = () => gsap.to(input, { scale: 1, duration: 0.3, ease: "power1.out" });
+			input.addEventListener("focus", onFocus);
+			input.addEventListener("blur", onBlur);
+			handlers.push({ el: input, focus: onFocus, blur: onBlur });
 		});
+
+		return () => {
+			handlers.forEach(({ el, focus, blur }) => {
+				el.removeEventListener("focus", focus);
+				el.removeEventListener("blur", blur);
+			});
+		};
 	}, []);
 
 
