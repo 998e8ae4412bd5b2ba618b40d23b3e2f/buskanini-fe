@@ -15,6 +15,12 @@ export async function fetchGraphQL(query, variables = {}) {
 		},
 		body: JSON.stringify({ query }),
 	});
+	if (!res.ok) {
+		throw new Error(`GraphQL request failed: ${res.status} ${res.statusText}`);
+	}
 	const data = await res.json();
+	if (data.errors) {
+		console.error("GraphQL errors:", data.errors);
+	}
 	return data;
 }
