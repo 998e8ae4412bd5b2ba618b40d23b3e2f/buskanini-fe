@@ -5,6 +5,13 @@ import NavArrow from "../../../../../../public/svg/arrowNav.svg";
 import gsap from "gsap";
 import truncateText from "@/app/utils/TruncateText";
 
+interface ProjectItem {
+    name?: string;
+    projectId?: string;
+    image?: string;
+    model?: string;
+}
+
 interface Props {
     currentProjects: ProjectItem[];
 }
