@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Behance from "../../../../public/svg/goUp.svg";
 import styles from "./goUpButton.module.scss";
 
 const GoUpButton: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [isAtBottom, setIsAtBottom] = useState(false);
+	const rafRef = useRef<number | null>(null);
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -14,22 +15,27 @@ const GoUpButton: React.FC = () => {
 		});
 	};
 
-	const handleScroll = () => {
-		const scrolled = window.scrollY;
-		const threshold = document.documentElement.scrollHeight * 0.5;
-		setIsVisible(scrolled > threshold);
+	const handleScroll = useCallback(() => {
+		if (rafRef.current) return;
+		rafRef.current = requestAnimationFrame(() => {
+			const scrolled = window.scrollY;
+			const threshold = document.documentElement.scrollHeight * 0.5;
+			setIsVisible(scrolled > threshold);
 
-		const isBottom =
-			window.innerHeight + window.scrollY + 200 >= document.documentElement.scrollHeight - 1;
-		setIsAtBottom(isBottom);
-	};
+			const isBottom =
+				window.innerHeight + window.scrollY + 200 >= document.documentElement.scrollHeight - 1;
+			setIsAtBottom(isBottom);
+			rafRef.current = null;
+		});
+	}, []);
 
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
+			if (rafRef.current) cancelAnimationFrame(rafRef.current);
 		};
-	}, []);
+	}, [handleScroll]);
 
 	return (
 		<button
