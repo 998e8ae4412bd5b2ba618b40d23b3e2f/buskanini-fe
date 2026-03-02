@@ -276,8 +276,8 @@ const Page = () => {
 			<section className={`${styles.aboutMe} ${styles.aboutSectionStyles}`}>
 				<div className={styles.content}>
 					<div ref={aboutMeTextRef} className={styles.aboutMeTexts}>
-						<h2>{data?.translations[0].about_me_description.blocks[0].data.text}</h2>
-						{data?.translations[0].about_me_description.blocks.slice(1).map((block, index) => (
+						<h2>{data?.translations?.[0]?.about_me_description?.blocks?.[0]?.data?.text}</h2>
+						{data?.translations?.[0]?.about_me_description?.blocks?.slice(1).map((block, index) => (
 							<p key={index}>{block.data.text}</p>
 						))}
 					</div>
@@ -291,8 +291,8 @@ const Page = () => {
 							}}
 						/>
 						<div className={styles.aboutMeInfoText}>
-							<h3>{data?.translations[0].name_occupation.blocks[0].data.text}</h3>
-							<p>{data?.translations[0].name_occupation.blocks[1].data.text}</p>
+							<h3>{data?.translations?.[0]?.name_occupation?.blocks?.[0]?.data?.text}</h3>
+							<p>{data?.translations?.[0]?.name_occupation?.blocks?.[1]?.data?.text}</p>
 						</div>
 					</div>
 				</div>
@@ -332,7 +332,7 @@ const Page = () => {
 					className={styles.aboutProjectsText}
 					ref={aboutProjectsTextRef}
 				>
-					{data?.translations[0].folder.blocks.map((block, index) => (
+					{data?.translations?.[0]?.folder?.blocks?.map((block, index) => (
 						<p key={index}>{block.data.text}</p>
 					))}
 				</div>

@@ -31,6 +31,8 @@ const SWIPER_STYLES_MOBILE: CSSProperties & { [key: string]: string | number } =
 		"--swiper-pagination-bottom": "1.5625rem",
 	};
 
+import { useLocale } from "use-intl";
+
 interface Model {
 	images: { directus_files_id: {id: string} }[];
 	project: { id: string };
@@ -39,13 +41,14 @@ interface Model {
 interface SlideProps {
 	imageId: string;
 	projectId: string;
+	locale: string;
 }
 
-const SlideComponent: React.FC<SlideProps> = ({ imageId, projectId }) => (
+const SlideComponent: React.FC<SlideProps> = ({ imageId, projectId, locale }) => (
 	<article
 		className={styles.sliderElement}
 		onClick={() => {
-			window.location.href = `en/project/${projectId}`;
+			window.location.href = `/${locale}/project/${projectId}`;
 		}}
 	>
 		<img src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${imageId}`} alt="" />
@@ -56,6 +59,7 @@ const SlideComponent: React.FC<SlideProps> = ({ imageId, projectId }) => (
 const SwiperComponent: React.FC = () => {
 	const [models, setModels] = useState<Model[]>([]);
 	const [isDesktop, setIsDesktop] = useState<boolean>(false);
+	const locale = useLocale();
 
 	useEffect(() => {
 		const handleResize = () => setIsDesktop(window.innerWidth > 768);
@@ -79,7 +83,8 @@ const SwiperComponent: React.FC = () => {
 				}
 			  `;
 			try {
-				await fetchGraphQL(query).then(res => setModels(res.data.models));
+				const response = await fetchGraphQL(query);
+				setModels(response.data?.models ?? []);
 			} catch (error) {
 				console.error("Error fetching models:", error);
 			}
@@ -112,8 +117,9 @@ const SwiperComponent: React.FC = () => {
 			{models.map((model, index) => (
 				<SwiperSlide className="homeSlide" key={index}>
 					<SlideComponent
-						imageId={model.images[0]?.directus_files_id.id}
-						projectId={model.project && model.project.id}
+						imageId={model.images[0]?.directus_files_id?.id}
+						projectId={model.project?.id}
+						locale={locale}
 					/>
 				</SwiperSlide>
 			))}
