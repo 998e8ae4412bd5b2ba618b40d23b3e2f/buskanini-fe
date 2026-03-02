@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./interiorProject.module.scss";
 import truncateText from "@/app/utils/TruncateText";
+import {useLocale} from "use-intl";
+import {useRouter} from "next/navigation";
 
 type CardProject = {
 	image: string;
@@ -8,6 +10,8 @@ type CardProject = {
 	name: string;
 };
 const Index = ({ image, name, projectId }: CardProject) => {
+	const locale = useLocale();
+	const router = useRouter();
 	const tags = [
 		"Меблі для спальні",
 		"Ліжка преміум-класу",
@@ -19,7 +23,7 @@ const Index = ({ image, name, projectId }: CardProject) => {
 		<>
 			<article className={styles.interiorProjectCardContainer}>
 				<div
-					onClick={() => (window.location.href = `project/${projectId}`)}
+					onClick={() => router.push(`/${locale}/project/${projectId}`)}
 					className={styles.interiorProjectCard}
 				>
 					<div className={styles.hoverInfo}>
@@ -30,7 +34,7 @@ const Index = ({ image, name, projectId }: CardProject) => {
 
 						<div className={styles.tags}>
 							{tags.map((tag) => (
-								<div className={styles.tag}>{tag}</div>
+								<div key={tag} className={styles.tag}>{tag}</div>
 							))}
 						</div>
 					</div>
@@ -38,10 +42,10 @@ const Index = ({ image, name, projectId }: CardProject) => {
 				</div>
 
 				<div className={styles.tagsMob}
-					 onClick={() => (window.location.href = `project/${projectId}`)}
+					 onClick={() => router.push(`/${locale}/project/${projectId}`)}
 				>
 					{tags.map((tag) => (
-						<div className={styles.tag}>{tag}</div>
+						<div key={tag} className={styles.tag}>{tag}</div>
 					))}
 				</div>
 			</article>

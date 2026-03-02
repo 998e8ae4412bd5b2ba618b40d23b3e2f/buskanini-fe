@@ -1,7 +1,9 @@
 import PreviewButton from "@/app/components/previewButton";
-import React, {useState} from "react";
+import React from "react";
 import styles from "./defultProject.module.scss";
 import truncateText from "@/app/utils/TruncateText";
+import {useLocale} from "use-intl";
+import {useRouter} from "next/navigation";
 
 type CardProject = {
 	name: string;
@@ -12,10 +14,13 @@ type CardProject = {
 	setModel: (model: string) => void;
 };
 const Index = ({ name, image, model, projectId, setModelModalActive, setModel }: CardProject) => {
+	const locale = useLocale();
+	const router = useRouter();
+
 	return (
 		<>
 			<article
-				onClick={() => projectId && (window.location.href = `project/${projectId}`)}
+				onClick={() => projectId && router.push(`/${locale}/project/${projectId}`)}
 				className={styles.defaultProjectCard}
 			>
 				<div className={styles.hoverInfo}>
