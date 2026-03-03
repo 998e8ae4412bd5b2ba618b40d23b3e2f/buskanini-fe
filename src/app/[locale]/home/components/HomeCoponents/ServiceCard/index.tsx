@@ -30,4 +30,6 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>((props, ref) =>
 	);
 });
 
+ServiceCard.displayName = "ServiceCard";
+
 export default ServiceCard;

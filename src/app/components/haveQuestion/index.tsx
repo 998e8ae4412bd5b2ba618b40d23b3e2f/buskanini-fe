@@ -16,23 +16,22 @@ const Index = () => {
 	const t = useTranslations("AskQuestions")
 
 	useEffect(() => {
-		if (linkRef.current) {
-			const link = linkRef.current;
+		const link = linkRef.current;
+		if (!link) return;
 
-			link.addEventListener("mouseenter", () => {
-				gsap.to(link, {  background: '#F6F6F6', duration: 0.3, ease: "power2.out" });
-			});
+		const handleMouseEnter = () => {
+			gsap.to(link, { background: '#F6F6F6', duration: 0.3, ease: "power2.out" });
+		};
+		const handleMouseLeave = () => {
+			gsap.to(link, { background: '#F3E2C6', duration: 0.3, ease: "power2.out" });
+		};
 
-			link.addEventListener("mouseleave", () => {
-				gsap.to(link, { background: '#F3E2C6', duration: 0.3, ease: "power2.out" });
-			});
-		}
+		link.addEventListener("mouseenter", handleMouseEnter);
+		link.addEventListener("mouseleave", handleMouseLeave);
 
 		return () => {
-			if (linkRef.current) {
-				linkRef.current.removeEventListener("mouseenter", () => {});
-				linkRef.current.removeEventListener("mouseleave", () => {});
-			}
+			link.removeEventListener("mouseenter", handleMouseEnter);
+			link.removeEventListener("mouseleave", handleMouseLeave);
 		};
 	}, []);
 
@@ -42,7 +41,7 @@ const Index = () => {
 			const linkText = linkTextRef.current;
 			const block = blockRef.current;
 
-			gsap.timeline({
+			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: block,
 					start: "top 40%",
@@ -59,6 +58,11 @@ const Index = () => {
 					{ opacity: 0 },
 					{ opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
 				);
+
+			return () => {
+				tl.scrollTrigger?.kill();
+				tl.kill();
+			};
 		}
 	}, []);
 
@@ -66,6 +70,8 @@ const Index = () => {
 	const pRef = useRef<HTMLParagraphElement>(null);
 
 	useEffect(() => {
+		const triggers: ScrollTrigger[] = [];
+
 		const animateText = (element: HTMLElement | null) => {
 			if (!element) return;
 
@@ -73,7 +79,7 @@ const Index = () => {
 			const splitText = text.split(' ');
 			element.innerHTML = splitText.map(word => `<span>${word}</span>`).join(' ');
 
-			gsap.fromTo(
+			const anim = gsap.fromTo(
 				element.querySelectorAll('span'),
 				{
 					opacity: 0,
@@ -91,10 +97,15 @@ const Index = () => {
 					},
 				}
 			);
+			if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
 		};
 
 		animateText(h4Ref.current);
 		animateText(pRef.current);
+
+		return () => {
+			triggers.forEach(t => t.kill());
+		};
 	}, []);
 
 	return (

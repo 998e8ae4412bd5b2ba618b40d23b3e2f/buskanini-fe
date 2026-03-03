@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
 
 			try {
 				const response = await fetchGraphQL(query);
-				setMedia(response.data.social[0]);
+				setMedia(response.data?.social?.[0] ?? null);
 			} catch (error) {
 				console.error("Error fetching social media links:", error);
 			}
@@ -54,8 +54,10 @@ const Footer: React.FC = () => {
 
 		gsap.registerPlugin(ScrollTrigger);
 
+		const triggers: ScrollTrigger[] = [];
+
 		if (footerRef.current && footerContentRef.current) {
-			gsap.fromTo(
+			const anim1 = gsap.fromTo(
 				footerRef.current,
 				{ opacity: 0, y: 50 },
 				{
@@ -71,12 +73,13 @@ const Footer: React.FC = () => {
 					},
 				}
 			);
+			if (anim1.scrollTrigger) triggers.push(anim1.scrollTrigger);
 
 			const elements = gsap.utils.toArray(
 				footerContentRef.current.querySelectorAll("div, p, ul, li, a, span")
 			);
 
-			gsap.fromTo(
+			const anim2 = gsap.fromTo(
 				elements,
 				{ opacity: 0, y: 30 },
 				{
@@ -93,7 +96,12 @@ const Footer: React.FC = () => {
 					},
 				}
 			);
+			if (anim2.scrollTrigger) triggers.push(anim2.scrollTrigger);
 		}
+
+		return () => {
+			triggers.forEach(t => t.kill());
+		};
 	}, []);
 
 	return (

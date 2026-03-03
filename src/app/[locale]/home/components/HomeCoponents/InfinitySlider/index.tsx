@@ -23,13 +23,15 @@ export const SliderItems = ({ items }: ItemsProps) => {
 
 interface SliderState {
 	left?: boolean;
+	prefetchedLogos?: string[];
 }
 
-const InfinitySlider = ({ left = false }: SliderState) => {
+const InfinitySlider = ({ left = false, prefetchedLogos }: SliderState) => {
 	const [isPhone, setIsPhone] = useState<boolean>(false);
-	const [logos, setLogos] = React.useState<string[]>([]);
+	const [logos, setLogos] = React.useState<string[]>(prefetchedLogos || []);
 
 	useEffect(() => {
+		if (prefetchedLogos) return;
 		const fetchModels = async () => {
 			const query = `
         query Collaboration_files {
@@ -61,7 +63,7 @@ const InfinitySlider = ({ left = false }: SliderState) => {
 			}
 		};
 		fetchModels();
-	}, []);
+	}, [prefetchedLogos]);
 
 	useEffect(() => {
 		setIsPhone(window.innerWidth < 768);

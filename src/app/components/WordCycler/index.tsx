@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface WordCyclerProps {
 	words: string[];
@@ -16,6 +16,7 @@ const WordCycler: React.FC<WordCyclerProps> = ({
 	const [currentCharIndex, setCurrentCharIndex] = useState(0);
 	const [isAdding, setIsAdding] = useState(true);
 	const [isDelaying, setIsDelaying] = useState(false);
+	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
 		if (isDelaying) return;
@@ -28,7 +29,7 @@ const WordCycler: React.FC<WordCyclerProps> = ({
 					setCurrentSubword(word.substring(0, currentCharIndex + 1));
 					setCurrentCharIndex((prevIndex) => prevIndex + 1);
 				} else {
-					setTimeout(() => setIsAdding(false), 500);
+					timeoutRef.current = setTimeout(() => setIsAdding(false), 500);
 				}
 			} else {
 				if (currentCharIndex > 0) {
@@ -36,7 +37,7 @@ const WordCycler: React.FC<WordCyclerProps> = ({
 					setCurrentCharIndex((prevIndex) => prevIndex - 1);
 				} else {
 					setIsDelaying(true);
-					setTimeout(() => {
+					timeoutRef.current = setTimeout(() => {
 						setIsAdding(true);
 						setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
 						setIsDelaying(false);
@@ -45,8 +46,11 @@ const WordCycler: React.FC<WordCyclerProps> = ({
 			}
 		}, intervalTime);
 
-		return () => clearInterval(interval);
-	}, [currentCharIndex, isAdding, isDelaying, currentWordIndex, words]);
+		return () => {
+			clearInterval(interval);
+			if (timeoutRef.current) clearTimeout(timeoutRef.current);
+		};
+	}, [currentCharIndex, isAdding, isDelaying, currentWordIndex, words, intervalTime, delayBetweenWords]);
 
 	return (
 		<>

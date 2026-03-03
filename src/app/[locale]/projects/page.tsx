@@ -115,17 +115,17 @@ const Page: React.FC = () => {
 				} = response.data;
 				const interior = interiorModels.map((obj: { translations: { name: any; }[]; id: any; photos: { directus_files_id: { id: any; }; }[]; }) => {
 					return ({
-						name: obj?.translations[0]?.name,
+						name: obj?.translations?.[0]?.name,
 						projectId: obj?.id,
-						image: obj?.photos[0].directus_files_id.id
+						image: obj?.photos?.[0]?.directus_files_id?.id
 					})
 				})
 
 				const exterior = exteriorModels.map((obj: { translations: { name: any; }[]; id: any; photos: { directus_files_id: { id: any; }; }[]; }) => {
 					return ({
-						name: obj?.translations[0]?.name,
+						name: obj?.translations?.[0]?.name,
 						projectId: obj?.id,
-						image: obj?.photos[0].directus_files_id.id
+						image: obj?.photos?.[0]?.directus_files_id?.id
 					})
 				})
 

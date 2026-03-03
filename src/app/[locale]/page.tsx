@@ -14,12 +14,13 @@ import HaveQuestion from "@/app/components/haveQuestion";
 import Header from "@/app/components/header";
 import gsap from "gsap";
 import Link from "next/link";
-import React, {useEffect, useLayoutEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "@/app/components/footer";
 import {useTranslations} from "next-intl";
 import {useLocale} from "use-intl";
+import {fetchGraphQL} from "@/app/lib/directus";
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +42,36 @@ export default function Home() {
 	const locale = useLocale();
 
 	const cardRefs = useRef<HTMLDivElement[]>([]);
+	const [sliderLogos, setSliderLogos] = useState<string[]>([]);
+
+	useEffect(() => {
+		const fetchLogos = async () => {
+			const query = `
+				query Collaboration_files {
+					collaboration_files {
+						directus_files_id { id }
+					}
+				}
+			`;
+			try {
+				const response = await fetchGraphQL(query);
+				const images = response.data?.collaboration_files?.map(
+					(obj: any) => obj.directus_files_id.id
+				) || [];
+				let finalImages = images;
+				if (images.length < 9) {
+					finalImages = [...images];
+					while (finalImages.length < 9) {
+						finalImages = [...finalImages, ...images].slice(0, 9);
+					}
+				}
+				setSliderLogos(finalImages);
+			} catch (error) {
+				console.error("Error fetching collaboration logos:", error);
+			}
+		};
+		fetchLogos();
+	}, []);
 
 	const addToRefs = (el: HTMLDivElement | null) => {
 		if (el && !cardRefs.current.includes(el)) {
@@ -50,7 +81,7 @@ export default function Home() {
 
 	useEffect(() => {
 		if (cardRefs.current.length > 0) {
-			gsap.fromTo(
+			const anim = gsap.fromTo(
 				cardRefs.current,
 				{ opacity: 0, x: "100vw" },
 				{
@@ -70,6 +101,11 @@ export default function Home() {
 					},
 				}
 			);
+
+			return () => {
+				anim.scrollTrigger?.kill();
+				anim.kill();
+			};
 		}
 	}, []);
 
@@ -117,9 +153,9 @@ export default function Home() {
 					/>
 
 					<div className={styles.slidersContainer}>
-						<InfinitySlider />
-						<InfinitySlider left={true} />
-						<InfinitySlider />
+						<InfinitySlider prefetchedLogos={sliderLogos} />
+						<InfinitySlider left={true} prefetchedLogos={sliderLogos} />
+						<InfinitySlider prefetchedLogos={sliderLogos} />
 					</div>
 				</section>
 

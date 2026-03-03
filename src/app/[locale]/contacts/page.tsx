@@ -12,7 +12,6 @@ import Link from "next/link";
 import gsap from "gsap";
 import Footer from "@/app/components/footer";
 import {useTranslations} from "next-intl";
-import {Metadata} from "next";
 
 interface SocialLinks {
 	instagram: string;
@@ -92,7 +91,7 @@ const Page = () => {
 
 			try {
 				const response = await fetchGraphQL(query);
-				setMedia(response.data.social[0]);
+				setMedia(response.data?.social?.[0] ?? null);
 			} catch (error) {
 				console.error("Error fetching social media links:", error);
 			}

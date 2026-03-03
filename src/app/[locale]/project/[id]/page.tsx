@@ -96,8 +96,8 @@ const Page: React.FC = () => {
 
 			try {
 				const response = await fetchGraphQL(query);
-				setProject(response.data.currentProject[0] as Project);
-				setModels(response.data.currentProject[0].models as Model[]);
+				setProject(response.data?.currentProject?.[0] as Project ?? null);
+				setModels(response.data?.currentProject?.[0]?.models as Model[] ?? []);
 
 				const ids = response.data.allProjects.map((p: { id: string }) =>
 					parseInt(p.id, 10)
@@ -147,14 +147,13 @@ const Page: React.FC = () => {
 
 	const slidesToShow = filteredModels.length < 3 ? [...filteredModels, ...filteredModels, ...filteredModels] : filteredModels;
 
-
 	const imageIds =
-		slidesToShow[currentIndex]?.images.map(
-			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id.id}`
+		slidesToShow[currentIndex]?.images?.map(
+			(image) => `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL2}/assets/${image.directus_files_id?.id}`
 		) || [];
-	const tags = project?.tags.map((tag) => tag.tags_id.translations[0].name) || [];
+	const tags = project?.tags?.map((tag) => tag.tags_id?.translations?.[0]?.name).filter(Boolean) || [];
 
-	const { description = "", client = "" } = project?.translations[0] || {};
+	const { description = "", client = "" } = project?.translations?.[0] || {};
 
 	const sectionRef = useRef<HTMLDivElement | null>(null);
 

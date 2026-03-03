@@ -14,7 +14,7 @@ const TitleWithSubtitle: React.FC<{ title: string; subtitle: string }> = ({ titl
 			const subtitle = containerRef.current.querySelector("p");
 
 			if (title && subtitle) {
-				gsap.timeline({
+				const tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: containerRef.current,
 						start: "top 75%",
@@ -32,6 +32,11 @@ const TitleWithSubtitle: React.FC<{ title: string; subtitle: string }> = ({ titl
 						{ opacity: 1, y: 0, duration: 1, ease: "power2.out" },
 						"<0.3"
 					);
+
+				return () => {
+					tl.scrollTrigger?.kill();
+					tl.kill();
+				};
 			}
 		}
 	}, []);
